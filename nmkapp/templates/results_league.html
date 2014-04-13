@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Rezultati u grupama</h1>
+{% for group_label,league_matches in groups.items %}
+<h2>
+<a name="A">Grupa {{ group_label }} </a>
+</h2>
+
+
+<table class="sortable">
+	<thead>
+		<tr>
+			<th scope="col" class="firstcol">Tim</th>
+			<th scope="col" class="number">Odigrane</th>
+			<th scope="col" class="number">Pobeda</th>
+			<th scope="col" class="number">Nerešeno</th>
+			<th scope="col" class="number">Izgubljeno</th>
+			<th scope="col" class="number">Broj bodova</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for team in league_matches.league %}
+	<tr>
+		<td>{{ team.0 }}</td>
+		<td><div class="number">{{ team.1 }}</div></td>
+		<td><div class="number">{{ team.2 }}</div></td>
+		<td><div class="number">{{ team.3 }}</div></td>
+		<td><div class="number">{{ team.4 }}</div></td>
+		<td><div class="number">{{ team.5 }}</div></td>
+	</tr>
+	{% endfor %}
+	</tbody>
+	<tfoot></tfoot>
+</table>
+
+<br/>
+<br/>
+<table>
+	<thead>
+		<tr>
+			<th scope="col">Kolo</th>
+			<th scope="col">Vreme</th>
+			<th scope="col">Meč</th>
+			<th scope="col">Rezultat</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for match in league_matches.matches %}
+		<tr>
+			<td><a href="/roundstandings/{{ match.round.id }}">{{ match.round.name }}</a></td>
+			<td>{{ match.start_time }}</td>
+			<td>{{ match.home_team.name}} - {{ match.away_team.name }}</td>
+			<td>{% if match.result %}
+				{{ match.result }} ({{ match.score }})
+				{% else %}
+				- (-:-)
+				{% endif %}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endfor %}
+</div>
+{% endblock %}

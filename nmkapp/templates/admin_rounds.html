@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Administracija kola</h1>
+
+{% if messages %}
+    {% for message in messages %}
+    <div class="entry errors">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+<table class="sortable" id="roundForm:rounds">
+	<thead>
+		<tr>
+			<th scope="col">Ime kola</th>
+			<th scope="col">Tip kola</th>
+			<th scope="col">Postavi aktivno</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for round in rounds %}
+		<tr>
+			<td>{{ round.name }}
+			{% if round.active %}
+			<img width="16px" height="16px" border="0" alt="[Aktivno]" src="/static/img/active.png">
+			{% endif %}
+			</td>
+			<td>
+			{% ifequal round.get_group_type_display "League" %}
+			Ligaško
+			{% else %}
+			Kup
+			{% endifequal %}
+			</td>
+			<td>
+				{% if not round.active %}
+				<a href="?set_active={{ round.id }}">
+					<img width="16px" height="16px" border="0" alt="[Aktiviraj]" src="/static/img/active.png">
+				</a>
+				{% endif %}
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+	<tfoot>
+	</tfoot>
+</table>
+
+<form action="/admin/rounds/edit" method="get">
+    <input type="submit" value="Dodaj novo kolo"/>
+</form>
+
+{% endblock %}

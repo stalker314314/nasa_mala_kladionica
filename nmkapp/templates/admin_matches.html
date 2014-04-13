@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if messages %}
+    {% for message in messages %}
+    <div class="entry errors">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+<h1>Administracija mečeva</h1>
+
+<table class="sortable">
+	<thead>
+		<tr>
+			<th scope="col">Kolo</th>
+			<th scope="col">Meč</th>
+			<th scope="col">Vreme početka</th>
+			<th scope="col">Rezultat</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for match in matches %}
+		<tr>
+			<td>{{ match.round.name }}</td>
+			<td>{{ match.home_team.name }} - {{ match.away_team.name }}</td>
+			<td>{{ match.start_time }}</td>
+			<td>
+			{% if match.score %}
+			{{ match.score }} ({{ match.result }})
+			{% else %}
+			- (-:-)
+			{% endif %}
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+	<tfoot></tfoot>
+</table>
+
+<form action="/admin/matches/edit" method="get">
+    <input type="submit" value="Dodaj novi meč"/>
+</form>	
+
+{% endblock %}

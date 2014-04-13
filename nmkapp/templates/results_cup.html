@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Kup rezultati</h1>
+
+{% for round in rounds %}
+<h2>
+	<a href="/roundstandings/{{ round.0.id }}">{{ round.0.name }}</a>
+</h2>
+
+<table class="sortable">
+	<thead>
+		<tr>
+			<th scope="col">Vreme</th>
+			<th scope="col">Meč</th>
+			<th scope="col">Rezultat</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for match in round.1 %}
+		<tr>
+			<td>{{ match.start_time }}</td>
+			<td>{{ match.home_team.name}} - {{ match.away_team.name }}</td>
+			<td>
+			{% if match.result %}
+				{{ match.result }} ({{ match.score }})
+			{% else %}
+				- (-:-)
+			{% endif %}
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+	<tfoot></tfoot>
+</table>
+<br>
+<br>
+<br>
+<br>
+{% endfor %}
+{% endblock %}

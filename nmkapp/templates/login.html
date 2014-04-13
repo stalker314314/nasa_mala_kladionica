@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	<title>Kokan - Meljova kladionica :)</title>
+	<link type="text/css" rel="stylesheet" href="/static/css/css.css">
+</head>
+
+<body>
+	<div id="main">
+
+		<div id="header">
+			<img width="720" height="120" src="/static/img/logo.png">
+		</div>
+	
+		<div id="contentlogin">
+			<h1>NAŠA MALA KLADIONICA - PRIJAVA</h1>
+			<form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+				{% csrf_token %}
+				<input type="hidden" value="login" name="login">
+
+				<fieldset>
+					<div>
+						<label for="login:username">Korisničko ime</label>
+						<br/>
+						{{ form.username }}
+					</div>
+					<div>
+						<label for="login:password">Lozinka</label>
+						<br/>
+						{{ form.password }}
+					</div>
+					{% if form.errors %}
+					<div class="errors">Korisničko ime ili lozinka pogrešni. Pokušajte ponovo.</div>
+					{% endif %}
+					
+					<div class="buttonBox">
+						<input type="submit" value="Prijavi me" />
+						<input type="hidden" name="next" value="{{ next }}" />
+					</div>
+				</fieldset><input type="hidden" value="_id25" id="javax.faces.ViewState" name="javax.faces.ViewState">
+			</form>
+		</div>
+
+		<div id="footer">
+			<hr/>
+			<br/>
+			All content 2008-2014 Kokan, Melja and OSWD, all rights reserved. <br>
+		</div>
+	</div>
+</body>
+</html>

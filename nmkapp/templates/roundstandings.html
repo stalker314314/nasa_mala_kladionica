@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.tooltip').tipsy({fade: true, delayIn: 500});
+	});
+</script>
+
+<table id="roundstandings" class="sortable">
+	<thead style="height: 40px">
+		<tr>
+			<th class="firstcol" rowspan="2">Korisnik</th>
+			{% for match in matches %}
+			<th class="sorttable_nosort">
+				{% ifequal match.round.get_group_type_display "League" %}
+				<a href="/results/league">
+				{% else %}
+				<a href="/results/cup">
+				{% endifequal %}
+				{{ match.home_team.name }} - {{ match.away_team.name }}</a>
+			</th>
+			{% endfor %}
+			<th class="sortable number">∑</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for user_round,shots in round_standings.items %}
+		<tr style="height: 40px">
+			<td>{{ user_round.user.first_name }} {{ user_round.user.last_name }}</td>
+			{% for shot in shots %}
+			{% ifequal shot.shot shot.match.result %}
+			<td class="numbergreen">
+			{% else %}
+			<td class="numberred">
+			{% endifequal %}
+			<a title="{{ shot.match.home_team.name }} - {{ shot.match.away_team.name }}" class="tooltip">{{ shot.shot }}</a>
+			</td>
+			{% empty %}
+			{% for match in matches %}
+			<td class="number">
+			<a title="{{ match.home_team.name }} - {{ match.away_team.name }}" class="tooltip">-</a>
+			</td>
+			{% endfor %}
+			{% endfor %} 
+			<td class="number">{{ user_round.points }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+	<tfoot style="height: 40px">
+		<tr>
+			<td>Kvota</td>
+			{% for match in matches %}
+			{% if match.result == 1 %}
+			<td class="sorttable_nosort numbercenter">{{ match.odd1 }}</td>
+			{% elif match.result == 0 %}
+			<td class="sorttable_nosort numbercenter">{{ match.oddX }}</td>
+			{% elif match.result == 2 %}
+			<td class="sorttable_nosort numbercenter">{{ match.odd2 }}</td>
+			{% else %}
+			<td class="sorttable_nosort">
+			<table width="100%">
+				<tr>
+					<td style="padding-left: 10px;">({{ match.odd1 }})</td>
+					<td style="text-align: center;">({{ match.oddX }})</td>
+					<td style="text-align: right; padding-right: 10px;">({{ match.odd2 }})</td>
+				</tr>
+			</table>
+			</td>
+			{% endif %}
+			{% endfor %}
+		</tr>
+		<tr>
+			<td>Tačan rezultat</td>
+			{% for match in matches %}
+			<td class="numbercenter">
+				{% if match.result %}
+				{{ match.result }} ({{ match.score }})
+				{% else %}
+				-
+				{% endif %}
+			</td>
+			{% endfor %}
+		</tr>
+	</tfoot>
+</table>
+{% endblock %}

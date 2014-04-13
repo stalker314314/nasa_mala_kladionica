@@ -1,0 +1,59 @@
+{% load staticfiles %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Naša mala kladionica</title>
+		<link href="{% static "css/css.css" %}" rel="stylesheet" type="text/css" />
+		<link href="{% static "css/tipsy.css" %}" rel="stylesheet" type="text/css" />
+		<script src="{% static "js/sorttable.js" %}"></script>
+		<script src="{% static "js/jquery-1.4.2.min.js" %}"></script>
+		<script src="{% static "js/jquery.tipsy.js" %}"></script>
+	</head>
+
+	<body>
+		<div id="main">
+			<div id="top-nav">
+				<a href="/settings" id="settings">Podešavanja</a>
+				 |<a href="/logout" id="logout">Logout</a>
+			</div>
+			
+			<div align="center">Brazil, Španija, Amerika</div>
+
+			<div id="header">
+				<img src="{% static "img/logo.png" %}" width="720" height="120" />
+			</div>
+
+			<div id="navigation">
+					Glavni meni
+					<hr />
+					<a href="/" class="navigation">Klađenje</a>
+					<a href="/results" class="navigation">Rezultati</a>
+					<a href="/standings" class="navigation">Tabele</a>
+					<a href="/download" class="navigation">Download</a>
+					<a href="/proposition" class="navigation">Pravila</a>
+					<br />
+					<br />
+					<br />
+					{% if user.is_staff %}
+					Admin meni
+					<hr />
+					<a href="/admin/rounds" class="navigation">Kola</a>
+					<a href="/admin/matches" class="navigation">Mečevi</a>
+					<a href="/admin/results" class="navigation">Rezultati</a>
+					{% endif %}
+			</div>
+
+			<div id="content">
+				{% block content %}{% endblock %}
+			</div>
+
+			<div id="footer">
+				<hr />
+				<br />
+				All content 2008-2014 Kokan, Melja and OSWD, all rights reserved. <br />
+			</div>
+		</div>
+	</body>
+</html>

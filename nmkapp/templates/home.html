@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+   	
+<h1>TRENUTNO KOLO</h1>
+<br/>
+
+{% if messages %}
+    {% for message in messages %}
+    <div class="entry errors">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+{% if form %}
+	{% for error in form.non_field_errors %}
+	    <div class="entry errors" style="color: rgb(255, 0, 0);">{{ error }}</div>
+	{% endfor %}
+	
+	<form method="post" action="/">
+		{% csrf_token %}
+		<table class="mediumtable">
+			<thead>
+				<tr>
+					<th scope="col">Utakmica</th>
+					<th scope="col" style="padding-left: 10px;">1</th>
+					<th scope="col" style="padding-left: 10px;">X</th>
+					<th scope="col" style="padding-left: 10px;">2</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for field in form %}
+				<tr>
+					<td><b>{{ field.label_tag }}</b></td>
+					{% for radio in field %}
+					<td>
+						{{ field.errors }}
+						{{ radio }}
+					</td>
+					{% endfor %}
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<p class="offset">
+			<input name="save" value="Sačuvaj za sada" type="submit">
+			<input name="final_save" value="Konačan odgovor" type="submit">
+		</p>
+	</form>
+
+{% else %}
+
+<table class="mediumtable">
+	<thead>
+		<tr>
+			<th scope="col">Utakmica</th>
+			<th scope="col">Tip</th>
+			<th scope="col">Kvota</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for shot in shots %}
+		<tr>
+			<td><b>{{ shot.match.home_team.name }} - {{ shot.match.away_team.name }}</b></td>
+			<td>
+			{% if shot.shot == 0 %}
+			X
+			{% else %}
+			{{ shot.shot }}
+			{% endif %}
+			</td>
+			<td>
+			{% if shot.shot == 1 %}
+			{{ shot.match.odd1 }}
+			{% elif shot.shot == 0 %}
+			{{ shot.match.oddX }}
+			{% else %}
+			{{ shot.match.odd2 }}
+			{% endif %}
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+{% if round %}
+<p class="offset">
+	<a href="/roundstandings/{{ round.id }}">Šta su drugi igrali</a>
+</p>
+{% endif %}
+
+{% endif %}
+{% endblock %}

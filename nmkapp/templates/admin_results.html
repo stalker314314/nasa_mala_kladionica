@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if messages %}
+    {% for message in messages %}
+    <div class="entry errors">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+<h1>Administracija rezultata</h1>
+
+<table class="sortable">
+	<thead>
+		<tr>
+			<th scope="col">Utakmica</th>
+			<th scope="col">Rezultat</th>
+			<th scope="col">Promeni rezultat</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for match in matches %}
+		<tr>
+			<td>{{ match.home_team.name }} - {{ match.away_team.name }}</td>
+			<td>
+			{% if match.result %}
+			{{ match.result }} ({{ match.score }})
+			{% else %}
+			- (-:-)
+			{% endif %}
+			</td>
+			<td>
+			{% if match.score %}
+			Rezultat je postavljen
+			{% else %}	
+			<a href="/admin/results/change/{{ match.id }}" >
+				<img width="16px" height="16px" border="0" alt="[Izmeni]" src="/static/img/edit.png">
+			</a>
+			{% endif %}
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+	<tfoot></tfoot>
+</table>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table class="sortable mediumtable">
+	<thead>
+		<tr>
+			<th class="firstcol1">Takmičar</th>
+			{% for round in rounds %}
+			<th class="number"><a href="/roundstandings/{{ round.id }}">{{ round.name }}</a></th>
+			{% endfor %}
+			<th class="number">∑</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for standing in standings %}
+		<tr>
+			<td>{{ standing.0.user.first_name }} {{ standing.0.user.last_name }}</td>
+			{% for round_standing in standing.1 %}
+			<td class="number">{{ round_standing }}</td>
+			{% endfor %}
+			<td class="number">{{ standing.2 }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+	<tfoot></tfoot>
+</table>
+{% endblock %}
