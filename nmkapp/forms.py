@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.forms.models import ModelForm
 from nmkapp.models import Round, Match, Shot
 from django import forms

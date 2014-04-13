@@ -1,5 +1,4 @@
-from django.forms import forms, widgets
-from builtins import TypeError, ValueError
+from django.forms import widgets
 
 __author__ = 'Alfredo Saglimbeni'
 import re

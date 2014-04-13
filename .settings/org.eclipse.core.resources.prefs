@@ -1,5 +1,5 @@
 eclipse.preferences.version=1
-encoding//nmkapp/forms.py=UTF-8
+encoding//nmkapp/forms.py=utf-8
 encoding//nmkapp/templates/admin_matches.html=UTF-8
 encoding//nmkapp/templates/admin_matches_edit.html=UTF-8
 encoding//nmkapp/templates/admin_results_change.html=UTF-8
@@ -16,4 +16,4 @@ encoding//nmkapp/templates/results_league.html=UTF-8
 encoding//nmkapp/templates/roundstandings.html=UTF-8
 encoding//nmkapp/templates/settings.html=UTF-8
 encoding//nmkapp/templates/standings.html=UTF-8
-encoding//nmkapp/views.py=UTF-8
+encoding//nmkapp/views.py=utf-8
