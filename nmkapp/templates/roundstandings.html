@@ -74,7 +74,7 @@
 			<td>Tačan rezultat</td>
 			{% for match in matches %}
 			<td class="numbercenter">
-				{% if match.result %}
+				{% if match.result != None %}
 				{{ match.result }} ({{ match.score }})
 				{% else %}
 				-

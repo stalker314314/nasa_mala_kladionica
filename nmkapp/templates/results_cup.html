@@ -22,7 +22,7 @@
 			<td>{{ match.start_time }}</td>
 			<td>{{ match.home_team.name}} - {{ match.away_team.name }}</td>
 			<td>
-			{% if match.result %}
+			{% if match.result != None %}
 				{{ match.result }} ({{ match.score }})
 			{% else %}
 				- (-:-)
