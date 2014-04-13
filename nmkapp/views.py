@@ -203,7 +203,7 @@ def admin_rounds_edit(request):
             for user in users:
                 user_round = UserRound(user=user, round=new_round, shot_allowed=True, points=0)
                 user_round.save()
-            messages.add_message(request, messages.INFO, "Novo kolo %s uspešno kreirano" % new_round.name)
+            messages.add_message(request, messages.INFO, u"Novo kolo %s uspešno kreirano" % new_round.name)
             return HttpResponseRedirect('/admin/rounds')
     else:
         form = RoundForm()
@@ -222,7 +222,7 @@ def admin_matches_edit(request):
         form = MatchForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.add_message(request, messages.INFO, "Meč uspešno dodat")
+            messages.add_message(request, messages.INFO, u"Meč uspešno dodat")
             return HttpResponseRedirect('/admin/matches')
     else:
         form = MatchForm()
