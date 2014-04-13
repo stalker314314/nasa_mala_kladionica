@@ -19,13 +19,13 @@ from datetime import datetime
 def home(request):
     active_rounds = Round.objects.filter(active=True)
     if len(active_rounds) != 1:
-        messages.add_message(request, messages.INFO, "Trenutno nema aktivnog kola za klađenje, pokušajte kasnije")
+        messages.add_message(request, messages.INFO, u"Trenutno nema aktivnog kola za klađenje, pokušajte kasnije")
         return render_to_response("home.html", {"shots": []}, context_instance=RequestContext(request))
     active_round = active_rounds[0]
     
     user_rounds = UserRound.objects.filter(user=request.user).filter(round=active_round)
     if len(user_rounds) != 1:
-        messages.add_message(request, messages.INFO, "Trenutno nema aktivnog kola za klađenje, pokušajte kasnije")
+        messages.add_message(request, messages.INFO, u"Trenutno nema aktivnog kola za klađenje, pokušajte kasnije")
         return render_to_response("home.html", {"shots": []}, context_instance=RequestContext(request))
     
     user_round = user_rounds[0]
@@ -39,7 +39,7 @@ def home(request):
 
     betting_allowed = True
     for shot in shots:
-        if shot.match.start_time > datetime.now():
+        if shot.match.start_time < datetime.now():
             betting_allowed = False
             break
 
@@ -61,7 +61,7 @@ def home(request):
                 if 'final_save' in request.POST:
                     user_round.shot_allowed = False
                     user_round.save()
-                messages.add_message(request, messages.INFO, "Tipovanje uspešno sačuvano")
+                messages.add_message(request, messages.INFO, u"Tipovanje uspešno sačuvano")
                 return HttpResponseRedirect('/')
         else:
             form = BettingForm(shots=shots)
@@ -187,7 +187,7 @@ def admin_rounds(request):
             for one_round in rounds:
                 one_round.active = (one_round == should_be_active_round) 
                 one_round.save()
-        message = "Kolo %s postavljeno kao aktivno" % should_be_active_round.name
+        message = u"Kolo %s postavljeno kao aktivno" % should_be_active_round.name
         messages.add_message(request, messages.INFO, message)
         
     return render_to_response("admin_rounds.html", {"rounds": rounds}, context_instance=RequestContext(request))
@@ -258,7 +258,7 @@ def admin_results_change(request, match_id):
                 match.result = 2
             match.save()
             recalculate_round_points(match.round)
-            messages.add_message(request, messages.INFO, "Rezultat uspešno unesen")
+            messages.add_message(request, messages.INFO, u"Rezultat uspešno unesen")
             return HttpResponseRedirect('/admin/results')
     else:
         form = ResultsForm(instance=match)

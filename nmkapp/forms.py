@@ -27,15 +27,15 @@ class MatchForm(ModelForm):
         this_round = cleaned_data.get("round")
         
         if home_team == away_team:
-            raise forms.ValidationError("Tim ne može da igra protiv samog sebe")
+            raise forms.ValidationError(u"Tim ne može da igra protiv samog sebe")
         if Shot.objects.filter(user_round__round=this_round).exists():
-            raise forms.ValidationError("Ne možete dodati nove mečeve u ovo kolo jer su neki ljudi već tipovali u ovom kolu")
+            raise forms.ValidationError(u"Ne možete dodati nove mečeve u ovo kolo jer su neki ljudi već tipovali u ovom kolu")
         matches = Match.objects.filter(round=this_round)
         for match in matches:
             if match.home_team == home_team or match.away_team == home_team:
-                raise forms.ValidationError("Tim %s već igra u ovom kolu" % home_team.name)
+                raise forms.ValidationError(u"Tim %s već igra u ovom kolu" % home_team.name)
             if match.home_team == away_team or match.away_team == away_team:
-                raise forms.ValidationError("Tim %s već igra u ovom kolu" % away_team.name)
+                raise forms.ValidationError(u"Tim %s već igra u ovom kolu" % away_team.name)
         return cleaned_data
 
 class ResultsForm(ModelForm):
@@ -48,12 +48,12 @@ class ResultsForm(ModelForm):
         score = cleaned_data.get("score")
         scores = score.split(":")
         if len(scores) != 2:
-            raise forms.ValidationError("Između dva broja mora da stoji dve tačke")
+            raise forms.ValidationError(u"Između dva broja mora da stoji dve tačke")
         try:
             int(scores[0])
             int(scores[1])
         except ValueError:
-            raise forms.ValidationError("Ne mogu da parsiram brojeve u rezultatu")
+            raise forms.ValidationError(u"Ne mogu da parsiram brojeve u rezultatu")
         return cleaned_data
 
 class BettingForm(forms.Form):
@@ -72,5 +72,5 @@ class BettingForm(forms.Form):
         cleaned_data = super(BettingForm, self).clean()
         for name, value in self.cleaned_data.items():
             if value == None:
-                raise forms.ValidationError("Morate uneti sve tipove")
+                raise forms.ValidationError(u"Morate uneti sve tipove")
         return cleaned_data
