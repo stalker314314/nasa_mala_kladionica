@@ -29,11 +29,15 @@
 		<tr style="height: 40px">
 			<td>{{ user_round.user.first_name }} {{ user_round.user.last_name }}</td>
 			{% for shot in shots %}
-			{% ifequal shot.shot shot.match.result %}
-			<td class="numbergreen">
+			{% if shot.match.result != None %}
+				{% ifequal shot.shot shot.match.result %}
+				<td class="numbergreen">
+				{% else %}
+				<td class="numberred">
+				{% endifequal %}
 			{% else %}
-			<td class="numberred">
-			{% endifequal %}
+			<td class="number">
+			{% endif %}
 			<a title="{{ shot.match.home_team.name }} - {{ shot.match.away_team.name }}" class="tooltip">{{ shot.shot }}</a>
 			</td>
 			{% empty %}
