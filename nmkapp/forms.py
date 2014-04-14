@@ -42,6 +42,7 @@ class ResultsForm(ModelForm):
     class Meta:
         model = Match
         fields = ['score']
+        labels = {'score': u"Rezultat (u obliku <domaćin>:<gost>)"}
 
     def clean(self):
         cleaned_data = super(ResultsForm, self).clean()
