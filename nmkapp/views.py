@@ -181,15 +181,25 @@ def admin_rounds(request):
     except ValueError:
         #Try float.
         set_active_id = 0
+    set_inactive = request.GET.get('set_inactive', "0")
+    try:
+        set_inactive_id = int(set_inactive)
+    except ValueError:
+        #Try float.
+        set_inactive_id = 0
     if set_active_id != 0:
         should_be_active_round = get_object_or_404(Round, pk=int(set_active_id))
-        with transaction.atomic():
-            for one_round in rounds:
-                one_round.active = (one_round == should_be_active_round) 
-                one_round.save()
+        should_be_active_round.active = True
+        should_be_active_round.save()
         message = u"Kolo %s postavljeno kao aktivno" % should_be_active_round.name
         messages.add_message(request, messages.INFO, message)
-        
+    elif set_inactive_id != 0:
+        should_be_inactive_round = get_object_or_404(Round, pk=int(set_inactive_id))
+        should_be_inactive_round.active = False
+        should_be_inactive_round.save()
+        message = u"Kolo %s postavljeno kao neaktivno" % should_be_inactive_round.name
+        messages.add_message(request, messages.INFO, message)
+
     return render_to_response("admin_rounds.html", {"rounds": rounds}, context_instance=RequestContext(request))
 
 @staff_member_required

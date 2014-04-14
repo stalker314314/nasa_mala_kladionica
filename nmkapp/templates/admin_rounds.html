@@ -23,7 +23,9 @@
 		<tr>
 			<td>{{ round.name }}
 			{% if round.active %}
-			<img width="16px" height="16px" border="0" alt="[Aktivno]" src="/static/img/active.png">
+			<a href="?set_inactive={{ round.id }}">
+				<img width="16px" height="16px" border="0" alt="[Deaktiviraj]" src="/static/img/active.png">
+			</a>
 			{% endif %}
 			</td>
 			<td>
