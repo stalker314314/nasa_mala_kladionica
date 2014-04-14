@@ -17,56 +17,60 @@ from datetime import datetime
 @login_required
 @transaction.atomic
 def home(request):
-    active_rounds = Round.objects.filter(active=True)
-    if len(active_rounds) != 1:
+    active_rounds = Round.objects.filter(active=True).order_by("id")
+    if len(active_rounds) == 0:
         messages.add_message(request, messages.INFO, u"Trenutno nema aktivnog kola za klađenje, pokušajte kasnije")
         return render_to_response("home.html", {"shots": []}, context_instance=RequestContext(request))
-    active_round = active_rounds[0]
-    
-    user_rounds = UserRound.objects.filter(user=request.user).filter(round=active_round)
-    if len(user_rounds) != 1:
-        messages.add_message(request, messages.INFO, u"Trenutno nema aktivnog kola za klađenje, pokušajte kasnije")
-        return render_to_response("home.html", {"shots": []}, context_instance=RequestContext(request))
-    
-    user_round = user_rounds[0]
-    shots = Shot.objects.filter(user_round=user_round).order_by("match__start_time")
-    if len(shots) == 0:
-        matches = Match.objects.filter(round=user_round.round).order_by("start_time")
-        shots = []
-        for match in matches:
-            shot = Shot(user_round=user_round, match=match)
-            shots.append(shot)
 
-    betting_allowed = True
-    for shot in shots:
-        if shot.match.start_time < datetime.now():
+    bets = []
+    for active_round in active_rounds:
+        user_rounds = UserRound.objects.filter(user=request.user).filter(round=active_round)
+        if len(user_rounds) != 1:
+            messages.add_message(request, messages.INFO, u"Trenutno nema aktivnog kola za klađenje, pokušajte kasnije")
+            return render_to_response("home.html", {"shots": []}, context_instance=RequestContext(request))
+    
+        user_round = user_rounds[0]
+        shots = Shot.objects.filter(user_round=user_round).order_by("match__start_time")
+        if len(shots) == 0:
+            matches = Match.objects.filter(round=user_round.round).order_by("start_time")
+            shots = []
+            for match in matches:
+                shot = Shot(user_round=user_round, match=match)
+                shots.append(shot)
+
+        betting_allowed = True
+        for shot in shots:
+            if shot.match.start_time < datetime.now():
+                betting_allowed = False
+                break
+    
+        if not user_round.shot_allowed:
             betting_allowed = False
-            break
 
-    if not user_round.shot_allowed:
-        betting_allowed = False
-
-    form = None
-    if betting_allowed:
-        if request.method == 'POST':
-            form = BettingForm(request.POST, shots=shots)
-            if form.is_valid():
-                for user_round_match in form.cleaned_data:
-                    user_round_id = int(user_round_match.split("_")[0])
-                    match_id = int(user_round_match.split("_")[1])
-                    shot = next(shot for shot in shots if shot.user_round.id==user_round_id and shot.match.id==match_id)
-                    if shot != None:
-                        shot.shot=form.cleaned_data[user_round_match]
-                        shot.save()
-                if 'final_save' in request.POST:
-                    user_round.shot_allowed = False
-                    user_round.save()
-                messages.add_message(request, messages.INFO, u"Tipovanje uspešno sačuvano")
-                return HttpResponseRedirect('/')
-        else:
-            form = BettingForm(shots=shots)
+        form = None
+        if betting_allowed:
+            if request.method == 'POST' and\
+                    ('save_'+str(active_round.id) in request.POST or 'final_save_'+str(active_round.id) in request.POST):
+                form = BettingForm(request.POST, shots=shots)
+                if form.is_valid():
+                    for user_round_match in form.cleaned_data:
+                        user_round_id = int(user_round_match.split("_")[0])
+                        match_id = int(user_round_match.split("_")[1])
+                        shot = next(shot for shot in shots if shot.user_round.id==user_round_id and shot.match.id==match_id)
+                        if shot != None:
+                            shot.shot=form.cleaned_data[user_round_match]
+                            shot.save()
+                    if 'final_save_'+str(active_round.id) in request.POST:
+                        user_round.shot_allowed = False
+                        user_round.save()
+                    messages.add_message(request, messages.INFO, u"Tipovanje uspešno sačuvano")
+                    return HttpResponseRedirect('/')
+            else:
+                form = BettingForm(shots=shots)
     
-    return render_to_response("home.html", {"form": form, "shots": shots, "round": active_round}, context_instance=RequestContext(request))
+        one_round_to_bet = {"form": form, "shots": shots, "round": active_round}
+        bets.append(one_round_to_bet)
+    return render_to_response("home.html", {"bets": bets}, context_instance=RequestContext(request))
 
 @login_required
 def results(request):
@@ -242,10 +246,10 @@ def admin_matches_edit(request):
 @staff_member_required
 def admin_results(request):
     current_rounds = Round.objects.filter(active=True)
-    if len(current_rounds) != 1:
-        return HttpResponseServerError()
-    current_round = current_rounds[0]
-    matches = Match.objects.filter(round=current_round)
+    matches = []
+    for current_round in current_rounds:
+        one_round_matches = Match.objects.filter(round=current_round)
+        matches.extend(one_round_matches)
     return render_to_response("admin_results.html", {"matches": matches}, context_instance=RequestContext(request))
 
 @staff_member_required
