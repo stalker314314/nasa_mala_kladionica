@@ -27,7 +27,13 @@
 	<tbody>
 		{% for user_round,shots in round_standings.items %}
 		<tr style="height: 40px">
-			<td>{{ user_round.user.first_name }} {{ user_round.user.last_name }}</td>
+			<td>
+			{% if user_round.user.player.in_money %}
+				<b>{{ user_round.user.first_name }} {{ user_round.user.last_name }}</b>
+			{% else %}
+				{{ user_round.user.first_name }} {{ user_round.user.last_name }}
+			{% endif %}
+			</td>
 			{% for shot in shots %}
 			{% if shot.match.result != None %}
 				{% ifequal shot.shot shot.match.result %}
@@ -88,4 +94,8 @@
 		</tr>
 	</tfoot>
 </table>
+
+<br/>
+<br/>
+* Korisnici koji igraju u pare su boldovani
 {% endblock %}

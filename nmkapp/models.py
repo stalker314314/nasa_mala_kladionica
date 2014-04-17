@@ -4,6 +4,7 @@ from django.db.models.signals import post_save
 
 class Player(models.Model):
     user = models.OneToOneField(User)
+    in_money = models.BooleanField(default=False)
     points = models.FloatField(default=0)
 
 def create_user_profile(sender, instance, created, **kwargs):  
