@@ -6,10 +6,17 @@ class Player(models.Model):
     user = models.OneToOneField(User)
     in_money = models.BooleanField(default=False)
     points = models.FloatField(default=0)
+    
+    def __str__(self):
+        return "%s (money: %s, points: %.2f)" % (self.user, "yes" if self.in_money else "no", self.points)
 
 def create_user_profile(sender, instance, created, **kwargs):  
-    if created:  
-        profile, created = Player.objects.get_or_create(user=instance)  
+    if created:
+        profile, created = Player.objects.get_or_create(user=instance)
+        rounds = Round.objects.all()
+        for round in rounds:
+            user_round = UserRound(user=instance, round=round)
+            user_round.save()
 
 post_save.connect(create_user_profile, sender=User) 
 
