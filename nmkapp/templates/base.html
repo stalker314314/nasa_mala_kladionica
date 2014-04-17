@@ -16,7 +16,8 @@
 		<div id="main">
 			<div id="top-nav">
 			{% if user.is_authenticated %}
-				<a href="/settings" id="settings">Podešavanja</a>
+				<a href="/profile" id="profile">Podešavanja</a>
+				|<a href="/password" id="password">Promena lozinke</a>
 				 |<a href="/logout" id="logout">Logout</a>
 			{% endif %}
 			</div>

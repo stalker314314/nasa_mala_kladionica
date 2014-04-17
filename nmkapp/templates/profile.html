@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>PODEŠAVANJA</h1>
+
+{% if messages %}
+    {% for message in messages %}
+    <div class="entry errors">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+<form method="post" action="/profile">
+	{% csrf_token %}
+	{{ form.as_p }}
+		
+	<div id="buttonBox">
+		<br/>
+		<input value="Izmeni" type="submit"/>
+	</div>
+</form>
+
+
+{% endblock %}

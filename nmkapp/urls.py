@@ -3,10 +3,11 @@ from nmkapp import views
 from django.contrib.auth.views import logout_then_login, login, password_change
 
 urlpatterns = patterns('',
+    url(r'^$', views.home),
     url(r'^login/$', login, {'template_name': 'login.html'}),
     url(r'^logout$', logout_then_login),
-    url(r'^settings$', password_change, {"template_name": "settings.html", "post_change_redirect": "/"}),
-    url(r'^$', views.home),
+    url(r'^profile$', views.profile),
+    url(r'^password$', password_change, {"template_name": "password.html", "post_change_redirect": "/"}),
     url(r'^results$', views.results),
     url(r'^results/league$', views.results_league),
     url(r'^results/cup$', views.results_cup),

@@ -8,7 +8,7 @@ from operator import itemgetter
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db import transaction
 from django.contrib import messages
-from nmkapp.forms import RoundForm, MatchForm, ResultsForm, BettingForm
+from nmkapp.forms import RoundForm, MatchForm, ResultsForm, BettingForm, PlayerForm
 from django.http.response import HttpResponseRedirect, HttpResponseServerError
 from django.contrib.auth.models import User
 from nmkapp.logic import recalculate_round_points
@@ -74,6 +74,17 @@ def home(request):
         one_round_to_bet = {"form": form, "shots": shots, "round": active_round}
         bets.append(one_round_to_bet)
     return render_to_response("home.html", {"bets": bets}, context_instance=RequestContext(request))
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        form = PlayerForm(request.POST, instance=request.user.player)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.INFO, u"Podešavanja uspešno sačuvana")
+    else:
+        form = PlayerForm(instance=request.user.player)
+    return render_to_response("profile.html", {"form": form}, context_instance=RequestContext(request))
 
 @login_required
 def results(request):

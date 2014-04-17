@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.forms.models import ModelForm
-from nmkapp.models import Round, Match, Shot
+from nmkapp.models import Round, Match, Shot, Player
 from django import forms
 from nmkapp.widgets import DateTimeWidget
 
@@ -75,3 +75,9 @@ class BettingForm(forms.Form):
             if value == None:
                 raise forms.ValidationError(u"Morate uneti sve tipove")
         return cleaned_data
+
+class PlayerForm(ModelForm):
+    class Meta:
+        model = Player
+        fields = ['send_mail']
+        labels = {'send_mail': u"Primaj obaveštenja na mail"}
