@@ -15,8 +15,10 @@
 	<body>
 		<div id="main">
 			<div id="top-nav">
+			{% if user.is_authenticated %}
 				<a href="/settings" id="settings">Podešavanja</a>
 				 |<a href="/logout" id="logout">Logout</a>
+			{% endif %}
 			</div>
 			
 			<div align="center">Brazil, Španija, Amerika</div>
@@ -28,11 +30,16 @@
 			<div id="navigation">
 					Glavni meni
 					<hr />
+					{% if user.is_authenticated %}
 					<a href="/" class="navigation">Klađenje</a>
 					<a href="/results" class="navigation">Rezultati</a>
 					<a href="/standings" class="navigation">Tabele</a>
 					<a href="/download" class="navigation">Download</a>
 					<a href="/proposition" class="navigation">Pravila</a>
+					{% else %}
+					<a href="/login" class="navigation">Logovanje</a>
+					<a href="/proposition" class="navigation">Pravila</a>
+					{% endif %}
 					<br />
 					<br />
 					<br />

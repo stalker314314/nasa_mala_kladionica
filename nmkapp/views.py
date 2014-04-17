@@ -174,7 +174,6 @@ def round_standings(request, round_id):
 def download(request):
     return render_to_response("download.html", {}, context_instance=RequestContext(request))
 
-@login_required
 def proposition(request):
     return render_to_response("proposition.html", {}, context_instance=RequestContext(request))
 
