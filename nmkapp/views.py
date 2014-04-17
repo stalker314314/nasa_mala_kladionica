@@ -217,7 +217,7 @@ def admin_rounds(request):
             start_time = Match.objects.filter(round=should_be_active_round).aggregate(Min('start_time'))['start_time__min']
             template = loader.get_template("mail/round_active.html")
             message_text = template.render(Context({"round": should_be_active_round, "start_time": start_time }))
-            msg = EmailMessage("[nmk] Novo aktivno kolo %s" % should_be_active_round.name, message_text, "nmk-no-reply@nmk.kokanovic.org", all_user_mail)
+            msg = EmailMessage("[nmk] Novo aktivno kolo %s" % should_be_active_round.name, message_text, "nmk-no-reply@nmk.kokanovic.org", bcc=all_user_mail)
             msg.content_subtype = "html"
             msg.send(fail_silently = False)
     elif set_inactive_id != 0:
