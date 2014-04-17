@@ -91,3 +91,9 @@ DATETIME_FORMAT = 'd.m.Y H:i'
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'nmk.worldcup2014@gmail.com'
+EMAIL_HOST_PASSWORD = ''

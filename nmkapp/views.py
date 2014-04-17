@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.shortcuts import render_to_response, get_object_or_404
-from django.template.context import RequestContext
+from django.template.context import RequestContext, Context
 from nmkapp.models import Round, UserRound, Shot, Match, Team, Player
 from django.contrib.auth.decorators import login_required
 from operator import itemgetter
@@ -13,6 +13,9 @@ from django.http.response import HttpResponseRedirect, HttpResponseServerError
 from django.contrib.auth.models import User
 from nmkapp.logic import recalculate_round_points
 from datetime import datetime
+from django.db.models.aggregates import Min
+from django.template import loader
+from django.core.mail.message import EmailMessage
 
 @login_required
 @transaction.atomic
@@ -197,6 +200,16 @@ def admin_rounds(request):
         should_be_active_round.save()
         message = u"Kolo %s postavljeno kao aktivno" % should_be_active_round.name
         messages.add_message(request, messages.INFO, message)
+        
+        all_players = Player.objects.all()
+        all_user_mail = [player.user.email for player in all_players if player.send_mail==True and player.user.email != ""]
+        if len(all_user_mail) > 0:
+            start_time = Match.objects.filter(round=should_be_active_round).aggregate(Min('start_time'))['start_time__min']
+            template = loader.get_template("mail/round_active.html")
+            message_text = template.render(Context({"round": should_be_active_round, "start_time": start_time }))
+            msg = EmailMessage("[nmk] Novo aktivno kolo %s" % should_be_active_round.name, message_text, "nmk-no-reply@nmk.kokanovic.org", all_user_mail)
+            msg.content_subtype = "html"
+            msg.send(fail_silently = False)
     elif set_inactive_id != 0:
         should_be_inactive_round = get_object_or_404(Round, pk=int(set_inactive_id))
         should_be_inactive_round.active = False
