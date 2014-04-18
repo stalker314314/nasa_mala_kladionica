@@ -1,0 +1,7 @@
+<p>
+Rezultat <b>{{ match.score }}</b> meča {{ match.home_team.name }} - {{ match.away_team.name }} je unet u NMK.
+<br/>
+Pogledajte kako ste Vi i ostali korisnici tipovali na <a href="http://nmk.kokanovic.org/roundstandings/{{ match.round.id }}">tabeli kola</a>.
+</p>
+
+{% include "mail/footer.html" %}

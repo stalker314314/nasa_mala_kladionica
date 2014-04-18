@@ -314,6 +314,17 @@ def admin_results_change(request, match_id):
             match.save()
             recalculate_round_points(match.round)
             messages.add_message(request, messages.INFO, u"Rezultat uspešno unesen")
+            
+            # send mail
+            all_players = Player.objects.all()
+            all_user_mail = [player.user.email for player in all_players if player.send_mail==True and player.user.email != ""]
+            if len(all_user_mail) > 0:
+                template = loader.get_template("mail/result_added.html")
+                message_text = template.render(Context({"match": match}))
+                msg = EmailMessage("[nmk] Unet rezultat meča %s - %s" % (match.home_team.name, match.away_team.name), message_text, "nmk-no-reply@nmk.kokanovic.org", bcc=all_user_mail)
+                msg.content_subtype = "html"
+                msg.send(fail_silently = False)
+                
             return HttpResponseRedirect('/admin/results')
     else:
         form = ResultsForm(instance=match)
