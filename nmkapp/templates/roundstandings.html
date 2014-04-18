@@ -7,6 +7,7 @@
 	});
 </script>
 
+{% if can_see_standings %}
 <table id="roundstandings" class="sortable">
 	<thead style="height: 40px">
 		<tr>
@@ -98,4 +99,13 @@
 <br/>
 <br/>
 * Korisnici koji igraju u pare su boldovani
+
+{% else %}
+<div class="entry errors">
+	<ul>
+		<li>Nemate prava da pogledate tipovanja ostalih korisnika dok Vi ne istipujete rezultate za ovo kolo.</li>
+	</ul>
+</div>
+
+{% endif %}
 {% endblock %}

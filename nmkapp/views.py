@@ -165,18 +165,36 @@ def standings(request):
 def round_standings(request, round_id):
     this_round = get_object_or_404(Round, pk=int(round_id))
     matches = list(Match.objects.filter(round=this_round).order_by("start_time"))
+
+    can_see_standings = False
+    is_any_match_started = False
+    for match in matches:
+        if match.start_time < datetime.now():
+            is_any_match_started = True
+            break
+    if is_any_match_started:
+        can_see_standings = True
+    else:
+        logged_user_rounds = UserRound.objects.filter(user=request.user, round=this_round)
+        if len(logged_user_rounds)==1 and logged_user_rounds[0].shot_allowed==False:
+            can_see_standings = True
+
     round_standings = {}
     player_points = {}
-    players = list(Player.objects.all())
-    for player in players:
-        user_rounds = UserRound.objects.filter(user=player.user).filter(round=this_round)
-        if len(user_rounds) != 1:
-            continue
-        user_round = user_rounds[0]
-        shots = list(Shot.objects.filter(user_round=user_round).order_by("match__start_time"))
-        round_standings[user_round] = shots
-        player_points[user_round] = user_round.points
+    
+    if can_see_standings:
+        players = list(Player.objects.all())
+        for player in players:
+            user_rounds = UserRound.objects.filter(user=player.user).filter(round=this_round)
+            if len(user_rounds) != 1:
+                continue
+            user_round = user_rounds[0]
+            shots = list(Shot.objects.filter(user_round=user_round).order_by("match__start_time"))
+            round_standings[user_round] = shots
+            player_points[user_round] = user_round.points
+        
     return render_to_response("roundstandings.html", {
+                "can_see_standings": can_see_standings,
                 "matches": matches,
                 "round_standings": round_standings,
                 "player_points": player_points}, context_instance=RequestContext(request))
