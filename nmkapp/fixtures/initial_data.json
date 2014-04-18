@@ -22,12 +22,12 @@
 	
 	{"pk": 1, "model": "nmkapp.shot", "fields": {"user_round": 1, "match": 1, "shot": 1}},
 	{"pk": 2, "model": "nmkapp.shot", "fields": {"user_round": 1, "match": 2, "shot": 1}},
-	{"pk": 3, "model": "nmkapp.shot", "fields": {"user_round": 2, "match": 1, "shot": 0}},
-	{"pk": 4, "model": "nmkapp.shot", "fields": {"user_round": 2, "match": 2, "shot": 0}},
-	{"pk": 5, "model": "nmkapp.shot", "fields": {"user_round": 3, "match": 1, "shot": 2}},
-	{"pk": 6, "model": "nmkapp.shot", "fields": {"user_round": 3, "match": 2, "shot": 2}},
-	{"pk": 7, "model": "nmkapp.shot", "fields": {"user_round": 4, "match": 3, "shot": 1}},
-	{"pk": 8, "model": "nmkapp.shot", "fields": {"user_round": 4, "match": 4, "shot": 1}},
+	{"pk": 3, "model": "nmkapp.shot", "fields": {"user_round": 4, "match": 1, "shot": 0}},
+	{"pk": 4, "model": "nmkapp.shot", "fields": {"user_round": 4, "match": 2, "shot": 0}},
+	{"pk": 5, "model": "nmkapp.shot", "fields": {"user_round": 7, "match": 1, "shot": 2}},
+	{"pk": 6, "model": "nmkapp.shot", "fields": {"user_round": 7, "match": 2, "shot": 2}},
+	{"pk": 7, "model": "nmkapp.shot", "fields": {"user_round": 2, "match": 3, "shot": 1}},
+	{"pk": 8, "model": "nmkapp.shot", "fields": {"user_round": 2, "match": 4, "shot": 1}},
 	{"pk": 9, "model": "nmkapp.shot", "fields": {"user_round": 5, "match": 3, "shot": 0}},
 	{"pk": 10, "model": "nmkapp.shot", "fields": {"user_round": 5, "match": 4, "shot": 0}}
 ]
