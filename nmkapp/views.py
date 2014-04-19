@@ -164,7 +164,7 @@ def standings(request):
 @login_required
 def round_standings(request, round_id):
     this_round = get_object_or_404(Round, pk=int(round_id))
-    matches = list(Match.objects.filter(round=this_round).order_by("start_time"))
+    matches = list(Match.objects.filter(round=this_round).order_by("start_time", "id"))
 
     can_see_standings = False
     is_any_match_started = False
@@ -189,7 +189,7 @@ def round_standings(request, round_id):
             if len(user_rounds) != 1:
                 continue
             user_round = user_rounds[0]
-            shots = list(Shot.objects.filter(user_round=user_round).order_by("match__start_time"))
+            shots = list(Shot.objects.filter(user_round=user_round).order_by("match__start_time", "match"))
             round_standings[user_round] = shots
             player_points[user_round] = user_round.points
         
