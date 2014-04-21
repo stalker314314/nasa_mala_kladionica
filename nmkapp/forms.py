@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.forms.models import ModelForm
-from nmkapp.models import Round, Match, Shot, Player
+from nmkapp.models import Round, Match, Shot, Player, Team
 from django import forms
 from nmkapp.widgets import DateTimeWidget
 
@@ -11,6 +11,8 @@ class RoundForm(ModelForm):
         fields = ['name', 'group_type']
 
 class MatchForm(ModelForm):
+    home_team = forms.ModelChoiceField(queryset=Team.objects.order_by('name'))
+    away_team = forms.ModelChoiceField(queryset=Team.objects.order_by('name'))
     
     class Meta:
         model = Match
