@@ -12,7 +12,7 @@ class RoundForm(ModelForm):
 
 class MatchForm(ModelForm):
     home_team = forms.ModelChoiceField(queryset=Team.objects.order_by('name'))
-    away_team = forms.ModelChoiceField(queryset=Team.objects.order_by('group_label'))
+    away_team = forms.ModelChoiceField(queryset=Team.objects.order_by('group_label', 'name'))
     
     class Meta:
         model = Match
