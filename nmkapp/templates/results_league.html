@@ -2,9 +2,9 @@
 
 {% block content %}
 <h1>Rezultati u grupama</h1>
-{% for group_label,league_matches in groups.items %}
+{% for group in groups %}
 <h2>
-<a name="A">Grupa {{ group_label }} </a>
+<a name="A">Grupa {{ group.label }} </a>
 </h2>
 
 
@@ -20,7 +20,7 @@
 		</tr>
 	</thead>
 	<tbody>
-	{% for team in league_matches.league %}
+	{% for team in group.league %}
 	<tr>
 		<td>{{ team.0 }}</td>
 		<td><div class="number">{{ team.1 }}</div></td>
@@ -46,7 +46,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		{% for match in league_matches.matches %}
+		{% for match in group.matches %}
 		<tr>
 			<td><a href="/roundstandings/{{ match.round.id }}">{{ match.round.name }}</a></td>
 			<td>{{ match.start_time }}</td>

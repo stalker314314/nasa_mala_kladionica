@@ -92,7 +92,7 @@ def results(request):
 
 @login_required
 def results_league(request):
-    groups = {}
+    groups = []
     group_labels = Team.objects.values("group_label").order_by("group_label").distinct()
     for group_label in group_labels:
         matches = Match.objects.filter(round__group_type=Round.LEAGUE).filter(home_team__group_label=group_label["group_label"]).order_by("round")
@@ -132,7 +132,7 @@ def results_league(request):
                     team_in_league[5] += 3
                     team_in_league[2] += 1
         league = sorted(league, key=itemgetter(5), reverse=True)
-        groups[chr(group_label["group_label"] + ord('A'))] = {"league": league, "matches": matches}
+        groups.append({"league": league, "matches": matches, "label": chr(group_label["group_label"] + ord('A'))}) 
     return render_to_response("results_league.html", {"groups": groups}, context_instance=RequestContext(request))
 
 @login_required
