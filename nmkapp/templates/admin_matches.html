@@ -16,6 +16,9 @@
 			<th scope="col">Kolo</th>
 			<th scope="col">Meč</th>
 			<th scope="col">Vreme početka</th>
+			<th scope="col">1</th>
+			<th scope="col">X</th>
+			<th scope="col">2</th>
 			<th scope="col">Rezultat</th>
 		</tr>
 	</thead>
@@ -25,6 +28,9 @@
 			<td>{{ match.round.name }}</td>
 			<td>{{ match.home_team.name }} - {{ match.away_team.name }}</td>
 			<td>{{ match.start_time }}</td>
+			<td>{{ match.odd1 }}</td>
+			<td>{{ match.oddX }}</td>
+			<td>{{ match.odd2 }}</td>
 			<td>
 			{% if match.score %}
 			{{ match.score }} ({{ match.result }})
