@@ -237,11 +237,11 @@ table.largetable{
 }
 
 table.mediumtable{
-	width: 50%;
+	width: 75%;
 }
 
 th.firstcol1 {
-	width: 50%;
+	width: 40%;
 }
 
 th.number{
