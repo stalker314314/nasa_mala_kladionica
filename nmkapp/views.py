@@ -179,21 +179,18 @@ def round_standings(request, round_id):
         if len(logged_user_rounds)==1 and logged_user_rounds[0].shot_allowed==False:
             can_see_standings = True
 
-    round_standings = {}
-    player_points = {}
+    round_standings = []
     
     if can_see_standings:
-        user_rounds = UserRound.objects.filter(round=this_round).order_by("points", "user__first_name", "user__last_name")
+        user_rounds = UserRound.objects.filter(round=this_round).order_by("-points", "user__first_name", "user__last_name")
         for user_round in user_rounds:
             shots = list(Shot.objects.filter(user_round=user_round).order_by("match__start_time", "match"))
-            round_standings[user_round] = shots
-            player_points[user_round] = user_round.points
+            round_standings.append({"user_round": user_round, "shots": shots})
         
     return render_to_response("roundstandings.html", {
                 "can_see_standings": can_see_standings,
                 "matches": matches,
-                "round_standings": round_standings,
-                "player_points": player_points}, context_instance=RequestContext(request))
+                "round_standings": round_standings}, context_instance=RequestContext(request))
 
 @login_required
 def download(request):

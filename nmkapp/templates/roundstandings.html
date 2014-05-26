@@ -26,16 +26,16 @@
 		</tr>
 	</thead>
 	<tbody>
-		{% for user_round,shots in round_standings.items %}
+		{% for round_standing in round_standings %}
 		<tr style="height: 40px">
 			<td>
-			{% if user_round.user.player.in_money %}
-				<b>{{ user_round.user.first_name }} {{ user_round.user.last_name }}</b>
+			{% if round_standing.user_round.user.player.in_money %}
+				<b>{{ round_standing.user_round.user.first_name }} {{ round_standing.user_round.user.last_name }}</b>
 			{% else %}
-				{{ user_round.user.first_name }} {{ user_round.user.last_name }}
+				{{ round_standing.user_round.user.first_name }} {{ round_standing.user_round.user.last_name }}
 			{% endif %}
 			</td>
-			{% for shot in shots %}
+			{% for shot in round_standing.shots %}
 			{% if shot.match.result != None %}
 				{% ifequal shot.shot shot.match.result %}
 				<td class="numbergreen">
@@ -54,7 +54,7 @@
 			</td>
 			{% endfor %}
 			{% endfor %} 
-			<td class="number">{{ user_round.points }}</td>
+			<td class="number">{{ round_standing.user_round.points }}</td>
 		</tr>
 		{% endfor %}
 	</tbody>
