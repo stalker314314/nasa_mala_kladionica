@@ -158,7 +158,7 @@ def standings(request):
             round_standings.append(user_round)
         standing = [ player, round_standings, player.points ]
         standings.append(standing)
-    standings = sorted(standings, key=itemgetter(2), reverse=True)
+    standings = sorted(standings, key=lambda s: (-s[2], s[0].user.first_name, s[0].user.last_name))
     return render_to_response("standings.html", { "rounds": rounds, "standings": standings}, context_instance=RequestContext(request))
 
 @login_required
