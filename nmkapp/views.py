@@ -183,12 +183,8 @@ def round_standings(request, round_id):
     player_points = {}
     
     if can_see_standings:
-        players = list(Player.objects.all())
-        for player in players:
-            user_rounds = UserRound.objects.filter(user=player.user).filter(round=this_round)
-            if len(user_rounds) != 1:
-                continue
-            user_round = user_rounds[0]
+        user_rounds = UserRound.objects.filter(round=this_round).order_by("points", "user__first_name", "user__last_name")
+        for user_round in user_rounds:
             shots = list(Shot.objects.filter(user_round=user_round).order_by("match__start_time", "match"))
             round_standings[user_round] = shots
             player_points[user_round] = user_round.points
