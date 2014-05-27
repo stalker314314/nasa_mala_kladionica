@@ -308,15 +308,17 @@ def admin_results_change(request, match_id):
             recalculate_round_points(match.round)
             messages.add_message(request, messages.INFO, u"Rezultat uspešno unesen")
             
-            # send mail
-            all_players = Player.objects.all()
-            all_user_mail = [player.user.email for player in all_players if player.send_mail==True and player.user.email != ""]
-            if len(all_user_mail) > 0:
-                template = loader.get_template("mail/result_added.html")
-                message_text = template.render(Context({"match": match}))
-                msg = EmailMessage(u"[nmk] Unet rezultat meča %s - %s" % (match.home_team.name, match.away_team.name), message_text, "nmk-no-reply@nmk.kokanovic.org", bcc=all_user_mail)
-                msg.content_subtype = "html"
-                msg.send(fail_silently = False)
+            # send mail if this is the last match from round
+            count_matches_without_result = Match.objects.all().filter(round=match.round).filter(result__isnull=True).count()
+            if count_matches_without_result == 0:
+                all_players = Player.objects.all()
+                all_user_mail = [player.user.email for player in all_players if player.send_mail==True and player.user.email != ""]
+                if len(all_user_mail) > 0:
+                    template = loader.get_template("mail/result_added.html")
+                    message_text = template.render(Context({"round": match.round}))
+                    msg = EmailMessage(u"[nmk] Uneti svi rezultati mečeva iz kola \"%s\"" % (match.round.name), message_text, "nmk-no-reply@nmk.kokanovic.org", bcc=all_user_mail)
+                    msg.content_subtype = "html"
+                    msg.send(fail_silently = False)
                 
             return HttpResponseRedirect('/admin/results')
     else:
