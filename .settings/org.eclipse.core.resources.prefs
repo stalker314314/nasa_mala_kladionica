@@ -1,5 +1,7 @@
 eclipse.preferences.version=1
 encoding//nmkapp/forms.py=utf-8
+encoding//nmkapp/templates/404.html=UTF-8
+encoding//nmkapp/templates/500.html=UTF-8
 encoding//nmkapp/templates/admin_matches.html=UTF-8
 encoding//nmkapp/templates/admin_matches_edit.html=UTF-8
 encoding//nmkapp/templates/admin_results_change.html=UTF-8
