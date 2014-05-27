@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//nmkapp/forms.py=utf-8
+encoding//nmkapp/send_shots_cron.py=utf-8
 encoding//nmkapp/templates/404.html=UTF-8
 encoding//nmkapp/templates/500.html=UTF-8
 encoding//nmkapp/templates/admin_matches.html=UTF-8
@@ -14,6 +15,7 @@ encoding//nmkapp/templates/login.html=UTF-8
 encoding//nmkapp/templates/mail/footer.html=UTF-8
 encoding//nmkapp/templates/mail/result_added.html=UTF-8
 encoding//nmkapp/templates/mail/round_active.html=UTF-8
+encoding//nmkapp/templates/mail/round_shots.html=UTF-8
 encoding//nmkapp/templates/password.html=UTF-8
 encoding//nmkapp/templates/profile.html=UTF-8
 encoding//nmkapp/templates/proposition.html=UTF-8

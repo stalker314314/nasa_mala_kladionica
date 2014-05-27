@@ -1,0 +1,38 @@
+<p>
+Počele su utakmice <b>{{ round.name }}</b> kola. Slede tipovi svih igrača iz ovog kola u trenutku kada je klađenje završeno:
+</p>
+<br/>
+
+<table id="roundstandings" border="1px">
+	<thead style="height: 40px">
+		<tr>
+			<th class="firstcol" rowspan="2">Korisnik</th>
+			{% for match in matches %}
+			<th>{{ match.home_team.name }} - {{ match.away_team.name }}</th>
+			{% endfor %}
+		</tr>
+	</thead>
+	<tbody>
+		{% for round_standing in round_standings %}
+		<tr style="height: 40px">
+			<td>
+			{% if round_standing.user_round.user.player.in_money %}
+				<b>{{ round_standing.user_round.user.first_name }} {{ round_standing.user_round.user.last_name }}</b>
+			{% else %}
+				{{ round_standing.user_round.user.first_name }} {{ round_standing.user_round.user.last_name }}
+			{% endif %}
+			</td>
+			{% for shot in round_standing.shots %}
+			<td>{{ shot.shot }}</a>
+			</td>
+			{% empty %}
+			{% for match in matches %}
+			<td>-</td>
+			{% endfor %}
+			{% endfor %} 
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+{% include "mail/footer.html" %}
