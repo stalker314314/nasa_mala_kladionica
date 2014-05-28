@@ -2,12 +2,45 @@
 
 {% block content %}
 
+<script type="text/javascript">
+function refreshPage(sel) {
+    var value = sel.value;
+    if (value == "") {
+    	window.location.href = '/standings';
+    } else {
+    	window.location.href = '/standings?group=' + encodeURIComponent(value);
+    }
+}
+</script>
+
+Odaberi ekipu:
+<select name="group" id="id_group" onchange="refreshPage(this)">
+	{% if selected_group == "" %} 
+	<option selected="selected" value="">Svi</option>
+	{% else %}
+	<option value="">Sve</option>
+	{% endif %}
+	{% for group in groups %}
+		{% if selected_group == group.name %}
+		<option selected="selected" value="{{ group.name }}">{{ group.name }}</option>
+		{% else %}
+		<option value="{{ group.name }}">{{ group.name }}</option>
+		{% endif %}
+	{% endfor %}
+</select>
+<br/>
+<br/>
+
 <table class="sortable mediumtable">
 	<thead>
 		<tr>
 			<th class="firstcol1">Takmičar</th>
 			{% for round in rounds %}
-			<th class="number"><a href="/roundstandings/{{ round.id }}">{{ round.name }}</a></th>
+			{% if selected_group == "" %}
+				<th class="number"><a href="/roundstandings/{{ round.id }}">{{ round.name }}</a></th>
+			{% else %}
+				<th class="number"><a href="/roundstandings/{{ round.id }}?group={{ selected_group|urlencode }}">{{ round.name }}</a></th>
+			{% endif %}
 			{% endfor %}
 			<th class="number">∑</th>
 		</tr>

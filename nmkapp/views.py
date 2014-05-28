@@ -2,7 +2,7 @@
 
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template.context import RequestContext, Context
-from nmkapp.models import Round, UserRound, Shot, Match, Team, Player
+from nmkapp.models import Round, UserRound, Shot, Match, Team, Player, Group
 from django.contrib.auth.decorators import login_required
 from operator import itemgetter
 from django.contrib.admin.views.decorators import staff_member_required
@@ -169,9 +169,22 @@ def results_cup(request):
 @login_required
 def standings(request):
     standings = []
+    selected_group = request.GET.get('group', '')
+    all_groups = Group.objects.filter(player__in=[request.user.player])
+    group = Group.objects.filter(player__in=[request.user.player]).filter(name=selected_group)
+    if len(group) != 1:
+        selected_group = ''
+        group = None
+    else:
+        group = group[0]
+
     rounds = list(Round.objects.order_by("id"))
     user_rounds = list(UserRound.objects.all())
-    players = list(Player.objects.all())
+    players = Player.objects.all()
+    if group is not None:
+        players = players.filter(groups__in=[group])
+    players = list(players)
+        
     for player in players:
         round_standings = []
         for this_round in rounds:
@@ -180,13 +193,26 @@ def standings(request):
         standing = [ player, round_standings, player.points ]
         standings.append(standing)
     standings = sorted(standings, key=lambda s: (-s[2], s[0].user.first_name, s[0].user.last_name))
-    return render_to_response("standings.html", { "rounds": rounds, "standings": standings}, context_instance=RequestContext(request))
+    return render_to_response("standings.html", {
+            "rounds": rounds,
+            "standings": standings,
+            "groups": all_groups,
+            "selected_group": selected_group}, context_instance=RequestContext(request))
 
 @login_required
 def round_standings(request, round_id):
     this_round = get_object_or_404(Round, pk=int(round_id))
     matches = list(Match.objects.filter(round=this_round).order_by("start_time", "id"))
 
+    selected_group = request.GET.get('group', '')
+    all_groups = Group.objects.filter(player__in=[request.user.player])
+    group = Group.objects.filter(player__in=[request.user.player]).filter(name=selected_group)
+    if len(group) != 1:
+        selected_group = ''
+        group = None
+    else:
+        group = group[0]
+        
     can_see_standings = False
     is_any_match_started = False
     for match in matches:
@@ -203,15 +229,23 @@ def round_standings(request, round_id):
     round_standings = []
     
     if can_see_standings:
-        user_rounds = UserRound.objects.filter(round=this_round).order_by("-points", "user__first_name", "user__last_name")
+        user_rounds = UserRound.objects.filter(round=this_round)
+        if group is not None:
+             user_rounds = user_rounds.filter(user__player__groups__in=[group])
+        user_rounds = user_rounds.order_by("-points", "user__first_name", "user__last_name")
+        
         for user_round in user_rounds:
             shots = list(Shot.objects.filter(user_round=user_round).order_by("match__start_time", "match"))
             round_standings.append({"user_round": user_round, "shots": shots})
         
     return render_to_response("roundstandings.html", {
                 "can_see_standings": can_see_standings,
+                "round": round,
                 "matches": matches,
-                "round_standings": round_standings}, context_instance=RequestContext(request))
+                "round_standings": round_standings,
+                "round": this_round,
+                "groups": all_groups,
+                "selected_group": selected_group}, context_instance=RequestContext(request))
 
 @login_required
 def download(request):

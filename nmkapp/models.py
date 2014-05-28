@@ -7,9 +7,17 @@ class Player(models.Model):
     in_money = models.BooleanField(default=False)
     points = models.FloatField(default=0)
     send_mail = models.BooleanField(default=True)
+    groups = models.ManyToManyField('Group')
     
     def __str__(self):
         return "%s (money: %s, points: %.2f)" % (self.user, "yes" if self.in_money else "no", self.points)
+
+class Group(models.Model):
+    name = models.CharField(unique=True, max_length=255)
+    players = models.ManyToManyField(Player, through=Player.groups.through)
+    
+    def __str__(self):
+        return self.name
 
 def create_user_profile(sender, instance, created, **kwargs):  
     if created:

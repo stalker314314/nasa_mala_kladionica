@@ -1,6 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<script type="text/javascript">
+function refreshPage(sel) {
+    var value = sel.value;
+    if (value == "") {
+    	window.location.href = '/roundstandings/{{ round.id }}';
+    } else {
+    	window.location.href = '/roundstandings/{{ round.id }}?group=' + encodeURIComponent(value);
+    }
+}
+</script>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('.tooltip').tipsy({fade: true, delayIn: 500});
@@ -8,6 +20,25 @@
 </script>
 
 {% if can_see_standings %}
+
+Odaberi ekipu:
+<select name="group" id="id_group" onchange="refreshPage(this)">
+	{% if selected_group == "" %} 
+	<option selected="selected" value="">Svi</option>
+	{% else %}
+	<option value="">Sve</option>
+	{% endif %}
+	{% for group in groups %}
+		{% if selected_group == group.name %}
+		<option selected="selected" value="{{ group.name }}">{{ group.name }}</option>
+		{% else %}
+		<option value="{{ group.name }}">{{ group.name }}</option>
+		{% endif %}
+	{% endfor %}
+</select>
+<br/>
+<br/>
+
 <table id="roundstandings" class="sortable">
 	<thead style="height: 40px">
 		<tr>
