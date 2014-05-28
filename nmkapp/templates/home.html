@@ -13,7 +13,15 @@
 {% endif %}
 
 {% for bet in bets %}
-	<h2>Kolo: {{ bet.round.name }}</h2>
+	<table class="mediumtable">
+    	<tbody>
+    		<tr>
+        		<td><h2>Kolo: {{ bet.round.name }}</h2></td>
+        		<td style="text-align: right;">(preostalo vreme za klađenje: <span style="color: #FF0000;">{{ bet.time_left }}</span>)</td>
+    		</tr>
+		</tbody>
+	</table>
+	
 	<br/>
 
 	{% if bet.form %}

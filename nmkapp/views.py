@@ -70,10 +70,31 @@ def home(request):
                     return HttpResponseRedirect('/')
             else:
                 form = BettingForm(shots=shots)
-    
-        one_round_to_bet = {"form": form, "shots": shots, "round": active_round}
+
+        time_left = format_time_left(shots)
+        one_round_to_bet = {"form": form, "shots": shots, "round": active_round, "time_left": time_left}
         bets.append(one_round_to_bet)
     return render_to_response("home.html", {"bets": bets}, context_instance=RequestContext(request))
+
+def format_time_left(shots):
+    if len(shots) > 0:
+        seconds_left = (shots[0].match.start_time - datetime.now()).total_seconds()
+        if seconds_left > 60*60*24:
+            days = int(seconds_left/(60*60*24))
+            return "%dd %dh" % (days, int((seconds_left - (days * 60 * 60 * 24))/(60 * 60)))
+        elif seconds_left > 60*60:
+            hours = int(seconds_left/(60*60))
+            return "%dh %dmin" % (hours, int((seconds_left - hours *60 * 60)/60))
+        elif seconds_left > 60:
+            minutes = int(seconds_left/60)
+            print(seconds_left, minutes)
+            return "%dmin %dsec" % (minutes, int(seconds_left - minutes * 60))
+        elif seconds_left > 0:
+            return "%dsec" % seconds_left
+        else:
+            return "prvi meč već počeo"
+    else:
+        return "N/A"
 
 @login_required
 def profile(request):
