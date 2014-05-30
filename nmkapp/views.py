@@ -16,10 +16,14 @@ from datetime import datetime
 from django.db.models.aggregates import Min
 from django.template import loader
 from django.core.mail.message import EmailMessage
+import logging
+
+logger = logging.getLogger(__name__)
 
 @login_required
 @transaction.atomic
 def home(request):
+    logger.info("User %s is on betting page", request.user)
     active_rounds = Round.objects.filter(active=True).order_by("id")
     if len(active_rounds) == 0:
         messages.add_message(request, messages.INFO, u"Trenutno nema aktivnog kola za klađenje, pokušajte kasnije")
@@ -54,8 +58,10 @@ def home(request):
         if betting_allowed:
             if request.method == 'POST' and\
                     ('save_'+str(active_round.id) in request.POST or 'final_save_'+str(active_round.id) in request.POST):
+                logger.info("User %s posted betting", request.user)
                 form = BettingForm(request.POST, shots=shots)
                 if form.is_valid():
+                    logger.info("User %s posted valid form %s", request.user, form.cleaned_data)
                     for user_round_match in form.cleaned_data:
                         user_round_id = int(user_round_match.split("_")[0])
                         match_id = int(user_round_match.split("_")[1])
@@ -64,6 +70,7 @@ def home(request):
                             shot.shot=form.cleaned_data[user_round_match]
                             shot.save()
                     if 'final_save_'+str(active_round.id) in request.POST:
+                        logger.info("User %s posted final save", request.user)
                         user_round.shot_allowed = False
                         user_round.save()
                     messages.add_message(request, messages.INFO, u"Tipovanje uspešno sačuvano")
@@ -360,6 +367,7 @@ def admin_results_change(request, match_id):
             else:
                 match.result = 2
             match.save()
+            logger.info("User %s set result for match %s", request.user, match)
             recalculate_round_points(match.round)
             messages.add_message(request, messages.INFO, u"Rezultat uspešno unesen")
             
@@ -369,6 +377,7 @@ def admin_results_change(request, match_id):
                 all_players = Player.objects.all()
                 all_user_mail = [player.user.email for player in all_players if player.send_mail==True and player.user.email != ""]
                 if len(all_user_mail) > 0:
+                    logger.info("Sending mail that round %s have all results to %s", match.round, all_user_mail)
                     template = loader.get_template("mail/result_added.html")
                     message_text = template.render(Context({"round": match.round}))
                     msg = EmailMessage(u"[nmk] Uneti svi rezultati mečeva iz kola \"%s\"" % (match.round.name), message_text, "nmk-no-reply@nmk.kokanovic.org", bcc=all_user_mail)
