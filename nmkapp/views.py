@@ -19,6 +19,7 @@ from django.conf import settings
 from django.core.mail.message import EmailMessage
 from django.core.cache import cache
 import logging
+import hashlib
 
 logger = logging.getLogger(__name__)
 
@@ -190,7 +191,8 @@ def standings(request):
 
     rounds = Round.objects.order_by("id")
 
-    standings_from_cache = cache.get("standings")
+    group_key = hashlib.sha256(group.name.encode('utf-8')).hexdigest() if group is not None else ''
+    standings_from_cache = cache.get("standings/%s" % group_key)
     if standings_from_cache is None:
         user_rounds = UserRound.objects.select_related('user', 'round').all()
         players = Player.objects.select_related('user').all()
@@ -205,7 +207,7 @@ def standings(request):
             standing = [ player, round_standings, player.points ]
             standings.append(standing)
         standings = sorted(standings, key=lambda s: (-s[2], s[0].user.first_name, s[0].user.last_name))
-        cache.add("standings", standings)
+        cache.add("standings/%s" % group_key, standings)
     else:
         standings = standings_from_cache
         
@@ -330,7 +332,10 @@ def admin_rounds_edit(request):
             for user in users:
                 user_round = UserRound(user=user, round=new_round, shot_allowed=True, points=0)
                 user_round.save()
-            cache.delete("standings")
+            groups = Group.objects.all()
+            for group in groups:
+                cache.delete("standings/%s" % hashlib.sha256(group.name.encode('utf-8')).hexdigest())                
+            cache.delete("standings/")
             messages.add_message(request, messages.INFO, u"Novo kolo %s uspešno kreirano" % new_round.name)
             return HttpResponseRedirect('/admin/rounds')
     else:
@@ -393,7 +398,10 @@ def admin_results_change(request, match_id):
             user_rounds = UserRound.objects.filter(round=match.round)
             for user_round in user_rounds:
                 cache.delete("shots_by_user_round/%d" % user_round.id)
-            cache.delete("standings")
+            groups = Group.objects.all()
+            for group in groups:
+                cache.delete("standings/%s" % hashlib.sha256(group.name.encode('utf-8')).hexdigest())
+            cache.delete("standings/")
 
             # send mail if this is the last match from round
             if settings.SEND_MAIL:
