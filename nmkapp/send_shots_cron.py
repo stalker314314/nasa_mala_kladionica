@@ -18,6 +18,7 @@ from nmk import settings
 from nmkapp.models import Round, Match, UserRound, Shot, Player
 
 from django.template import loader, Context
+from django.conf import settings
 from django.core.mail import EmailMessage
 
 def get_rounds_just_started():
@@ -52,6 +53,8 @@ def send_mail_for_round(round):
         msg.send(fail_silently = False)
 
 if __name__ == '__main__':
+    if not settings.SEND_MAIL:
+        return
     rounds = get_rounds_just_started()
     for round in rounds:
         send_mail_for_round(round)

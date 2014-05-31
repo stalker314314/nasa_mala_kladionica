@@ -15,7 +15,9 @@ from nmkapp.logic import recalculate_round_points
 from datetime import datetime
 from django.db.models.aggregates import Min
 from django.template import loader
+from django.conf import settings
 from django.core.mail.message import EmailMessage
+from django.core.cache import cache
 import logging
 
 logger = logging.getLogger(__name__)
@@ -31,15 +33,15 @@ def home(request):
 
     bets = []
     for active_round in active_rounds:
-        user_rounds = UserRound.objects.filter(user=request.user).filter(round=active_round)
+        user_rounds = UserRound.objects.select_related('round').filter(user=request.user).filter(round=active_round)
         if len(user_rounds) != 1:
             messages.add_message(request, messages.INFO, u"Trenutno nema aktivnog kola za klađenje, pokušajte kasnije")
             return render_to_response("home.html", {"shots": []}, context_instance=RequestContext(request))
     
         user_round = user_rounds[0]
-        shots = Shot.objects.filter(user_round=user_round).order_by("match__start_time")
+        shots = Shot.objects.select_related('match', 'match__home_team', 'match__away_team', 'user_round').filter(user_round=user_round).order_by("match__start_time")
         if len(shots) == 0:
-            matches = Match.objects.filter(round=user_round.round).order_by("start_time")
+            matches = Match.objects.select_related('home_team', 'away_team').filter(round=user_round.round).order_by("start_time")
             shots = []
             for match in matches:
                 shot = Shot(user_round=user_round, match=match)
@@ -73,6 +75,7 @@ def home(request):
                         logger.info("User %s posted final save", request.user)
                         user_round.shot_allowed = False
                         user_round.save()
+                    cache.delete("shots_by_user_round/%d" % user_round.id)
                     messages.add_message(request, messages.INFO, u"Tipovanje uspešno sačuvano")
                     return HttpResponseRedirect('/')
             else:
@@ -185,12 +188,11 @@ def standings(request):
     else:
         group = group[0]
 
-    rounds = list(Round.objects.order_by("id"))
-    user_rounds = list(UserRound.objects.all())
-    players = Player.objects.all()
+    rounds = Round.objects.order_by("id")
+    user_rounds = UserRound.objects.select_related('user', 'round').all()
+    players = Player.objects.select_related('user').all()
     if group is not None:
         players = players.filter(groups__in=[group])
-    players = list(players)
         
     for player in players:
         round_standings = []
@@ -209,7 +211,7 @@ def standings(request):
 @login_required
 def round_standings(request, round_id):
     this_round = get_object_or_404(Round, pk=int(round_id))
-    matches = list(Match.objects.filter(round=this_round).order_by("start_time", "id"))
+    matches = Match.objects.select_related('round', 'home_team', 'away_team').filter(round=this_round).order_by("start_time", "id")
 
     selected_group = request.GET.get('group', '')
     all_groups = Group.objects.filter(player__in=[request.user.player])
@@ -236,15 +238,20 @@ def round_standings(request, round_id):
     round_standings = []
     
     if can_see_standings:
-        user_rounds = UserRound.objects.filter(round=this_round)
+        user_rounds = UserRound.objects.select_related('user', 'user__player').filter(round=this_round)
         if group is not None:
              user_rounds = user_rounds.filter(user__player__groups__in=[group])
         user_rounds = user_rounds.order_by("-points", "user__first_name", "user__last_name")
         
         for user_round in user_rounds:
-            shots = list(Shot.objects.filter(user_round=user_round).order_by("match__start_time", "match"))
+            shots_from_cache = cache.get("shots_by_user_round/%d" % user_round.id)
+            if shots_from_cache is None:
+                shots = Shot.objects.select_related('match', 'match__home_team', 'match__away_team').filter(user_round=user_round).order_by("match__start_time", "match")
+                cache.add("shots_by_user_round/%d" % user_round.id, shots)
+            else:
+                shots = list(shots_from_cache)
             round_standings.append({"user_round": user_round, "shots": shots})
-        
+
     return render_to_response("roundstandings.html", {
                 "can_see_standings": can_see_standings,
                 "round": round,
@@ -284,15 +291,16 @@ def admin_rounds(request):
         message = u"Kolo %s postavljeno kao aktivno" % should_be_active_round.name
         messages.add_message(request, messages.INFO, message)
         
-        all_players = Player.objects.all()
-        all_user_mail = [player.user.email for player in all_players if player.send_mail==True and player.user.email != ""]
-        if len(all_user_mail) > 0:
-            start_time = Match.objects.filter(round=should_be_active_round).aggregate(Min('start_time'))['start_time__min']
-            template = loader.get_template("mail/round_active.html")
-            message_text = template.render(Context({"round": should_be_active_round, "start_time": start_time }))
-            msg = EmailMessage(u"[nmk] Novo aktivno kolo %s" % should_be_active_round.name, message_text, "nmk-no-reply@nmk.kokanovic.org", bcc=all_user_mail)
-            msg.content_subtype = "html"
-            msg.send(fail_silently = False)
+        if settings.SEND_MAIL:
+            all_players = Player.objects.all()
+            all_user_mail = [player.user.email for player in all_players if player.send_mail==True and player.user.email != ""]
+            if len(all_user_mail) > 0:
+                start_time = Match.objects.filter(round=should_be_active_round).aggregate(Min('start_time'))['start_time__min']
+                template = loader.get_template("mail/round_active.html")
+                message_text = template.render(Context({"round": should_be_active_round, "start_time": start_time }))
+                msg = EmailMessage(u"[nmk] Novo aktivno kolo %s" % should_be_active_round.name, message_text, "nmk-no-reply@nmk.kokanovic.org", bcc=all_user_mail)
+                msg.content_subtype = "html"
+                msg.send(fail_silently = False)
     elif set_inactive_id != 0:
         should_be_inactive_round = get_object_or_404(Round, pk=int(set_inactive_id))
         should_be_inactive_round.active = False
@@ -371,18 +379,24 @@ def admin_results_change(request, match_id):
             recalculate_round_points(match.round)
             messages.add_message(request, messages.INFO, u"Rezultat uspešno unesen")
             
+            # invalidate cache of shots for all user in this round
+            user_rounds = UserRound.objects.filter(round=match.round)
+            for user_round in user_rounds:
+                cache.delete("shots_by_user_round/%d" % user_round.id)
+
             # send mail if this is the last match from round
-            count_matches_without_result = Match.objects.all().filter(round=match.round).filter(result__isnull=True).count()
-            if count_matches_without_result == 0:
-                all_players = Player.objects.all()
-                all_user_mail = [player.user.email for player in all_players if player.send_mail==True and player.user.email != ""]
-                if len(all_user_mail) > 0:
-                    logger.info("Sending mail that round %s have all results to %s", match.round, all_user_mail)
-                    template = loader.get_template("mail/result_added.html")
-                    message_text = template.render(Context({"round": match.round}))
-                    msg = EmailMessage(u"[nmk] Uneti svi rezultati mečeva iz kola \"%s\"" % (match.round.name), message_text, "nmk-no-reply@nmk.kokanovic.org", bcc=all_user_mail)
-                    msg.content_subtype = "html"
-                    msg.send(fail_silently = False)
+            if settings.SEND_MAIL:
+                count_matches_without_result = Match.objects.all().filter(round=match.round).filter(result__isnull=True).count()
+                if count_matches_without_result == 0:
+                    all_players = Player.objects.all()
+                    all_user_mail = [player.user.email for player in all_players if player.send_mail==True and player.user.email != ""]
+                    if len(all_user_mail) > 0:
+                        logger.info("Sending mail that round %s have all results to %s", match.round, all_user_mail)
+                        template = loader.get_template("mail/result_added.html")
+                        message_text = template.render(Context({"round": match.round}))
+                        msg = EmailMessage(u"[nmk] Uneti svi rezultati mečeva iz kola \"%s\"" % (match.round.name), message_text, "nmk-no-reply@nmk.kokanovic.org", bcc=all_user_mail)
+                        msg.content_subtype = "html"
+                        msg.send(fail_silently = False)
                 
             return HttpResponseRedirect('/admin/results')
     else:
