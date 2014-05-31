@@ -189,20 +189,26 @@ def standings(request):
         group = group[0]
 
     rounds = Round.objects.order_by("id")
-    user_rounds = UserRound.objects.select_related('user', 'round').all()
-    players = Player.objects.select_related('user').all()
-    if group is not None:
-        players = players.filter(groups__in=[group])
-        
-    for player in players:
-        round_standings = []
-        for this_round in rounds:
-            user_round = next((x.points for x in user_rounds if x.user==player.user and x.round==this_round), 0)
-            round_standings.append(user_round)
-        standing = [ player, round_standings, player.points ]
-        standings.append(standing)
-    standings = sorted(standings, key=lambda s: (-s[2], s[0].user.first_name, s[0].user.last_name))
 
+    standings_from_cache = cache.get("standings")
+    if standings_from_cache is None:
+        user_rounds = UserRound.objects.select_related('user', 'round').all()
+        players = Player.objects.select_related('user').all()
+        if group is not None:
+            players = players.filter(groups__in=[group])
+            
+        for player in players:
+            round_standings = []
+            for this_round in rounds:
+                user_round = next((x.points for x in user_rounds if x.user==player.user and x.round==this_round), 0)
+                round_standings.append(user_round)
+            standing = [ player, round_standings, player.points ]
+            standings.append(standing)
+        standings = sorted(standings, key=lambda s: (-s[2], s[0].user.first_name, s[0].user.last_name))
+        cache.add("standings", standings)
+    else:
+        standings = standings_from_cache
+        
     return render_to_response("standings.html", {
             "rounds": rounds,
             "standings": standings,
@@ -324,6 +330,7 @@ def admin_rounds_edit(request):
             for user in users:
                 user_round = UserRound(user=user, round=new_round, shot_allowed=True, points=0)
                 user_round.save()
+            cache.delete("standings")
             messages.add_message(request, messages.INFO, u"Novo kolo %s uspešno kreirano" % new_round.name)
             return HttpResponseRedirect('/admin/rounds')
     else:
@@ -386,6 +393,7 @@ def admin_results_change(request, match_id):
             user_rounds = UserRound.objects.filter(round=match.round)
             for user_round in user_rounds:
                 cache.delete("shots_by_user_round/%d" % user_round.id)
+            cache.delete("standings")
 
             # send mail if this is the last match from round
             if settings.SEND_MAIL:
