@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'nmkapp',
     'debug_toolbar',
+    "djrill"
 )
 
 STATIC_URL = '/static/'
@@ -94,6 +95,9 @@ DATETIME_FORMAT = 'd.m.Y H:i'
 STATIC_URL = '/static/'
 
 SEND_MAIL=False
+MANDRILL_API_KEY = ""
+EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
+
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587

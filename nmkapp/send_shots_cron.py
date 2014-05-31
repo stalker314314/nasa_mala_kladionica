@@ -9,6 +9,7 @@ Cron job to send mail if first match from round is started.
 import os
 import sys
 import datetime
+import logging
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "nmk.settings")
 sys.path.append(os.path.abspath(os.path.dirname(__file__)) + "/../")
 
@@ -20,6 +21,8 @@ from nmkapp.models import Round, Match, UserRound, Shot, Player
 from django.template import loader, Context
 from django.conf import settings
 from django.core.mail import EmailMessage
+
+logger = logging.getLogger(__name__)
 
 def get_rounds_just_started():
     current_time = datetime.datetime.now()
@@ -45,16 +48,18 @@ def send_mail_for_round(round):
 
     all_players = Player.objects.all()
     all_user_mail = [player.user.email for player in all_players if player.send_mail==True and player.user.email != ""]
-    if len(all_user_mail) > 0:
-        template = loader.get_template("mail/round_shots.html")
-        message_text = template.render(Context({"round": round, "matches": matches, "round_standings": round_standings}))
-        msg = EmailMessage(u"[nmk] Počelo kolo \"%s\"" % (round.name), message_text, "nmk-no-reply@nmk.kokanovic.org", bcc=all_user_mail)
-        msg.content_subtype = "html"
-        msg.send(fail_silently = False)
+    template = loader.get_template("mail/round_shots.html")
+    message_text = template.render(Context({"round": round, "matches": matches, "round_standings": round_standings}))
+    if settings.SEND_MAIL:
+        logger.info("Sending mail that round %s started to %s", round.name, all_user_mail)
+        for user_mail in all_user_mail:
+            msg = EmailMessage(u"[nmk] Počelo kolo \"%s\"" % (round.name), message_text, "nmk-no-reply@nmk.kokanovic.org", to=[user_mail,])
+            msg.content_subtype = "html"
+            msg.send(fail_silently = False)
 
 if __name__ == '__main__':
-    if not settings.SEND_MAIL:
-        return
+    logger.info("Starting check to see if any round is started")
     rounds = get_rounds_just_started()
+    logger.info("Started rounds %s", rounds)
     for round in rounds:
         send_mail_for_round(round)

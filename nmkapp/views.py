@@ -202,6 +202,7 @@ def standings(request):
         standing = [ player, round_standings, player.points ]
         standings.append(standing)
     standings = sorted(standings, key=lambda s: (-s[2], s[0].user.first_name, s[0].user.last_name))
+
     return render_to_response("standings.html", {
             "rounds": rounds,
             "standings": standings,
@@ -294,13 +295,15 @@ def admin_rounds(request):
         if settings.SEND_MAIL:
             all_players = Player.objects.all()
             all_user_mail = [player.user.email for player in all_players if player.send_mail==True and player.user.email != ""]
-            if len(all_user_mail) > 0:
-                start_time = Match.objects.filter(round=should_be_active_round).aggregate(Min('start_time'))['start_time__min']
-                template = loader.get_template("mail/round_active.html")
-                message_text = template.render(Context({"round": should_be_active_round, "start_time": start_time }))
-                msg = EmailMessage(u"[nmk] Novo aktivno kolo %s" % should_be_active_round.name, message_text, "nmk-no-reply@nmk.kokanovic.org", bcc=all_user_mail)
+            start_time = Match.objects.filter(round=should_be_active_round).aggregate(Min('start_time'))['start_time__min']
+            template = loader.get_template("mail/round_active.html")
+            message_text = template.render(Context({"round": should_be_active_round, "start_time": start_time }))
+            logger.info("Sending mail that round %s is active to %s", should_be_active_round.name, all_user_mail)
+            for user_mail in all_user_mail:
+                msg = EmailMessage(u"[nmk] Novo aktivno kolo %s" % should_be_active_round.name, message_text, "nmk-no-reply@nmk.kokanovic.org", to=[user_mail,])
                 msg.content_subtype = "html"
                 msg.send(fail_silently = False)
+
     elif set_inactive_id != 0:
         should_be_inactive_round = get_object_or_404(Round, pk=int(set_inactive_id))
         should_be_inactive_round.active = False
@@ -390,11 +393,11 @@ def admin_results_change(request, match_id):
                 if count_matches_without_result == 0:
                     all_players = Player.objects.all()
                     all_user_mail = [player.user.email for player in all_players if player.send_mail==True and player.user.email != ""]
-                    if len(all_user_mail) > 0:
-                        logger.info("Sending mail that round %s have all results to %s", match.round, all_user_mail)
-                        template = loader.get_template("mail/result_added.html")
-                        message_text = template.render(Context({"round": match.round}))
-                        msg = EmailMessage(u"[nmk] Uneti svi rezultati mečeva iz kola \"%s\"" % (match.round.name), message_text, "nmk-no-reply@nmk.kokanovic.org", bcc=all_user_mail)
+                    logger.info("Sending mail that round %s have all results to %s", match.round, all_user_mail)
+                    template = loader.get_template("mail/result_added.html")
+                    message_text = template.render(Context({"round": match.round}))
+                    for user_mail in all_user_mail:
+                        msg = EmailMessage(u"[nmk] Uneti svi rezultati mečeva iz kola \"%s\"" % (match.round.name), message_text, "nmk-no-reply@nmk.kokanovic.org", to=[user_mail,])
                         msg.content_subtype = "html"
                         msg.send(fail_silently = False)
                 
