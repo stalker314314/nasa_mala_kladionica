@@ -44,7 +44,7 @@ def send_reminder_for_round(round, min_time):
     all_players = Player.objects.exclude(user__email = "").filter(send_mail=True)
     player_mails = []
     for player in all_players:
-        if Shot.objects.filter(user_round__round=round).filter(user_round__user=player.user).exists():
+        if not Shot.objects.filter(user_round__round=round).filter(user_round__user=player.user).exists():
             player_mails.append(player.user.email)
             
     template = loader.get_template("mail/round_reminder.html")
