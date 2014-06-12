@@ -365,10 +365,10 @@ def admin_matches_edit(request):
 @staff_member_required
 def admin_results(request):
     current_rounds = Round.objects.filter(active=True)
-    matches = []
-    for current_round in current_rounds:
-        one_round_matches = Match.objects.filter(round=current_round)
-        matches.extend(one_round_matches)
+    matches = Match.objects.all()
+#     for current_round in current_rounds:
+#         one_round_matches = Match.objects.filter(round=current_round)
+#         matches.extend(one_round_matches)
     return render_to_response("admin_results.html", {"matches": matches}, context_instance=RequestContext(request))
 
 @staff_member_required
