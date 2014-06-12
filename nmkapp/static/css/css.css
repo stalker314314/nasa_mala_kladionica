@@ -279,3 +279,50 @@ table.sortable thead {
     font-weight: bold;
     cursor: default;
 }
+
+/***********************************
+	notifications
+***********************************/
+#notification {
+	width:  100%;
+	position:  fixed;
+	z-index:  9999999999;
+	left:  0;
+	top:  -50px;
+	padding-top:  10px;
+	padding-bottom:  10px;
+	text-align:  center;
+	font-weight:  bold;
+	-moz-box-shadow:  0px 5px 5px rgba(0,  0,  0,  0.15);
+	-webkit-box-shadow:  0px 5px 5px rgba(0,  0,  0,  0.15);
+	-o-box-shadow:  0px 5px 5px rgba(0,  0,  0,  0.15);
+	box-shadow:  0px 5px 5px rgba(0,  0,  0,  0.15);
+	border-bottom-width:  3px;
+	border-bottom-style:  solid;
+}
+.ie6 #notification {
+	position: absolute;
+}
+#notification .close {
+	color:  #FFF;
+	width:  20px;
+	height:  20px;
+	position:  absolute;
+	right:  7px;
+	top:  7px;
+	display:  block;
+	text-decoration:  none;
+	border-radius:  5px;
+	line-height:  18px;
+}
+.information {
+	background:  #DBECFF;
+	border-bottom-color:  #9FC7F5;
+	color:  #2850C1;
+}
+.information .close {
+	background:  #2850C1;
+}
+#notification .close:hover {
+	background:  #000;
+}
