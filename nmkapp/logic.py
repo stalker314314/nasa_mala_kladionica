@@ -8,6 +8,7 @@ def recalculate_total_points():
         for user_round in user_rounds:
             if player.user == user_round.user:
                 player.points += user_round.points
+        player.points = round(player.points, 2)
         player.save()
 
 def recalculate_round_points(this_round):
@@ -23,5 +24,6 @@ def recalculate_round_points(this_round):
                     user_round.points += shot.match.oddX
                 else:
                     user_round.points += shot.match.odd2
+        user_round.points = round(user_round.points, 2)
         user_round.save()
     recalculate_total_points()
