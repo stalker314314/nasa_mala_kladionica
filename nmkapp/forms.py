@@ -75,11 +75,11 @@ class BettingForm(forms.Form):
         cleaned_data = super(BettingForm, self).clean()
         for name, value in self.cleaned_data.items():
             if value == None:
-                raise forms.ValidationError(u"Morate uneti sve tipove")
+                raise forms.ValidationError(u"Morate uneti sve tipove/You must place bets for all matches in the round")
         return cleaned_data
 
 class PlayerForm(ModelForm):
     class Meta:
         model = Player
         fields = ['send_mail']
-        labels = {'send_mail': u"Primaj obaveštenja na mail"}
+        labels = {'send_mail': u"Primaj obaveštenja na mail/Receive e-mail notifications"}
