@@ -2,11 +2,16 @@
 Počele su utakmice <b>{{ round.name }}</b> kola. Slede tipovi svih igrača iz ovog kola u trenutku kada je klađenje završeno:
 </p>
 <br/>
+<p>
+Matches from round <b>{{ round.name }}</b> started. Here is a breakdown of all players' bets at the moment when betting is closed:
+</p>
+<br/>
+<br/>
 
 <table id="roundstandings" border="1px">
 	<thead style="height: 40px">
 		<tr>
-			<th class="firstcol" rowspan="2">Korisnik</th>
+			<th class="firstcol" rowspan="2">Korisnik/Player</th>
 			{% for match in matches %}
 			<th>{{ match.home_team.name }} - {{ match.away_team.name }}</th>
 			{% endfor %}

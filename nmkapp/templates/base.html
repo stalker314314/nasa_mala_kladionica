@@ -48,13 +48,6 @@
 					top: 0
 				}, 500);
 			}
-			
-			$(document).ready(function() {
-				var moneyInfo = document.cookie.replace(/(?:(?:^|.*;\s*)money_info\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-				if (moneyInfo != "yes") {
-					notify('Sada zvanično: u pare igra 52 ljudi, 1. mesto je 26.000 dinara, 2. mesto 17.333 dinara, a 3. mesto 8.666 dinara', 'information', 0);
-				} 
-			});
 		</script>
 	</head>
 
@@ -75,17 +68,17 @@
 			</div>
 
 			<div id="navigation">
-					Glavni meni
+					Meni/Menu
 					<hr />
 					{% if user.is_authenticated %}
-					<a href="/" class="navigation">Klađenje</a>
-					<a href="/results" class="navigation">Rezultati</a>
-					<a href="/standings" class="navigation">Tabele</a>
+					<a href="/" class="navigation">Klađenje/Betting</a>
+					<a href="/results" class="navigation">Rezultati/Results</a>
+					<a href="/standings" class="navigation">Tabele/Standings</a>
 					<a href="/download" class="navigation">Download</a>
-					<a href="/proposition" class="navigation">Pravila</a>
+					<a href="/proposition" class="navigation">Pravila/Rules</a>
 					{% else %}
-					<a href="/login" class="navigation">Logovanje</a>
-					<a href="/proposition" class="navigation">Pravila</a>
+					<a href="/login" class="navigation">Login</a>
+					<a href="/proposition" class="navigation">Pravila/Rules</a>
 					{% endif %}
 					<br />
 					<br />
@@ -107,7 +100,6 @@
 				<hr />
 				<br />
 				All content 2008-2014 Kokan, Melja and OSWD, all rights reserved. <br />
-				Source code available at <a href="https://github.com/stalker314314/nasa_mala_kladionica">Github</a>
 			</div>
 		</div>
 	</body>

@@ -77,7 +77,7 @@ def home(request):
                         user_round.shot_allowed = False
                         user_round.save()
                     cache.delete("shots_by_user_round/%d" % user_round.id)
-                    messages.add_message(request, messages.INFO, u"Tipovanje uspešno sačuvano")
+                    messages.add_message(request, messages.INFO, u"Tipovanje uspešno sačuvano/Placed bets successfully saved")
                     return HttpResponseRedirect('/')
             else:
                 form = BettingForm(shots=shots)
@@ -103,7 +103,7 @@ def format_time_left(shots):
         elif seconds_left > 0:
             return "%dsec" % seconds_left
         else:
-            return "prvi meč već počeo"
+            return "prvi meč već počeo/first match already started"
     else:
         return "N/A"
 
@@ -113,7 +113,7 @@ def profile(request):
         form = PlayerForm(request.POST, instance=request.user.player)
         if form.is_valid():
             form.save()
-            messages.add_message(request, messages.INFO, u"Podešavanja uspešno sačuvana")
+            messages.add_message(request, messages.INFO, u"Podešavanja uspešno sačuvana/Settings successfully saved")
     else:
         form = PlayerForm(instance=request.user.player)
     return render_to_response("profile.html", {"form": form}, context_instance=RequestContext(request))

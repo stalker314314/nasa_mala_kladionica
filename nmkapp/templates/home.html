@@ -3,7 +3,7 @@
 {% block content %}
 
    	
-<h1>TRENUTNA KOLA</h1>
+<h1>TRENUTNA KOLA/ACTIVE ROUNDS</h1>
 <br/>
 
 {% if messages %}
@@ -16,8 +16,8 @@
 	<table class="mediumtable">
     	<tbody>
     		<tr>
-        		<td><h2>Kolo: {{ bet.round.name }}</h2></td>
-        		<td style="text-align: right;">(preostalo vreme za klađenje: <span style="color: #FF0000;">{{ bet.time_left }}</span>)</td>
+        		<td><h2>Kolo/round: {{ bet.round.name }}</h2></td>
+        		<td style="text-align: right;">(preostalo vreme za klađenje/time left to place a bet: <span style="color: #FF0000;">{{ bet.time_left }}</span>)</td>
     		</tr>
 		</tbody>
 	</table>
@@ -34,7 +34,7 @@
 			<table class="mediumtable">
 				<thead>
 					<tr>
-						<th scope="col">Utakmica</th>
+						<th scope="col">Utakmica/Match</th>
 						<th scope="col" style="padding-left: 10px;">1</th>
 						<th scope="col" style="padding-left: 10px;">X</th>
 						<th scope="col" style="padding-left: 10px;">2</th>
@@ -55,8 +55,8 @@
 				</tbody>
 			</table>
 			<p class="offset">
-				<input name="save_{{ bet.round.id }}" value="Sačuvaj za sada" type="submit">
-				<input name="final_save_{{ bet.round.id }}" value="Konačan odgovor" type="submit">
+				<input name="save_{{ bet.round.id }}" value="Sačuvaj za sada/Save" type="submit">
+				<input name="final_save_{{ bet.round.id }}" value="Konačan odgovor/Final answer" type="submit">
 			</p>
 		</form>
 	

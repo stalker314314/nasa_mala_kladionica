@@ -21,12 +21,12 @@ function refreshPage(sel) {
 
 {% if can_see_standings %}
 
-Odaberi ekipu:
+Odaberi ekipu/choose a group:
 <select name="group" id="id_group" onchange="refreshPage(this)">
 	{% if selected_group == "" %} 
-	<option selected="selected" value="">Svi</option>
+	<option selected="selected" value="">Svi/All</option>
 	{% else %}
-	<option value="">Svi</option>
+	<option value="">Svi/All</option>
 	{% endif %}
 	{% for group in groups %}
 		{% if selected_group == group.name %}
@@ -42,7 +42,7 @@ Odaberi ekipu:
 <table id="roundstandings" class="sortable">
 	<thead style="height: 40px">
 		<tr>
-			<th class="firstcol" rowspan="2">Korisnik</th>
+			<th class="firstcol" rowspan="2">Korisnik/Player</th>
 			{% for match in matches %}
 			<th class="sorttable_nosort">
 				{% ifequal match.round.get_group_type_display "League" %}
@@ -91,7 +91,7 @@ Odaberi ekipu:
 	</tbody>
 	<tfoot style="height: 40px">
 		<tr>
-			<td>Kvota</td>
+			<td>Kvota/Odd</td>
 			{% for match in matches %}
 			{% if match.result == 1 %}
 			<td class="sorttable_nosort numbercenter">{{ match.odd1 }}</td>
@@ -113,7 +113,7 @@ Odaberi ekipu:
 			{% endfor %}
 		</tr>
 		<tr>
-			<td>Tačan rezultat</td>
+			<td>Tačan rez./Correct score</td>
 			{% for match in matches %}
 			<td class="numbercenter">
 				{% if match.result != None %}
@@ -130,11 +130,14 @@ Odaberi ekipu:
 <br/>
 <br/>
 * Korisnici koji igraju u pare su boldovani
+<br/>
+* Players that play in money are shown in bold
 
 {% else %}
 <div class="entry errors">
 	<ul>
 		<li>Nemate prava da pogledate tipovanja ostalih korisnika dok Vi ne istipujete rezultate za ovo kolo.</li>
+		<li>You are not allowed to see bets of other players until You place a bet for this round.</li>
 	</ul>
 </div>
 

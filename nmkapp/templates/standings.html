@@ -13,12 +13,12 @@ function refreshPage(sel) {
 }
 </script>
 
-Odaberi ekipu:
+Odaberi ekipu/choose a group:
 <select name="group" id="id_group" onchange="refreshPage(this)">
 	{% if selected_group == "" %} 
-	<option selected="selected" value="">Svi</option>
+	<option selected="selected" value="">Svi/All</option>
 	{% else %}
-	<option value="">Svi</option>
+	<option value="">Svi/All</option>
 	{% endif %}
 	{% for group in groups %}
 		{% if selected_group == group.name %}
@@ -34,7 +34,7 @@ Odaberi ekipu:
 <table class="sortable mediumtable">
 	<thead>
 		<tr>
-			<th class="firstcol1">Takmičar</th>
+			<th class="firstcol1">Takmičar/Player</th>
 			{% for round in rounds %}
 			{% if selected_group == "" %}
 				<th class="number"><a href="/roundstandings/{{ round.id }}">{{ round.name }}</a></th>
@@ -68,4 +68,6 @@ Odaberi ekipu:
 <br/>
 <br/>
 * Korisnici koji igraju u pare su boldovani
+<br/>
+* Players that play in money are shown in bold
 {% endblock %}
