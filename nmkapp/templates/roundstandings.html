@@ -60,7 +60,13 @@ Odaberi ekipu/choose a group:
 	<tbody>
 		{% for round_standing in round_standings %}
 		<tr style="height: 40px">
-			<td>{{ round_standing.position }}.</td>
+			{% if round_standing.user_round.user.username == user.username %}
+			<td style="background: rgb(204, 204, 204);">
+			{% else %}
+			<td>
+			{% endif %}
+				{{ round_standing.position }}.
+			</td>
 			{% if round_standing.user_round.user.username == user.username %}
 			<td style="background: rgb(204, 204, 204);">
 			{% else %}
