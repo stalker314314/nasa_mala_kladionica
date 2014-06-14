@@ -59,7 +59,11 @@ Odaberi ekipu/choose a group:
 	<tbody>
 		{% for round_standing in round_standings %}
 		<tr style="height: 40px">
+			{% if round_standing.user_round.user.username == user.username %}
+			<td style="background: rgb(204, 204, 204);">
+			{% else %}
 			<td>
+			{% endif %}
 			{% if round_standing.user_round.user.player.in_money %}
 				<b>{{ round_standing.user_round.user.first_name }} {{ round_standing.user_round.user.last_name }}</b>
 			{% else %}
@@ -84,8 +88,14 @@ Odaberi ekipu/choose a group:
 			<a title="{{ match.home_team.name }} - {{ match.away_team.name }}" class="tooltip">-</a>
 			</td>
 			{% endfor %}
-			{% endfor %} 
-			<td class="number">{{ round_standing.user_round.points }}</td>
+			{% endfor %}
+			{% if round_standing.user_round.user.username == user.username %} 
+			<td class="number" style="background: rgb(204, 204, 204);">
+			{% else %}
+			<td class="number">
+			{% endif %}
+				{{ round_standing.user_round.points }}
+			</td>
 		</tr>
 		{% endfor %}
 	</tbody>

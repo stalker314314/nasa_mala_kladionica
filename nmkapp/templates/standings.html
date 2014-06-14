@@ -47,7 +47,11 @@ Odaberi ekipu/choose a group:
 	</thead>
 	<tbody>
 		{% for standing in standings %}
+		{% if standing.0.user.username == user.username %}
+		<tr style="background: rgb(204, 204, 204);">
+		{% else %}
 		<tr>
+		{% endif %}
 			<td>
 			{% if standing.0.user.player.in_money %}
 				<b>{{ standing.0.user.first_name }} {{ standing.0.user.last_name }}</b>
