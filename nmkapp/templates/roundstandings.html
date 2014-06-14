@@ -88,7 +88,25 @@ Odaberi ekipu/choose a group:
 			{% else %}
 			<td class="number">
 			{% endif %}
-			<a title="{{ shot.match.home_team.name }} - {{ shot.match.away_team.name }}" class="tooltip">{{ shot.shot }}</a>
+			{% if shot.match.result != None %}
+				{% if shot.match.result == 1 %}
+					<a title="{{ shot.match.home_team.name }} - {{ shot.match.away_team.name }} ({{ shot.match.odd1 }})" class="tooltip">
+				{% elif shot.match.result == 0 %}
+					<a title="{{ shot.match.home_team.name }} - {{ shot.match.away_team.name }} ({{ shot.match.oddX }})" class="tooltip">
+				{% elif shot.match.result == 2 %}
+					<a title="{{ shot.match.home_team.name }} - {{ shot.match.away_team.name }} ({{ shot.match.odd2 }})" class="tooltip">
+				{% else %}
+					<a title="{{ shot.match.home_team.name }} - {{ shot.match.away_team.name }}" class="tooltip">
+				{% endif %}
+			{% else %}
+				<a title="{{ shot.match.home_team.name }} - {{ shot.match.away_team.name }} ({{shot.match.odd1}}) ({{ shot.match.oddX }}) ({{ shot.match.odd2 }})" class="tooltip">
+			{% endif %}
+			{% if shot.shot == 0 %}
+			X
+			{% else %}
+			{{ shot.shot }}
+			{% endif %}
+			</a>
 			</td>
 			{% empty %}
 			{% for match in matches %}
