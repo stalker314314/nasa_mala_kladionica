@@ -42,6 +42,7 @@ Odaberi ekipu/choose a group:
 <table id="roundstandings" class="sortable">
 	<thead style="height: 40px">
 		<tr>
+			<th>#</th>
 			<th class="firstcol" rowspan="2">Korisnik/Player</th>
 			{% for match in matches %}
 			<th class="sorttable_nosort">
@@ -59,6 +60,7 @@ Odaberi ekipu/choose a group:
 	<tbody>
 		{% for round_standing in round_standings %}
 		<tr style="height: 40px">
+			<td>{{ round_standing.position }}.</td>
 			{% if round_standing.user_round.user.username == user.username %}
 			<td style="background: rgb(204, 204, 204);">
 			{% else %}
@@ -101,6 +103,7 @@ Odaberi ekipu/choose a group:
 	</tbody>
 	<tfoot style="height: 40px">
 		<tr>
+			<td></td>
 			<td>Kvota/Odd</td>
 			{% for match in matches %}
 			{% if match.result == 1 %}
@@ -123,6 +126,7 @@ Odaberi ekipu/choose a group:
 			{% endfor %}
 		</tr>
 		<tr>
+			<td></td>
 			<td>Tačan rez./Correct score</td>
 			{% for match in matches %}
 			<td class="numbercenter">

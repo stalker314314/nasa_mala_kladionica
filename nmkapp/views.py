@@ -191,7 +191,7 @@ def standings(request):
 
     rounds = Round.objects.order_by("id")
 
-    group_key = hashlib.sha256(group.name.encode('utf-8')).hexdigest() if group is not None else ''
+    group_key = hashlib.sha256((group.name + 'v2').encode('utf-8')).hexdigest() if group is not None else 'v2'
     standings_from_cache = cache.get("standings/%s" % group_key)
     if standings_from_cache is None:
         user_rounds = UserRound.objects.select_related('user', 'round').all()
@@ -207,6 +207,16 @@ def standings(request):
             standing = [ player, round_standings, player.points ]
             standings.append(standing)
         standings = sorted(standings, key=lambda s: (-s[2], s[0].user.first_name, s[0].user.last_name))
+        
+        # populate positions
+        position = 1
+        previous_points = None
+        for standing in standings:
+            if previous_points != None and previous_points != standing[2]:
+                position += 1
+            previous_points = standing[2]
+            standing.append(position)
+            
         cache.add("standings/%s" % group_key, standings)
     else:
         standings = standings_from_cache
@@ -246,6 +256,9 @@ def round_standings(request, round_id):
 
     round_standings = []
     
+    position = 1
+    previous_points = None
+    
     if can_see_standings:
         user_rounds = UserRound.objects.select_related('user', 'user__player').filter(round=this_round)
         if group is not None:
@@ -259,7 +272,11 @@ def round_standings(request, round_id):
                 cache.add("shots_by_user_round/%d" % user_round.id, shots)
             else:
                 shots = list(shots_from_cache)
-            round_standings.append({"user_round": user_round, "shots": shots})
+            
+            if previous_points != None and previous_points != user_round.points:
+                position += 1
+            previous_points = user_round.points
+            round_standings.append({"user_round": user_round, "shots": shots, "position": position})
 
     return render_to_response("roundstandings.html", {
                 "can_see_standings": can_see_standings,

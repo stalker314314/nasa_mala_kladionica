@@ -34,6 +34,7 @@ Odaberi ekipu/choose a group:
 <table class="sortable mediumtable">
 	<thead>
 		<tr>
+			<th>#</th>
 			<th class="firstcol1">Takmičar/Player</th>
 			{% for round in rounds %}
 			{% if selected_group == "" %}
@@ -52,6 +53,7 @@ Odaberi ekipu/choose a group:
 		{% else %}
 		<tr>
 		{% endif %}
+			<td>{{ standing.3 }}.</td>
 			<td>
 			{% if standing.0.user.player.in_money %}
 				<b>{{ standing.0.user.first_name }} {{ standing.0.user.last_name }}</b>
