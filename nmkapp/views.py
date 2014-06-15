@@ -3,6 +3,7 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template.context import RequestContext, Context
 from nmkapp.models import Round, UserRound, Shot, Match, Team, Player, Group
+from nmkapp.cache import StandingsCache, UserRoundShotCache
 from django.contrib.auth.decorators import login_required
 from operator import itemgetter
 from django.contrib.admin.views.decorators import staff_member_required
@@ -17,9 +18,7 @@ from django.db.models.aggregates import Min
 from django.template import loader
 from django.conf import settings
 from django.core.mail.message import EmailMessage
-from django.core.cache import cache
 import logging
-import hashlib
 
 logger = logging.getLogger(__name__)
 
@@ -76,7 +75,7 @@ def home(request):
                         logger.info("User %s posted final save", request.user)
                         user_round.shot_allowed = False
                         user_round.save()
-                    cache.delete("shots_by_user_round/%d" % user_round.id)
+                    UserRoundShotCache(user_round).clear()
                     messages.add_message(request, messages.INFO, u"Tipovanje uspešno sačuvano/Placed bets successfully saved")
                     return HttpResponseRedirect('/')
             else:
@@ -179,7 +178,6 @@ def results_cup(request):
 
 @login_required
 def standings(request):
-    standings = []
     selected_group = request.GET.get('group', '')
     all_groups = Group.objects.filter(player__in=[request.user.player])
     group = Group.objects.filter(player__in=[request.user.player]).filter(name=selected_group)
@@ -188,44 +186,10 @@ def standings(request):
         group = None
     else:
         group = group[0]
-
     rounds = Round.objects.order_by("id")
+    
+    standings = StandingsCache(group).get(rounds)
 
-    group_key = hashlib.sha256((group.name + 'v3').encode('utf-8')).hexdigest() if group is not None else 'v3'
-    standings_from_cache = cache.get("standings/%s" % group_key)
-    if standings_from_cache is None:
-        user_rounds = UserRound.objects.select_related('user', 'round').all()
-        players = Player.objects.select_related('user').all()
-        if group is not None:
-            players = players.filter(groups__in=[group])
-            
-        for player in players:
-            round_standings = []
-            for this_round in rounds:
-                user_round = next((x.points for x in user_rounds if x.user==player.user and x.round==this_round), 0)
-                round_standings.append(user_round)
-            standing = [ player, round_standings, player.points ]
-            standings.append(standing)
-        standings = sorted(standings, key=lambda s: (-s[2], s[0].user.first_name, s[0].user.last_name))
-        
-        # populate positions
-        position = 1
-        position_increment = 1
-        previous_points = None
-        for standing in standings:
-            if previous_points != None:
-                if previous_points != standing[2]:
-                    position += position_increment
-                    position_increment = 1
-                else:
-                    position_increment += 1
-            previous_points = standing[2]
-            standing.append(position)
-            
-        cache.add("standings/%s" % group_key, standings)
-    else:
-        standings = standings_from_cache
-        
     return render_to_response("standings.html", {
             "rounds": rounds,
             "standings": standings,
@@ -272,12 +236,7 @@ def round_standings(request, round_id):
         user_rounds = user_rounds.order_by("-points", "user__first_name", "user__last_name")
         
         for user_round in user_rounds:
-            shots_from_cache = cache.get("shots_by_user_round/%d" % user_round.id)
-            if shots_from_cache is None:
-                shots = Shot.objects.select_related('match', 'match__home_team', 'match__away_team').filter(user_round=user_round).order_by("match__start_time", "match")
-                cache.add("shots_by_user_round/%d" % user_round.id, shots)
-            else:
-                shots = list(shots_from_cache)
+            shots = UserRoundShotCache(user_round).get();
             
             if previous_points != None:
                 if previous_points != user_round.points:
@@ -361,8 +320,8 @@ def admin_rounds_edit(request):
                 user_round.save()
             groups = Group.objects.all()
             for group in groups:
-                cache.delete("standings/%s" % hashlib.sha256(group.name.encode('utf-8')).hexdigest())                
-            cache.delete("standings/")
+                StandingsCache(group).clear()
+            StandingsCache().clear()
             messages.add_message(request, messages.INFO, u"Novo kolo %s uspešno kreirano" % new_round.name)
             return HttpResponseRedirect('/admin/rounds')
     else:
@@ -424,11 +383,11 @@ def admin_results_change(request, match_id):
             # invalidate cache of shots for all user in this round
             user_rounds = UserRound.objects.filter(round=match.round)
             for user_round in user_rounds:
-                cache.delete("shots_by_user_round/%d" % user_round.id)
+                UserRoundShotCache(user_round).clear()
             groups = Group.objects.all()
             for group in groups:
-                cache.delete("standings/%s" % hashlib.sha256(group.name.encode('utf-8')).hexdigest())
-            cache.delete("standings/")
+                StandingsCache(group).clear()
+            StandingsCache().clear()
 
             # send mail if this is the last match from round
             if settings.SEND_MAIL:
