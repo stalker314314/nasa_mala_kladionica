@@ -191,7 +191,7 @@ def standings(request):
 
     rounds = Round.objects.order_by("id")
 
-    group_key = hashlib.sha256((group.name + 'v2').encode('utf-8')).hexdigest() if group is not None else 'v2'
+    group_key = hashlib.sha256((group.name + 'v3').encode('utf-8')).hexdigest() if group is not None else 'v3'
     standings_from_cache = cache.get("standings/%s" % group_key)
     if standings_from_cache is None:
         user_rounds = UserRound.objects.select_related('user', 'round').all()
@@ -210,10 +210,15 @@ def standings(request):
         
         # populate positions
         position = 1
+        position_increment = 1
         previous_points = None
         for standing in standings:
-            if previous_points != None and previous_points != standing[2]:
-                position += 1
+            if previous_points != None:
+                if previous_points != standing[2]:
+                    position += position_increment
+                    position_increment = 1
+                else:
+                    position_increment += 1
             previous_points = standing[2]
             standing.append(position)
             
@@ -258,6 +263,7 @@ def round_standings(request, round_id):
     
     position = 1
     previous_points = None
+    position_increment = 1
     
     if can_see_standings:
         user_rounds = UserRound.objects.select_related('user', 'user__player').filter(round=this_round)
@@ -273,8 +279,12 @@ def round_standings(request, round_id):
             else:
                 shots = list(shots_from_cache)
             
-            if previous_points != None and previous_points != user_round.points:
-                position += 1
+            if previous_points != None:
+                if previous_points != user_round.points:
+                    position += position_increment
+                    position_increment = 1
+                else:
+                    position_increment += 1
             previous_points = user_round.points
             round_standings.append({"user_round": user_round, "shots": shots, "position": position})
 
