@@ -1,8 +1,8 @@
 from nmkapp.models import Player, UserRound, Shot
 
 def recalculate_total_points():
-    players = Player.objects.all()
-    user_rounds = UserRound.objects.all()
+    players = Player.objects.select_related('user').all()
+    user_rounds = UserRound.objects.select_related('user').all()
     for player in players:
         player.points = 0.0
         for user_round in user_rounds:
@@ -13,7 +13,7 @@ def recalculate_total_points():
 
 def recalculate_round_points(this_round):
     user_rounds = UserRound.objects.filter(round=this_round)
-    shots = Shot.objects.filter(user_round__round=this_round)
+    shots = Shot.objects.select_related('user_round', 'match').filter(user_round__round=this_round)
     for user_round in user_rounds:
         user_round.points = 0.0
         for shot in shots:
