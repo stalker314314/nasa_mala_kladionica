@@ -27,7 +27,7 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 TEMPLATE_DIRS = (
-    BASE_DIR + '/templates/'
+    BASE_DIR + '/templates/',
 )
 # Application definition
 
@@ -92,7 +92,7 @@ DATETIME_FORMAT = 'd.m.Y H:i'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'nmkapp', 'static')
 
 SEND_MAIL=False
 MANDRILL_API_KEY = ""
@@ -106,7 +106,7 @@ EMAIL_HOST_PASSWORD = ''
 
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': False,
+    'disable_existing_loggers': True,
     'formatters': {
         'verbose': {
             'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
@@ -125,16 +125,17 @@ LOGGING = {
             'when': 'midnight',
             'interval': 1
         },
+        'console' : {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
     },
     'loggers': {
-        'django': {
-            'handlers':['file'],
+        '': {
+            'handlers':['file', 'console'],
             'propagate': True,
-            'level':'DEBUG',
-        },
-        'nmkapp': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
+            'level':'INFO',
         },
     }
 }
