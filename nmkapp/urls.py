@@ -5,6 +5,7 @@ from django.contrib.auth.views import logout_then_login, login, password_change
 urlpatterns = patterns('',
     url(r'^$', views.home),
     url(r'^register$', views.register),
+    url(r'^activate$', views.activation),
     url(r'^login/$', login, {'template_name': 'login.html'}),
     url(r'^logout$', logout_then_login),
     url(r'^profile$', views.profile),

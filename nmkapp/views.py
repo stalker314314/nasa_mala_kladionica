@@ -56,6 +56,19 @@ def register(request):
         form = RegisterForm(user={})
     return render_to_response("register.html", {"form": form, 'registered': registered}, context_instance=RequestContext(request))
 
+@transaction.atomic
+def activation(request):
+    logger.info("User is on activation page")
+    activation_id = request.GET.get('id', '')
+    success = False
+    if activation_id != '':
+        players = Player.objects.filter(activation_code = activation_id)
+        if len(players) == 1:
+            players[0].user.is_active = True
+            players[0].user.save()
+            success = True
+    return render_to_response("activation.html", {"success": success}, context_instance=RequestContext(request))
+
 @login_required
 @transaction.atomic
 def home(request):

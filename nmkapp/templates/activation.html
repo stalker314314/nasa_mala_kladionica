@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	<title>Kokan - Meljova kladionica :)</title>
+	<link type="text/css" rel="stylesheet" href="/static/css/css.css">
+</head>
+
+<body>
+	<div id="main">
+
+		<div id="header">
+			<img width="720" height="120" src="/static/img/logo.png">
+		</div>
+
+		<div id="contentlogin">
+			<h1>NAŠA MALA KLADIONICA - AKTIVACIJA</h1>
+			{% if success %}
+			Uspešno ste aktivirali Vaš nalog.
+			{% else %}
+			Pogrešna aktivacija
+			{% endif %}
+			<br/>
+			<br/>
+			<div>
+				<a href="/login">Nazad na prijavu/Back to login</a>
+			</div>
+		</div>
+
+		<div id="footer">
+			<hr/>
+			<br/>
+			All content 2008-2014 Kokan, Melja and OSWD, all rights reserved. <br>
+			Source code available at <a href="https://github.com/stalker314314/nasa_mala_kladionica">Github</a>
+		</div>
+	</div>
+</body>
+</html>
