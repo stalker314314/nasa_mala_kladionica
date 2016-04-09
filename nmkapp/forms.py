@@ -4,6 +4,37 @@ from django.forms.models import ModelForm
 from nmkapp.models import Round, Match, Shot, Player, Team
 from django import forms
 from nmkapp.widgets import DateTimeWidget
+from django.contrib.auth.models import User
+from django.forms.widgets import PasswordInput
+
+class RegisterForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        super(RegisterForm, self).__init__(*args, **kwargs)
+        self.fields['first_name'] = forms.CharField(initial='', required = True, label='Ime', max_length=28)
+        self.fields['last_name'] = forms.CharField(initial='', required = True, label='Prezime', max_length=28)
+        self.fields['email'] = forms.EmailField(initial='', required = True, label='E-mail', max_length=74)
+        self.fields['username'] = forms.CharField(initial='', required = True, label='Korisničko ime', max_length=28)
+        self.fields['password'] = forms.CharField(initial='', required = True, label='Lozinka', max_length=28, min_length=5, widget=PasswordInput)
+
+    def clean(self):
+        cleaned_data = super(RegisterForm, self).clean()
+        if 'first_name' in cleaned_data and len(cleaned_data['first_name']) > 28:
+            raise forms.ValidationError({'first_name': ["Ime mora biti manje od 28 karaktera",]})
+        if 'last_name' in cleaned_data and len(cleaned_data['last_name']) > 28:
+            raise forms.ValidationError({'last_name': ["Prezime mora biti manje od 28 karaktera",]})
+        if 'email' in cleaned_data and len(cleaned_data['email']) > 74:
+            raise forms.ValidationError({'email': ["E-mail mora biti manji od 74 karaktera",]})
+        if 'username' in cleaned_data and len(cleaned_data['username']) > 28:
+            raise forms.ValidationError({'username': ["Korisničko ime mora biti manje od 28 karaktera",]})
+        
+        existing_usernames = User.objects.filter(username=cleaned_data['username'])
+        if len(existing_usernames) > 0:
+            raise forms.ValidationError({'username': ["Korisničko ime već postoji",]})
+        existing_mails = User.objects.filter(email=cleaned_data['email'])
+        if len(existing_mails) > 0:
+            raise forms.ValidationError({'email': ["Ovaj e-mail je već u upotrebi. Resetujte lozinku ako je ovo Vaš mail.",]})
+        return cleaned_data
 
 class RoundForm(ModelForm):
     class Meta:

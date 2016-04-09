@@ -9,7 +9,7 @@ from operator import itemgetter
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db import transaction
 from django.contrib import messages
-from nmkapp.forms import RoundForm, MatchForm, ResultsForm, BettingForm, PlayerForm
+from nmkapp.forms import RoundForm, MatchForm, ResultsForm, BettingForm, PlayerForm, RegisterForm
 from django.http.response import HttpResponseRedirect, HttpResponseServerError
 from django.contrib.auth.models import User
 from nmkapp.logic import recalculate_round_points
@@ -19,8 +19,42 @@ from django.template import loader
 from django.conf import settings
 from django.core.mail.message import EmailMessage
 import logging
+import string
+import random
 
 logger = logging.getLogger(__name__)
+
+def id_generator(size=16, chars=string.ascii_uppercase + string.digits):
+    return ''.join(random.choice(chars) for _ in range(size))
+
+@transaction.atomic
+def register(request):
+    logger.info("User is on register page")
+    registered = False
+    if request.method == 'POST':
+        form = RegisterForm(request.POST, user={})
+        if form.is_valid():
+            cleaned_data = form.cleaned_data
+            user = User.objects.create_user(username = cleaned_data['username'],
+                                            email = cleaned_data['email'],
+                                            password = cleaned_data['password'],
+                                            first_name = cleaned_data['first_name'],
+                                            last_name = cleaned_data['last_name'],
+                                            is_active = False,
+                                            last_login = datetime.now())
+            user.player.activation_code = id_generator()
+            user.player.save()
+
+            template = loader.get_template("mail/registered.html")
+            message_text = template.render(Context({"link": "http://nmk.kokanovic.org/activate?id=%s" % user.player.activation_code}))
+            logger.info("Sending mail that user is registered to %s", user.email)
+            msg = EmailMessage(u"[nmk] Registracija na NMK uspešna", message_text, "nmk-no-reply@nmk.kokanovic.org", to=[user.email,])
+            msg.content_subtype = "html"
+            msg.send(fail_silently = False)
+            registered = True
+    else:
+        form = RegisterForm(user={})
+    return render_to_response("register.html", {"form": form, 'registered': registered}, context_instance=RequestContext(request))
 
 @login_required
 @transaction.atomic
