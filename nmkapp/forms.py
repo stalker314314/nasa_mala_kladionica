@@ -36,6 +36,26 @@ class RegisterForm(forms.Form):
             raise forms.ValidationError({'email': ["Ovaj e-mail je već u upotrebi. Resetujte lozinku ako je ovo Vaš mail.",]})
         return cleaned_data
 
+class ForgotPasswordForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        rp = kwargs.pop('rp')
+        super(ForgotPasswordForm, self).__init__(*args, **kwargs)
+        self.fields['email'] = forms.EmailField(initial='', required = True, label='E-mail', max_length=74)
+
+class ResetPasswordForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        rp = kwargs.pop('passwords')
+        super(ResetPasswordForm, self).__init__(*args, **kwargs)
+        self.fields['password'] = forms.CharField(initial='', required = True, label='Lozinka', max_length=28, min_length=5, widget=PasswordInput)
+        self.fields['password2'] = forms.CharField(initial='', required = True, label='Lozinka ponovo', max_length=28, min_length=5, widget=PasswordInput)
+
+    def clean(self):
+        cleaned_data = super(ResetPasswordForm, self).clean()
+        if ('password' in cleaned_data) and ('password2' in cleaned_data):
+            if cleaned_data['password'] != cleaned_data['password2']:
+                raise forms.ValidationError({'password2': ["Lozinke se ne poklapaju",]})
+        return cleaned_data
+    
 class RoundForm(ModelForm):
     class Meta:
         model = Round

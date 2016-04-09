@@ -34,9 +34,16 @@
 					<div class="errors">Korisničko ime ili lozinka pogrešni. Pokušajte ponovo.</div>
 					{% endif %}
 					
+					{% if form.errors %}
+					<div class="buttonBox" style="padding-left: 150px;">
+					{% else %}
 					<div class="buttonBox">
+					{% endif %}
 						<input type="submit" value="Prijavi me" />
 						<input type="hidden" name="next" value="{{ next }}" />
+						{% if form.errors %}
+						&nbsp;&nbsp;<a href="/forgotpassword" style="font-size: 11px;">Zaboravio sam lozinku</a>
+						{% endif %}
 					</div>
 					<br/>
 					<div>
@@ -49,8 +56,7 @@
 		<div id="footer">
 			<hr/>
 			<br/>
-			All content 2008-2014 Kokan, Melja and OSWD, all rights reserved. <br>
-			Source code available at <a href="https://github.com/stalker314314/nasa_mala_kladionica">Github</a>
+			All content 2008-2016 Kokan, Melja and OSWD, all rights reserved. <br>
 		</div>
 	</div>
 </body>

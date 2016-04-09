@@ -9,7 +9,7 @@ from operator import itemgetter
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db import transaction
 from django.contrib import messages
-from nmkapp.forms import RoundForm, MatchForm, ResultsForm, BettingForm, PlayerForm, RegisterForm
+from nmkapp.forms import RoundForm, MatchForm, ResultsForm, BettingForm, PlayerForm, RegisterForm, ForgotPasswordForm, ResetPasswordForm
 from django.http.response import HttpResponseRedirect, HttpResponseServerError
 from django.contrib.auth.models import User
 from nmkapp.logic import recalculate_round_points
@@ -57,10 +57,58 @@ def register(request):
     return render_to_response("register.html", {"form": form, 'registered': registered}, context_instance=RequestContext(request))
 
 @transaction.atomic
+def forgotpassword(request):
+    logger.info("User is on forgot password page")
+    reset = False
+    if request.method == 'POST':
+        form = ForgotPasswordForm(request.POST, rp={})
+        if form.is_valid():
+            cleaned_data = form.cleaned_data
+            users = User.objects.filter(email=cleaned_data['email'])
+            if len(users) > 0:
+                user = users[0]
+                user.player.reset_code = id_generator(size=32)
+                user.player.save()
+
+                template = loader.get_template("mail/resetpassword.html")
+                message_text = template.render(Context({
+                                                        "link": "http://nmk.kokanovic.org/profile/reset?id=%s" % user.player.reset_code,
+                                                        "username": user.username}))
+                logger.info("Sending mail to reset user's password to %s", user.email)
+                msg = EmailMessage(u"[nmk] Zahtev za resetovanjem lozinke", message_text, "nmk-no-reply@nmk.kokanovic.org", to=[user.email,])
+                msg.content_subtype = "html"
+                msg.send(fail_silently = False)
+                reset = True
+    else:
+        form = ForgotPasswordForm(rp={})
+    return render_to_response("forgotpassword.html", {"form": form, 'reset': reset}, context_instance=RequestContext(request))
+
+@transaction.atomic
 def activation(request):
     logger.info("User is on activation page")
     activation_id = request.GET.get('id', '')
     success = False
+    if request.method == 'POST':
+        form = ResetPasswordForm(request.POST, rp={})
+        if form.is_valid():
+            cleaned_data = form.cleaned_data
+            users = User.objects.filter(email=cleaned_data['email'])
+            if len(users) > 0:
+                user = users[0]
+                user.player.reset_code = id_generator(size=32)
+                user.player.save()
+
+                template = loader.get_template("mail/resetpassword.html")
+                message_text = template.render(Context({
+                                                        "link": "http://nmk.kokanovic.org/profile/reset?id=%s" % user.player.reset_code,
+                                                        "username": user.username}))
+                logger.info("Sending mail to reset user's password to %s", user.email)
+                msg = EmailMessage(u"[nmk] Zahtev za resetovanjem lozinke", message_text, "nmk-no-reply@nmk.kokanovic.org", to=[user.email,])
+                msg.content_subtype = "html"
+                msg.send(fail_silently = False)
+                reset = True
+    else:
+        form = ResetPasswordForm(rp={})
     if activation_id != '':
         players = Player.objects.filter(activation_code = activation_id)
         if len(players) == 1:
@@ -68,6 +116,33 @@ def activation(request):
             players[0].user.save()
             success = True
     return render_to_response("activation.html", {"success": success}, context_instance=RequestContext(request))
+
+@transaction.atomic
+def reset_password(request):
+    logger.info("User is on reset password page")
+    reset_code = request.GET.get('id', '')
+    nonvalid = True
+    reset = False
+    if reset_code != '':
+        players = Player.objects.filter(reset_code = reset_code)
+        if len(players) == 1:
+            player = players[0]
+            nonvalid = False
+    if nonvalid:
+        return render_to_response("resetpassword.html", {"nonvalid": nonvalid}, context_instance=RequestContext(request))
+
+    if request.method == 'POST':
+        form = ResetPasswordForm(request.POST, passwords={})
+        if form.is_valid():
+            cleaned_data = form.cleaned_data
+            player.user.set_password(cleaned_data['password'])
+            player.user.save()
+            reset = True
+    else:
+        form = ResetPasswordForm(passwords={})
+    return render_to_response("resetpassword.html",
+                              {"form": form, "id": reset_code, "nonvalid": nonvalid, "reset": reset, "username": player.user.username},
+                              context_instance=RequestContext(request))
 
 @login_required
 @transaction.atomic

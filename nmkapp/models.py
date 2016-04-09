@@ -9,6 +9,7 @@ class Player(models.Model):
     send_mail = models.BooleanField(default=True)
     groups = models.ManyToManyField('Group')
     activation_code = models.CharField(max_length=255)
+    reset_code = models.CharField(max_length=255)
     
     def __str__(self):
         return "%s (money: %s, points: %.2f)" % (self.user, "yes" if self.in_money else "no", self.points)
