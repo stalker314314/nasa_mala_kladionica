@@ -37,8 +37,8 @@ class Team(models.Model):
     name = models.CharField(max_length=255)
     group_label = models.IntegerField()
 
-    def __str__(self):
-        return "%s (%c)" % (self.name, chr(self.group_label + ord('A')))
+    def __unicode__(self):
+        return u"%s (%c)" % (self.name, chr(self.group_label + ord('A')))
     
 class Round(models.Model):
     LEAGUE = 'League'
