@@ -25,6 +25,10 @@
 
 <h1>MOJE EKIPE</h1>
 {% if groups %}
+<div style="font-size: 120%">Ispod se nalaze sve ekipe u kojima si ti. Ako želiš da dodaš ortake u ekipu, pošalji im (chat-om, mail-om, SMS-om)
+šifru-pozivnicu iz tabele ispod i reci im da odu na "profil" stranu i da je ukucaju na dnu strane.</div>
+<br/>
+
 <table class="sortable mediumtable" style="width: 40%">
 	<thead>
 		<tr>
@@ -62,8 +66,7 @@ Napravi svoju ekipu, pozovi ljude i na tabelama ćeš moći da vidiš kako samo 
 		{{ form_new_group }}
 		<input value="Napravi" type="submit"/>
 	</form>
-</p>
-<p>
+
 	<form method="post" action="/profile">
 		{% csrf_token %}
 		<input name="add_to_group" value="add_to_group" type="hidden">

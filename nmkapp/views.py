@@ -234,8 +234,8 @@ def profile(request):
             new_group.players.add(request.user.player)
             new_group.save()
             messages.add_message(request, messages.INFO,
-                                 u"Uspešno si napravio novu ekipu. Daj sad prijateljima šifru-pozivnicu '%s' \
-                                 da bi mogli da uđu u ekipu" % new_group.group_key)
+                                 u"Uspešno si napravio novu ekipu. Sad pošalji chat-om/mail-om/SMS-om prijateljima šifru-pozivnicu '%s' \
+                                 da bi mogli i oni da uđu u tvoju ekipu" % new_group.group_key)
     else:
         form_new_group = NewGroupForm(group={})
 

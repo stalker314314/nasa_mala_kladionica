@@ -79,7 +79,7 @@ class AddToGroupForm(forms.Form):
         self._player = player
         group_key = kwargs.pop('group_key')
         super(AddToGroupForm, self).__init__(*args, **kwargs)
-        self.fields['key'] = forms.CharField(initial='', required = True, label=u'Unesi šifru-pozivnicu za upad u ekipu:', max_length=8, min_length=0)
+        self.fields['key'] = forms.CharField(initial='', required = True, label=u'Ako si je dobio, unesi šifru-pozivnicu za upad u ekipu:', max_length=8, min_length=0)
 
     def clean(self):
         cleaned_data = super(AddToGroupForm, self).clean()
