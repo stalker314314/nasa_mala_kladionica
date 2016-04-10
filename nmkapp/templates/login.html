@@ -1,3 +1,5 @@
+{% load nmk_tags %}
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -46,9 +48,13 @@
 						{% endif %}
 					</div>
 					<br/>
+					{% is_registration_allowed as is_registration_allowed %}
+					{% if is_registration_allowed %}
 					<div>
-						<a href="/register">Registruj se/Register</a>
+						<a href="/register">Registruj se/Register</a><br/>
+						<small>(registracija moguća do sat vremena pred početak prve utakmice - 10.06.2016 20:00!)</small>
 					</div>
+					{% endif %}
 				</fieldset><input type="hidden" value="_id25" id="javax.faces.ViewState" name="javax.faces.ViewState">
 			</form>
 		</div>
