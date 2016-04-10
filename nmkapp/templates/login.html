@@ -14,9 +14,14 @@
 		<div id="header">
 			<img width="720" height="120" src="/static/img/logo.png">
 		</div>
-	
+
 		<div id="contentlogin">
 			<h1>NAŠA MALA KLADIONICA - PRIJAVA</h1>
+			<p style="font-size: 90%;">
+			NMK je sajt za rekreativno ili pravo klađenje za Euro 2016. prvenstvo u fudbalu.
+			<br/>
+			Prijavi se, pozovi ekipu, tipuj utakmice i pokaži da si najbolji kladioničar!
+			</p>
 			<form method="post" action="{% url 'django.contrib.auth.views.login' %}">
 				{% csrf_token %}
 				<input type="hidden" value="login" name="login">

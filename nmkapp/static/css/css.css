@@ -326,3 +326,6 @@ table.sortable thead {
 #notification .close:hover {
 	background:  #000;
 }
+ul.proposition {
+	font-size: 120%;
+}

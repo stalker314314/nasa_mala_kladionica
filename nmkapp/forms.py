@@ -28,12 +28,14 @@ class RegisterForm(forms.Form):
         if 'username' in cleaned_data and len(cleaned_data['username']) > 28:
             raise forms.ValidationError({'username': ["Korisničko ime mora biti manje od 28 karaktera",]})
         
-        existing_usernames = User.objects.filter(username=cleaned_data['username'])
-        if len(existing_usernames) > 0:
-            raise forms.ValidationError({'username': ["Korisničko ime već postoji",]})
-        existing_mails = User.objects.filter(email=cleaned_data['email'])
-        if len(existing_mails) > 0:
-            raise forms.ValidationError({'email': ["Ovaj e-mail je već u upotrebi. Resetujte lozinku ako je ovo Vaš mail.",]})
+        if 'username' in cleaned_data:
+            existing_usernames = User.objects.filter(username=cleaned_data['username'])
+            if len(existing_usernames) > 0:
+                raise forms.ValidationError({'username': ["Korisničko ime već postoji",]})
+        if 'email' in cleaned_data: 
+            existing_mails = User.objects.filter(email=cleaned_data['email'])
+            if len(existing_mails) > 0:
+                raise forms.ValidationError({'email': ["Ovaj e-mail je već u upotrebi. Resetujte lozinku ako je ovo Vaš mail.",]})
         return cleaned_data
 
 class ForgotPasswordForm(forms.Form):

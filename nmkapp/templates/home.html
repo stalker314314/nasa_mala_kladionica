@@ -2,7 +2,6 @@
 
 {% block content %}
 
-   	
 <h1>TRENUTNA KOLA/ACTIVE ROUNDS</h1>
 <br/>
 
@@ -56,8 +55,12 @@
 			</table>
 			<p class="offset">
 				<input name="save_{{ bet.round.id }}" value="Sačuvaj za sada/Save" type="submit">
-				<input name="final_save_{{ bet.round.id }}" value="Konačan odgovor/Final answer" type="submit">
+				<input name="final_save_{{ bet.round.id }}" value="Konačan odgovor !!! / Final answer" type="submit">
 			</p>
+			<ul>
+				<li>Sačuvaj za sada &ndash; snimi svoje tipove</li>
+				<li>Konačan odgovor &ndash; snimi svoje tipove tako da ne možeš da ih menjaš više, ali možeš da vidiš šta su drugi igrali</li>
+			</ul>
 		</form>
 	
 	{% else %}
