@@ -9,8 +9,10 @@ from operator import itemgetter
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db import transaction
 from django.contrib import messages
-from nmkapp.forms import RoundForm, MatchForm, ResultsForm, BettingForm, PlayerForm, RegisterForm, ForgotPasswordForm, ResetPasswordForm
-from django.http.response import HttpResponseRedirect, HttpResponseServerError
+from nmkapp.forms import RoundForm, MatchForm, ResultsForm, BettingForm, PlayerForm
+from nmkapp.forms import RegisterForm, ForgotPasswordForm, ResetPasswordForm, NewGroupForm, AddToGroupForm
+from django.http.response import HttpResponseRedirect, HttpResponseServerError,\
+    Http404
 from django.contrib.auth.models import User
 from nmkapp.logic import recalculate_round_points
 from datetime import datetime
@@ -229,15 +231,48 @@ def format_time_left(shots):
         return "N/A"
 
 @login_required
+@transaction.atomic
 def profile(request):
-    if request.method == 'POST':
+    if request.method == 'POST' and 'profile_change' in request.POST:
         form = PlayerForm(request.POST, instance=request.user.player)
         if form.is_valid():
             form.save()
             messages.add_message(request, messages.INFO, u"Podešavanja uspešno sačuvana/Settings successfully saved")
     else:
         form = PlayerForm(instance=request.user.player)
-    return render_to_response("profile.html", {"form": form}, context_instance=RequestContext(request))
+
+    if request.method == 'POST' and 'new_group' in request.POST:
+        form_new_group = NewGroupForm(request.POST, group={})
+        if form_new_group.is_valid():
+            cleaned_data = form_new_group.cleaned_data
+            new_group = Group(name = cleaned_data['name'], group_key = id_generator(size=8, chars=string.digits), owner = request.user.player)
+            new_group.save()
+            new_group.players.add(request.user.player)
+            new_group.save()
+            messages.add_message(request, messages.INFO,
+                                 u"Uspešno ste napravili novu ekipu. Dajte prijateljima šifru-pozivnicu '%s' \
+                                 da bi mogli da uđu u ekipu" % new_group.group_key)
+    else:
+        form_new_group = NewGroupForm(group={})
+
+    if request.method == 'POST' and 'add_to_group' in request.POST:
+        form_add_group = AddToGroupForm(request.user.player, request.POST, group_key={})
+        if form_add_group.is_valid():
+            cleaned_data = form_add_group.cleaned_data
+            groups = Group.objects.filter(group_key = cleaned_data['key'])
+            group = groups[0]
+            group.players.add(request.user.player)
+            group.save()
+            messages.add_message(request, messages.INFO, u"Uspešno si se dodao u ekipu")
+    else:
+        form_add_group = AddToGroupForm(request.user.player, group_key={})
+
+    groups = Group.objects.filter(player__in=[request.user.player])
+    return render_to_response(
+                              "profile.html",
+                              {"form": form, "form_new_group": form_new_group, "form_add_group": form_add_group,
+                               "groups": groups, "current_user": request.user.player},
+                              context_instance=RequestContext(request))
 
 @login_required
 def results(request):
@@ -317,6 +352,49 @@ def standings(request):
             "standings": standings,
             "groups": all_groups,
             "selected_group": selected_group}, context_instance=RequestContext(request))
+
+@login_required
+@transaction.atomic
+def group_leave(request, group_id):
+    group = get_object_or_404(Group, pk=int(group_id))
+    # Check if user is in group at all
+    if len(Group.objects.filter(pk = int(group_id)).filter(player__in=[request.user.player])) == 0:
+        raise Http404()
+    # Check if user is owner of the group
+    error = None
+    if request.user.player == group.owner:
+        error = "Ne možeš da izađeš iz ekipe koju si ti napravio, možeš samo da je izbrišeš skroz."
+
+    if not error and request.method == 'POST':
+        if '0' in request.POST:
+            return HttpResponseRedirect('/profile')
+        elif '1' in request.POST:
+            group.players.remove(request.user.player)
+            messages.add_message(request, messages.INFO, u"Izašao si iz ekipe '%s'" % group.name)
+            return HttpResponseRedirect('/profile')
+    return render_to_response("group_leave.html", {"error": error, "group": group}, context_instance=RequestContext(request))
+
+@login_required
+@transaction.atomic
+def group_delete(request, group_id):
+    group = get_object_or_404(Group, pk=int(group_id))
+    # Check if user is in group at all
+    if len(Group.objects.filter(pk = int(group_id)).filter(player__in=[request.user.player])) == 0:
+        raise Http404()
+    # Check if user is owner of the group
+    error = None
+    if request.user.player != group.owner:
+        error = "Ne možeš da izbrišeš ekipu koju nisi ti napravio, možeš samo da izađeš iz nje."
+
+    if not error and request.method == 'POST':
+        if '0' in request.POST:
+            return HttpResponseRedirect('/profile')
+        elif '1' in request.POST:
+            group.players.clear()
+            group.delete()
+            messages.add_message(request, messages.INFO, u"Ekipa '%s' izbrisana" % group.name)
+            return HttpResponseRedirect('/profile')
+    return render_to_response("group_delete.html", {"error": error, "group": group}, context_instance=RequestContext(request))
 
 @login_required
 def round_standings(request, round_id):

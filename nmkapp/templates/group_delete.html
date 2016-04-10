@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Brisanje ekipe</h1>
+
+<p>
+	{% if error %}
+	{{ error }}
+	{% else %}
+	Da li si siguran da želiš da zauvek izbrišeš ekipu <b>{{ group.name }}</b> i sve njene članove?
+
+	<form method="post" action="/groups/{{ group.id }}/delete">
+		{% csrf_token %}
+		<input value="Da" name="1" type="submit"/>
+		<input value="Ne" name="0" type="submit"/>
+	</form>
+	{% endif %}
+</p>
+
+{% endblock %}

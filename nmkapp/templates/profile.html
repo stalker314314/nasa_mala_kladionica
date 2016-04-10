@@ -2,23 +2,80 @@
 
 {% block content %}
 
-<h1>PODEŠAVANJA</h1>
-
 {% if messages %}
     {% for message in messages %}
     <div class="entry errors">{{ message }}</div>
     {% endfor %}
 {% endif %}
 
+<br/>
+<h1>OPŠTA PODEŠAVANJA</h1>
+
 <form method="post" action="/profile">
 	{% csrf_token %}
+	<input name="profile_change" value="profile_change" type="hidden">
 	{{ form.as_p }}
-		
+
 	<div id="buttonBox">
 		<br/>
 		<input value="Izmeni" type="submit"/>
 	</div>
 </form>
+<br/>
 
+<h1>MOJE EKIPE</h1>
+{% if groups %}
+<table class="sortable mediumtable" style="width: 40%">
+	<thead>
+		<tr>
+		<th style="width: 40%">Ime ekipe</th>
+		<th style="width: 20%">Šifra-pozivnica</th>
+		<th>Izađi iz ekipe</th>
+		<th>Izbriši ekipu</th>
+	</thead>
+	{% for group in groups %}
+	<tr>
+		<td>{{ group.name }}</td>
+		<td>{{ group.group_key }}</td>
+		<td>
+			{% if group.owner != current_user %}
+			<a href="/groups/{{ group.id }}/leave"><img width="16px" height="16px" border="0" alt="[Izađi]" title="Izađi" src="/static/img/leave_group.png"></a>
+			{% endif %}
+		</td>
+		<td>
+			{% if group.owner == current_user %}
+			<a href="/groups/{{ group.id }}/delete"><img width="16px" height="16px" border="0" alt="[Izbriši]"title="Izbriši" src="/static/img/delete_group.png"></a>
+			{% endif %}
+		</td>
+	<tr>
+	{% endfor %}
+</table>
+{% else %}
+<h3>Nisi ni u jednoj ekipi<img src="/static/img/facebook-frown-emoticon.png" />.
+Napravi svoju ekipu, pozovi ljude i na tabelama ćeš moći da vidiš kako samo vi stojite međusobno!</h3>
+{% endif %}
 
+<p>
+	<form method="post" action="/profile">
+		{% csrf_token %}
+		<input name="new_group" value="new_group" type="hidden">
+		{{ form_new_group }}
+		<input value="Napravi" type="submit"/>
+	</form>
+</p>
+<p>
+	<form method="post" action="/profile">
+		{% csrf_token %}
+		<input name="add_to_group" value="add_to_group" type="hidden">
+		{{ form_add_group }}
+		<input value="Uđi" type="submit"/>
+	</form>
+</p>
+<br/>
+
+<h1>PROMENA LOZINKE</h1>
+
+<form method="get" action="/profile/password">
+	<input value="Promeni lozinku" type="submit"/>
+</form>
 {% endblock %}

@@ -16,7 +16,9 @@ class Player(models.Model):
 
 class Group(models.Model):
     name = models.CharField(unique=True, max_length=255)
+    owner = models.ForeignKey(Player, related_name = 'owner')
     players = models.ManyToManyField(Player, through=Player.groups.through)
+    group_key = models.CharField(max_length=8)
     
     def __str__(self):
         return self.name

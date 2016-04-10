@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.forms.models import ModelForm
-from nmkapp.models import Round, Match, Shot, Player, Team
+from nmkapp.models import Round, Match, Shot, Player, Team, Group
 from django import forms
 from nmkapp.widgets import DateTimeWidget
 from django.contrib.auth.models import User
@@ -55,7 +55,42 @@ class ResetPasswordForm(forms.Form):
             if cleaned_data['password'] != cleaned_data['password2']:
                 raise forms.ValidationError({'password2': ["Lozinke se ne poklapaju",]})
         return cleaned_data
-    
+
+class NewGroupForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        group = kwargs.pop('group')
+        super(NewGroupForm, self).__init__(*args, **kwargs)
+        self.fields['name'] = forms.CharField(initial='', required = True, label='Napravi novu ekipu', max_length=64, min_length=5)
+
+    def clean(self):
+        cleaned_data = super(NewGroupForm, self).clean()
+        if 'name' in cleaned_data:
+            if len(cleaned_data['name']) > 64:
+                raise forms.ValidationError({'name': ["Ime ekipe predugačko",]})
+            groups = Group.objects.filter(name=cleaned_data['name'])
+            if len(groups) > 0:
+                raise forms.ValidationError({'name': ["Nažalost, neko je već uzeo ovo ime ekipe",]})
+        return cleaned_data
+
+class AddToGroupForm(forms.Form):
+    def __init__(self, player, *args, **kwargs):
+        self._player = player
+        group_key = kwargs.pop('group_key')
+        super(AddToGroupForm, self).__init__(*args, **kwargs)
+        self.fields['key'] = forms.CharField(initial='', required = True, label='Unesi šifru-pozivnicu za upad u ekipu:', max_length=8, min_length=0)
+
+    def clean(self):
+        cleaned_data = super(AddToGroupForm, self).clean()
+        if 'key' in cleaned_data:
+            if len(cleaned_data['key']) < 8:
+                raise forms.ValidationError({'key': ["Šifra-pozivnica mora da ima 8 brojeva",]})
+            groups = Group.objects.filter(group_key=cleaned_data['key'])
+            if len(groups) == 0:
+                raise forms.ValidationError({'key': ["Neispravna šifra-pozivnica",]})
+            if len(Group.objects.filter(group_key = cleaned_data['key']).filter(player__in=[self._player])) > 0:
+                raise forms.ValidationError({'key': ["Već ste u ovoj ekipi",]})
+        return cleaned_data
+
 class RoundForm(ModelForm):
     class Meta:
         model = Round
