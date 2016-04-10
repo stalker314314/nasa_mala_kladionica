@@ -29,13 +29,13 @@ class StandingsCache():
             rounds_matrix_mapping = {}
             ur_matrix = [[0 for x in range(rounds_count)] for x in range(players_count)]
             for user_round in user_rounds:
-                if user_round.user.id not in player_matrix_mapping:
-                    player_matrix_mapping[user_round.user.id] = players_count - 1
+                if user_round.user.player.id not in player_matrix_mapping:
+                    player_matrix_mapping[user_round.user.player.id] = players_count - 1
                     players_count = players_count - 1
                 if user_round.round.id not in rounds_matrix_mapping:
                     rounds_matrix_mapping[user_round.round.id] = rounds_count - 1
                     rounds_count = rounds_count - 1
-                ur_matrix[player_matrix_mapping[user_round.user.id]][rounds_matrix_mapping[user_round.round.id]] = user_round.points
+                ur_matrix[player_matrix_mapping[user_round.user.player.id]][rounds_matrix_mapping[user_round.round.id]] = user_round.points
             
             if self.group is not None:
                 players = players.filter(groups__in=[self.group])
