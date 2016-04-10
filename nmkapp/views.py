@@ -156,14 +156,14 @@ def home(request):
     logger.info("User %s is on betting page", request.user)
     active_rounds = Round.objects.filter(active=True).order_by("id")
     if len(active_rounds) == 0:
-        messages.add_message(request, messages.INFO, u"Trenutno nema aktivnog kola za klađenje, pokušajte kasnije")
+        messages.add_message(request, messages.INFO, u"Trenutno nema aktivnog kola za klađenje, pokušaj kasnije")
         return render_to_response("home.html", {"shots": []}, context_instance=RequestContext(request))
 
     bets = []
     for active_round in active_rounds:
         user_rounds = UserRound.objects.select_related('round').filter(user=request.user).filter(round=active_round)
         if len(user_rounds) != 1:
-            messages.add_message(request, messages.INFO, u"Trenutno nema aktivnog kola za klađenje, pokušajte kasnije")
+            messages.add_message(request, messages.INFO, u"Trenutno nema aktivnog kola za klađenje, pokušaj kasnije")
             return render_to_response("home.html", {"shots": []}, context_instance=RequestContext(request))
     
         user_round = user_rounds[0]
@@ -204,7 +204,7 @@ def home(request):
                         user_round.shot_allowed = False
                         user_round.save()
                     UserRoundShotCache(user_round).clear()
-                    messages.add_message(request, messages.INFO, u"Tipovanje uspešno sačuvano/Placed bets successfully saved")
+                    messages.add_message(request, messages.INFO, u"Tipovanje uspešno sačuvano")
                     return HttpResponseRedirect('/')
             else:
                 form = BettingForm(shots=shots)
@@ -230,7 +230,7 @@ def format_time_left(shots):
         elif seconds_left > 0:
             return "%dsec" % seconds_left
         else:
-            return "prvi meč već počeo/first match already started"
+            return "prvi meč već počeo"
     else:
         return "N/A"
 
@@ -241,7 +241,7 @@ def profile(request):
         form = PlayerForm(request.POST, instance=request.user.player)
         if form.is_valid():
             form.save()
-            messages.add_message(request, messages.INFO, u"Podešavanja uspešno sačuvana/Settings successfully saved")
+            messages.add_message(request, messages.INFO, u"Podešavanja uspešno sačuvana")
     else:
         form = PlayerForm(instance=request.user.player)
 
@@ -254,7 +254,7 @@ def profile(request):
             new_group.players.add(request.user.player)
             new_group.save()
             messages.add_message(request, messages.INFO,
-                                 u"Uspešno ste napravili novu ekipu. Dajte prijateljima šifru-pozivnicu '%s' \
+                                 u"Uspešno si napravio novu ekipu. Daj sad prijateljima šifru-pozivnicu '%s' \
                                  da bi mogli da uđu u ekipu" % new_group.group_key)
     else:
         form_new_group = NewGroupForm(group={})

@@ -58,18 +58,18 @@
 			</div>
 
 			<div id="navigation">
-					Meni/Menu
+					Meni
 					<hr />
 					{% if user.is_authenticated %}
-					<a href="/" class="navigation">Klađenje/Betting</a>
-					<a href="/results" class="navigation">Rezultati/Results</a>
-					<a href="/standings" class="navigation">Tabele/Standings</a>
+					<a href="/" class="navigation">Klađenje</a>
+					<a href="/results" class="navigation">Rezultati</a>
+					<a href="/standings" class="navigation">Tabele</a>
 					<a href="/profile" class="navigation">Profil</a>
-					<a href="/proposition" class="navigation">Pravila/Rules</a>
+					<a href="/proposition" class="navigation">Pravila</a>
 					<a href="/logout" class="navigation">Logout</a>
 					{% else %}
 					<a href="/login" class="navigation">Login</a>
-					<a href="/proposition" class="navigation">Pravila/Rules</a>
+					<a href="/proposition" class="navigation">Pravila</a>
 					{% endif %}
 					<br />
 					<br />

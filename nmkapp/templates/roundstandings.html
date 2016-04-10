@@ -21,12 +21,12 @@ function refreshPage(sel) {
 
 {% if can_see_standings %}
 
-Odaberi ekipu/choose a group:
+Odaberi ekipu:
 <select name="group" id="id_group" onchange="refreshPage(this)">
 	{% if selected_group == "" %} 
-	<option selected="selected" value="">Svi/All</option>
+	<option selected="selected" value="">Svi</option>
 	{% else %}
-	<option value="">Svi/All</option>
+	<option value="">Svi</option>
 	{% endif %}
 	{% for group in groups %}
 		{% if selected_group == group.name %}
@@ -128,7 +128,7 @@ Odaberi ekipu/choose a group:
 	<tfoot style="height: 40px">
 		<tr>
 			<td></td>
-			<td>Kvota/Odd</td>
+			<td>Kvota</td>
 			{% for match in matches %}
 			{% if match.result == 1 %}
 			<td class="sorttable_nosort numbercenter">{{ match.odd1 }}</td>
@@ -151,7 +151,7 @@ Odaberi ekipu/choose a group:
 		</tr>
 		<tr>
 			<td></td>
-			<td>Tačan rez./Correct score</td>
+			<td>Tačan rezultat</td>
 			{% for match in matches %}
 			<td class="numbercenter">
 				{% if match.result != None %}
@@ -168,14 +168,11 @@ Odaberi ekipu/choose a group:
 <br/>
 <br/>
 * Korisnici koji igraju u pare su boldovani
-<br/>
-* Players who play in money are shown in bold
 
 {% else %}
 <div class="entry errors">
 	<ul>
 		<li>Nemate prava da pogledate tipovanja ostalih korisnika dok Vi ne istipujete rezultate za ovo kolo.</li>
-		<li>You are not allowed to see bets of other players until You place a bet for this round.</li>
 	</ul>
 </div>
 

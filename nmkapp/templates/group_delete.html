@@ -7,7 +7,7 @@
 	{% if error %}
 	{{ error }}
 	{% else %}
-	Da li si siguran da želiš da zauvek izbrišeš ekipu <b>{{ group.name }}</b> i sve njene članove?
+	Hmmm...da li si baš siguran da želiš da zauvek izbrišeš ekipu <b>{{ group.name }}</b> i sve njene članove?
 
 	<form method="post" action="/groups/{{ group.id }}/delete">
 		{% csrf_token %}

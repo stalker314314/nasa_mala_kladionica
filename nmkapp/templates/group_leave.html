@@ -7,7 +7,7 @@
 	{% if error %}
 	{{ error }}
 	{% else %}
-	Da li si siguran da želiš da napustiš ekipu <b>{{ group.name }}</b>?
+	Hmmm...da li si siguran da želiš da napustiš ekipu <b>{{ group.name }}</b>?
 
 	<form method="post" action="/groups/{{ group.id }}/leave">
 		{% csrf_token %}
