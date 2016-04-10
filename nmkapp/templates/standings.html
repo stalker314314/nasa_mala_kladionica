@@ -28,7 +28,14 @@ Odaberi ekipu:
 		{% endif %}
 	{% endfor %}
 </select>
+{% if groups %}
+{% else %}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(hej, pa ti nemaš nijednu ekipu, napravi ekipu na <a href="/profile">profil</a> strani i pozovi ortake!)
+{% endif %}
 <br/>
+<br/>
+
+<div>Savet: Klikni na kolo da pogledaš rezultate samo tog kola!</div>
 <br/>
 
 <table class="sortable mediumtable">
