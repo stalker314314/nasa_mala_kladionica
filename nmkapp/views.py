@@ -94,27 +94,7 @@ def activation(request):
     logger.info("User is on activation page")
     activation_id = request.GET.get('id', '')
     success = False
-    if request.method == 'POST':
-        form = ResetPasswordForm(request.POST, rp={})
-        if form.is_valid():
-            cleaned_data = form.cleaned_data
-            users = User.objects.filter(email=cleaned_data['email'])
-            if len(users) > 0:
-                user = users[0]
-                user.player.reset_code = id_generator(size=32)
-                user.player.save()
 
-                template = loader.get_template("mail/resetpassword.html")
-                message_text = template.render(Context({
-                                                        "link": "http://nmk.kokanovic.org/profile/reset?id=%s" % user.player.reset_code,
-                                                        "username": user.username}))
-                logger.info("Sending mail to reset user's password to %s", user.email)
-                msg = EmailMessage(u"[nmk] Zahtev za resetovanjem lozinke", message_text, "nmk-no-reply@nmk.kokanovic.org", to=[user.email,])
-                msg.content_subtype = "html"
-                msg.send(fail_silently = False)
-                reset = True
-    else:
-        form = ResetPasswordForm(rp={})
     if activation_id != '':
         players = Player.objects.filter(activation_code = activation_id)
         if len(players) == 1:
