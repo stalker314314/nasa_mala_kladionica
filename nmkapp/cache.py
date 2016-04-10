@@ -20,20 +20,33 @@ class StandingsCache():
         group_key = self.get_key()
         standings_from_cache = cache.get(group_key)
         if standings_from_cache is None:
-            user_rounds = UserRound.objects.select_related('user', 'round').all()
+            user_rounds = list(UserRound.objects.select_related('user', 'round').all())
             players = Player.objects.select_related('user').all()
+            # create a matrix of [users][rounds] = points
+            players_count = len(players)
+            rounds_count = len(rounds)
+            player_matrix_mapping = {}
+            rounds_matrix_mapping = {}
+            ur_matrix = [[0 for x in range(rounds_count)] for x in range(players_count)]
+            for user_round in user_rounds:
+                if user_round.user.id not in player_matrix_mapping:
+                    player_matrix_mapping[user_round.user.id] = players_count - 1
+                    players_count = players_count - 1
+                if user_round.round.id not in rounds_matrix_mapping:
+                    rounds_matrix_mapping[user_round.round.id] = rounds_count - 1
+                    rounds_count = rounds_count - 1
+                ur_matrix[player_matrix_mapping[user_round.user.id]][rounds_matrix_mapping[user_round.round.id]] = user_round.points
+            
             if self.group is not None:
                 players = players.filter(groups__in=[self.group])
-                
             for player in players:
                 round_standings = []
                 for this_round in rounds:
-                    user_round = next((x.points for x in user_rounds if x.user==player.user and x.round==this_round), 0)
+                    user_round = ur_matrix[player_matrix_mapping[player.id]][rounds_matrix_mapping[this_round.id]]
                     round_standings.append(user_round)
                 standing = [ player, round_standings, player.points ]
                 standings.append(standing)
             standings = sorted(standings, key=lambda s: (-s[2], s[0].user.first_name, s[0].user.last_name))
-            
             # populate positions
             position = 1
             position_increment = 1
@@ -47,7 +60,6 @@ class StandingsCache():
                         position_increment += 1
                 previous_points = standing[2]
                 standing.append(position)
-                
             cache.add(group_key, standings)
         else:
             standings = standings_from_cache
