@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load nmk_tags %}
 
 {% block content %}
 
@@ -6,22 +7,38 @@
 
 <ul class="proposition">
 	<li>
-	Ne mora se igrati u novac, tj. novac je opciona stvar.
+	Ne mora se igrati u novac, tj. novac je opciona stvar. Ako se igra u novac, moraš se prijaviti 1h pre početka prve utakmice (10.06.2016 20:00). 
 	</li>
 	<li>
-	Ako se igra u novac, ulog je 1000 dinara, a pare se dele među prva tri mesta
+	Ako se igra u novac, ulog je 10€, a pare se dele među prva tri mesta
 	i to u odnosu 3:2:1, tj. prvo mesto uzima 50%, drugo 33.3%, a treće 16.6%.
 	</li>
 	<li>
-	Autori sajta <strong>ne uzimaju</strong> nikakvu proviziju.
+	Pošto Paypal uzima proviziju i meni od tvojih 10€, ukupan fond za nagrade je za 10% manji od ukupnog broja ljudi koji su dali pare * 10€.
 	</li>
 	<li>
-	Da biste igrali u novac, uplatite 1000 dinara preko PayPal-a na branko [tacka] kokanovic [na] gmail [tacka] com i posaljite mail na istu ovu
-	adresu sa Vašim korisničkim imenom, da bismo Vam promenili status.
+	Ukoliko preskočiš ili ne odigraš neko kolo, novac se ne vraća.
 	</li>
+{% is_registration_allowed as is_registration_allowed %}
+{% if is_registration_allowed %}
+{% if player %}
+{% if player.in_money %}
+{% else %}
 	<li>
-	Ukoliko preskočite ili ne odigrate neko kolo, novac se ne vraća.
+	Kad ti je sve ovo sad jasno, klikni na dugme ispod i učipi se sa 10€. To nije mnogo, a što nas je više &ndash; veća i nagrada! U roku od 24h od uplate, na
+	<a href="/standings">tabelama</a> treba da vidiš svoje ime boldovano.
 	</li>
+<br/>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+	<input type="hidden" name="cmd" value="_s-xclick">
+	<input type="hidden" name="hosted_button_id" value="LTSLB5DY9345W">
+	<input type="hidden" name="custom" value="{{ player.user.username }}">
+	<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+	<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+{% endif %}
+{% endif %}
+{% endif %}
 </ul>
 <br/>
 

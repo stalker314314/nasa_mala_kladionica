@@ -95,13 +95,15 @@ def activation(request):
     activation_id = request.GET.get('id', '')
     success = False
 
+    player = None
     if activation_id != '':
         players = Player.objects.filter(activation_code = activation_id)
         if len(players) == 1:
             players[0].user.is_active = True
             players[0].user.save()
             success = True
-    return render_to_response("activation.html", {"success": success}, context_instance=RequestContext(request))
+            player = players[0]
+    return render_to_response("activation.html", {"success": success, "player": player}, context_instance=RequestContext(request))
 
 @transaction.atomic
 def reset_password(request):
@@ -445,7 +447,10 @@ def download(request):
     return render_to_response("download.html", {}, context_instance=RequestContext(request))
 
 def proposition(request):
-    return render_to_response("proposition.html", {}, context_instance=RequestContext(request))
+    player = None
+    if not request.user.is_anonymous():
+        player = request.user.player
+    return render_to_response("proposition.html", {"player": player}, context_instance=RequestContext(request))
 
 @staff_member_required
 def admin_rounds(request):
