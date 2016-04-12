@@ -20,7 +20,7 @@ class StandingsCache():
         group_key = self.get_key()
         standings_from_cache = cache.get(group_key)
         if standings_from_cache is None:
-            user_rounds = list(UserRound.objects.select_related('user', 'round').all())
+            user_rounds = list(UserRound.objects.select_related('user', 'user__player', 'round').all())
             players = Player.objects.select_related('user').all()
             # create a matrix of [users][rounds] = points
             players_count = len(players)
