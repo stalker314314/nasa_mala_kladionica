@@ -511,6 +511,12 @@ def admin_rounds_edit(request):
             for group in groups:
                 StandingsCache(group).clear()
             StandingsCache().clear()
+            # repopulate cache
+            rounds = Round.objects.all()
+            for group in groups:
+                StandingsCache(group).get(rounds)
+            StandingsCache().get(rounds)
+
             messages.add_message(request, messages.INFO, u"Novo kolo %s uspešno kreirano" % new_round.name)
             return HttpResponseRedirect('/admin/rounds')
     else:
@@ -577,6 +583,11 @@ def admin_results_change(request, match_id):
             for group in groups:
                 StandingsCache(group).clear()
             StandingsCache().clear()
+            # repopulate cache
+            rounds = Round.objects.all()
+            for group in groups:
+                StandingsCache(group).get(rounds)
+            StandingsCache().get(rounds)
 
             # send mail if this is the last match from round
             if settings.SEND_MAIL:
