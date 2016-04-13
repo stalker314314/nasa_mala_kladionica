@@ -264,6 +264,9 @@ def profile(request):
 def results(request):
     return render_to_response("results.html", {}, context_instance=RequestContext(request))
 
+def paypal(request):
+    return render_to_response("paypal.html", {}, context_instance=RequestContext(request))
+
 @login_required
 def results_league(request):
     groups = []
