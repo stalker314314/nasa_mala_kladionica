@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/floatthead/1.4.0/jquery.floatThead.min.js"></script>
+
 <script type="text/javascript">
 function refreshPage(sel) {
     var value = sel.value;
@@ -15,6 +17,9 @@ function refreshPage(sel) {
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		$('#roundstandings').floatThead({
+			position: 'fixed'
+		});
 		$('.tooltip').tipsy({fade: true, delayIn: 500});
 	});
 </script>
@@ -64,27 +69,27 @@ Odaberi ekipu:
 	<tbody>
 		{% for round_standing in round_standings %}
 		<tr style="height: 40px">
-			{% if round_standing.user_round.user.username == user.username %}
+			{% if round_standing.user_round.username == user.username %}
 			<td style="background: rgb(204, 204, 204);">
 			{% else %}
 			<td>
 			{% endif %}
 				{{ round_standing.position }}.
 			</td>
-			{% if round_standing.user_round.user.username == user.username %}
+			{% if round_standing.user_round.username == user.username %}
 			<td style="background: rgb(204, 204, 204);">
 			{% else %}
 			<td>
 			{% endif %}
-			{% if round_standing.user_round.user.player.in_money %}
-				<b>{{ round_standing.user_round.user.first_name }} {{ round_standing.user_round.user.last_name }}</b>
+			{% if round_standing.user_round.in_money %}
+				<b>{{ round_standing.user_round.full_name }}</b>
 			{% else %}
-				{{ round_standing.user_round.user.first_name }} {{ round_standing.user_round.user.last_name }}
+				{{ round_standing.user_round.full_name }}
 			{% endif %}
 			</td>
 			{% for shot in round_standing.shots %}
-			{% if shot.match.result != None %}
-				{% ifequal shot.shot shot.match.result %}
+			{% if shot.match_result != None %}
+				{% ifequal shot.shot shot.match_result %}
 				<td class="numbergreen">
 				{% else %}
 				<td class="numberred">
@@ -92,25 +97,11 @@ Odaberi ekipu:
 			{% else %}
 			<td class="number">
 			{% endif %}
-			{% if shot.match.result != None %}
-				{% if shot.match.result == 1 %}
-					<a title="{{ shot.match.home_team.name }} - {{ shot.match.away_team.name }} ({{ shot.match.odd1 }})" class="tooltip">
-				{% elif shot.match.result == 0 %}
-					<a title="{{ shot.match.home_team.name }} - {{ shot.match.away_team.name }} ({{ shot.match.oddX }})" class="tooltip">
-				{% elif shot.match.result == 2 %}
-					<a title="{{ shot.match.home_team.name }} - {{ shot.match.away_team.name }} ({{ shot.match.odd2 }})" class="tooltip">
-				{% else %}
-					<a title="{{ shot.match.home_team.name }} - {{ shot.match.away_team.name }}" class="tooltip">
-				{% endif %}
-			{% else %}
-				<a title="{{ shot.match.home_team.name }} - {{ shot.match.away_team.name }} ({{shot.match.odd1}}) ({{ shot.match.oddX }}) ({{ shot.match.odd2 }})" class="tooltip">
-			{% endif %}
 			{% if shot.shot == 0 %}
 			X
 			{% else %}
 			{{ shot.shot }}
 			{% endif %}
-			</a>
 			</td>
 			{% empty %}
 			{% for match in matches %}
@@ -119,7 +110,7 @@ Odaberi ekipu:
 			</td>
 			{% endfor %}
 			{% endfor %}
-			{% if round_standing.user_round.user.username == user.username %} 
+			{% if round_standing.user_round.username == user.username %} 
 			<td class="number" style="background: rgb(204, 204, 204);">
 			{% else %}
 			<td class="number">

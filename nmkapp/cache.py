@@ -2,7 +2,10 @@ import hashlib
 
 from django.core.cache import cache
 
-from nmkapp.models import Player, Round, Shot, UserRound
+from nmkapp.models import Player, Round, Shot, UserRound, Group, Match
+
+import logging
+logger = logging.getLogger(__name__)
 
 class StandingsCache():
     def __init__(self, group = None):
@@ -27,7 +30,7 @@ class StandingsCache():
             rounds_count = len(rounds)
             player_matrix_mapping = {}
             rounds_matrix_mapping = {}
-            ur_matrix = [[0 for x in range(rounds_count)] for x in range(players_count)]
+            ur_matrix = [[0 for _ in range(rounds_count)] for _ in range(players_count)]
             for user_round in user_rounds:
                 if user_round.user.player.id not in player_matrix_mapping:
                     player_matrix_mapping[user_round.user.player.id] = players_count - 1
@@ -66,22 +69,114 @@ class StandingsCache():
             
         return standings
 
-class UserRoundShotCache:
-    def __init__(self, user_round):
-        self.user_round = user_round
-    
+class RoundStandingsCache:
+    def __init__(self, round, group = None):
+        self.round = round
+        self.group = group
+
     def get_key(self):
-        return "shots_by_user_round/%d" % self.user_round.id
-    
+        group_key = hashlib.sha256((self.group.name + 'v3').encode('utf-8')).hexdigest() if self.group is not None else 'v3'
+        return "round/%d/%s" % (self.round.id, group_key)
+
     def clear(self):
         cache.delete(self.get_key())
 
+    @staticmethod
+    def clear_round(round):
+        groups = Group.objects.all()
+        RoundStandingsCache(round).clear()
+        for group in groups:
+            RoundStandingsCache(round, group).clear()
+        return groups
+
+    @staticmethod
+    def clear_group(group = None):
+        rounds = Round.objects.all()
+        for round in rounds:
+            RoundStandingsCache(round, group).clear()
+        return rounds
+
+    @staticmethod
+    def repopulate_round(round):
+        groups = RoundStandingsCache.clear_round(self, round)
+        for group in groups:
+            RoundStandingsCache(round, group).get()
+
+    @staticmethod
+    def repopulate_group(group = None):
+        rounds = RoundStandingsCache.clear_group(group)
+        for round in rounds:
+            RoundStandingsCache(round, group).get()
+
     def get(self):
-        shots_from_cache = cache.get(self.get_key())
-        if shots_from_cache is None:
-            shots = Shot.objects.select_related('match', 'match__home_team', 'match__away_team').filter(user_round=self.user_round).order_by("match__start_time", "match")
-            cache.add(self.get_key(), shots)
+        round_standings_from_cache = cache.get(self.get_key())
+        if round_standings_from_cache is None:
+            round_standings = []
+            position = 1
+            position_increment = 1
+
+            shots=Shot.objects.\
+                select_related('user_round', 'user_round__user', 'user_round__user__player', 'match', 'match__home_team', 'match__away_team').\
+                filter(user_round__round=self.round)
+            if self.group is not None:
+                shots = shots.filter(user_round__user__player__groups__in=[self.group])
+            shots = shots.order_by('-user_round__points', 'user_round__user__first_name', 'user_round__user__last_name', 'match__start_time', 'match__id')
+            
+            last_user_round = None
+            shots_in_user_round = []
+            for shot in shots:
+                if last_user_round != None and last_user_round != shot.user_round:
+                    ur_simple = {
+                                 'username': last_user_round.user.username,
+                                 'in_money': last_user_round.user.player.in_money,
+                                 'full_name': '%s %s' % (last_user_round.user.first_name, last_user_round.user.last_name),
+                                 'points': last_user_round.points
+                                 }
+                    round_standings.append({'user_round': ur_simple, 'shots': shots_in_user_round, 'position': position})
+                    shots_in_user_round = []
+                    if last_user_round.points != shot.user_round.points:
+                        position += position_increment
+                        position_increment = 1
+                    else:
+                        position_increment += 1
+                last_user_round = shot.user_round
+                shots_in_user_round.append({
+                                            'shot': shot.shot,
+                                            'match_result': shot.match.result
+                                            })
+            # Process last one
+            if last_user_round != None:
+                ur_simple = {
+                             'username': last_user_round.user.username,
+                             'in_money': last_user_round.user.player.in_money,
+                             'full_name': '%s %s' % (last_user_round.user.first_name, last_user_round.user.last_name),
+                             'points': last_user_round.points
+                             }
+                round_standings.append({'user_round': ur_simple, 'shots': shots_in_user_round, 'position': position})
+                position += 1
+            # Add remaining users that didn't played shots in this round
+            user_rounds_not_played = UserRound.objects.select_related('user', 'user__player').filter(round=self.round).filter(shot=None)
+            if self.group is not None:
+                user_rounds_not_played = user_rounds_not_played.filter(user__player__groups__in=[self.group])
+            user_rounds_not_played = user_rounds_not_played.order_by('-points', 'user__first_name', 'user__last_name')
+            if len(user_rounds_not_played) > 0:
+                matches = Match.objects.filter(round=self.round).order_by('start_time', 'id')
+                shots_in_user_round = []
+                for match in matches:
+                    shots_in_user_round.append({
+                                                'shot': '',
+                                                'match_result': match.result
+                                                })
+                for user_round_not_player in user_rounds_not_played:
+                    ur_simple = {
+                                 'username': user_round_not_player.user.username,
+                                 'in_money': user_round_not_player.user.player.in_money,
+                                 'full_name': '%s %s' % (user_round_not_player.user.first_name, user_round_not_player.user.last_name),
+                                 'points': user_round_not_player.points
+                                 }
+    
+                    round_standings.append({'user_round': ur_simple, 'shots': shots_in_user_round, 'position': position})
+            cache.add(self.get_key(), round_standings)
         else:
-            shots = list(shots_from_cache)
-        
-        return shots
+            round_standings = round_standings_from_cache
+        return round_standings

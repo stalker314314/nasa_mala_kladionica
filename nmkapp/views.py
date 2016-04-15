@@ -3,7 +3,7 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template.context import RequestContext, Context
 from nmkapp.models import Round, UserRound, Shot, Match, Team, Player, Group
-from nmkapp.cache import StandingsCache, UserRoundShotCache
+from nmkapp.cache import StandingsCache, RoundStandingsCache
 from django.contrib.auth.decorators import login_required
 from operator import itemgetter
 from django.contrib.admin.views.decorators import staff_member_required
@@ -11,8 +11,7 @@ from django.db import transaction
 from django.contrib import messages
 from nmkapp.forms import RoundForm, MatchForm, ResultsForm, BettingForm, PlayerForm
 from nmkapp.forms import RegisterForm, ForgotPasswordForm, ResetPasswordForm, NewGroupForm, AddToGroupForm
-from django.http.response import HttpResponseRedirect, HttpResponseServerError,\
-    Http404
+from django.http.response import HttpResponseRedirect, Http404
 from django.contrib.auth.models import User
 from nmkapp.logic import recalculate_round_points
 from datetime import datetime
@@ -185,7 +184,7 @@ def home(request):
                         logger.info("User %s posted final save", request.user)
                         user_round.shot_allowed = False
                         user_round.save()
-                    UserRoundShotCache(user_round).clear()
+                    RoundStandingsCache.clear_round(user_round.round)
                     messages.add_message(request, messages.INFO, u"Tipovanje uspešno sačuvano")
                     return HttpResponseRedirect('/')
             else:
@@ -249,6 +248,7 @@ def profile(request):
             group = groups[0]
             group.players.add(request.user.player)
             group.save()
+            RoundStandingsCache.clear_group(group)
             messages.add_message(request, messages.INFO, u"Uspešno si se dodao u ekipu")
     else:
         form_add_group = AddToGroupForm(request.user.player, group_key={})
@@ -358,6 +358,7 @@ def group_leave(request, group_id):
         if '0' in request.POST:
             return HttpResponseRedirect('/profile')
         elif '1' in request.POST:
+            RoundStandingsCache.clear_group(group)
             group.players.remove(request.user.player)
             messages.add_message(request, messages.INFO, u"Izašao si iz ekipe '%s'" % group.name)
             return HttpResponseRedirect('/profile')
@@ -380,6 +381,7 @@ def group_delete(request, group_id):
             return HttpResponseRedirect('/profile')
         elif '1' in request.POST:
             group.players.clear()
+            RoundStandingsCache.clear_group(group)
             group.delete()
             messages.add_message(request, messages.INFO, u"Ekipa '%s' izbrisana" % group.name)
             return HttpResponseRedirect('/profile')
@@ -414,31 +416,11 @@ def round_standings(request, round_id):
 
     round_standings = []
     
-    position = 1
-    previous_points = None
-    position_increment = 1
-    
     if can_see_standings:
-        user_rounds = UserRound.objects.select_related('user', 'user__player').filter(round=this_round)
-        if group is not None:
-             user_rounds = user_rounds.filter(user__player__groups__in=[group])
-        user_rounds = user_rounds.order_by("-points", "user__first_name", "user__last_name")
-        
-        for user_round in user_rounds:
-            shots = UserRoundShotCache(user_round).get();
-            
-            if previous_points != None:
-                if previous_points != user_round.points:
-                    position += position_increment
-                    position_increment = 1
-                else:
-                    position_increment += 1
-            previous_points = user_round.points
-            round_standings.append({"user_round": user_round, "shots": shots, "position": position})
+        round_standings = RoundStandingsCache(this_round, group).get()
 
     return render_to_response("roundstandings.html", {
                 "can_see_standings": can_see_standings,
-                "round": round,
                 "matches": matches,
                 "round_standings": round_standings,
                 "round": this_round,
@@ -548,11 +530,7 @@ def admin_matches_edit(request):
 
 @staff_member_required
 def admin_results(request):
-    current_rounds = Round.objects.filter(active=True)
     matches = Match.objects.all()
-#     for current_round in current_rounds:
-#         one_round_matches = Match.objects.filter(round=current_round)
-#         matches.extend(one_round_matches)
     return render_to_response("admin_results.html", {"matches": matches}, context_instance=RequestContext(request))
 
 @staff_member_required
@@ -579,9 +557,7 @@ def admin_results_change(request, match_id):
             messages.add_message(request, messages.INFO, u"Rezultat uspešno unesen")
             
             # invalidate cache of shots for all user in this round
-            user_rounds = UserRound.objects.filter(round=match.round)
-            for user_round in user_rounds:
-                UserRoundShotCache(user_round).clear()
+            RoundStandingsCache.repopulate_round(match.round)
             groups = Group.objects.all()
             for group in groups:
                 StandingsCache(group).clear()
