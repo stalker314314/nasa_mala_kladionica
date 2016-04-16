@@ -68,7 +68,9 @@ Ostale detalje možeš da vidiš na strani sa <a href="/proposition">pravilima</
 		<td>{{ group.group_key }}</td>
 		<td>
 			{% if group.owner != current_user %}
+			{% if group.id != 1 %}
 			<a href="/groups/{{ group.id }}/leave"><img width="16px" height="16px" border="0" alt="[Izađi]" title="Izađi" src="/static/img/leave_group.png"></a>
+			{% endif %}
 			{% endif %}
 		</td>
 		<td>
