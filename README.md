@@ -18,7 +18,9 @@ Django interni sajt za kladjenje
 
 * Clone repo na server
 * Napraviti direktorijum /var/log/nmk (www-data)
-* Dodati cron za root-a koji menja privilegije (0,1 * * * * chmod 777 /var/log/nmk/nmk.log)
-* Dodati cron za obicnog usera da salje mail (2,17,32,47 * * * * /usr/bin/python /sajtovi/nasa_mala_kladionica/nmkapp/send_shots_cron.py)
-* Dodati cron za obicnog usera da salje reminder (0 * * * * /usr/bin/python /sajtovi/nasa_mala_kladionica/nmkapp/send_reminder_cron.py)
+* Dodati cron za www-data kao `sudo crontab -u www-data -e`:
+```
+2,17,32,47 * * * * /usr/bin/python /sajtovi/nmk.kokanovic.org/nmkapp/send_shots_cron.py
+0 * * * * /usr/bin/python /sajtovi/nmk.kokanovic.org/nmkapp/send_reminder_cron.py
+```
 * python manage.py collectstatic
