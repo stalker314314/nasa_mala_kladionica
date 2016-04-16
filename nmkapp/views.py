@@ -270,7 +270,24 @@ def results(request):
     return render(request, "results.html")
 
 def paypal(request):
-    return render(request, "paypal.html")
+    username = "not logged"
+    success = False
+    if request.user.is_authenticated():
+        username = request.user.username
+        request.user.player.in_money = True
+        request.user.player.save()
+        
+        groups = Group.objects.filter(id = 1)
+        group = groups[0]
+        group.players.add(request.user.player)
+        group.save()
+        RoundStandingsCache.clear_group(group)
+        success = True
+
+    msg = EmailMessage(u"[nmk] Igrac uplatio paypal", "Igrac %s" % username, "nmk@kokanovic.org", to=["branko@kokanovic.org",])
+    msg.content_subtype = "html"
+    msg.send(fail_silently = True)
+    return render(request, "paypal.html", {"success": success})
 
 @login_required
 def results_league(request):
