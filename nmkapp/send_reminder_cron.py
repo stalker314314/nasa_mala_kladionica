@@ -52,7 +52,7 @@ def send_reminder_for_round(round, min_time):
     if settings.SEND_MAIL:
         logger.info("Sending mail that round %s will be starting soon to %s", round.name, player_mails)
         for mail in player_mails:
-            msg = EmailMessage(u"[nmk] Podsetnik za kolo \"%s\"" % (round.name), message_text, "nmk-no-reply@nmk.kokanovic.org", to=[mail,])
+            msg = EmailMessage(u"[nmk] Podsetnik za kolo \"%s\"" % (round.name), message_text, "nmk@kokanovic.org", to=[mail,])
             msg.content_subtype = "html"
             msg.send(fail_silently = False)
 

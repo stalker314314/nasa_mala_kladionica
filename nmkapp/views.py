@@ -53,7 +53,7 @@ def register(request):
             template = loader.get_template("mail/registered.html")
             message_text = template.render(Context({"link": "http://nmk.kokanovic.org/activate?id=%s" % user.player.activation_code}))
             logger.info("Sending mail that user is registered to %s", user.email)
-            msg = EmailMessage(u"[nmk] Registracija na NMK uspešna", message_text, "nmk-no-reply@nmk.kokanovic.org", to=[user.email,])
+            msg = EmailMessage(u"[nmk] Registracija na NMK uspešna", message_text, "nmk@kokanovic.org", to=[user.email,])
             msg.content_subtype = "html"
             msg.send(fail_silently = False)
             registered = True
@@ -80,7 +80,7 @@ def forgotpassword(request):
                                                         "link": "http://nmk.kokanovic.org/profile/reset?id=%s" % user.player.reset_code,
                                                         "username": user.username}))
                 logger.info("Sending mail to reset user's password to %s", user.email)
-                msg = EmailMessage(u"[nmk] Zahtev za resetovanjem lozinke", message_text, "nmk-no-reply@nmk.kokanovic.org", to=[user.email,])
+                msg = EmailMessage(u"[nmk] Zahtev za resetovanjem lozinke", message_text, "nmk@kokanovic.org", to=[user.email,])
                 msg.content_subtype = "html"
                 msg.send(fail_silently = False)
                 reset = True
@@ -468,7 +468,7 @@ def admin_rounds(request):
             message_text = template.render(Context({"round": should_be_active_round, "start_time": start_time }))
             logger.info("Sending mail that round %s is active to %s", should_be_active_round.name, all_user_mail)
             for user_mail in all_user_mail:
-                msg = EmailMessage(u"[nmk] Novo aktivno kolo %s" % should_be_active_round.name, message_text, "nmk-no-reply@nmk.kokanovic.org", to=[user_mail,])
+                msg = EmailMessage(u"[nmk] Novo aktivno kolo %s" % should_be_active_round.name, message_text, "nmk@kokanovic.org", to=[user_mail,])
                 msg.content_subtype = "html"
                 msg.send(fail_silently = False)
 
@@ -578,7 +578,7 @@ def admin_results_change(request, match_id):
                     template = loader.get_template("mail/result_added.html")
                     message_text = template.render(Context({"round": match.round}))
                     for user_mail in all_user_mail:
-                        msg = EmailMessage(u"[nmk] Uneti svi rezultati mečeva iz kola \"%s\"" % (match.round.name), message_text, "nmk-no-reply@nmk.kokanovic.org", to=[user_mail,])
+                        msg = EmailMessage(u"[nmk] Uneti svi rezultati mečeva iz kola \"%s\"" % (match.round.name), message_text, "nmk@kokanovic.org", to=[user_mail,])
                         msg.content_subtype = "html"
                         msg.send(fail_silently = False)
                 

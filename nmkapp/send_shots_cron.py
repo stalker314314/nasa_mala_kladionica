@@ -53,7 +53,7 @@ def send_mail_for_round(round):
     if settings.SEND_MAIL:
         logger.info("Sending mail that round %s started to %s", round.name, all_user_mail)
         for user_mail in all_user_mail:
-            msg = EmailMessage(u"[nmk] Počelo kolo \"%s\"" % (round.name), message_text, "nmk-no-reply@nmk.kokanovic.org", to=[user_mail,])
+            msg = EmailMessage(u"[nmk] Počelo kolo \"%s\"" % (round.name), message_text, "nmk@kokanovic.org", to=[user_mail,])
             msg.content_subtype = "html"
             msg.send(fail_silently = False)
 
