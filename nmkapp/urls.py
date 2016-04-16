@@ -1,8 +1,8 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from nmkapp import views
 from django.contrib.auth.views import logout_then_login, login, password_change
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(r'^$', views.home),
     url(r'^register$', views.register),
     url(r'^activate$', views.activation),
@@ -28,4 +28,4 @@ urlpatterns = patterns('',
     url(r'^admin/matches/edit$', views.admin_matches_edit),
     url(r'^admin/results$', views.admin_results),
     url(r'^admin/results/change/(?P<match_id>\d+)$', views.admin_results_change),
-)
+]

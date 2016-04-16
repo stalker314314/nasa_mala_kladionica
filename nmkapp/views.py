@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from django.shortcuts import render_to_response, get_object_or_404
-from django.template.context import RequestContext, Context
+from django.shortcuts import get_object_or_404, render
+from django.template.context import Context
 from nmkapp.models import Round, UserRound, Shot, Match, Team, Player, Group
 from nmkapp.cache import StandingsCache, RoundStandingsCache
 from django.contrib.auth.decorators import login_required
@@ -59,7 +59,7 @@ def register(request):
             registered = True
     else:
         form = RegisterForm(user={})
-    return render_to_response("register.html", {"form": form, 'registered': registered}, context_instance=RequestContext(request))
+    return render(request, "register.html", {"form": form, 'registered': registered})
 
 @transaction.atomic
 def forgotpassword(request):
@@ -86,7 +86,7 @@ def forgotpassword(request):
                 reset = True
     else:
         form = ForgotPasswordForm(rp={})
-    return render_to_response("forgotpassword.html", {"form": form, 'reset': reset}, context_instance=RequestContext(request))
+    return render(request, "forgotpassword.html", {"form": form, 'reset': reset})
 
 @transaction.atomic
 def activation(request):
@@ -104,9 +104,9 @@ def activation(request):
             player = players[0]
             StandingsCache().clear()
             rounds = RoundStandingsCache.clear_group()
-            for round in rounds:
-                RoundStandingsCache.clear_round(round)
-    return render_to_response("activation.html", {"success": success, "player": player}, context_instance=RequestContext(request))
+            for nmk_round in rounds:
+                RoundStandingsCache.clear_round(nmk_round)
+    return render(request, "activation.html", {"success": success, "player": player})
 
 @transaction.atomic
 def reset_password(request):
@@ -120,7 +120,7 @@ def reset_password(request):
             player = players[0]
             nonvalid = False
     if nonvalid:
-        return render_to_response("resetpassword.html", {"nonvalid": nonvalid}, context_instance=RequestContext(request))
+        return render(request, "resetpassword.html", {"nonvalid": nonvalid})
 
     if request.method == 'POST':
         form = ResetPasswordForm(request.POST, passwords={})
@@ -131,9 +131,10 @@ def reset_password(request):
             reset = True
     else:
         form = ResetPasswordForm(passwords={})
-    return render_to_response("resetpassword.html",
-                              {"form": form, "id": reset_code, "nonvalid": nonvalid, "reset": reset, "username": player.user.username},
-                              context_instance=RequestContext(request))
+    return render(request,
+                  "resetpassword.html",
+                  {"form": form, "id": reset_code, "nonvalid": nonvalid, "reset": reset, "username": player.user.username}
+                  )
 
 @login_required
 @transaction.atomic
@@ -142,14 +143,14 @@ def home(request):
     active_rounds = Round.objects.filter(active=True).order_by("id")
     if len(active_rounds) == 0:
         messages.add_message(request, messages.INFO, u"Trenutno nema aktivnog kola za klađenje, pokušaj kasnije")
-        return render_to_response("home.html", {"shots": []}, context_instance=RequestContext(request))
+        return render(request, "home.html", {"shots": []})
 
     bets = []
     for active_round in active_rounds:
         user_rounds = UserRound.objects.select_related('round').filter(user=request.user).filter(round=active_round)
         if len(user_rounds) != 1:
             messages.add_message(request, messages.INFO, u"Trenutno nema aktivnog kola za klađenje, pokušaj kasnije")
-            return render_to_response("home.html", {"shots": []}, context_instance=RequestContext(request))
+            return render(request, "home.html", {"shots": []})
     
         user_round = user_rounds[0]
         shots = Shot.objects.select_related('match', 'match__home_team', 'match__away_team', 'user_round').filter(user_round=user_round).order_by("match__start_time")
@@ -197,7 +198,7 @@ def home(request):
         time_left = format_time_left(shots)
         one_round_to_bet = {"form": form, "shots": shots, "round": active_round, "time_left": time_left}
         bets.append(one_round_to_bet)
-    return render_to_response("home.html", {"bets": bets}, context_instance=RequestContext(request))
+    return render(request, "home.html", {"bets": bets})
 
 def format_time_left(shots):
     if len(shots) > 0:
@@ -258,18 +259,18 @@ def profile(request):
         form_add_group = AddToGroupForm(request.user.player, group_key={})
 
     groups = Group.objects.filter(player__in=[request.user.player])
-    return render_to_response(
-                              "profile.html",
-                              {"form": form, "form_new_group": form_new_group, "form_add_group": form_add_group,
-                               "groups": groups, "current_user": request.user.player},
-                              context_instance=RequestContext(request))
+    return render(request,
+                  "profile.html",
+                  {"form": form, "form_new_group": form_new_group, "form_add_group": form_add_group,
+                    "groups": groups, "current_user": request.user.player}
+                  )
 
 @login_required
 def results(request):
-    return render_to_response("results.html", {}, context_instance=RequestContext(request))
+    return render(request, "results.html")
 
 def paypal(request):
-    return render_to_response("paypal.html", {}, context_instance=RequestContext(request))
+    return render(request, "paypal.html")
 
 @login_required
 def results_league(request):
@@ -314,7 +315,7 @@ def results_league(request):
                     team_in_league[2] += 1
         league = sorted(league, key=itemgetter(5), reverse=True)
         groups.append({"league": league, "matches": matches, "label": chr(group_label["group_label"] + ord('A'))}) 
-    return render_to_response("results_league.html", {"groups": groups}, context_instance=RequestContext(request))
+    return render(request, "results_league.html", {"groups": groups})
 
 @login_required
 def results_cup(request):
@@ -324,7 +325,7 @@ def results_cup(request):
         matches = Match.objects.filter(round = my_round).order_by("start_time")
         one_round = [my_round, matches]
         rounds.append(one_round)
-    return render_to_response("results_cup.html", { "rounds": rounds}, context_instance=RequestContext(request))
+    return render(request, "results_cup.html", { "rounds": rounds})
 
 @login_required
 def standings(request):
@@ -340,11 +341,10 @@ def standings(request):
     
     standings = StandingsCache(group).get(rounds)
 
-    return render_to_response("standings.html", {
-            "rounds": rounds,
-            "standings": standings,
-            "groups": all_groups,
-            "selected_group": selected_group}, context_instance=RequestContext(request))
+    return render(request,
+                  "standings.html",
+                  {"rounds": rounds, "standings": standings, "groups": all_groups, "selected_group": selected_group}
+                  )
 
 @login_required
 @transaction.atomic
@@ -366,7 +366,7 @@ def group_leave(request, group_id):
             group.players.remove(request.user.player)
             messages.add_message(request, messages.INFO, u"Izašao si iz ekipe '%s'" % group.name)
             return HttpResponseRedirect('/profile')
-    return render_to_response("group_leave.html", {"error": error, "group": group}, context_instance=RequestContext(request))
+    return render(request, "group_leave.html", {"error": error, "group": group})
 
 @login_required
 @transaction.atomic
@@ -389,7 +389,7 @@ def group_delete(request, group_id):
             group.delete()
             messages.add_message(request, messages.INFO, u"Ekipa '%s' izbrisana" % group.name)
             return HttpResponseRedirect('/profile')
-    return render_to_response("group_delete.html", {"error": error, "group": group}, context_instance=RequestContext(request))
+    return render(request, "group_delete.html", {"error": error, "group": group})
 
 @login_required
 def round_standings(request, round_id):
@@ -423,23 +423,23 @@ def round_standings(request, round_id):
     if can_see_standings:
         round_standings = RoundStandingsCache(this_round, group).get()
 
-    return render_to_response("roundstandings.html", {
+    return render(request, "roundstandings.html", {
                 "can_see_standings": can_see_standings,
                 "matches": matches,
                 "round_standings": round_standings,
                 "round": this_round,
                 "groups": all_groups,
-                "selected_group": selected_group}, context_instance=RequestContext(request))
+                "selected_group": selected_group})
 
 @login_required
 def download(request):
-    return render_to_response("download.html", {}, context_instance=RequestContext(request))
+    return render(request, "download.html")
 
 def proposition(request):
     player = None
     if not request.user.is_anonymous():
         player = request.user.player
-    return render_to_response("proposition.html", {"player": player}, context_instance=RequestContext(request))
+    return render(request, "proposition.html", {"player": player})
 
 @staff_member_required
 def admin_rounds(request):
@@ -483,7 +483,7 @@ def admin_rounds(request):
         message = u"Kolo %s postavljeno kao neaktivno" % should_be_inactive_round.name
         messages.add_message(request, messages.INFO, message)
 
-    return render_to_response("admin_rounds.html", {"rounds": rounds}, context_instance=RequestContext(request))
+    return render(request, "admin_rounds.html", {"rounds": rounds})
 
 @staff_member_required
 @transaction.atomic
@@ -511,12 +511,12 @@ def admin_rounds_edit(request):
     else:
         form = RoundForm()
 
-    return render_to_response("admin_rounds_edit.html", {"form": form,}, context_instance=RequestContext(request))
+    return render(request, "admin_rounds_edit.html", {"form": form,})
 
 @staff_member_required
 def admin_matches(request):
     matches = Match.objects.order_by("round__id", "start_time")
-    return render_to_response("admin_matches.html", {"matches": matches}, context_instance=RequestContext(request))
+    return render(request, "admin_matches.html", {"matches": matches})
 
 @staff_member_required
 @transaction.atomic
@@ -530,12 +530,12 @@ def admin_matches_edit(request):
     else:
         form = MatchForm()
 
-    return render_to_response("admin_matches_edit.html", {"form": form,}, context_instance=RequestContext(request))
+    return render(request, "admin_matches_edit.html", {"form": form,})
 
 @staff_member_required
 def admin_results(request):
     matches = Match.objects.all()
-    return render_to_response("admin_results.html", {"matches": matches}, context_instance=RequestContext(request))
+    return render(request, "admin_results.html", {"matches": matches})
 
 @staff_member_required
 @transaction.atomic
@@ -590,4 +590,4 @@ def admin_results_change(request, match_id):
     else:
         form = ResultsForm(instance=match)
 
-    return render_to_response("admin_results_change.html", {"form": form, "match": match}, context_instance=RequestContext(request))
+    return render(request, "admin_results_change.html", {"form": form, "match": match})
