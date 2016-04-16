@@ -47,7 +47,7 @@ def send_mail_for_round(round):
         round_standings.append({"user_round": user_round, "shots": shots})
 
     all_players = Player.objects.all()
-    all_user_mail = [player.user.email for player in all_players if player.send_mail==True and player.user.email != ""]
+    all_user_mail = [player.user.email for player in all_players if player.send_mail==True and player.user.email != "" and player.user.is_active==True]
     template = loader.get_template("mail/round_shots.html")
     message_text = template.render(Context({"round": round, "matches": matches, "round_standings": round_standings}))
     if settings.SEND_MAIL:

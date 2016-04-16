@@ -102,6 +102,10 @@ def activation(request):
             players[0].user.save()
             success = True
             player = players[0]
+            StandingsCache().clear()
+            rounds = RoundStandingsCache.clear_group()
+            for round in rounds:
+                RoundStandingsCache.clear_round(round)
     return render_to_response("activation.html", {"success": success, "player": player}, context_instance=RequestContext(request))
 
 @transaction.atomic

@@ -23,8 +23,8 @@ class StandingsCache():
         group_key = self.get_key()
         standings_from_cache = cache.get(group_key)
         if standings_from_cache is None:
-            user_rounds = list(UserRound.objects.select_related('user', 'user__player', 'round').all())
-            players = Player.objects.select_related('user').all()
+            user_rounds = list(UserRound.objects.select_related('user', 'user__player', 'round').filter(user__is_active=True))
+            players = Player.objects.select_related('user').filter(user__is_active=True)
             # create a matrix of [users][rounds] = points
             players_count = len(players)
             rounds_count = len(rounds)
@@ -117,7 +117,8 @@ class RoundStandingsCache:
 
             shots=Shot.objects.\
                 select_related('user_round', 'user_round__user', 'user_round__user__player', 'match', 'match__home_team', 'match__away_team').\
-                filter(user_round__round=self.round)
+                filter(user_round__round=self.round).\
+                filter(user_round__user__is_active=True)
             if self.group is not None:
                 shots = shots.filter(user_round__user__player__groups__in=[self.group])
             shots = shots.order_by('-user_round__points', 'user_round__user__first_name', 'user_round__user__last_name', 'match__start_time', 'match__id')
@@ -155,7 +156,8 @@ class RoundStandingsCache:
                 round_standings.append({'user_round': ur_simple, 'shots': shots_in_user_round, 'position': position})
                 position += 1
             # Add remaining users that didn't played shots in this round
-            user_rounds_not_played = UserRound.objects.select_related('user', 'user__player').filter(round=self.round).filter(shot=None)
+            user_rounds_not_played = UserRound.objects.select_related('user', 'user__player').\
+                filter(round=self.round).filter(shot=None).filter(user__is_active=True)
             if self.group is not None:
                 user_rounds_not_played = user_rounds_not_played.filter(user__player__groups__in=[self.group])
             user_rounds_not_played = user_rounds_not_played.order_by('-points', 'user__first_name', 'user__last_name')
