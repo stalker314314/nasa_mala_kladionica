@@ -7,7 +7,7 @@ Počele su utakmice <b>{{ round.name }}</b> kola. Nema laži, nema prevare, sled
 <table id="roundstandings" border="1px">
 	<thead style="height: 40px">
 		<tr>
-			<th class="firstcol" rowspan="2">Korisnik/Player</th>
+			<th class="firstcol" rowspan="2">Korisnik</th>
 			{% for match in matches %}
 			<th>{{ match.home_team.name }} - {{ match.away_team.name }}</th>
 			{% endfor %}
