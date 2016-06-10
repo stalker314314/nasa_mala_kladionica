@@ -354,6 +354,8 @@ def standings(request):
         group = None
     else:
         group = group[0]
+    logger.info("User %s is on standings page for group %s", request.user, selected_group)
+
     rounds = Round.objects.order_by("id")
     
     standings = StandingsCache(group).get(rounds)
@@ -414,6 +416,9 @@ def round_standings(request, round_id):
     matches = Match.objects.select_related('round', 'home_team', 'away_team').filter(round=this_round).order_by("start_time", "id")
 
     selected_group = request.GET.get('group', '')
+
+    logger.info("User %s is on round standings page for round %s for group %s", request.user, this_round.name, selected_group)
+
     all_groups = Group.objects.filter(player__in=[request.user.player])
     group = Group.objects.filter(player__in=[request.user.player]).filter(name=selected_group)
     if len(group) != 1:
