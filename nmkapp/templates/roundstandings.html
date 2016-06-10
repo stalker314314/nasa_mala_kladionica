@@ -18,7 +18,7 @@ function refreshPage(sel) {
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#roundstandings').floatThead({
-			position: 'fixed'
+			position: 'auto'
 		});
 		$('.tooltip').tipsy({fade: true, delayIn: 500});
 	});
@@ -134,11 +134,9 @@ Odaberi ekipu:
 			{% else %}
 			<td class="sorttable_nosort">
 			<table width="100%">
-				<tr>
-					<td style="padding-left: 10px;">({{ match.odd1 }})</td>
-					<td style="text-align: center;">({{ match.oddX }})</td>
-					<td style="text-align: right; padding-right: 10px;">({{ match.odd2 }})</td>
-				</tr>
+				<tr><td style="text-align: center;">({{ match.odd1 }})</td></tr>
+				<tr><td style="text-align: center;">({{ match.oddX }})</td></tr>
+				<tr><td style="text-align: center;">({{ match.odd2 }})</td></tr>
 			</table>
 			</td>
 			{% endif %}
