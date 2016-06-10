@@ -98,7 +98,7 @@ class RoundStandingsCache:
 
     @staticmethod
     def repopulate_round(round):
-        groups = RoundStandingsCache.clear_round(self, round)
+        groups = RoundStandingsCache.clear_round(round)
         for group in groups:
             RoundStandingsCache(round, group).get()
 
