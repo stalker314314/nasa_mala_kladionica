@@ -459,7 +459,7 @@ def download(request):
 
 def proposition(request):
     player = None
-    if not request.user.is_anonymous():
+    if not request.user.is_anonymous:
         player = request.user.player
     return render(request, "proposition.html", {"player": player})
 

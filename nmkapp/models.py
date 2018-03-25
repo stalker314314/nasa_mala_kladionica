@@ -3,20 +3,20 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
 class Player(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     in_money = models.BooleanField(default=False)
     points = models.FloatField(default=0)
     send_mail = models.BooleanField(default=True)
     groups = models.ManyToManyField('Group')
     activation_code = models.CharField(max_length=255)
     reset_code = models.CharField(max_length=255)
-    
+
     def __str__(self):
         return "%s (money: %s, points: %.2f)" % (self.user, "yes" if self.in_money else "no", self.points)
 
 class Group(models.Model):
     name = models.CharField(unique=True, max_length=255)
-    owner = models.ForeignKey(Player, related_name = 'owner')
+    owner = models.ForeignKey(Player, related_name = 'owner', on_delete=models.PROTECT)
     players = models.ManyToManyField(Player, through=Player.groups.through)
     group_key = models.CharField(max_length=8)
     
@@ -37,7 +37,7 @@ class Team(models.Model):
     name = models.CharField(max_length=255)
     group_label = models.IntegerField()
 
-    def __unicode__(self):
+    def __str__(self):
         return u"%s (%c)" % (self.name, chr(self.group_label + ord('A')))
     
 class Round(models.Model):
@@ -58,9 +58,9 @@ class Match(models.Model):
     start_time = models.DateTimeField()
     result = models.IntegerField(null=True, blank=True)
     score = models.CharField(max_length=6, null=True, blank=True)
-    round = models.ForeignKey('Round')
-    home_team = models.ForeignKey('Team', related_name='home_team')
-    away_team = models.ForeignKey('Team', related_name='away_team')
+    round = models.ForeignKey('Round', on_delete=models.PROTECT)
+    home_team = models.ForeignKey('Team', related_name='home_team', on_delete=models.PROTECT)
+    away_team = models.ForeignKey('Team', related_name='away_team', on_delete=models.PROTECT)
     
     odd1 = models.FloatField()
     oddX = models.FloatField()
@@ -71,8 +71,8 @@ class Match(models.Model):
         return "%s - %s @%s %s" % (self.home_team, self.away_team, self.start_time, result)
 
 class UserRound(models.Model):
-    user = models.ForeignKey(User)
-    round = models.ForeignKey('Round')
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    round = models.ForeignKey('Round', on_delete=models.PROTECT)
     shot_allowed = models.BooleanField(default=True)
     points = models.FloatField(default=0)
 
@@ -80,8 +80,8 @@ class UserRound(models.Model):
         unique_together = ('user', 'round')
 
 class Shot(models.Model):
-    user_round = models.ForeignKey('UserRound')
-    match = models.ForeignKey('Match')
+    user_round = models.ForeignKey('UserRound', on_delete=models.PROTECT)
+    match = models.ForeignKey('Match', on_delete=models.PROTECT)
     shot = models.IntegerField()
 
     class Meta:

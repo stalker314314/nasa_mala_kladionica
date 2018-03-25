@@ -5,14 +5,10 @@ Django interni sajt za kladjenje
 
 ## Instalacija
 
-* Python 2.7 (moze i 3.x)
-* Django 1.7
+* Python 3.x
 * MySQL
 * memcached
-* pip install djrill
-* pip install python-memcached
-* https://github.com/django-debug-toolbar/django-debug-toolbar
-* pip install mysql-python
+* pip3 install -r requirements.txt
 
 ## Deployment
 

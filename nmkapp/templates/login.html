@@ -35,7 +35,7 @@
 			<br/>
 			Pravila učestvovanja možeš da vidiš i pročitaš <a href="/proposition">ovde</a>
 			</p>
-			<form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+			<form method="post" action="{% url 'login' %}">
 				{% csrf_token %}
 				<input type="hidden" value="login" name="login">
 
