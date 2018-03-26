@@ -3,7 +3,6 @@
 from django.forms.models import ModelForm
 from nmkapp.models import Round, Match, Shot, Player, Team, Group
 from django import forms
-from nmkapp.widgets import DateTimeWidget
 from django.contrib.auth.models import User
 from django.forms.widgets import PasswordInput
 
@@ -105,10 +104,6 @@ class MatchForm(ModelForm):
     class Meta:
         model = Match
         fields = ['home_team', 'away_team', 'start_time', 'round', 'odd1', 'oddX', 'odd2']
-        widgets = {
-            #Use localization
-            'start_time': DateTimeWidget(attrs={'id':"start_time"}, usel10n = False)
-        }
 
     def clean(self):
         cleaned_data = super(MatchForm, self).clean()

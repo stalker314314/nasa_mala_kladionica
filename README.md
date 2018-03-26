@@ -6,8 +6,8 @@ Django interni sajt za kladjenje
 ## Instalacija
 
 * Python 3.x
-* MySQL
-* memcached
+* PostgreSQL
+* memcached (opciono)
 * pip3 install -r requirements.txt
 
 ## Deployment
