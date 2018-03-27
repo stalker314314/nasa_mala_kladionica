@@ -45,7 +45,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'nmkapp',
-    "djrill"
+    "anymail",
 )
 
 STATIC_URL = '/static/'
@@ -75,8 +75,6 @@ DATABASES = {
 }
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Europe/Belgrade'
@@ -93,23 +91,24 @@ LOGIN_REDIRECT_URL='/'
 DATETIME_FORMAT = 'd.m.Y H:i'
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'nmkapp', 'static')
 
 SEND_MAIL=False
-MANDRILL_API_KEY = ""
-EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
+ANYMAIL={
+    'SENDINBLUE_API_KEY': '',
+}
+EMAIL_BACKEND = "anymail.backends.sendinblue.EmailBackend"
 
 DEFAULT_FROM_EMAIL = "nmk@kokanovic.org"
 SERVER_EMAIL='nmk@kokanovic.org'
-ADMINS = [('Branko Kokanovic', 'nmk@kokanovic.org')]
+ADMINS = [('Nasa Mala Kladionica', 'nmk@kokanovic.org')]
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'nmk.worldcup2014@gmail.com'
 EMAIL_HOST_PASSWORD = ''
+
 
 LOGGING_DEBUG = {
     'version': 1,
@@ -218,6 +217,9 @@ if DEBUG:
     )
 
 if not DEBUG:
+    SECRET_KEY = os.environ['NMK_SECRET_KEY']
+    DATABASES['default']['PASSWORD'] = os.environ['NMK_DB_PASSWORD']
+    ANYMAIL['SENDINBLUE_API_KEY'] = os.environ['NMK_SENDINBLUE_API_KEY']
     ALLOWED_HOSTS = ['localhost', '.nmk.kokanovic.org', '.nmk.kokanovic.org.']
     SEND_MAIL = True
     LOGGING = LOGGING_PROD
