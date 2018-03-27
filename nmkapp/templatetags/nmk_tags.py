@@ -5,5 +5,5 @@ register = template.Library()
 
 @register.simple_tag(takes_context=False)
 def is_registration_allowed():
-    last_registration_time = datetime.datetime(2016, 6, 10, 20, 0)
+    last_registration_time = datetime.datetime(2018, 6, 14, 16, 0)
     return datetime.datetime.now() < last_registration_time

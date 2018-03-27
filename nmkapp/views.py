@@ -31,7 +31,7 @@ def id_generator(size=16, chars=string.ascii_uppercase + string.digits):
 @transaction.atomic
 def register(request):
     logger.info("User is on register page")
-    last_registration_time = datetime(2016, 6, 10, 20, 0)
+    last_registration_time = datetime(2018, 6, 14, 16, 0)
     if datetime.now() >= last_registration_time:
         raise Http404()
 
