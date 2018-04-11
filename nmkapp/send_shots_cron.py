@@ -50,7 +50,7 @@ def send_mail_for_round(nmk_round):
     all_players = Player.objects.all()
     all_user_mail = [player.user.email for player in all_players if player.send_mail==True and player.user.email != "" and player.user.is_active==True]
     template = loader.get_template("mail/round_shots.html")
-    message_text = template.render(Context({"round": nmk_round, "matches": matches, "round_standings": round_standings}))
+    message_text = template.render({"round": nmk_round, "matches": matches, "round_standings": round_standings})
     if settings.SEND_MAIL:
         logger.info("Sending mail that round %s started to %s", nmk_round.name, all_user_mail)
         for user_mail in all_user_mail:

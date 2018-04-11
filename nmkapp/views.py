@@ -51,7 +51,7 @@ def register(request):
             user.player.save()
 
             template = loader.get_template("mail/registered.html")
-            message_text = template.render(Context({"link": "http://nmk.kokanovic.org/activate?id=%s" % user.player.activation_code}))
+            message_text = template.render({"link": "http://nmk.kokanovic.org/activate?id=%s" % user.player.activation_code})
             logger.info("Sending mail that user is registered to %s", user.email)
             msg = EmailMessage(u"[nmk] Registracija na NMK uspešna", message_text, "nmk@kokanovic.org", to=[user.email,])
             msg.content_subtype = "html"
@@ -76,9 +76,8 @@ def forgotpassword(request):
                 user.player.save()
 
                 template = loader.get_template("mail/resetpassword.html")
-                message_text = template.render(Context({
-                                                        "link": "http://nmk.kokanovic.org/profile/reset?id=%s" % user.player.reset_code,
-                                                        "username": user.username}))
+                message_text = template.render({"link": "http://nmk.kokanovic.org/profile/reset?id=%s" % user.player.reset_code,
+                                                "username": user.username})
                 logger.info("Sending mail to reset user's password to %s", user.email)
                 msg = EmailMessage(u"[nmk] Zahtev za resetovanjem lozinke", message_text, "nmk@kokanovic.org", to=[user.email,])
                 msg.content_subtype = "html"
@@ -491,7 +490,7 @@ def admin_rounds(request):
             all_user_mail = [player.user.email for player in all_players if player.send_mail==True and player.user.email != ""]
             start_time = Match.objects.filter(round=should_be_active_round).aggregate(Min('start_time'))['start_time__min']
             template = loader.get_template("mail/round_active.html")
-            message_text = template.render(Context({"round": should_be_active_round, "start_time": start_time }))
+            message_text = template.render({"round": should_be_active_round, "start_time": start_time })
             logger.info("Sending mail that round %s is active to %s", should_be_active_round.name, all_user_mail)
             for user_mail in all_user_mail:
                 msg = EmailMessage(u"[nmk] Novo aktivno kolo %s" % should_be_active_round.name, message_text, "nmk@kokanovic.org", to=[user_mail,])
@@ -602,7 +601,7 @@ def admin_results_change(request, match_id):
                     all_user_mail = [player.user.email for player in all_players if player.send_mail==True and player.user.email != ""]
                     logger.info("Sending mail that round %s have all results to %s", match.round, all_user_mail)
                     template = loader.get_template("mail/result_added.html")
-                    message_text = template.render(Context({"round": match.round}))
+                    message_text = template.render({"round": match.round})
                     for user_mail in all_user_mail:
                         msg = EmailMessage(u"[nmk] Uneti svi rezultati mečeva iz kola \"%s\"" % (match.round.name), message_text, "nmk@kokanovic.org", to=[user_mail,])
                         msg.content_subtype = "html"

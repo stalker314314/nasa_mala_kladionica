@@ -47,7 +47,7 @@ def send_reminder_for_round(nmk_round, min_time):
             player_mails.append(player.user.email)
             
     template = loader.get_template("mail/round_reminder.html")
-    message_text = template.render(Context({"round": nmk_round, "min_time": min_time}))
+    message_text = template.render({"round": nmk_round, "min_time": min_time})
     if settings.SEND_MAIL:
         logger.info("Sending mail that round %s will be starting soon to %s", nmk_round.name, player_mails)
         for mail in player_mails:
