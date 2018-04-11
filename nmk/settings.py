@@ -97,11 +97,13 @@ DATETIME_FORMAT = 'd.m.Y H:i'
 # Static files (CSS, JavaScript, Images)
 STATIC_ROOT = os.path.join(BASE_DIR, 'nmkapp', 'static')
 
-SEND_MAIL=True
+SEND_MAIL=not DEBUG
+
 ANYMAIL={
-    'SENDINBLUE_API_KEY': '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',
+    'MAILJET_API_KEY': '',
+    'MAILJET_SECRET_KEY': '',
 }
-EMAIL_BACKEND = "anymail.backends.sendinblue.EmailBackend"
+EMAIL_BACKEND = "anymail.backends.mailjet.EmailBackend"
 
 DEFAULT_FROM_EMAIL = "nmk@kokanovic.org"
 SERVER_EMAIL='nmk@kokanovic.org'
@@ -223,7 +225,7 @@ if DEBUG:
 if not DEBUG:
     SECRET_KEY = os.environ['NMK_SECRET_KEY']
     DATABASES['default']['PASSWORD'] = os.environ['NMK_DB_PASSWORD']
-    ANYMAIL['SENDINBLUE_API_KEY'] = os.environ['NMK_SENDINBLUE_API_KEY']
+    ANYMAIL['MAILJET_API_KEY'] = os.environ['NMK_MAILJET_API_KEY']
+    ANYMAIL['MAILJET_SECRET_KEY'] = os.environ['NMK_MAILJET_SECRET_KEY']
     ALLOWED_HOSTS = ['localhost', '.nmk.kokanovic.org', '.nmk.kokanovic.org.']
-    SEND_MAIL = True
     LOGGING = LOGGING_PROD
