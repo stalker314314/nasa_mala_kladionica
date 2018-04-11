@@ -2,11 +2,11 @@ import os
 import sys
 sys.stdout = sys.stderr
 
-path = '/sajtovi/'
+path = '/sites/'
 if path not in sys.path:
         sys.path.append(path)
 
-path = '/sajtovi/nmk.kokanovic.org/'
+path = '/sites/nmk.kokanovic.org/'
 if path not in sys.path:
         sys.path.append(path)
 
