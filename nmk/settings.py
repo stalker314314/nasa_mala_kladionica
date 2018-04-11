@@ -6,7 +6,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'er7f9y^ruw3$0+*8_(h)2+(sx*vpdzr-zn==gs)i_vh7d+(hkm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ['NMK_DEBUG'] != '0'
+DEBUG = True
+try:
+    os.environ['NMK_DEBUG'] != '0'
+except KeyError:
+    pass
 
 TEMPLATE_DEBUG = DEBUG
 
@@ -93,9 +97,9 @@ DATETIME_FORMAT = 'd.m.Y H:i'
 # Static files (CSS, JavaScript, Images)
 STATIC_ROOT = os.path.join(BASE_DIR, 'nmkapp', 'static')
 
-SEND_MAIL=False
+SEND_MAIL=True
 ANYMAIL={
-    'SENDINBLUE_API_KEY': '',
+    'SENDINBLUE_API_KEY': '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',
 }
 EMAIL_BACKEND = "anymail.backends.sendinblue.EmailBackend"
 
