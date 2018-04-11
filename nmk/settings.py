@@ -8,7 +8,7 @@ SECRET_KEY = 'er7f9y^ruw3$0+*8_(h)2+(sx*vpdzr-zn==gs)i_vh7d+(hkm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 try:
-    os.environ['NMK_DEBUG'] != '0'
+    DEBUG = os.environ['NMK_DEBUG'] != '0'
 except KeyError:
     pass
 
