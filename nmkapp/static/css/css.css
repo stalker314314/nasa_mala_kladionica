@@ -1,9 +1,10 @@
 body {
-	margin: 25px 0px 0px 0px;
-	background-color: #FFFFFF;
-	background-position: center;
-	background-repeat: repeat-y;
-	text-align: center;
+    padding-top: 0;
+}
+@media (max-width: 991px) {
+    body {
+        padding-top: 70px;
+    }
 }
 
 /***********************************
@@ -15,23 +16,6 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
-	background-color: #FFFFFF;
-}
-
-#top-nav {
-	width: 715px;
-	margin-left: auto;
-	margin-right: auto;
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 55%;
-	color: #999999;
-	text-align: right;
-	vertical-align: bottom;
-	height: 18px;
-	line-height: 18px;
-	padding-right: 5px;
-	border-width: 0px 0px 1px 0px;
-	border-style: solid;
 	background-color: #FFFFFF;
 }
 
@@ -52,9 +36,7 @@ body {
 	text-align: right;
 }
 
-
 #content {
-	margin-left: 150px;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 70%;
 	color: #666666;
@@ -63,11 +45,6 @@ body {
 	text-align: left;
 	padding: 5px 5px 15px 5px;
 	background-color: #FFFFFF;
-}
-
-#content {
-	margin-left: 170px;
-	
 }
 
 #contentlogin {
@@ -105,7 +82,7 @@ a.small-navigation:hover {
 	color: #FF9900;
 }
 
-a.navigation {
+.navigation {
 	color: #666666;
 	border-width: 0px 0px 0px 5px;
 	border-color: #DEDEDE;
@@ -116,10 +93,29 @@ a.navigation {
 	text-align: left;
 	font-weight: normal;
 }
+@media (max-width: 991px) {
+    .navigation {
+        border-style: none;
+    }
+    .navbar-nav .nav-link {
+        padding: 0px 0px 0px 0px;
+    }
+}
+@media (max-width: 767px) {
+    .navigation {
+        padding: 3px 0px 3px 5px;
+        border-style: solid;
+    }
+    .navbar-nav .nav-link {
+        padding: 3px 0px 3px 5px;
+    }
+}
 
-a.navigation:hover {
+.navigation:hover {
 	border-color: #FF9900;
 	background-color: #EFEFEF;
+	border-style: solid;
+	text-decoration: none;
 }
 
 /***********************************
