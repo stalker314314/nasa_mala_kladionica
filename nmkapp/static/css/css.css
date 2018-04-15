@@ -161,9 +161,15 @@ p {
 	margin-top: 10px;
 }
 
-p.offset {
+div.offset {
 	margin-left: 100px;
 }
+
+i.awesome {
+    color: #ff9900;
+    padding-left: 20px;
+}
+
 /***********************************
 	dodao melja
 ***********************************/

@@ -3,6 +3,8 @@
 
 {% block content %}
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
 <h1>TRENUTNA KOLA</h1>
 <br/>
 
@@ -105,15 +107,22 @@
 					{% endfor %}
 				</tbody>
 			</table>
-			<p class="offset">
-				<input name="save_{{ bet.round.id }}" value="Sačuvaj za sada" type="button">
-				<input name="final_save_{{ bet.round.id }}" value="Konačan odgovor !!!" type="button">
-			</p>
-			<ul>
-				<li>Sačuvaj za sada &ndash; snimi svoje tipove</li>
-				<li>Konačan odgovor &ndash; snimi svoje tipove tako da ne možeš da ih menjaš više, ali možeš da vidiš šta su drugi igrali</li>
-			</ul>
-		</form>
+            <div class="offset">
+                <input name="save_{{ bet.round.id }}" value="Sačuvaj za sada" type="button">
+                <input name="final_save_{{ bet.round.id }}" value="Konačan odgovor" type="button">
+                <i class="fas fa-question-circle fa-lg awesome" data-toggle="collapse" data-target="#explain-betting"></i>
+                <div id="explain-betting" class="collapse">
+                    <div class="card card-body">
+                        <strong>Sačuvaj za sada</strong> &nbsp;&nbsp; snima tipove. Snimljeni tipovi će biti važeći i
+                        ukoliko ne klikneš "Konačan odgovor" pre početka kola
+                        <br/>
+                        <strong>Konačan odgovor</strong> &nbsp;&nbsp; snima tipove tako da ne možeš da ih menjaš više,
+                        ali zato možeš da vidiš šta su drugi igrali
+                    </div>
+                </div>
+            </div>
+        </form>
+        <p></p>
 	
 	{% else %}
 	
@@ -159,9 +168,9 @@
 	</table>
 	
 	{% if bet.round %}
-	<p class="offset">
+	<div class="offset">
 		<a href="/roundstandings/{{ bet.round.id }}">Šta su drugi igrali</a>
-	</p>
+	</div>
 	{% endif %}
 	
 	{% endif %}
