@@ -1,80 +1,55 @@
+{% extends "base.html" %}
+{% load staticfiles %}
 {% load nmk_tags %}
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+{% block content %}
 
-<head>
-	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-	<title>Kokan - Meljova kladionica :)</title>
-	<link type="text/css" rel="stylesheet" href="/static/css/css.css">
-</head>
+<h1>NAŠA MALA KLADIONICA - PRIJAVA</h1>
+<p style="font-size: 90%;">
+NMK je sajt za rekreativno ili pravo klađenje za World Cup 2018. prvenstvo u fudbalu
+(ili "Чемпионат мира по футболу 2018").
+<br/>
+Prijavi se, pozovi ekipu, tipuj utakmice i pokaži da si najbolji kladioničar!
+<br/>
+Pravila učestvovanja možeš da vidiš i pročitaš <a href="/proposition">ovde</a>
+</p>
+<form method="post" action="{% url 'login' %}">
+	{% csrf_token %}
+	<input type="hidden" value="login" name="login">
 
-<body>
-	<div id="main">
-
-		<div id="header">
-			<img width="720" height="120" src="/static/img/logo.png">
-		</div>
-
-		<div id="contentlogin">
-			<h1>NAŠA MALA KLADIONICA - PRIJAVA</h1>
-			<p style="font-size: 90%;">
-			NMK je sajt za rekreativno ili pravo klađenje za World Cup 2018. prvenstvo u fudbalu
-			(ili "Чемпионат мира по футболу 2018").
+	<fieldset>
+		<div>
+			<label for="login:username">Korisničko ime</label>
 			<br/>
-			Prijavi se, pozovi ekipu, tipuj utakmice i pokaži da si najbolji kladioničar!
+			{{ form.username }}
+		</div>
+		<div>
+			<label for="login:password">Lozinka</label>
 			<br/>
-			Pravila učestvovanja možeš da vidiš i pročitaš <a href="/proposition">ovde</a>
-			</p>
-			<form method="post" action="{% url 'login' %}">
-				{% csrf_token %}
-				<input type="hidden" value="login" name="login">
-
-				<fieldset>
-					<div>
-						<label for="login:username">Korisničko ime</label>
-						<br/>
-						{{ form.username }}
-					</div>
-					<div>
-						<label for="login:password">Lozinka</label>
-						<br/>
-						{{ form.password }}
-					</div>
-					{% if form.errors %}
-					<div class="errors">Korisničko ime ili lozinka pogrešni. Pokušajte ponovo.</div>
-					{% endif %}
-					
-					{% if form.errors %}
-					<div class="buttonBox" style="padding-left: 150px;">
-					{% else %}
-					<div class="buttonBox">
-					{% endif %}
-						<input type="submit" value="Prijavi me" />
-						<input type="hidden" name="next" value="{{ next }}" />
-						{% if form.errors %}
-						&nbsp;&nbsp;<a href="/forgotpassword" style="font-size: 11px;">Zaboravio sam lozinku</a>
-						{% endif %}
-					</div>
-					<br/>
-					{% is_registration_allowed as is_registration_allowed %}
-					{% if is_registration_allowed %}
-					<div>
-						<a href="/register">Registruj se</a><br/>
-						<small>(registracija moguća do sat vremena pred početak prve utakmice - 14.06.2018 16:00!)</small>
-					</div>
-					{% endif %}
-			</form>
+			{{ form.password }}
 		</div>
-
-		<div id="footer">
-			<hr />
-			Ukupno prijavljenih igrača: {{ ctx_stats.player_count }}, igrača prijavljenih u pare: {{ ctx_stats.player_money_count }}
-			<br />
-			Raspored nagrada &mdash; 1. mesto: {{ ctx_stats.reward_money.1 }}€, 2. mesto: {{ ctx_stats.reward_money.2 }}€, 3. mesto: {{ ctx_stats.reward_money.3 }}€
-			<br />
-			<br />
-			All content 2008-2018 Kokan, Melja and OSWD, all rights reserved. <br />
+		{% if form.errors %}
+		<div class="errors">Korisničko ime ili lozinka pogrešni. Pokušajte ponovo.</div>
+		{% endif %}
+    </fieldset>
+		{% if form.errors %}
+		<div class="buttonBox" style="padding-left: 150px;">
+		{% else %}
+		<div class="buttonBox">
+		{% endif %}
+			<input type="submit" value="Prijavi me" />
+			<input type="hidden" name="next" value="{{ next }}" />
+			{% if form.errors %}
+			&nbsp;&nbsp;<a href="/forgotpassword" style="font-size: 11px;">Zaboravio sam lozinku</a>
+			{% endif %}
 		</div>
-	</div>
-</body>
-</html>
+		<br/>
+		{% is_registration_allowed as is_registration_allowed %}
+		{% if is_registration_allowed %}
+		<div>
+			<a href="/register">Registruj se</a><br/>
+			<small>(registracija moguća do sat vremena pred početak prve utakmice - 14.06.2018 16:00!)</small>
+		</div>
+		{% endif %}
+</form>
+{% endblock %}
