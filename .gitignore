@@ -1,5 +1,6 @@
 # generated files from project
 nmkapp/static/admin
+nmkapp/static/debug_toolbar
 nmkapp/migrations
 
 # pycharm
