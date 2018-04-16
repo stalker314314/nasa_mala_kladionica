@@ -1,15 +1,27 @@
 {% load staticfiles %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="Branko Kokanovic">
+        <!-- <link rel="icon" href="../../../../favicon.ico"> -->
 
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Naša mala kladionica</title>
+        <title>Naša mala kladionica</title>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <!-- <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script> -->
+
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
 		<link href="{% static "css/css.css" %}" rel="stylesheet" type="text/css" />
 		<link href="{% static "css/tipsy.css" %}" rel="stylesheet" type="text/css" />
+        <link href="{% static "css/sticky-footer.css" %}" rel="stylesheet" type="text/css" />
 		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
 		<script src="{% static "js/sorttable.js" %}"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		<script src="{% static "js/jquery.tipsy.js" %}"></script>
 		<script type="text/javascript">
 			function notify(message, type, timeout) {
@@ -52,54 +64,145 @@
 		</script>
 	</head>
 
+    {% if not no_menu %}
 	<body>
-		<div id="main">
-			<div id="header">
-				<a href="/"><img src="{% static "img/logo.png" %}" width="720" height="120" /></a>
-			</div>
+    {% else %}
+    <body style="padding-top: 0px;">
+    {% endif %}
+        {% if not no_menu %}
+        <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top d-lg-none">
+            <a class="navbar-brand" href="#">Naša mala kladionica</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Navigacija">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-			<div id="navigation">
-					Meni
-					<hr />
-					{% if user.is_authenticated %}
-					<a href="/" class="navigation">Klađenje</a>
-					<a href="/results" class="navigation">Rezultati</a>
-					<a href="/standings" class="navigation">Tabele</a>
-					<a href="/profile" class="navigation">Profil</a>
-					<a href="/proposition" class="navigation">Pravila</a>
-					<a href="/logout" class="navigation">Logout</a>
-					{% else %}
-					<a href="/login" class="navigation">Login</a>
-					<a href="/proposition" class="navigation">Pravila</a>
-					{% endif %}
-					<br />
-					<br />
-					<br />
-					{% if user.is_staff %}
-					Admin meni
-					<hr />
-					<a href="/admin/rounds" class="navigation">Kola</a>
-					<a href="/admin/matches" class="navigation">Mečevi</a>
-					<a href="/admin/results" class="navigation">Rezultati</a>
-					{% endif %}
-			</div>
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="navigation nav-link" href="/">Klađenje</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navigation nav-link" href="/results">Rezultati</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navigation nav-link" href="/standings">Tabele</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navigation nav-link" href="/profile">Profil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navigation nav-link" href="/proposition">Pravila</a>
+                    </li>
+                    {% if user.is_staff %}
+                    <li class="nav-item dropdown">
+                        <a class="navigation nav-link dropdown-toggle" href="#" id="dropdown01"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin meni</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="navigation dropdown-item" href="/admin/rounds">Kola</a>
+                            <a class="navigation dropdown-item" href="/admin/matches">Mečevi</a>
+                            <a class="navigation dropdown-item" href="/admin/results">Rezultati</a>
+                        </div>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="navigation nav-link" href="/logout">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="navigation nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navigation nav-link" href="/proposition">Pravila</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+        {% endif %}
 
-			<div id="content">
-				{% block content %}{% endblock %}
-			</div>
+        <div id="header">
+            <a href="/"><img src="{% static "img/logo.png" %}" class="img-fluid img-responsive mx-auto d-block" alt="logo"></a>
+        </div>
 
-			<div id="footer">
-				<hr />
-				Ukupno prijavljenih igrača: <strong>{{ ctx_stats.player_count }}</strong>, igrača prijavljenih u pare: <strong>{{ ctx_stats.player_money_count }}</strong>
-				<br />
-				Raspored nagrada &mdash; 1. mesto: <strong>{{ ctx_stats.reward_money.1 }}€</strong>, 2. mesto: <strong>{{ ctx_stats.reward_money.2 }}€</strong>, 3. mesto: <strong>{{ ctx_stats.reward_money.3 }}€</strong>
-				<br />
-				<br />
-				All content 2008-2018 Kokan, Melja and OSWD, all rights reserved. <br />
-				{% if user.is_authenticated %}
-				Sva pitanja, želje, čestitke i pozdrave uputiti na nmk@kokanovic.org
-				{% endif %}
-			</div>
-		</div>
+        <main role="main" class="container">
+            {% if not no_menu %}
+            <div class="row">
+            {% else %}
+            <div class="row justify-content-center">
+            {% endif %}
+                {% if not no_menu %}
+                <div id="navigation" class="col-lg-2 d-none d-lg-block">
+                    Meni
+                    <hr/>
+
+                    {% if user.is_authenticated %}
+                    <a href="/" class="navigation">Klađenje</a>
+                    <a href="/results" class="navigation">Rezultati</a>
+                    <a href="/standings" class="navigation">Tabele</a>
+                    <a href="/profile" class="navigation">Profil</a>
+                    <a href="/proposition" class="navigation">Pravila</a>
+                    <a href="/logout" class="navigation">Logout</a>
+                    {% else %}
+                    <a href="/login" class="navigation">Login</a>
+                    <a href="/proposition" class="navigation">Pravila</a>
+                    {% endif %}
+
+                    {% if user.is_staff %}
+                    <br/>
+                    <br/>
+                    <br/>
+
+                    Admin meni
+                    <hr/>
+                    <a href="/admin/rounds" class="navigation">Kola</a>
+                    <a href="/admin/matches" class="navigation">Mečevi</a>
+                    <a href="/admin/results" class="navigation">Rezultati</a>
+                    {% endif %}
+                </div>
+                <div id="content" class="col-12 col-lg-10">
+                {% else %}
+                <div id="content" class="col-12 col-lg-6 text-center">
+                {% endif %}
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <hr />
+                <div class="text-muted d-none d-sm-block">
+                    Ukupno prijavljenih igrača: <strong>{{ ctx_stats.player_count }}</strong>, igrača prijavljenih u pare: <strong>{{ ctx_stats.player_money_count }}</strong>
+                </div>
+                <div class="text-muted d-sm-none">
+                    Ukupno prijavljenih igrača: <strong>{{ ctx_stats.player_count }}</strong>,
+                    <br />
+                    igrača prijavljenih u pare: <strong>{{ ctx_stats.player_money_count }}</strong>
+                </div>
+                <div class="text-muted d-none d-sm-block">
+                    Raspored nagrada &mdash; 1. mesto: <strong>{{ ctx_stats.reward_money.1 }}€</strong>, 2. mesto: <strong>{{ ctx_stats.reward_money.2 }}€</strong>, 3. mesto: <strong>{{ ctx_stats.reward_money.3 }}€</strong>
+                </div>
+                <div class="text-muted d-sm-none">
+                    Raspored nagrada &mdash; 1. mesto: <strong>{{ ctx_stats.reward_money.1 }}€</strong>,
+                    <br />
+                    2. mesto: <strong>{{ ctx_stats.reward_money.2 }}€</strong>,
+                    <br />
+                    3. mesto: <strong>{{ ctx_stats.reward_money.3 }}€</strong>
+                </div>
+                {% if user.is_authenticated %}
+                <div class="text-muted d-none d-sm-block">
+                    ©2008-2018 Sva pitanja, želje, čestitke i pozdrave uputiti na nmk@kokanovic.org
+                </div>
+                <div class="text-muted d-sm-none">
+                    ©2008-2018 nmk@kokanovic.org
+                </div>
+                {% endif %}
+            </div>
+        </footer>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 	</body>
 </html>

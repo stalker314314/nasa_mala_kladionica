@@ -7,7 +7,7 @@ urlpatterns = [
     url(r'^register$', views.register),
     url(r'^activate$', views.activation),
     url(r'^forgotpassword', views.forgotpassword),
-    url(r'^login/$', login, {'template_name': 'login.html'}, name='login'),
+    url(r'^login/$', login, {'template_name': 'login.html', 'extra_context': {'no_menu': True}}, name='login'),
     url(r'^logout$', logout_then_login),
     url(r'^profile/reset$', views.reset_password),
     url(r'^profile/password$', password_change, {"template_name": "password.html", "post_change_redirect": "/"}),

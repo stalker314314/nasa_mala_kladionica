@@ -38,48 +38,71 @@ Odaberi ekipu:
 <div>Savet: Klikni na kolo da pogledaš rezultate samo tog kola!</div>
 <br/>
 
-<table class="sortable mediumtable">
-	<thead>
-		<tr>
-			<th>#</th>
-			<th class="firstcol1">Takmičar</th>
-			{% for round in rounds %}
-			{% if selected_group == "" %}
-				<th class="number"><a href="/roundstandings/{{ round.id }}">{{ round.name }}</a></th>
-			{% else %}
-				<th class="number"><a href="/roundstandings/{{ round.id }}?group={{ selected_group|urlencode }}">{{ round.name }}</a></th>
-			{% endif %}
-			{% endfor %}
-			<th class="number">∑</th>
-		</tr>
-	</thead>
-	<tbody>
-		{% for standing in standings %}
-		{% if standing.0.user.username == user.username %}
-		<tr style="background: rgb(204, 204, 204);">
-		{% else %}
-		<tr>
-		{% endif %}
-			<td>{{ standing.3 }}.</td>
-			<td>
-			{% if standing.0.user.player.in_money %}
-				<b>{{ standing.0.user.first_name }} {{ standing.0.user.last_name }}</b>
-			{% else %}
-				{{ standing.0.user.first_name }} {{ standing.0.user.last_name }}
-			{% endif %}
-			</td>
-			{% for round_standing in standing.1 %}
-			<td class="number">{{ round_standing }}</td>
-			{% endfor %}
-			<td class="number">{{ standing.2 }}</td>
-		</tr>
-		{% endfor %}
-	</tbody>
-	<tfoot></tfoot>
-</table>
+<div class="table-responsive">
+    <table class="sortable mediumtable">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th class="firstcol1">Takmičar</th>
+                {% for round in rounds %}
+                {% if selected_group == "" %}
+                    <th class="number"><a href="/roundstandings/{{ round.id }}">{{ round.name }}</a></th>
+                {% else %}
+                    <th class="number"><a href="/roundstandings/{{ round.id }}?group={{ selected_group|urlencode }}">{{ round.name }}</a></th>
+                {% endif %}
+                {% endfor %}
+                <th class="number">∑</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for standing in standings %}
+            {% if standing.0.user.username == user.username %}
+            <tr style="background: rgb(204, 204, 204);">
+            {% else %}
+            <tr>
+            {% endif %}
+                <td>{{ standing.3 }}.</td>
+                <td>
+                {% if standing.0.user.player.in_money %}
+                    <b>{{ standing.0.user.first_name }} {{ standing.0.user.last_name }}</b>
+                {% else %}
+                    {{ standing.0.user.first_name }} {{ standing.0.user.last_name }}
+                {% endif %}
+                </td>
+                {% for round_standing in standing.1 %}
+                <td class="number">{{ round_standing }}</td>
+                {% endfor %}
+                <td class="number">{{ standing.2 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+</div>
 
 <br/>
 <br/>
 * Korisnici koji igraju u pare su boldovani
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = "nmk.kokanovic.org";
+this.page.identifier = 0;
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://nmk-kokanovic.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 {% endblock %}

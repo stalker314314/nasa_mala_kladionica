@@ -3,56 +3,57 @@
 
 {% block content %}
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
 <h1>TRENUTNA KOLA</h1>
 <br/>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
-<div id="dialog" title="Potvrda" style="display: none;">
-Jednom kada klikneš konačan odgovor, više nećeš moći da menjaš tipove! Da li si stvarno siguran?
+{% for bet in bets %}
+{% if bet.form %}
+<div class="modal fade" id="modal_{{ bet.round.id }}" tabindex="-1" role="dialog" aria-labelledby="modalLabel_{{ bet.round.id }}" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Potvrda</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Zatvori">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Jednom kada klikneš konačan odgovor, više nećeš moći da menjaš tipove! Da li si stvarno siguran?
+      </div>
+      <div class="modal-footer">
+          <button id="submit_{{ bet.round.id }}"type="button" class="btn btn-primary">Da</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Ne</button>
+      </div>
+    </div>
+  </div>
 </div>
+{% endif %}
+{% endfor %}
 
 <script type="text/javascript">
-	$(document).ready(function() {
-		var currentForm;
-		dialog = $("#dialog").dialog({
-			autoOpen: false,
-			height: 200,
-			width: 350,
-			modal: true,
-			buttons: {
-				'Da': function() {
-					currentForm.submit();
-				},
-				'Ne': function() {
-					$(this).dialog('close');
-				}
-			},
-			close: function() {
-			}
-		});
-		
+    $(document).ready(function() {
 		{% for bet in bets %}
 		{% if bet.form %}
-		$("form[name='save_{{ bet.round.id }}'] input[type=submit]").click(function() {
-			$("input[type=submit]").removeAttr("clicked");
-			$(this).attr("clicked", "true");
-		});
-
-		$("form[name='save_{{ bet.round.id }}']").submit(function(){
-			currentForm = this;
-			var val = $("input[type=submit][clicked=true]").val();
-			if (val != "Sačuvaj za sada") {
-				var hidden_exists = $("input[type=hidden][name='final_save_{{ bet.round.id }}']").length;
-				if (hidden_exists == 0) {
-					$('<input type="hidden" />').appendTo($(this).first()).attr('name', 'final_save_{{ bet.round.id }}').attr('value', 'final_save_{{ bet.round.id }}');
-				}
-				$('#dialog').dialog('open');
-				return false;
-			} else {
+		$("form[name='save_{{ bet.round.id }}'] input[type=button]").click(function() {
+			var val = $(this).val();
+			if (val == "Sačuvaj za sada") {
 				$("input[type=hidden][name='final_save_{{ bet.round.id }}']").remove();
-				return true;
+				$('<input type="hidden" />').appendTo($(this).first()).attr('name', 'save_{{ bet.round.id }}').attr('value', 'save_{{ bet.round.id }}');
+				$('#save_{{ bet.round.id }}').submit();
+			} else {
+				$("#modal_{{ bet.round.id }}").modal();
 			}
 		});
+
+		$('#submit_{{ bet.round.id }}').click(function(){
+		    $("#modal_{{ bet.round.id }}").modal('hide');
+            $("input[type=hidden][name='save_{{ bet.round.id }}']").remove();
+            var form = $('#save_{{ bet.round.id }}');
+            $('<input type="hidden" />').appendTo(form.first()).attr('name', 'final_save_{{ bet.round.id }}').attr('value', 'final_save_{{ bet.round.id }}');
+            form.submit();
+        });
 		{% endif %}
 		{% endfor %}
 	});
@@ -81,7 +82,7 @@ Jednom kada klikneš konačan odgovor, više nećeš moći da menjaš tipove! Da
 		    <div class="entry errors" style="color: rgb(255, 0, 0);">{{ error }}</div>
 		{% endfor %}
 		
-		<form name="save_{{ bet.round.id }}" method="post" action="/">
+		<form id="save_{{ bet.round.id }}" name="save_{{ bet.round.id }}" method="post" action="/">
 			{% csrf_token %}
 			<table class="mediumtable">
 				<thead>
@@ -106,15 +107,22 @@ Jednom kada klikneš konačan odgovor, više nećeš moći da menjaš tipove! Da
 					{% endfor %}
 				</tbody>
 			</table>
-			<p class="offset">
-				<input name="save_{{ bet.round.id }}" value="Sačuvaj za sada" type="submit">
-				<input name="final_save_{{ bet.round.id }}" value="Konačan odgovor !!!" type="submit">
-			</p>
-			<ul>
-				<li>Sačuvaj za sada &ndash; snimi svoje tipove</li>
-				<li>Konačan odgovor &ndash; snimi svoje tipove tako da ne možeš da ih menjaš više, ali možeš da vidiš šta su drugi igrali</li>
-			</ul>
-		</form>
+            <div class="offset">
+                <input name="save_{{ bet.round.id }}" value="Sačuvaj za sada" type="button">
+                <input name="final_save_{{ bet.round.id }}" value="Konačan odgovor" type="button">
+                <i class="fas fa-question-circle fa-lg awesome" data-toggle="collapse" data-target="#explain-betting"></i>
+                <div id="explain-betting" class="collapse">
+                    <div class="card card-body">
+                        <strong>Sačuvaj za sada</strong> &nbsp;&nbsp; snima tipove. Snimljeni tipovi će biti važeći i
+                        ukoliko ne klikneš "Konačan odgovor" pre početka kola
+                        <br/>
+                        <strong>Konačan odgovor</strong> &nbsp;&nbsp; snima tipove tako da ne možeš da ih menjaš više,
+                        ali zato možeš da vidiš šta su drugi igrali
+                    </div>
+                </div>
+            </div>
+        </form>
+        <p></p>
 	
 	{% else %}
 	
@@ -160,9 +168,9 @@ Jednom kada klikneš konačan odgovor, više nećeš moći da menjaš tipove! Da
 	</table>
 	
 	{% if bet.round %}
-	<p class="offset">
+	<div class="offset">
 		<a href="/roundstandings/{{ bet.round.id }}">Šta su drugi igrali</a>
-	</p>
+	</div>
 	{% endif %}
 	
 	{% endif %}
