@@ -64,7 +64,11 @@
 		</script>
 	</head>
 
+    {% if not no_menu %}
 	<body>
+    {% else %}
+    <body style="padding-top: 0px;">
+    {% endif %}
         {% if not no_menu %}
         <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top d-lg-none">
             <a class="navbar-brand" href="#">Naša mala kladionica</a>

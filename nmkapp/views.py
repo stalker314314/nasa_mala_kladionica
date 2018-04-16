@@ -59,7 +59,7 @@ def register(request):
             registered = True
     else:
         form = RegisterForm(user={})
-    return render(request, "register.html", {"form": form, 'registered': registered})
+    return render(request, "register.html", {"form": form, 'registered': registered, 'no_menu': True})
 
 @transaction.atomic
 def forgotpassword(request):
@@ -271,7 +271,7 @@ def results(request):
 def paypal(request):
     username = "not logged"
     success = False
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         username = request.user.username
         request.user.player.in_money = True
         request.user.player.save()

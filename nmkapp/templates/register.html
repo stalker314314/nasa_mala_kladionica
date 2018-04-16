@@ -1,62 +1,39 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load nmk_tags %}
 
-<head>
-	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-	<title>Kokan - Meljova kladionica :)</title>
-	<link type="text/css" rel="stylesheet" href="/static/css/css.css">
-</head>
+{% block content %}
 
-<body>
-	<div id="main">
+<h1>NAŠA MALA KLADIONICA - REGISTRACIJA</h1>
+{% if registered %}
+Uspešno si se registrovao. U mail-u ćeš dobiti link za aktivaciju naloga (proveri i spam, za svaki slučaj)
+<br/>
+<br/>
+U međuvremenu, pročitaj <a href="/proposition">uputstva ovde</a>.
+<br/>
+<br/>
+<br/>
+<div>
+    <a href="/login">Nazad na prijavu</a>
+</div>
+{% else %}
+<form method="post" action="/register">
+    {% csrf_token %}
+    <input type="hidden" value="login" name="login">
 
-		<div id="header">
-			<a href="/"><img width="720" height="120" src="/static/img/logo.png"></a>
-		</div>
+    <fieldset>
+        <table align="center">
+        {{ form.as_table }}
+        </table>
+        <br/>
 
-		<div id="contentlogin">
-			<h1>NAŠA MALA KLADIONICA - REGISTRACIJA</h1>
-			{% if registered %}
-			Uspešno si se registrovao. U mail-u ćeš dobiti link za aktivaciju naloga (proveri i spam, za svaki slučaj)
-			<br/>
-			<br/>
-			U međuvremenu, pročitaj <a href="/proposition">uputstva ovde</a>.
-			<br/>
-			<br/>
-			<br/>
-			<div>
-				<a href="/login">Nazad na prijavu</a>
-			</div>
-			{% else %}
-			<form method="post" action="/register">
-				{% csrf_token %}
-				<input type="hidden" value="login" name="login">
-
-				<fieldset>
-					<table align="center">
-					{{ form.as_table }}
-					</table>
-					<br/>
-
-					<div class="buttonBox">
-						<input type="submit" value="Registruj se" />
-					</div>
-					<br/>
-					<div>
-						<a href="/login">Nazad na prijavu</a>
-					</div>
-			</form>
-			{% endif %}
-		</div>
-
-		<div id="footer">
-			<hr />
-			Ukupno prijavljenih igrača: {{ ctx_stats.player_count }}, igrača prijavljenih u pare: {{ ctx_stats.player_money_count }}
-			<br />
-			Raspored nagrada &mdash; 1. mesto: {{ ctx_stats.reward_money.1 }}€, 2. mesto: {{ ctx_stats.reward_money.2 }}€, 3. mesto: {{ ctx_stats.reward_money.3 }}€
-			<br />
-			<br />
-			All content 2008-2018 Kokan, Melja and OSWD, all rights reserved. <br />
-		</div>
-	</div>
-</body>
-</html>
+        <div class="buttonBox">
+            <input type="submit" value="Registruj se" />
+        </div>
+        <br/>
+        <div>
+            <a href="/login">Nazad na prijavu</a>
+        </div>
+</form>
+{% endif %}
+{% endblock %}
