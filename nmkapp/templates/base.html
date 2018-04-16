@@ -65,6 +65,7 @@
 	</head>
 
 	<body>
+        {% if not no_menu %}
         <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top d-lg-none">
             <a class="navbar-brand" href="#">Naša mala kladionica</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
@@ -115,13 +116,19 @@
                 </ul>
             </div>
         </nav>
+        {% endif %}
 
         <div id="header">
             <a href="/"><img src="{% static "img/logo.png" %}" class="img-fluid img-responsive mx-auto d-block" alt="logo"></a>
         </div>
 
         <main role="main" class="container">
+            {% if not no_menu %}
             <div class="row">
+            {% else %}
+            <div class="row justify-content-center">
+            {% endif %}
+                {% if not no_menu %}
                 <div id="navigation" class="col-lg-2 d-none d-lg-block">
                     Meni
                     <hr/>
@@ -151,6 +158,9 @@
                     {% endif %}
                 </div>
                 <div id="content" class="col-12 col-lg-10">
+                {% else %}
+                <div id="content" class="col-12 col-lg-6">
+                {% endif %}
                     {% block content %}{% endblock %}
                 </div>
             </div>
