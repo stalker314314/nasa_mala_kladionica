@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
-        <meta name="author" content="">
+        <meta name="author" content="Branko Kokanovic">
         <!-- <link rel="icon" href="../../../../favicon.ico"> -->
 
         <title>Naša mala kladionica</title>
@@ -126,13 +126,19 @@
                     Meni
                     <hr/>
 
+                    {% if user.is_authenticated %}
                     <a href="/" class="navigation">Klađenje</a>
                     <a href="/results" class="navigation">Rezultati</a>
                     <a href="/standings" class="navigation">Tabele</a>
                     <a href="/profile" class="navigation">Profil</a>
                     <a href="/proposition" class="navigation">Pravila</a>
                     <a href="/logout" class="navigation">Logout</a>
+                    {% else %}
+                    <a href="/login" class="navigation">Login</a>
+                    <a href="/proposition" class="navigation">Pravila</a>
+                    {% endif %}
 
+                    {% if user.is_staff %}
                     <br/>
                     <br/>
                     <br/>
@@ -142,6 +148,7 @@
                     <a href="/admin/rounds" class="navigation">Kola</a>
                     <a href="/admin/matches" class="navigation">Mečevi</a>
                     <a href="/admin/results" class="navigation">Rezultati</a>
+                    {% endif %}
                 </div>
                 <div id="content" class="col-12 col-lg-10">
                     {% block content %}{% endblock %}
