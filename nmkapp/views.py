@@ -25,8 +25,10 @@ import random
 
 logger = logging.getLogger(__name__)
 
+
 def id_generator(size=16, chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
+
 
 @transaction.atomic
 def register(request):
@@ -40,26 +42,29 @@ def register(request):
         form = RegisterForm(request.POST, user={})
         if form.is_valid():
             cleaned_data = form.cleaned_data
-            user = User.objects.create_user(username = cleaned_data['username'],
-                                            email = cleaned_data['email'],
-                                            password = cleaned_data['password'],
-                                            first_name = cleaned_data['first_name'],
-                                            last_name = cleaned_data['last_name'],
-                                            is_active = False,
-                                            last_login = datetime.now())
+            user = User.objects.create_user(username=cleaned_data['username'],
+                                            email=cleaned_data['email'],
+                                            password=cleaned_data['password'],
+                                            first_name=cleaned_data['first_name'],
+                                            last_name=cleaned_data['last_name'],
+                                            is_active=False,
+                                            last_login=datetime.now())
             user.player.activation_code = id_generator()
             user.player.save()
 
             template = loader.get_template("mail/registered.html")
-            message_text = template.render({"link": "http://nmk.kokanovic.org/activate?id=%s" % user.player.activation_code})
+            message_text = template.render(
+                {"link": "http://nmk.kokanovic.org/activate?id=%s" % user.player.activation_code})
             logger.info("Sending mail that user is registered to %s", user.email)
-            msg = EmailMessage(u"[nmk] Registracija na NMK uspešna", message_text, "nmk@kokanovic.org", to=[user.email,])
+            msg = EmailMessage(u"[nmk] Registracija na NMK uspešna", message_text, "nmk@kokanovic.org",
+                               to=[user.email, ])
             msg.content_subtype = "html"
-            msg.send(fail_silently = False)
+            msg.send(fail_silently=False)
             registered = True
     else:
         form = RegisterForm(user={})
     return render(request, "register.html", {"form": form, 'registered': registered, 'no_menu': True})
+
 
 @transaction.atomic
 def forgotpassword(request):
@@ -76,16 +81,19 @@ def forgotpassword(request):
                 user.player.save()
 
                 template = loader.get_template("mail/resetpassword.html")
-                message_text = template.render({"link": "http://nmk.kokanovic.org/profile/reset?id=%s" % user.player.reset_code,
-                                                "username": user.username})
+                message_text = template.render(
+                    {"link": "http://nmk.kokanovic.org/profile/reset?id=%s" % user.player.reset_code,
+                     "username": user.username})
                 logger.info("Sending mail to reset user's password to %s", user.email)
-                msg = EmailMessage(u"[nmk] Zahtev za resetovanjem lozinke", message_text, "nmk@kokanovic.org", to=[user.email,])
+                msg = EmailMessage(u"[nmk] Zahtev za resetovanjem lozinke", message_text, "nmk@kokanovic.org",
+                                   to=[user.email, ])
                 msg.content_subtype = "html"
-                msg.send(fail_silently = False)
+                msg.send(fail_silently=False)
                 reset = True
     else:
         form = ForgotPasswordForm(rp={})
     return render(request, "forgotpassword.html", {"form": form, 'reset': reset})
+
 
 @transaction.atomic
 def activation(request):
@@ -95,7 +103,7 @@ def activation(request):
 
     player = None
     if activation_id != '':
-        players = Player.objects.filter(activation_code = activation_id)
+        players = Player.objects.filter(activation_code=activation_id)
         if len(players) == 1:
             players[0].user.is_active = True
             players[0].user.save()
@@ -107,6 +115,7 @@ def activation(request):
                 RoundStandingsCache.clear_round(nmk_round)
     return render(request, "activation.html", {"success": success, "player": player})
 
+
 @transaction.atomic
 def reset_password(request):
     logger.info("User is on reset password page")
@@ -114,7 +123,7 @@ def reset_password(request):
     nonvalid = True
     reset = False
     if reset_code != '':
-        players = Player.objects.filter(reset_code = reset_code)
+        players = Player.objects.filter(reset_code=reset_code)
         if len(players) == 1:
             player = players[0]
             nonvalid = False
@@ -132,8 +141,10 @@ def reset_password(request):
         form = ResetPasswordForm(passwords={})
     return render(request,
                   "resetpassword.html",
-                  {"form": form, "id": reset_code, "nonvalid": nonvalid, "reset": reset, "username": player.user.username}
+                  {"form": form, "id": reset_code, "nonvalid": nonvalid, "reset": reset,
+                   "username": player.user.username}
                   )
+
 
 @login_required
 @transaction.atomic
@@ -152,9 +163,11 @@ def home(request):
             return render(request, "home.html", {"shots": []})
     
         user_round = user_rounds[0]
-        shots = Shot.objects.select_related('match', 'match__home_team', 'match__away_team', 'user_round').filter(user_round=user_round).order_by("match__start_time")
+        shots = Shot.objects.select_related('match', 'match__home_team', 'match__away_team', 'user_round').\
+            filter(user_round=user_round).order_by("match__start_time")
         if len(shots) == 0:
-            matches = Match.objects.select_related('home_team', 'away_team').filter(round=user_round.round).order_by("start_time")
+            matches = Match.objects.select_related('home_team', 'away_team').filter(round=user_round.round).\
+                order_by("start_time")
             shots = []
             for match in matches:
                 shot = Shot(user_round=user_round, match=match)
@@ -172,7 +185,8 @@ def home(request):
         form = None
         if betting_allowed:
             if request.method == 'POST' and\
-                    ('save_'+str(active_round.id) in request.POST or 'final_save_'+str(active_round.id) in request.POST):
+                    ('save_'+str(active_round.id) in request.POST or
+                     'final_save_'+str(active_round.id) in request.POST):
                 logger.info("User %s posted betting", request.user)
                 form = BettingForm(request.POST, shots=shots)
                 if form.is_valid():
@@ -180,9 +194,10 @@ def home(request):
                     for user_round_match in form.cleaned_data:
                         user_round_id = int(user_round_match.split("_")[0])
                         match_id = int(user_round_match.split("_")[1])
-                        shot = next(shot for shot in shots if shot.user_round.id==user_round_id and shot.match.id==match_id)
-                        if shot != None:
-                            shot.shot=form.cleaned_data[user_round_match]
+                        shot = next(shot for shot in shots
+                                    if shot.user_round.id == user_round_id and shot.match.id == match_id)
+                        if shot is not None:
+                            shot.shot = form.cleaned_data[user_round_match]
                             shot.save()
                     if 'final_save_'+str(active_round.id) in request.POST:
                         logger.info("User %s posted final save", request.user)
@@ -199,6 +214,7 @@ def home(request):
         bets.append(one_round_to_bet)
     return render(request, "home.html", {"bets": bets})
 
+
 def format_time_left(shots):
     if len(shots) > 0:
         seconds_left = (shots[0].match.start_time - datetime.now()).total_seconds()
@@ -207,7 +223,7 @@ def format_time_left(shots):
             return "%dd %dh" % (days, int((seconds_left - (days * 60 * 60 * 24))/(60 * 60)))
         elif seconds_left > 60*60:
             hours = int(seconds_left/(60*60))
-            return "%dh %dmin" % (hours, int((seconds_left - hours *60 * 60)/60))
+            return "%dh %dmin" % (hours, int((seconds_left - hours * 60 * 60)/60))
         elif seconds_left > 60:
             minutes = int(seconds_left/60)
             print(seconds_left, minutes)
@@ -218,6 +234,7 @@ def format_time_left(shots):
             return "prvi meč već počeo"
     else:
         return "N/A"
+
 
 @login_required
 @transaction.atomic
@@ -234,12 +251,14 @@ def profile(request):
         form_new_group = NewGroupForm(request.POST, group={})
         if form_new_group.is_valid():
             cleaned_data = form_new_group.cleaned_data
-            new_group = Group(name = cleaned_data['name'], group_key = id_generator(size=8, chars=string.digits), owner = request.user.player)
+            new_group = Group(name=cleaned_data['name'], group_key=id_generator(size=8, chars=string.digits),
+                              owner=request.user.player)
             new_group.save()
             new_group.players.add(request.user.player)
             new_group.save()
             messages.add_message(request, messages.INFO,
-                                 u"Uspešno si napravio novu ekipu. Sad pošalji chat-om/mail-om/SMS-om prijateljima šifru-pozivnicu '%s' \
+                                 u"Uspešno si napravio novu ekipu. "
+                                 u"Sad pošalji chat-om/mail-om/SMS-om prijateljima šifru-pozivnicu '%s' \
                                  da bi mogli i oni da uđu u tvoju ekipu" % new_group.group_key)
     else:
         form_new_group = NewGroupForm(group={})
@@ -248,7 +267,7 @@ def profile(request):
         form_add_group = AddToGroupForm(request.user.player, request.POST, group_key={})
         if form_add_group.is_valid():
             cleaned_data = form_add_group.cleaned_data
-            groups = Group.objects.filter(group_key = cleaned_data['key'])
+            groups = Group.objects.filter(group_key=cleaned_data['key'])
             group = groups[0]
             group.players.add(request.user.player)
             group.save()
@@ -261,12 +280,14 @@ def profile(request):
     return render(request,
                   "profile.html",
                   {"form": form, "form_new_group": form_new_group, "form_add_group": form_add_group,
-                    "groups": groups, "current_user": request.user.player}
+                   "groups": groups, "current_user": request.user.player}
                   )
+
 
 @login_required
 def results(request):
     return render(request, "results.html")
+
 
 def paypal(request):
     username = "not logged"
@@ -276,35 +297,39 @@ def paypal(request):
         request.user.player.in_money = True
         request.user.player.save()
         
-        groups = Group.objects.filter(id = 1)
+        groups = Group.objects.filter(id=1)
         group = groups[0]
         group.players.add(request.user.player)
         group.save()
         RoundStandingsCache.clear_group(group)
         success = True
 
-    msg = EmailMessage(u"[nmk] Igrac uplatio paypal", "Igrac %s" % username, "nmk@kokanovic.org", to=["branko@kokanovic.org",])
+    msg = EmailMessage(u"[nmk] Igrac uplatio paypal", "Igrac %s" % username, "nmk@kokanovic.org",
+                       to=["branko@kokanovic.org", ])
     msg.content_subtype = "html"
-    msg.send(fail_silently = True)
+    msg.send(fail_silently=True)
     return render(request, "paypal.html", {"success": success})
+
 
 @login_required
 def results_league(request):
     groups = []
     group_labels = Team.objects.values("group_label").order_by("group_label").distinct()
     for group_label in group_labels:
-        matches = Match.objects.filter(round__group_type=Round.LEAGUE).filter(home_team__group_label=group_label["group_label"]).order_by("round")
-        teams = Team.objects.filter(group_label = group_label["group_label"])
+        matches = Match.objects.filter(round__group_type=Round.LEAGUE).\
+            filter(home_team__group_label=group_label["group_label"]).order_by("round")
+        teams = Team.objects.filter(group_label=group_label["group_label"])
         league = []
         for team in teams:
             league.append([team.name, 0, 0, 0, 0, 0])
         for match in matches:
-            if match.result == None: continue
+            if match.result is None:
+                continue
             team_in_league = None
             for l in league:
                 if l[0] == match.home_team.name:
                     team_in_league = l
-            if team_in_league != None:
+            if team_in_league is not None:
                 team_in_league[1] += 1
                 if match.result == 1:
                     team_in_league[2] += 1
@@ -319,7 +344,7 @@ def results_league(request):
             for l in league:
                 if l[0] == match.away_team.name:
                     team_in_league = l
-            if team_in_league != None:
+            if team_in_league is not None:
                 team_in_league[1] += 1
                 if match.result == 1:
                     team_in_league[4] += 1
@@ -333,15 +358,17 @@ def results_league(request):
         groups.append({"league": league, "matches": matches, "label": chr(group_label["group_label"] + ord('A'))}) 
     return render(request, "results_league.html", {"groups": groups})
 
+
 @login_required
 def results_cup(request):
     rounds = []
-    all_rounds = Round.objects.filter(group_type = Round.CUP).order_by("id")
+    all_rounds = Round.objects.filter(group_type=Round.CUP).order_by("id")
     for my_round in all_rounds:
-        matches = Match.objects.filter(round = my_round).order_by("start_time")
+        matches = Match.objects.filter(round=my_round).order_by("start_time")
         one_round = [my_round, matches]
         rounds.append(one_round)
-    return render(request, "results_cup.html", { "rounds": rounds})
+    return render(request, "results_cup.html", {"rounds": rounds})
+
 
 @login_required
 def standings(request):
@@ -357,19 +384,20 @@ def standings(request):
 
     rounds = Round.objects.order_by("id")
     
-    standings = StandingsCache(group).get(rounds)
+    nmk_standings = StandingsCache(group).get(rounds)
 
     return render(request,
                   "standings.html",
-                  {"rounds": rounds, "standings": standings, "groups": all_groups, "selected_group": selected_group}
+                  {"rounds": rounds, "standings": nmk_standings, "groups": all_groups, "selected_group": selected_group}
                   )
+
 
 @login_required
 @transaction.atomic
 def group_leave(request, group_id):
     group = get_object_or_404(Group, pk=int(group_id))
     # Check if user is in group at all
-    if len(Group.objects.filter(pk = int(group_id)).filter(player__in=[request.user.player])) == 0:
+    if len(Group.objects.filter(pk=int(group_id)).filter(player__in=[request.user.player])) == 0:
         raise Http404()
     # Check if user is owner of the group
     error = None
@@ -386,12 +414,13 @@ def group_leave(request, group_id):
             return HttpResponseRedirect('/profile')
     return render(request, "group_leave.html", {"error": error, "group": group})
 
+
 @login_required
 @transaction.atomic
 def group_delete(request, group_id):
     group = get_object_or_404(Group, pk=int(group_id))
     # Check if user is in group at all
-    if len(Group.objects.filter(pk = int(group_id)).filter(player__in=[request.user.player])) == 0:
+    if len(Group.objects.filter(pk=int(group_id)).filter(player__in=[request.user.player])) == 0:
         raise Http404()
     # Check if user is owner of the group
     error = None
@@ -409,14 +438,17 @@ def group_delete(request, group_id):
             return HttpResponseRedirect('/profile')
     return render(request, "group_delete.html", {"error": error, "group": group})
 
+
 @login_required
 def round_standings(request, round_id):
     this_round = get_object_or_404(Round, pk=int(round_id))
-    matches = Match.objects.select_related('round', 'home_team', 'away_team').filter(round=this_round).order_by("start_time", "id")
+    matches = Match.objects.select_related('round', 'home_team', 'away_team').\
+        filter(round=this_round).order_by("start_time", "id")
 
     selected_group = request.GET.get('group', '')
 
-    logger.info("User %s is on round standings page for round %s for group %s", request.user, this_round.name, selected_group)
+    logger.info("User %s is on round standings page for round %s for group %s",
+                request.user, this_round.name, selected_group)
 
     all_groups = Group.objects.filter(player__in=[request.user.player])
     group = Group.objects.filter(player__in=[request.user.player]).filter(name=selected_group)
@@ -436,25 +468,27 @@ def round_standings(request, round_id):
         can_see_standings = True
     else:
         logged_user_rounds = UserRound.objects.filter(user=request.user, round=this_round)
-        if len(logged_user_rounds)==1 and logged_user_rounds[0].shot_allowed==False:
+        if len(logged_user_rounds) == 1 and not logged_user_rounds[0].shot_allowed:
             can_see_standings = True
 
-    round_standings = []
+    round_standings_list = []
     
     if can_see_standings:
-        round_standings = RoundStandingsCache(this_round, group).get()
+        round_standings_list = RoundStandingsCache(this_round, group).get()
 
     return render(request, "roundstandings.html", {
                 "can_see_standings": can_see_standings,
                 "matches": matches,
-                "round_standings": round_standings,
+                "round_standings": round_standings_list,
                 "round": this_round,
                 "groups": all_groups,
                 "selected_group": selected_group})
 
+
 @login_required
 def download(request):
     return render(request, "download.html")
+
 
 def proposition(request):
     player = None
@@ -462,21 +496,22 @@ def proposition(request):
         player = request.user.player
     return render(request, "proposition.html", {"player": player})
 
+
 @staff_member_required
 def admin_rounds(request):
     rounds = Round.objects.order_by("id")
-    message = ""
+    message = ''
     set_active = request.GET.get('set_active', "0")
     try:
         set_active_id = int(set_active)
     except ValueError:
-        #Try float.
+        # Try float.
         set_active_id = 0
     set_inactive = request.GET.get('set_inactive', "0")
     try:
         set_inactive_id = int(set_inactive)
     except ValueError:
-        #Try float.
+        # Try float.
         set_inactive_id = 0
     if set_active_id != 0:
         should_be_active_round = get_object_or_404(Round, pk=int(set_active_id))
@@ -487,15 +522,18 @@ def admin_rounds(request):
         
         if settings.SEND_MAIL:
             all_players = Player.objects.all()
-            all_user_mail = [player.user.email for player in all_players if player.send_mail==True and player.user.email != ""]
-            start_time = Match.objects.filter(round=should_be_active_round).aggregate(Min('start_time'))['start_time__min']
+            all_user_mail = [player.user.email for player in all_players
+                             if player.send_mail and player.user.email != ""]
+            start_time = Match.objects.\
+                filter(round=should_be_active_round).aggregate(Min('start_time'))['start_time__min']
             template = loader.get_template("mail/round_active.html")
-            message_text = template.render({"round": should_be_active_round, "start_time": start_time })
+            message_text = template.render({"round": should_be_active_round, "start_time": start_time})
             logger.info("Sending mail that round %s is active to %s", should_be_active_round.name, all_user_mail)
             for user_mail in all_user_mail:
-                msg = EmailMessage(u"[nmk] Novo aktivno kolo %s" % should_be_active_round.name, message_text, "nmk@kokanovic.org", to=[user_mail,])
+                msg = EmailMessage(u"[nmk] Novo aktivno kolo %s" % should_be_active_round.name, message_text,
+                                   "nmk@kokanovic.org", to=[user_mail, ])
                 msg.content_subtype = "html"
-                msg.send(fail_silently = False)
+                msg.send(fail_silently=False)
 
     elif set_inactive_id != 0:
         should_be_inactive_round = get_object_or_404(Round, pk=int(set_inactive_id))
@@ -505,6 +543,7 @@ def admin_rounds(request):
         messages.add_message(request, messages.INFO, message)
 
     return render(request, "admin_rounds.html", {"rounds": rounds})
+
 
 @staff_member_required
 @transaction.atomic
@@ -532,12 +571,14 @@ def admin_rounds_edit(request):
     else:
         form = RoundForm()
 
-    return render(request, "admin_rounds_edit.html", {"form": form,})
+    return render(request, "admin_rounds_edit.html", {"form": form, })
+
 
 @staff_member_required
 def admin_matches(request):
     matches = Match.objects.order_by("round__id", "start_time")
     return render(request, "admin_matches.html", {"matches": matches})
+
 
 @staff_member_required
 @transaction.atomic
@@ -551,12 +592,14 @@ def admin_matches_edit(request):
     else:
         form = MatchForm()
 
-    return render(request, "admin_matches_edit.html", {"form": form,})
+    return render(request, "admin_matches_edit.html", {"form": form, })
+
 
 @staff_member_required
 def admin_results(request):
     matches = Match.objects.all()
     return render(request, "admin_results.html", {"matches": matches})
+
 
 @staff_member_required
 @transaction.atomic
@@ -595,17 +638,20 @@ def admin_results_change(request, match_id):
 
             # send mail if this is the last match from round
             if settings.SEND_MAIL:
-                count_matches_without_result = Match.objects.all().filter(round=match.round).filter(result__isnull=True).count()
+                count_matches_without_result = Match.objects.all().\
+                    filter(round=match.round).filter(result__isnull=True).count()
                 if count_matches_without_result == 0:
                     all_players = Player.objects.all()
-                    all_user_mail = [player.user.email for player in all_players if player.send_mail==True and player.user.email != ""]
+                    all_user_mail = [player.user.email for player in all_players
+                                     if player.send_mail and player.user.email != ""]
                     logger.info("Sending mail that round %s have all results to %s", match.round, all_user_mail)
                     template = loader.get_template("mail/result_added.html")
                     message_text = template.render({"round": match.round})
                     for user_mail in all_user_mail:
-                        msg = EmailMessage(u"[nmk] Uneti svi rezultati mečeva iz kola \"%s\"" % (match.round.name), message_text, "nmk@kokanovic.org", to=[user_mail,])
+                        msg = EmailMessage(u"[nmk] Uneti svi rezultati mečeva iz kola \"%s\"" % match.round.name,
+                                           message_text, "nmk@kokanovic.org", to=[user_mail, ])
                         msg.content_subtype = "html"
-                        msg.send(fail_silently = False)
+                        msg.send(fail_silently=False)
                 
             return HttpResponseRedirect('/admin/results')
     else:

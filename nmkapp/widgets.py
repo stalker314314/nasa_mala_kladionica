@@ -4,7 +4,7 @@ __author__ = 'Alfredo Saglimbeni'
 import re
 import uuid
 
-from django.forms.widgets import MultiWidget , to_current_timezone, DateTimeInput
+from django.forms.widgets import MultiWidget, to_current_timezone, DateTimeInput
 from datetime import datetime
 from django.utils.formats import get_format, get_language
 I18N = """
@@ -47,8 +47,8 @@ dateConversiontoPython = {
     'HH': '%I',
     'dd': '%d',
     'mm': '%m',
-    #'M': '%b',
-    #'MM': '%B',
+    # 'M': '%b',
+    # 'MM': '%B',
     'yy': '%y',
     'yyyy': '%Y',
 }
@@ -65,6 +65,7 @@ dateConversiontoJavascript = {
     '%S': 'ss'
 }
 
+
 class DateTimeWidget(MultiWidget):
 
     def to_local(self):
@@ -80,37 +81,37 @@ otherwise get_format use the server format.
         self.option = (pattern.sub(lambda x: dateConversiontoJavascript[x.group()], self.format),) + self.option[1:]
         self.language = get_language()
 
-    def __init__(self, attrs=None, options=None, usel10n = None):
+    def __init__(self, attrs=None, options=None, usel10n=None):
         if attrs is None:
-            attrs = {'readonly':''}
+            attrs = {'readonly': ''}
 
         if options is None:
             options = {}
 
         self.option = ()
-        if usel10n is True:
+        if usel10n:
             self.is_localized = True
-            #Use local datetime format Only if USE_L10N is true and middleware localize is active
+            # Use local datetime format Only if USE_L10N is true and middleware localize is active
             self.to_local()
         else:
             pattern = re.compile(r'\b(' + '|'.join(dateConversiontoPython.keys()) + r')\b')
-            self.option += (options.get('format','dd/mm/yyyy hh:ii'),)
+            self.option += (options.get('format', 'dd/mm/yyyy hh:ii'),)
             self.format = pattern.sub(lambda x: dateConversiontoPython[x.group()], self.option[0])
 
-        self.option += (options.get('startDate',''),)
-        self.option += (options.get('endDate',''),)
-        self.option += (options.get('weekStart','0'),)
-        self.option += (options.get('daysOfWeekDisabled','[]'),)
-        self.option += (options.get('autoclose','true'),)
-        self.option += (options.get('startView','2'),)
-        self.option += (options.get('minView','0'),)
-        self.option += (options.get('maxView','4'),)
-        self.option += (options.get('todayBtn','false'),)
-        self.option += (options.get('todayHighlight','false'),)
-        self.option += (options.get('minuteStep','5'),)
-        self.option += (options.get('pickerPosition','bottom-right'),)
-        self.option += (options.get('showMeridian','false'),)
-        self.option += (options.get('clearBtn','true'),)
+        self.option += (options.get('startDate', ''),)
+        self.option += (options.get('endDate', ''),)
+        self.option += (options.get('weekStart', '0'),)
+        self.option += (options.get('daysOfWeekDisabled', '[]'),)
+        self.option += (options.get('autoclose', 'true'),)
+        self.option += (options.get('startView', '2'),)
+        self.option += (options.get('minView', '0'),)
+        self.option += (options.get('maxView', '4'),)
+        self.option += (options.get('todayBtn', 'false'),)
+        self.option += (options.get('todayHighlight', 'false'),)
+        self.option += (options.get('minuteStep', '5'),)
+        self.option += (options.get('pickerPosition', 'bottom-right'),)
+        self.option += (options.get('showMeridian', 'false'),)
+        self.option += (options.get('clearBtn', 'true'),)
 
         self.language = options.get('language', 'en')
         self.option += (self.language,)
@@ -122,7 +123,7 @@ otherwise get_format use the server format.
     def value_from_datadict(self, data, files, name):
 
         if self.is_localized:
-            #Adapt the format to the user.
+            # Adapt the format to the user.
             self.to_local()
 
         date_time = [
@@ -130,22 +131,22 @@ otherwise get_format use the server format.
             for i, widget in enumerate(self.widgets)
         ]
         try:
-            D = to_current_timezone(datetime.strptime(date_time[0], self.format))
+            d = to_current_timezone(datetime.strptime(date_time[0], self.format))
         except (ValueError, TypeError):
             return ''
         else:
-            return D
+            return d
 
     def decompress(self, value):
 
         if self.is_localized:
-            #Adapt the format to the user.
+            # Adapt the format to the user.
             self.to_local()
 
         if value:
             value = to_current_timezone(value).strftime(self.format)
-            return (value,)
-        return (None,)
+            return value,
+        return None,
 
     def format_output(self, rendered_widgets):
         """
@@ -156,7 +157,7 @@ Returns a Unicode string representing the HTML for the whole lot.
 """
 
         if self.is_localized:
-            #Adapt the format to the user.
+            # Adapt the format to the user.
             self.to_local()
 
         js_options = datetimepicker_options % self.option

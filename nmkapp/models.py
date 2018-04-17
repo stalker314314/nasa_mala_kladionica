@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
+
 class Player(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     in_money = models.BooleanField(default=False)
@@ -14,24 +15,28 @@ class Player(models.Model):
     def __str__(self):
         return "%s (money: %s, points: %.2f)" % (self.user, "yes" if self.in_money else "no", self.points)
 
+
 class Group(models.Model):
     name = models.CharField(unique=True, max_length=255)
-    owner = models.ForeignKey(Player, related_name = 'owner', on_delete=models.PROTECT)
+    owner = models.ForeignKey(Player, related_name='owner', on_delete=models.PROTECT)
     players = models.ManyToManyField(Player, through=Player.groups.through)
     group_key = models.CharField(max_length=8)
     
     def __str__(self):
         return self.name
 
+
 def create_user_profile(sender, instance, created, **kwargs):  
     if created:
         profile, created = Player.objects.get_or_create(user=instance)
         rounds = Round.objects.all()
-        for round in rounds:
-            user_round = UserRound(user=instance, round=round)
+        for nmk_round in rounds:
+            user_round = UserRound(user=instance, round=nmk_round)
             user_round.save()
 
+
 post_save.connect(create_user_profile, sender=User) 
+
 
 class Team(models.Model):
     name = models.CharField(max_length=255)
@@ -39,7 +44,8 @@ class Team(models.Model):
 
     def __str__(self):
         return u"%s (%c)" % (self.name, chr(self.group_label + ord('A')))
-    
+
+
 class Round(models.Model):
     LEAGUE = 'League'
     CUP = 'Cup'
@@ -49,10 +55,11 @@ class Round(models.Model):
     )
     name = models.CharField(max_length=16, unique=True)
     active = models.BooleanField(default=False)
-    group_type = models.CharField(max_length=16, choices = GROUP_TYPE, default=LEAGUE)
+    group_type = models.CharField(max_length=16, choices=GROUP_TYPE, default=LEAGUE)
     
     def __str__(self):
         return "%s - %s%s" % (self.name, self.group_type, " (Active)" if self.active else "")
+
 
 class Match(models.Model):
     start_time = models.DateTimeField()
@@ -67,8 +74,9 @@ class Match(models.Model):
     odd2 = models.FloatField()
     
     def __str__(self):
-        result = " [%s, %s]" % (self.result, self.score) if self.result != None else ""
+        result = " [%s, %s]" % (self.result, self.score) if self.result is not None else ""
         return "%s - %s @%s %s" % (self.home_team, self.away_team, self.start_time, result)
+
 
 class UserRound(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
@@ -78,6 +86,7 @@ class UserRound(models.Model):
 
     class Meta:
         unique_together = ('user', 'round')
+
 
 class Shot(models.Model):
     user_round = models.ForeignKey('UserRound', on_delete=models.PROTECT)

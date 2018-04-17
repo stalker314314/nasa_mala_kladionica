@@ -33,7 +33,7 @@ TEMPLATES = [
                     'django.template.loaders.filesystem.Loader',
                     'django.template.loaders.app_directories.Loader'
                     ]
-                )
+                 )
             ],
         },
     },
@@ -49,7 +49,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'nmkapp',
-    "anymail",
+    'anymail',
 )
 
 STATIC_URL = '/static/'
@@ -89,24 +89,24 @@ USE_L10N = False
 
 USE_TZ = False
 
-LOGIN_URL='/login/'
-LOGOUT_URL='/logout/'
-LOGIN_REDIRECT_URL='/'
+LOGIN_URL = '/login/'
+LOGOUT_URL = '/logout/'
+LOGIN_REDIRECT_URL = '/'
 DATETIME_FORMAT = 'd.m.Y H:i'
 
 # Static files (CSS, JavaScript, Images)
 STATIC_ROOT = os.path.join(BASE_DIR, 'nmkapp', 'static')
 
-SEND_MAIL=not DEBUG
+SEND_MAIL = not DEBUG
 
-ANYMAIL={
+ANYMAIL = {
     'MAILJET_API_KEY': '',
     'MAILJET_SECRET_KEY': '',
 }
-EMAIL_BACKEND = "anymail.backends.mailjet.EmailBackend"
+EMAIL_BACKEND = 'anymail.backends.mailjet.EmailBackend'
 
 DEFAULT_FROM_EMAIL = "nmk@kokanovic.org"
-SERVER_EMAIL='nmk@kokanovic.org'
+SERVER_EMAIL = 'nmk@kokanovic.org'
 ADMINS = [('Nasa Mala Kladionica', 'nmk@kokanovic.org')]
 
 EMAIL_USE_TLS = True
@@ -121,8 +121,8 @@ LOGGING_DEBUG = {
     'disable_existing_loggers': True,
     'formatters': {
         'verbose': {
-            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
-            'datefmt' : "%d/%b/%Y %H:%M:%S"
+            'format': "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt': "%d/%b/%Y %H:%M:%S"
         },
         'simple': {
             'format': '%(levelname)s %(message)s'
@@ -137,7 +137,7 @@ LOGGING_DEBUG = {
             'when': 'midnight',
             'interval': 1
         },
-        'console' : {
+        'console': {
             'level': 'INFO',
             'class': 'logging.StreamHandler',
             'formatter': 'verbose',
@@ -145,9 +145,9 @@ LOGGING_DEBUG = {
     },
     'loggers': {
         '': {
-            'handlers':['file', 'console'],
+            'handlers': ['file', 'console'],
             'propagate': True,
-            'level':'INFO',
+            'level': 'INFO',
         },
     }
 }
@@ -157,8 +157,8 @@ LOGGING_PROD = {
     'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
-            'datefmt' : "%d/%b/%Y %H:%M:%S"
+            'format': "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt': "%d/%b/%Y %H:%M:%S"
         },
         'simple': {
             'format': '%(levelname)s %(message)s'
@@ -184,9 +184,9 @@ LOGGING_PROD = {
             'level': 'ERROR'
         },
         'django': {
-            'handlers':['file'],
+            'handlers': ['file'],
             'propagate': True,
-            'level':'DEBUG',
+            'level': 'DEBUG',
         },
         'nmkapp': {
                 'handlers': ['file'],
