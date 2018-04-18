@@ -1,6 +1,8 @@
 nasa_mala_kladionica
 ====================
 
+[![Build Status](https://travis-ci.org/stalker314314/nasa_mala_kladionica.svg?branch=master)](https://travis-ci.org/stalker314314/nasa_mala_kladionica)
+
 Django interni sajt za kladjenje
 
 ## Instalacija
