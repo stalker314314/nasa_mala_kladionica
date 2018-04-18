@@ -1,4 +1,6 @@
 import os
+import sys
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -40,7 +42,6 @@ TEMPLATES = [
 ]
 
 # Application definition
-
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -48,7 +49,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'nmkapp',
+    'nmkapp.apps.NmkappConfig',
     'anymail',
 )
 
@@ -72,11 +73,27 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'nmk',
-        'HOST': 'kokanovic.postgres.database.azure.com',
-        'USER': 'nmk@kokanovic',
-        'PASSWORD': 'nmk!'
+        'HOST': 'localhost',
+        'USER': 'postgres',
+        'PASSWORD': ''
     }
 }
+
+# Covers regular testing and django-coverage
+# if 'test' in sys.argv or 'test_coverage' in sys.argv:
+#     DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
+
+if 'TRAVIS' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE':   'django.db.backends.postgresql',
+            'NAME':     'test_nmkapp',
+            'USER':     'postgres',
+            'PASSWORD': '',
+            'HOST':     'localhost',
+            'PORT':     '',
+        }
+    }
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
