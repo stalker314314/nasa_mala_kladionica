@@ -5,7 +5,7 @@
 Cron job to send mail 24h before first game to users that didn't bet.
 """
 
-################# bootstrap django ##################################
+# ################ bootstrap django #################################
 import os
 import sys
 import datetime
@@ -27,20 +27,22 @@ from django.template import loader, Context
 
 logger = logging.getLogger(__name__)
 
+
 def get_rounds_starting_tomorrow():
-    rounds = Round.objects.filter(active=True)
+    active_rounds = Round.objects.filter(active=True)
     rounds_to_return = []
-    for nmk_round in rounds:
+    for nmk_round in active_rounds:
         min_time = Match.objects.filter(round=nmk_round).aggregate(Min('start_time'))['start_time__min']
-        if min_time == None:
+        if min_time is None:
             continue            
         hours_diff = (min_time - datetime.datetime.now()).total_seconds() / (60 * 60)
-        if hours_diff >= 23.5 and hours_diff < 24.5:
+        if 23.5 <= hours_diff < 24.5:
             rounds_to_return.append([nmk_round, min_time])
     return rounds_to_return
 
+
 def send_reminder_for_round(nmk_round, min_time):
-    all_players = Player.objects.exclude(user__email = "").filter(send_mail=True).filter(user__is_active=True)
+    all_players = Player.objects.exclude(user__email="").filter(send_mail=True).filter(user__is_active=True)
     player_mails = []
     for player in all_players:
         if not Shot.objects.filter(user_round__round=nmk_round).filter(user_round__user=player.user).exists():
@@ -51,9 +53,11 @@ def send_reminder_for_round(nmk_round, min_time):
     if settings.SEND_MAIL:
         logger.info("Sending mail that round %s will be starting soon to %s", nmk_round.name, player_mails)
         for mail in player_mails:
-            msg = EmailMessage(u"[nmk] Podsetnik za kolo \"%s\"" % (nmk_round.name), message_text, "nmk@kokanovic.org", to=[mail,])
+            msg = EmailMessage(
+                u"[nmk] Podsetnik za kolo \"%s\"" % nmk_round.name, message_text, "nmk@kokanovic.org", to=[mail, ])
             msg.content_subtype = "html"
-            msg.send(fail_silently = False)
+            msg.send(fail_silently=False)
+
 
 if __name__ == '__main__':
     logger.info("Starting reminder check")

@@ -24,8 +24,7 @@ Počele su utakmice <b>{{ round.name }}</b> kola. Nema laži, nema prevare, sled
 			{% endif %}
 			</td>
 			{% for shot in round_standing.shots %}
-			<td>{{ shot.shot }}</a>
-			</td>
+			<td>{{ shot.shot }}</td>
 			{% empty %}
 			{% for match in matches %}
 			<td>-</td>

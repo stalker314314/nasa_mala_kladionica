@@ -1,0 +1,10 @@
+language: python
+python:
+  - "3.6"
+script:
+  - python manage.py test
+addons:
+  postgresql: "9.4"
+
+before_script:
+  - psql -c "CREATE DATABASE test_nmkapp;" -U postgres
