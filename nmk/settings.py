@@ -80,20 +80,8 @@ DATABASES = {
 }
 
 # Covers regular testing and django-coverage
-# if 'test' in sys.argv or 'test_coverage' in sys.argv:
-#     DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
-
-if 'TRAVIS' in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE':   'django.db.backends.postgresql',
-            'NAME':     'test_nmkapp',
-            'USER':     'postgres',
-            'PASSWORD': '',
-            'HOST':     'localhost',
-            'PORT':     '',
-        }
-    }
+if 'test' in sys.argv or 'test_coverage' in sys.argv:
+    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
@@ -241,6 +229,8 @@ if DEBUG:
 
 if not DEBUG:
     SECRET_KEY = os.environ['NMK_SECRET_KEY']
+    DATABASES['default']['HOST'] = os.environ['NMK_DB_HOST']
+    DATABASES['default']['USER'] = os.environ['NMK_DB_USER']
     DATABASES['default']['PASSWORD'] = os.environ['NMK_DB_PASSWORD']
     ANYMAIL['MAILJET_API_KEY'] = os.environ['NMK_MAILJET_API_KEY']
     ANYMAIL['MAILJET_SECRET_KEY'] = os.environ['NMK_MAILJET_SECRET_KEY']
