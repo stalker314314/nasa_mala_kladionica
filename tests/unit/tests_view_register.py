@@ -7,7 +7,9 @@ from django.urls import reverse
 from nmkapp import views
 from nmkapp import models
 
+
 class RegisterTests(TestCase):
+
     def test_register_visit(self):
         self.client = Client()
         response = self.client.get(reverse(views.register))
