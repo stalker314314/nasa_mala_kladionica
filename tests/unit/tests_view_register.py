@@ -11,8 +11,6 @@ from .nmk_unit_test_case import NmkUnitTestCase
 
 
 class RegisterTests(NmkUnitTestCase):
-    fixtures = ['initial_data.json']
-
     def test_register_visit(self):
         client = Client()
         response = client.get(reverse(views.register))

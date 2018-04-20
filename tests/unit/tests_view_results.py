@@ -5,12 +5,11 @@ from django.test import TestCase, Client
 from django.urls import reverse
 
 from nmkapp import views
-from nmkapp import models
+
+from .nmk_unit_test_case import NmkUnitTestCase
 
 
-class ResultsTests(TestCase):
-    fixtures = ['initial_data.json']
-
+class ResultsTests(NmkUnitTestCase):
     def test_anon_user(self):
         """
         Test result view with anonymous user

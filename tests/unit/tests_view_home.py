@@ -11,8 +11,6 @@ from .nmk_unit_test_case import NmkUnitTestCase
 
 
 class HomeTests(NmkUnitTestCase):
-    fixtures = ['initial_data.json']
-
     def test_anon_user(self):
         client = Client()
         response = client.get(reverse(views.home))
