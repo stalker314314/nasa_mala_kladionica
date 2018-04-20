@@ -77,3 +77,28 @@ class HomeTests(TestCase):
         self.assertEqual(len(bet['shots']), 1)
         self.assertEqual(bet['shots'][0].match.id, 5)
         self.assertEqual(bet['shots'][0].shot, 0)
+
+    def test_active_round_playable(self):
+        """
+        Tests that player who is eligable to play can actually play
+        """
+        self.client = Client()
+        self.assertTrue(self.client.login(username='gumi', password='12345'))
+        round = models.Round.objects.filter(name='Final')[0]
+        round.active = True
+        round.save()
+        match = models.Match.objects.filter(id=5)[0]
+        match.start_time = datetime.datetime.now() + datetime.timedelta(days=2, hours=12)
+        match.save()
+        response = self.client.get(reverse(views.home))
+        self.assertEqual(response.status_code, 200)
+
+        context = response.context
+        self.assertEqual(len(context['bets']), 1)
+        bet = context['bets'][0]
+        self.assertTrue('2d' in bet['time_left'])
+        self.assertEqual(bet['round'].id, 3)
+        self.assertIsNotNone(bet['form'])
+        self.assertEqual(len(bet['shots']), 1)
+        self.assertEqual(bet['shots'][0].match.id, 5)
+        self.assertIsNone(bet['shots'][0].shot)

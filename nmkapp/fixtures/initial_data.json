@@ -3,10 +3,6 @@
   {"pk": 2, "fields": {"date_joined": "2014-04-09T19:48:14", "username": "gumi", "first_name": "Dejan", "is_staff": true, "user_permissions": [], "password": "pbkdf2_sha256$100000$AkwX2Mi5w2fS$2SHMGnWosGFI4dax4izGczBUC/F2B6mLnRrBLGIJsoM=", "email": "", "is_active": true, "is_superuser": false, "last_name": "Ubovic", "last_login": "2014-04-09T19:48:14", "groups": []}, "model": "auth.user"},
   {"pk": 3, "fields": {"date_joined": "2014-04-09T19:48:25", "username": "seki", "first_name": "Ilija", "is_staff": false, "user_permissions": [], "password": "pbkdf2_sha256$100000$AkwX2Mi5w2fS$2SHMGnWosGFI4dax4izGczBUC/F2B6mLnRrBLGIJsoM=", "email": "", "is_active": true, "is_superuser": false, "last_name": "Jankovic", "last_login": "2014-04-09T19:48:25", "groups": []}, "model": "auth.user"},
 
-  {"pk": 1, "fields": {"user": 1, "points": 12, "groups": [1,2]}, "model": "nmkapp.player"},
-  {"pk": 2, "fields": {"user": 2, "points": 3, "groups": [2,3]}, "model": "nmkapp.player"},
-  {"pk": 3, "fields": {"user": 3, "points": 0, "groups": [3]}, "model": "nmkapp.player"},
-
   {"pk": 1, "fields": {"name": "ja", "owner": 1, "players": [1], "group_key": "123"}, "model": "nmkapp.group"},
   {"pk": 2, "fields": {"name": "kokangumi", "owner": 1, "players": [1,2], "group_key": "123"}, "model": "nmkapp.group"},
   {"pk": 3, "fields": {"name": "gumiseki", "owner": 2, "players": [2,3], "group_key": "123"}, "model": "nmkapp.group"},

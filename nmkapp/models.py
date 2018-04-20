@@ -8,7 +8,6 @@ class Player(models.Model):
     in_money = models.BooleanField(default=False)
     points = models.FloatField(default=0)
     send_mail = models.BooleanField(default=True)
-    groups = models.ManyToManyField('Group')
     activation_code = models.CharField(max_length=255)
     reset_code = models.CharField(max_length=255)
 
@@ -18,8 +17,8 @@ class Player(models.Model):
 
 class Group(models.Model):
     name = models.CharField(unique=True, max_length=255)
-    owner = models.ForeignKey(Player, related_name='owner', on_delete=models.PROTECT)
-    players = models.ManyToManyField(Player, through=Player.groups.through)
+    owner = models.ForeignKey(User, related_name='owner', on_delete=models.PROTECT)
+    players = models.ManyToManyField(User)
     group_key = models.CharField(max_length=8)
     
     def __str__(self):

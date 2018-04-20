@@ -9,6 +9,7 @@ from nmkapp import models
 
 
 class RegisterTests(TestCase):
+    fixtures = ['initial_data.json']
 
     def test_register_visit(self):
         self.client = Client()

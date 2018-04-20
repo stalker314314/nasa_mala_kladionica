@@ -100,7 +100,7 @@ class AddToGroupForm(forms.Form):
             groups = Group.objects.filter(group_key=cleaned_data['key'])
             if len(groups) == 0:
                 raise forms.ValidationError({'key': [u"Neispravna šifra-pozivnica", ]})
-            if len(Group.objects.filter(group_key=cleaned_data['key']).filter(player__in=[self._player])) > 0:
+            if len(Group.objects.filter(group_key=cleaned_data['key']).filter(players__in=[self._player.user])) > 0:
                 raise forms.ValidationError({'key': [u"Već ste u ovoj ekipi", ]})
         return cleaned_data
 

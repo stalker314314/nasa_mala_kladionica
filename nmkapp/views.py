@@ -252,9 +252,9 @@ def profile(request):
         if form_new_group.is_valid():
             cleaned_data = form_new_group.cleaned_data
             new_group = Group(name=cleaned_data['name'], group_key=id_generator(size=8, chars=string.digits),
-                              owner=request.user.player)
+                              owner=request.user)
             new_group.save()
-            new_group.players.add(request.user.player)
+            new_group.players.add(request.user)
             new_group.save()
             messages.add_message(request, messages.INFO,
                                  u"Uspešno si napravio novu ekipu. "
@@ -264,23 +264,23 @@ def profile(request):
         form_new_group = NewGroupForm(group={})
 
     if request.method == 'POST' and 'add_to_group' in request.POST:
-        form_add_group = AddToGroupForm(request.user.player, request.POST, group_key={})
+        form_add_group = AddToGroupForm(request.user, request.POST, group_key={})
         if form_add_group.is_valid():
             cleaned_data = form_add_group.cleaned_data
             groups = Group.objects.filter(group_key=cleaned_data['key'])
             group = groups[0]
-            group.players.add(request.user.player)
+            group.players.add(request.user)
             group.save()
             RoundStandingsCache.clear_group(group)
             messages.add_message(request, messages.INFO, u"Uspešno si se dodao u ekipu")
     else:
         form_add_group = AddToGroupForm(request.user.player, group_key={})
 
-    groups = Group.objects.filter(player__in=[request.user.player])
+    groups = Group.objects.filter(players__in=[request.user])
     return render(request,
                   "profile.html",
                   {"form": form, "form_new_group": form_new_group, "form_add_group": form_add_group,
-                   "groups": groups, "current_user": request.user.player}
+                   "groups": groups, "current_user": request.user}
                   )
 
 
@@ -299,7 +299,7 @@ def paypal(request):
         
         groups = Group.objects.filter(id=1)
         group = groups[0]
-        group.players.add(request.user.player)
+        group.players.add(request.user)
         group.save()
         RoundStandingsCache.clear_group(group)
         success = True
@@ -373,8 +373,8 @@ def results_cup(request):
 @login_required
 def standings(request):
     selected_group = request.GET.get('group', '')
-    all_groups = Group.objects.filter(player__in=[request.user.player])
-    group = Group.objects.filter(player__in=[request.user.player]).filter(name=selected_group)
+    all_groups = Group.objects.filter(players__in=[request.user])
+    group = Group.objects.filter(players__in=[request.user]).filter(name=selected_group)
     if len(group) != 1:
         selected_group = ''
         group = None
@@ -397,11 +397,11 @@ def standings(request):
 def group_leave(request, group_id):
     group = get_object_or_404(Group, pk=int(group_id))
     # Check if user is in group at all
-    if len(Group.objects.filter(pk=int(group_id)).filter(player__in=[request.user.player])) == 0:
+    if len(Group.objects.filter(pk=int(group_id)).filter(players__in=[request.user])) == 0:
         raise Http404()
     # Check if user is owner of the group
     error = None
-    if request.user.player == group.owner:
+    if request.user == group.owner:
         error = "Ne možeš da izađeš iz ekipe koju si ti napravio, možeš samo da je izbrišeš skroz."
 
     if not error and request.method == 'POST':
@@ -409,7 +409,7 @@ def group_leave(request, group_id):
             return HttpResponseRedirect('/profile')
         elif '1' in request.POST:
             RoundStandingsCache.clear_group(group)
-            group.players.remove(request.user.player)
+            group.players.remove(request.user)
             messages.add_message(request, messages.INFO, u"Izašao si iz ekipe '%s'" % group.name)
             return HttpResponseRedirect('/profile')
     return render(request, "group_leave.html", {"error": error, "group": group})
@@ -420,11 +420,11 @@ def group_leave(request, group_id):
 def group_delete(request, group_id):
     group = get_object_or_404(Group, pk=int(group_id))
     # Check if user is in group at all
-    if len(Group.objects.filter(pk=int(group_id)).filter(player__in=[request.user.player])) == 0:
+    if len(Group.objects.filter(pk=int(group_id)).filter(players__in=[request.user])) == 0:
         raise Http404()
     # Check if user is owner of the group
     error = None
-    if request.user.player != group.owner:
+    if request.user != group.owner:
         error = "Ne možeš da izbrišeš ekipu koju nisi ti napravio, možeš samo da izađeš iz nje."
 
     if not error and request.method == 'POST':
@@ -450,8 +450,8 @@ def round_standings(request, round_id):
     logger.info("User %s is on round standings page for round %s for group %s",
                 request.user, this_round.name, selected_group)
 
-    all_groups = Group.objects.filter(player__in=[request.user.player])
-    group = Group.objects.filter(player__in=[request.user.player]).filter(name=selected_group)
+    all_groups = Group.objects.filter(players__in=[request.user])
+    group = Group.objects.filter(players__in=[request.user]).filter(name=selected_group)
     if len(group) != 1:
         selected_group = ''
         group = None
