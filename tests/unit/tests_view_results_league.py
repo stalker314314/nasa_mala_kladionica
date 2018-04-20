@@ -4,7 +4,6 @@ from django.test import Client
 from django.urls import reverse
 
 from nmkapp import views
-from nmkapp import models
 
 from .nmk_unit_test_case import NmkUnitTestCase
 
