@@ -1,18 +1,19 @@
 # -*- coding: utf-8 -*-
 
 from django.core import mail
-from django.test import TestCase, Client
+from django.test import Client
 from django.urls import reverse
 
 from nmkapp import views
 from nmkapp import models
 
+from .nmk_unit_test_case import NmkUnitTestCase
 
-class RegisterTests(TestCase):
 
+class RegisterTests(NmkUnitTestCase):
     def test_register_visit(self):
-        self.client = Client()
-        response = self.client.get(reverse(views.register))
+        client = Client()
+        response = client.get(reverse(views.register))
         self.assertEqual(response.status_code, 200)
 
         context = response.context
