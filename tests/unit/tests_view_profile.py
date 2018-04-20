@@ -1,27 +1,26 @@
 # -*- coding: utf-8 -*-
-import datetime
 
-from django.test import TestCase, Client
+from django.test import Client
 from django.urls import reverse
 
 from nmkapp import views
 from nmkapp import models
 
+from .nmk_unit_test_case import NmkUnitTestCase
 
-class ProfileTests(TestCase):
+
+class ProfileTests(NmkUnitTestCase):
     fixtures = ['initial_data.json']
 
     def test_anon_user(self):
-        self.client = Client()
-        response = self.client.get(reverse(views.profile))
+        client = Client()
+        response = client.get(reverse(views.profile))
         self.assertEqual(response.status_code, 302)
 
     def test_regular_user(self):
         """
         Test profile view when user is logged
         """
-        self.client = Client()
-        self.assertTrue(self.client.login(username='kokan', password='12345'))
         response = self.client.get(reverse(views.profile))
         self.assertEqual(response.status_code, 200)
 
@@ -39,8 +38,6 @@ class ProfileTests(TestCase):
         """
         Test group creation
         """
-        self.client = Client()
-        self.assertTrue(self.client.login(username='kokan', password='12345'))
         response = self.client.post(reverse(views.profile), {'new_group': None, 'name': 'foobar'})
         self.assertEqual(response.status_code, 200)
 
@@ -57,9 +54,7 @@ class ProfileTests(TestCase):
         """
         Test leaving group
         """
-        # CReate additional group as kokan
-        self.client = Client()
-        self.assertTrue(self.client.login(username='kokan', password='12345'))
+        # Create additional group as kokan
         response = self.client.post(reverse(views.profile), {'new_group': None, 'name': 'foobar'})
         self.assertEqual(response.status_code, 200)
         new_group = models.Group.objects.filter(name='foobar')[0]
