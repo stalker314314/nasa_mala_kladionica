@@ -18,7 +18,7 @@ class ResultsTests(NmkUnitTestCase):
         response = self.client.get(reverse(views.results))
         self.assertEqual(response.status_code, 302)
 
-    def test_no_active_round(self):
+    def test_regular_user(self):
         """
         Test result view with logged user
         """

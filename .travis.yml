@@ -2,7 +2,6 @@ language: python
 python:
   - "3.6"
 script:
-  - python manage.py test
   - coverage run --source=nmkapp --omit=*/migrations/* manage.py test
 addons:
   postgresql: "9.4"

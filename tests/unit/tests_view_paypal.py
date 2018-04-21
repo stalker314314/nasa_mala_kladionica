@@ -15,7 +15,7 @@ class PaypalTests(NmkUnitTestCase):
         response = client.get(reverse(views.paypal))
         self.assertEqual(response.status_code, 200)
 
-    def test_regular_uer(self):
+    def test_regular_user(self):
         """
         Test visiting paypal page
         """
