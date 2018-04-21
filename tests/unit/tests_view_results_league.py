@@ -14,7 +14,7 @@ class ResultsLeagueTests(NmkUnitTestCase):
         response = client.get(reverse(views.results_league))
         self.assertEqual(response.status_code, 302)
 
-    def test_league(self):
+    def test_regular_user(self):
         """
         Test visiting league results page
         """

@@ -14,7 +14,7 @@ class ResultsCupTests(NmkUnitTestCase):
         response = client.get(reverse(views.results_cup))
         self.assertEqual(response.status_code, 302)
 
-    def test_results_cup(self):
+    def test_regular_user(self):
         """
         Test cup results view
         """
