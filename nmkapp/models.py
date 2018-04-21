@@ -18,7 +18,7 @@ class Player(models.Model):
 class Group(models.Model):
     name = models.CharField(unique=True, max_length=255)
     owner = models.ForeignKey(User, related_name='owner', on_delete=models.PROTECT)
-    players = models.ManyToManyField(User)
+    players = models.ManyToManyField(User, related_name='nmkgroup')
     group_key = models.CharField(max_length=8)
     
     def __str__(self):

@@ -44,7 +44,7 @@ class StandingsCache:
                 ur_matrix[player_matrix_mapping[user_round.user.player.id]][rounds_matrix_mapping[user_round.round.id]] = user_round.points
             
             if self.group is not None:
-                players = players.filter(groups__in=[self.group])
+                players = players.filter(user__nmkgroup__in=[self.group])
             for player in players:
                 round_standings = []
                 for this_round in rounds:
@@ -126,7 +126,7 @@ class RoundStandingsCache:
                 filter(user_round__round=self.round).\
                 filter(user_round__user__is_active=True)
             if self.group is not None:
-                shots = shots.filter(user_round__user__player__groups__in=[self.group])
+                shots = shots.filter(user_round__user__nmkgroup__in=[self.group])
             shots = shots.order_by('-user_round__points', 'user_round__user__first_name', 'user_round__user__last_name',
                                    'match__start_time', 'match__id')
             
@@ -168,7 +168,7 @@ class RoundStandingsCache:
             user_rounds_not_played = UserRound.objects.select_related('user', 'user__player').\
                 filter(round=self.round).filter(shot=None).filter(user__is_active=True)
             if self.group is not None:
-                user_rounds_not_played = user_rounds_not_played.filter(user__player__groups__in=[self.group])
+                user_rounds_not_played = user_rounds_not_played.filter(user__nmkgroup__in=[self.group])
             user_rounds_not_played = user_rounds_not_played.order_by('-points', 'user__first_name', 'user__last_name')
             if len(user_rounds_not_played) > 0:
                 matches = Match.objects.filter(round=self.round).order_by('start_time', 'id')
