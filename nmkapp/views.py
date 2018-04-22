@@ -433,6 +433,7 @@ def group_delete(request, group_id):
         elif '1' in request.POST:
             group.players.clear()
             RoundStandingsCache.clear_group(group)
+            StandingsCache(group).clear()
             group.delete()
             messages.add_message(request, messages.INFO, u"Ekipa '%s' izbrisana" % group.name)
             return HttpResponseRedirect('/profile')
