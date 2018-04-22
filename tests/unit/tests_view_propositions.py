@@ -18,5 +18,5 @@ class PropositionsTests(NmkUnitTestCase):
         """
         Test proposition view
         """
-        response = self.client.get(reverse(views.home))
+        response = self.client.get(reverse(views.proposition))
         self.assertEqual(response.status_code, 200)
