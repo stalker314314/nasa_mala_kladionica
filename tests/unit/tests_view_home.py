@@ -20,6 +20,10 @@ class HomeTests(NmkUnitTestCase):
         """
         Test home view when there is no active rounds
         """
+        # Remove current active round
+        response = self.client.get('{}?set_inactive={}'.format(reverse(views.admin_rounds), 3))
+        self.assertEqual(response.status_code, 200)
+
         response = self.client.get(reverse(views.home))
         self.assertEqual(response.status_code, 200)
 
