@@ -59,9 +59,14 @@ def send_reminder_for_round(nmk_round, min_time):
             msg.send(fail_silently=False)
 
 
-if __name__ == '__main__':
+def main():
     logger.info("Starting reminder check")
     rounds = get_rounds_starting_tomorrow()
     logger.info("Rounds starting in exactly next 24 hours: %s", rounds)
     for round_time in rounds:
         send_reminder_for_round(round_time[0], round_time[1])
+    return rounds
+
+
+if __name__ == '__main__':
+    main()
