@@ -63,9 +63,14 @@ def send_mail_for_round(nmk_round):
             msg.send(fail_silently=False)
 
 
-if __name__ == '__main__':
+def main():
     logger.info("Starting check to see if any round is started")
     rounds = get_rounds_just_started()
     logger.info("Started rounds %s", rounds)
     for nmk_round in rounds:
         send_mail_for_round(nmk_round)
+    return rounds
+
+
+if __name__ == '__main__':
+    main()
