@@ -80,7 +80,7 @@ class HomeTests(NmkUnitTestCase):
 
     def test_active_round_playable(self):
         """
-        Tests that player who is eligable to play can actually play
+        Tests that player who is eligible to play can actually play
         """
         self.client = Client()
         self.assertTrue(self.client.login(username='gumi', password='12345'))
@@ -102,3 +102,64 @@ class HomeTests(NmkUnitTestCase):
         self.assertEqual(len(bet['shots']), 1)
         self.assertEqual(bet['shots'][0].match.id, 5)
         self.assertIsNone(bet['shots'][0].shot)
+
+    def test_play_round_save(self):
+        """
+        Tests that player who is eligible to play to save
+        """
+        self.client = Client()
+        self.assertTrue(self.client.login(username='gumi', password='12345'))
+
+        round = models.Round.objects.filter(name='Final')[0]
+        round.active = True
+        round.save()
+        match = models.Match.objects.filter(id=5)[0]
+        match.start_time = datetime.datetime.now() + datetime.timedelta(days=2, hours=12)
+        match.save()
+
+        response = self.client.post(reverse(views.home), {'save_3': None, '8_5': 2})
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(reverse(views.home), response['location'])
+
+        # Visit page again to see if our bets are saved
+        response = self.client.get(reverse(views.home))
+        self.assertEqual(response.status_code, 200)
+        context = response.context
+        self.assertEqual(len(context['bets']), 1)
+        bet = context['bets'][0]
+        self.assertEqual(bet['round'].id, 3)
+        self.assertIsNotNone(bet['form'])
+        self.assertEqual(len(bet['shots']), 1)
+        self.assertEqual(bet['shots'][0].match.id, 5)
+        self.assertEqual(bet['shots'][0].shot, 2)
+
+    def test_play_round_final_save(self):
+        """
+        Tests that player who is eligible to play to do final save
+        """
+        self.client = Client()
+        self.assertTrue(self.client.login(username='gumi', password='12345'))
+
+        round = models.Round.objects.filter(name='Final')[0]
+        round.active = True
+        round.save()
+        match = models.Match.objects.filter(id=5)[0]
+        match.start_time = datetime.datetime.now() + datetime.timedelta(days=2, hours=12)
+        match.save()
+
+        response = self.client.post(reverse(views.home), {'final_save_3': None, '8_5': 0})
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(reverse(views.home), response['location'])
+
+        # Visit page again to see if our bets are saved and we cannot play again
+        response = self.client.get(reverse(views.home))
+        self.assertEqual(response.status_code, 200)
+        context = response.context
+        self.assertEqual(len(context['bets']), 1)
+        bet = context['bets'][0]
+        self.assertTrue('2d' in bet['time_left'])
+        self.assertEqual(bet['round'].id, 3)
+        self.assertIsNone(bet['form'])
+        self.assertEqual(len(bet['shots']), 1)
+        self.assertEqual(bet['shots'][0].match.id, 5)
+        self.assertEqual(bet['shots'][0].shot, 0)
