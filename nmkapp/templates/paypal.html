@@ -1,16 +1,23 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 
-<h1>HVALA NA UPLATI</h1>
+<h1>{% trans "THANKS" %}</h1>
 
-Hvala na uplati.
+
+{% trans "Thank You for your payment" %}
 <br/>
 {% if success %}
-Tvoja uplate je proknjižena, dodat si u <strong>"U pare"</strong> grupu i tvoje ime će od sad biti boldovano na svim tabelama.
+{% blocktrans %}
+Your payment just went through and you have been added to <strong>"Real money"</strong> crew.
+Your name will be shown bold in all standings and tables.
+{% endblocktrans %}
 {% else %}
-U narednih 24h ćeš se u <a href="/standings">tabelama</a> videti boldovano (kao znak da igraš u pare).
-Ukoliko se to ne desi, slobodno me kontaktiraj na nmk@kokanovic.org
+{% blocktrans %}
+You will see your name bolded in all <a href="/standings">standings</a> and tables in the next 24h
+(as a sign that you play in real money). If this doesn't happen, feel free to contact nmk@kokanovic.org.
+{% endblocktrans %}
 {% endif %}
 
 {% endblock %}

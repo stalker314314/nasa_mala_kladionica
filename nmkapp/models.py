@@ -1,5 +1,7 @@
-from django.db import models
+# -*- coding: utf-8 -*-
+
 from django.contrib.auth.models import User
+from django.db import models
 from django.db.models.signals import post_save
 
 
@@ -10,9 +12,10 @@ class Player(models.Model):
     send_mail = models.BooleanField(default=True)
     activation_code = models.CharField(max_length=255)
     reset_code = models.CharField(max_length=255)
+    language = models.CharField(max_length=255, blank=True, null=True, default='en')
 
     def __str__(self):
-        return "%s (money: %s, points: %.2f)" % (self.user, "yes" if self.in_money else "no", self.points)
+        return '%s (money: %s, points: %.2f)' % (self.user, 'yes' if self.in_money else 'no', self.points)
 
 
 class Group(models.Model):
@@ -42,7 +45,7 @@ class Team(models.Model):
     group_label = models.IntegerField()
 
     def __str__(self):
-        return u"%s (%c)" % (self.name, chr(self.group_label + ord('A')))
+        return u'%s (%c)' % (self.name, chr(self.group_label + ord('A')))
 
 
 class Round(models.Model):
@@ -57,7 +60,7 @@ class Round(models.Model):
     group_type = models.CharField(max_length=16, choices=GROUP_TYPE, default=LEAGUE)
     
     def __str__(self):
-        return "%s - %s%s" % (self.name, self.group_type, " (Active)" if self.active else "")
+        return '%s - %s%s' % (self.name, self.group_type, ' (Active)' if self.active else '')
 
 
 class Match(models.Model):
@@ -73,8 +76,8 @@ class Match(models.Model):
     odd2 = models.FloatField()
     
     def __str__(self):
-        result = " [%s, %s]" % (self.result, self.score) if self.result is not None else ""
-        return "%s - %s @%s %s" % (self.home_team, self.away_team, self.start_time, result)
+        result = ' [%s, %s]' % (self.result, self.score) if self.result is not None else ''
+        return '%s - %s @%s %s' % (self.home_team, self.away_team, self.start_time, result)
 
 
 class UserRound(models.Model):

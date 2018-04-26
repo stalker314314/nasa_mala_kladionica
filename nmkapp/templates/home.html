@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load staticfiles %}
 
 {% block content %}
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 
-<h1>TRENUTNA KOLA</h1>
+<h1>{% trans "Active rounds" %}</h1>
 <br/>
 
 {% for bet in bets %}
@@ -14,17 +15,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Potvrda</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Zatvori">
+        <h5 class="modal-title" id="exampleModalLabel">{% trans "Confirmation" %}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="{% trans "Close" %}">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        Jednom kada klikneš konačan odgovor, više nećeš moći da menjaš tipove! Da li si stvarno siguran?
+        {% trans "Once you click Final Decision, you will not be able to change bets! Are you really sure?" %}
       </div>
       <div class="modal-footer">
-          <button id="submit_{{ bet.round.id }}" type="button" class="btn btn-primary">Da</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Ne</button>
+          <button id="submit_{{ bet.round.id }}" type="button" class="btn btn-primary">{% trans "Yes" %}</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "No" %}</button>
       </div>
     </div>
   </div>
@@ -38,7 +39,7 @@
 		{% if bet.form %}
 		$("form[name='save_{{ bet.round.id }}'] input[type=button]").click(function() {
 			var val = $(this).val();
-			if (val == "Sačuvaj za sada") {
+			if (val == "{% trans "Save" %}") {
 				$("input[type=hidden][name='final_save_{{ bet.round.id }}']").remove();
 				$('<input type="hidden" />').appendTo($(this).first()).attr('name', 'save_{{ bet.round.id }}').attr('value', 'save_{{ bet.round.id }}');
 				$('#save_{{ bet.round.id }}').submit();
@@ -70,7 +71,7 @@
     	<tbody>
     		<tr>
         		<td><h2>Kolo: {{ bet.round.name }}</h2></td>
-        		<td style="text-align: right;">(preostalo vreme za klađenje: <span style="color: #FF0000;">{{ bet.time_left }}</span>)</td>
+        		<td style="text-align: right;">({% trans "remaining bet time:" %} <span style="color: #FF0000;">{{ bet.time_left }}</span>)</td>
     		</tr>
 		</tbody>
 	</table>
@@ -87,7 +88,7 @@
 			<table class="mediumtable">
 				<thead>
 					<tr>
-						<th scope="col">Utakmica</th>
+						<th scope="col">{% trans "Match" %}</th>
 						<th scope="col" style="padding-left: 10px;">1</th>
 						<th scope="col" style="padding-left: 10px;">X</th>
 						<th scope="col" style="padding-left: 10px;">2</th>
@@ -108,16 +109,16 @@
 				</tbody>
 			</table>
             <div class="offset">
-                <input name="save_{{ bet.round.id }}" value="Sačuvaj za sada" type="button">
-                <input name="final_save_{{ bet.round.id }}" value="Konačan odgovor" type="button">
+                <input name="save_{{ bet.round.id }}" value="{% trans "Save" %}" type="button">
+                <input name="final_save_{{ bet.round.id }}" value="{% trans "Final Decision" %}" type="button">
                 <i class="fas fa-question-circle fa-lg awesome" data-toggle="collapse" data-target="#explain-betting"></i>
                 <div id="explain-betting" class="collapse">
                     <div class="card card-body">
-                        <strong>Sačuvaj za sada</strong> &nbsp;&nbsp; snima tipove. Snimljeni tipovi će biti važeći i
-                        ukoliko ne klikneš "Konačan odgovor" pre početka kola
+						{% trans "<strong>Save</strong> &nbsp;&nbsp; remembers your bets. Saved bets will be used even if you
+                        don't click "Final Decision" before round starts" %}
                         <br/>
-                        <strong>Konačan odgovor</strong> &nbsp;&nbsp; snima tipove tako da ne možeš da ih menjaš više,
-                        ali zato možeš da vidiš šta su drugi igrali
+                        {% trans "<strong>Final Decision</strong> &nbsp;&nbsp; will persist your bets, so you will not be
+                        able to change them anymore, but you will be able to peek into bets of other people" %}
                     </div>
                 </div>
             </div>
@@ -129,9 +130,9 @@
 	<table class="mediumtable">
 		<thead>
 			<tr>
-				<th scope="col">Utakmica</th>
-				<th scope="col">Tip</th>
-				<th scope="col">Kvota</th>
+				<th scope="col">{% trans "Match" %}</th>
+				<th scope="col">{% trans "Bet" %}</th>
+				<th scope="col">{% trans "Odd" %}</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -169,7 +170,7 @@
 	
 	{% if bet.round %}
 	<div class="offset">
-		<a href="/roundstandings/{{ bet.round.id }}">Šta su drugi igrali</a>
+		<a href="/roundstandings/{{ bet.round.id }}">{% trans "Other players' bets" %}</a>
 	</div>
 	{% endif %}
 	

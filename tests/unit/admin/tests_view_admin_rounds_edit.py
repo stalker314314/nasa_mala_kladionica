@@ -7,6 +7,7 @@ from nmkapp import views
 
 from ..nmk_unit_test_case import NmkUnitTestCase
 
+
 class AdminRoundsEditTests(NmkUnitTestCase):
     def test_anon_user(self):
         client = Client()

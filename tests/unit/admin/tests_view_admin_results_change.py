@@ -4,7 +4,7 @@ from django.core import mail
 from django.test import Client
 from django.urls import reverse
 
-from nmkapp import models,views
+from nmkapp import models, views
 
 from ..nmk_unit_test_case import NmkUnitTestCase
 

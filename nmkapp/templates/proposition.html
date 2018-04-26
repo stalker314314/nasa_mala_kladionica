@@ -1,28 +1,29 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load nmk_tags %}
 
 {% block content %}
 
-<h1>Igranje u novac</h1>
+<h1>{% trans "Real money betting" %}</h1>
 
 <ul class="proposition">
 	<li>
-	Ne mora se igrati u novac, tj. novac je opciona stvar. Ako se igra u novac, moraš se prijaviti 1h pre početka prve utakmice (14.06.2018 20:00).
+	{% blocktrans %}You don't have to play in real money, this is optional. However, if you do want to play in real money, you must apply 1h before start of the first match (14.06.2018 20:00).{% endblocktrans %}
 	</li>
 	<li>
-	Ako se igra u novac, ulog je 10€, a pare se dele među prva tri mesta
-	i to u odnosu 3:2:1, tj. prvo mesto uzima 50%, drugo 33.3%, a treće 16.6%.
+    {% blocktrans %}When you bet in real money, stake is 10€ and money is split among first three best places, in 3:2:1 ratios.
+    First place take 50%, second 33.3% and third place 16.6%{% endblocktrans %}
 	</li>
 	<li>
-	NMK snosi troškove provizije i prilikom uplate i prilikom isplate preko PayPal-a.
-	Znači, ukoliko je nagrada 100€, NMK ti uplaćuje 103.8€ (da pokrijemo proviziju PayPal-a).
+	{% blocktrans %}NMK will take all provision costs during both receiving and sending money over Paypal.
+    So, if prize 100€, NMK will pay you 103.8€, to cover Paypal provision costs.{% endblocktrans %}
 	</li>
 	<li>
-	Ukupan fond za nagrade je za 10% manji od ukupnog broja ljudi koji su dali pare * 10€.
-	Ovo je čisto da pokrijemo provizije i da platimo sajt, ne zarađujemo ni dinara od ovoga.
+        {% blocktrans %}Total prize money is 10% less than total amount of people playing with real money * 10€.
+        This is to cover our provision costs and to pay off for costs of web site, but we are not making profit out of this.{% endblocktrans %}
 	</li>
 	<li>
-	Ukoliko preskočiš ili ne odigraš neko kolo, novac se ne vraća.
+        {% blocktrans %}If you skip or you don't play any round, you are eligible for money return.{% endblocktrans %}
 	</li>
 {% is_registration_allowed as is_registration_allowed %}
 {% if is_registration_allowed %}
@@ -30,8 +31,9 @@
 {% if player.in_money %}
 {% else %}
 	<li>
-	Kad ti je sve ovo sad jasno, klikni na dugme ispod i učipi se sa 10€. To nije mnogo, a što nas je više &ndash; veća i nagrada! U roku od 24h od uplate, na
-	<a href="/standings">tabelama</a> treba da vidiš svoje ime boldovano.
+    {% blocktrans %}Now, if everything said above is clear, click on the button below and bet in real money for 10€ stake.
+        That's not too much, but as many of us is here &ndash; higher the prize money!
+        At most after 24h after payment, you should see you name in bold in <a href="/standings">standings</a>.{% endblocktrans %}
 	</li>
 <br/>
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
@@ -47,37 +49,39 @@
 </ul>
 <br/>
 
-<h1>Pravila</h1>
+<h1>{% trans "Rules of play" %}</h1>
 
 <ul class="proposition">
 	<li>
-	Tipuje se jedno celo kolo na takmičenju. U kup fazi se posdebno tipuju osmina finala, četvrtfinale, polufinale i finale.
+        {% blocktrans %}You are betting on one whole round. In cup phase, you are betting on each parts separately - eighth-finals, quarterfinals, semifinals and final.{% endblocktrans %}
+	<li>
+        {% blocktrans %}There is no discrimination, we are taking odds from first booking site that publishes them (this is because we want to enable you to bet as soon as possible), no matter is it Bet365, BWin or some third one.
+	    Odds on NMK are <strong>not changing</strong> after initial publishing.{% endblocktrans %}
 	</li>
 	<li>
-	Nema diskriminacije, kvote se uzimaju sa prvog sajta koji ih objavi (da bismo omogućili glasanje što pre), pa bio to Bet365, BWin ili Mozzartbet.
-	Kvote na NMK se <strong>ne menjaju</strong> posle toga.
+        {% blocktrans %}You are betting only on final result (1X2) in regular game time.{% endblocktrans %}
 	</li>
 	<li>
-	Tipuje se samo konačan ishod meča, i to u regularnom delu utakmice. 
+        {% blocktrans %}All registered account that do not bet on first round will be automatically deleted (not to waste necessary space in standings).{% endblocktrans %}
 	</li>
 	<li>
-	Svi registrovani nalozi koji ne istipuju prvo kolo se automatski brišu iz sistema (da ne zauzimaju prostor bez potrebe u tabelama).
+        {% blocktrans %}Odds are not multiplied, but summed. If you miss one game, it does not affect your final score from the same round.
+        You can look at this as you are betting a single ticket for each and every match and your stake is 1 point.
+        This means, if you guess odd of 3.4, you will get 3.4 points.{% endblocktrans %}
 	</li>
 	<li>
-	Kvote se ne množe već sabiraju. Promašen tip ne utiče na ostale utakmice iz istog ili drugih kola. Ovo se može gledati kao da je svaka
-	utakmica singl sama za sebe, a ulog je jedan poen za svaku utakmicu, tj. ako pogodite kvotu koja je 3.4 - dobijate 3.4 poena.
+        {% blocktrans %}You are not able to see other players' bets until you click 'Final Decision'. After that point, you will be able to see other players' bets,
+        but that doesn't mean they also clicked 'Final Decision', e.g. other players might be able to still modify their respective bets.
+        Only when first match in round starts, you can consider those bets final bets from all players, as betting is off from that point.{% endblocktrans %}
 	</li>
 	<li>
- 	Ne možete videti šta su drugi tipovali dok ne kliknete na „Konačan odgovor“. Tada možete videti šta su drugi igrali,
- 	ali ne znači da su i oni kliknuli isto na „Konačan odgovor“.tj. oni možda još mogu da menjaju svoje tipove. Tek kada
- 	prvi meč u kolu počne, to se mogu smatrati konačni tipovi svih takmičara jer je od tog trenutka tipovanje zabranjeno.
+        {% blocktrans %}This web site must be available 24/7. If web site is not available for more than 10 minutes, or we notice any online attacks
+        that can compromise or affect fair competition, whole competition is cancelled and all money is returned to their respective players.{% endblocktrans %}
 	</li>
-	<li>Sajt mora uvek da bude stabilno dostupan. Ukoliko sajt nije dostupan duže od 10 minuta po kolu ili primetimo bilo kakve napade koji
-	mogu da ugroze takmičenje, sve se prekida i pare se vraćaju.
-	</li>
-	<li>Ukoliko više učesnika ima isto poena, oni ne dele pare samo od tog mesta koje su osvojili, već od svih mesta koje su osvojili.
-	Primer: ako su Pera i Mika prvi i imaju 50 poena, oni dele pare namenjene i za prvo i za drugo mesto, tj. (50% + 33.3%) / 2 = 41.66%.
-	Ako je Žika bio ispod njih sa 49 poena, on ne dobija pare za drugo mesto, već za treće, tj. 16.6%.
+	<li>
+        {% blocktrans %}If there are multiple players with same amount of points, they are splitting prize money out of all places they are on.
+        Example: if John and Jane are first and they have 50 points each, they are splitting prize money for both 1. and 2. place - (50% + 33.3%) / 2 = 41.66%.
+        If Peter is below them with 49 points, Peter does not get prize money for 2. place, but for the third one, e.g. 16.6%.{% endblocktrans %}
 	</li>
 </ul>
 <br/>

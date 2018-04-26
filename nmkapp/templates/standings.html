@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 
@@ -13,12 +14,12 @@ function refreshPage(sel) {
 }
 </script>
 
-Odaberi ekipu:
+{% trans "Choose a crew" %}:
 <select name="group" id="id_group" onchange="refreshPage(this)">
 	{% if selected_group == "" %} 
-	<option selected="selected" value="">Svi</option>
+	<option selected="selected" value="">{% trans "All" %}</option>
 	{% else %}
-	<option value="">Svi</option>
+	<option value="">{% trans "All" %}</option>
 	{% endif %}
 	{% for group in groups %}
 		{% if selected_group == group.name %}
@@ -30,12 +31,13 @@ Odaberi ekipu:
 </select>
 {% if groups %}
 {% else %}
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(hej, pa ti nemaš nijednu ekipu, napravi ekipu na <a href="/profile">profil</a> strani i pozovi ortake!)
+{% blocktrans %}(hey, seems you are not member of any crew.
+Create a crew at <a href="/profile">profile</a> page and invite your buddies){% endblocktrans %}
 {% endif %}
 <br/>
 <br/>
 
-<div>Savet: Klikni na kolo da pogledaš rezultate samo tog kola!</div>
+<div>{% trans "Tip: click on the round to look only at that round's results!" %}</div>
 <br/>
 
 <div class="table-responsive">
@@ -43,7 +45,7 @@ Odaberi ekipu:
         <thead>
             <tr>
                 <th>#</th>
-                <th class="firstcol1">Takmičar</th>
+                <th class="firstcol1">{% trans "Player" %}</th>
                 {% for round in rounds %}
                 {% if selected_group == "" %}
                     <th class="number"><a href="/roundstandings/{{ round.id }}">{{ round.name }}</a></th>
@@ -82,7 +84,7 @@ Odaberi ekipu:
 
 <br/>
 <br/>
-* Korisnici koji igraju u pare su boldovani
+* {% trans "Players playing in real money are shown bolded" %}
 
 <div id="disqus_thread"></div>
 <script>

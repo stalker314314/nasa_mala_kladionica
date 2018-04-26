@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 """
@@ -23,7 +23,8 @@ from nmkapp.models import Round, Match, Shot, Player
 from django.conf import settings
 from django.core.mail import EmailMessage
 from django.db.models import Min
-from django.template import loader, Context
+from django.template import loader
+from django.utils.translation import gettext as _
 
 logger = logging.getLogger(__name__)
 
@@ -54,7 +55,7 @@ def send_reminder_for_round(nmk_round, min_time):
         logger.info("Sending mail that round %s will be starting soon to %s", nmk_round.name, player_mails)
         for mail in player_mails:
             msg = EmailMessage(
-                u"[nmk] Podsetnik za kolo \"%s\"" % nmk_round.name, message_text, "nmk@kokanovic.org", to=[mail, ])
+                _('[nmk] Round "%s" reminder') % nmk_round.name, message_text, "nmk@kokanovic.org", to=[mail, ])
             msg.content_subtype = "html"
             msg.send(fail_silently=False)
 

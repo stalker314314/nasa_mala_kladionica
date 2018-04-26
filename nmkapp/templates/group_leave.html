@@ -1,18 +1,19 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
-<h1>Izađi iz ekipe</h1>
+<h1>{% trans "Leave a crew" %}</h1>
 
 <p>
 	{% if error %}
 	{{ error }}
 	{% else %}
-	Hmmm...da li si siguran da želiš da napustiš ekipu <b>{{ group.name }}</b>?
+	{% blocktrans %}Huh... are you really sure you want to leave crew <b>{{ group.name }}</b>?{% endblocktrans %}
 
 	<form method="post" action="/groups/{{ group.id }}/leave">
 		{% csrf_token %}
-		<input value="Da" name="1" type="submit"/>
-		<input value="Ne" name="0" type="submit"/>
+		<input value="{% trans "Yes" %}" name="1" type="submit"/>
+		<input value="{% trans "No" %}" name="0" type="submit"/>
 	</form>
 	{% endif %}
 </p>

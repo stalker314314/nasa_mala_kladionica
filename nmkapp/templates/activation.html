@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load nmk_tags %}
 {% load staticfiles %}
 
@@ -6,7 +7,7 @@
 <div id="contentlogin">
     <h1>NAŠA MALA KLADIONICA - AKTIVACIJA</h1>
     {% if success %}
-        Uspešno si aktivirao nalog. Zezanje može da počne!
+        {% trans "You successfully activated account. Fun can start... now!" %}
         {% is_registration_allowed as is_registration_allowed %}
         {% if is_registration_allowed %}
             {% if player %}
@@ -15,9 +16,9 @@
                     <br/>
                     <br/>
                     <small>
-                    Ako želiš da igraš u pare, to će te koštati 10€.
+                    {% trans "If you want to play in real money, that will cost you" %} 10€.
                     <br/>
-                    Sve ostale detalje možeš da vidiš na strani sa <a href="/proposition">pravilima</a>.
+                    {% blocktrans %}You can find all other details at the <a href="/proposition">proposition</a> page.{% endblocktrans %}
                     </small>
                     <br/>
                     <br/>
@@ -33,12 +34,12 @@
             {% endif %}
     {% endif %}
     {% else %}
-        Pogrešna aktivacija
+        {% trans "Invalid activation" %}
     {% endif %}
     <br/>
     <br/>
     <div>
-        <a href="/login">Nazad na prijavu</a>
+        <a href="/login">{% trans "Back to login" %}</a>
     </div>
 </div>
 {% endblock %}

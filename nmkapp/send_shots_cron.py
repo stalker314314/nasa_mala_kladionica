@@ -19,9 +19,10 @@ django.setup()
 
 from nmkapp.models import Round, Match, UserRound, Shot, Player
 
-from django.template import loader, Context
+from django.template import loader
 from django.conf import settings
 from django.core.mail import EmailMessage
+from django.utils.translation import gettext as _
 
 logger = logging.getLogger(__name__)
 
@@ -58,7 +59,7 @@ def send_mail_for_round(nmk_round):
         logger.info("Sending mail that round %s started to %s", nmk_round.name, all_user_mail)
         for user_mail in all_user_mail:
             msg = EmailMessage(
-                u"[nmk] Počelo kolo \"%s\"" % nmk_round.name, message_text, "nmk@kokanovic.org", to=[user_mail, ])
+                _('[nmk] Round "%s" started') % nmk_round.name, message_text, "nmk@kokanovic.org", to=[user_mail, ])
             msg.content_subtype = "html"
             msg.send(fail_silently=False)
 

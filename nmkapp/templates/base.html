@@ -1,4 +1,6 @@
+{% load i18n %}
 {% load staticfiles %}
+
 <!doctype html>
 <!--suppress XmlHighlighting -->
 <html lang="en">
@@ -18,12 +20,12 @@
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
-		<link href="{% static " css/css.css" %}" rel="stylesheet" type="text/css" />
-		<link href="{% static " css/tipsy.css" %}" rel="stylesheet" type="text/css" />
-        <link href="{% static " css/sticky-footer.css" %}" rel="stylesheet" type="text/css" />
+		<link href="{% static "css/css.css" %}" rel="stylesheet" type="text/css" />
+		<link href="{% static "css/tipsy.css" %}" rel="stylesheet" type="text/css" />
+        <link href="{% static "css/sticky-footer.css" %}" rel="stylesheet" type="text/css" />
 		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
-		<script src="{% static " js/sorttable.js" %}"></script>
-		<script src="{% static " js/jquery.tipsy.js" %}"></script>
+		<script src="{% static "js/sorttable.js" %}"></script>
+		<script src="{% static "js/jquery.tipsy.js" %}"></script>
 		<script type="text/javascript">
 			function notify(message, type, timeout) {
 				// default values
@@ -82,40 +84,40 @@
                 <ul class="navbar-nav mr-auto">
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="navigation nav-link" href="/">Klađenje</a>
+                        <a class="navigation nav-link" href="/">{% trans "Betting" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="navigation nav-link" href="/standings">Tabele</a>
+                        <a class="navigation nav-link" href="/standings">{% trans "Standings" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="navigation nav-link" href="/results">Rezultati</a>
+                        <a class="navigation nav-link" href="/results">{% trans "Fixtures" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="navigation nav-link" href="/profile">Profil</a>
+                        <a class="navigation nav-link" href="/profile">{% trans "Profile" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="navigation nav-link" href="/proposition">Pravila</a>
+                        <a class="navigation nav-link" href="/proposition">{% trans "Propositions" %}</a>
                     </li>
                     {% if user.is_staff %}
                     <li class="nav-item dropdown">
                         <a class="navigation nav-link dropdown-toggle" href="#" id="dropdown01"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin meni</a>
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans "Admin menu" %}</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
-                            <a class="navigation dropdown-item" href="/admin/rounds">Kola</a>
-                            <a class="navigation dropdown-item" href="/admin/matches">Mečevi</a>
-                            <a class="navigation dropdown-item" href="/admin/results">Rezultati</a>
+                            <a class="navigation dropdown-item" href="/admin/rounds">{% trans "Rounds" %}</a>
+                            <a class="navigation dropdown-item" href="/admin/matches">{% trans "Matches" %}</a>
+                            <a class="navigation dropdown-item" href="/admin/results">{% trans "Results" %}</a>
                         </div>
                     </li>
                     {% endif %}
                     <li class="nav-item">
-                        <a class="navigation nav-link" href="/logout">Logout</a>
+                        <a class="navigation nav-link" href="/logout">{% trans "Logout" %}</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="navigation nav-link" href="/login">Login</a>
+                        <a class="navigation nav-link" href="/login">{% trans "Login" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="navigation nav-link" href="/proposition">Pravila</a>
+                        <a class="navigation nav-link" href="/proposition">{% trans "Propositions" %}</a>
                     </li>
                     {% endif %}
                 </ul>
@@ -124,7 +126,7 @@
         {% endif %}
 
         <div id="header">
-            <a href="/"><img src="{% static " img/logo.png" %}" class="img-fluid img-responsive mx-auto d-block" alt="logo"></a>
+            <a href="/"><img src="{% static "img/logo.png" %}" class="img-fluid img-responsive mx-auto d-block" alt="logo"></a>
         </div>
 
         <main role="main" class="container">
@@ -135,19 +137,19 @@
             {% endif %}
                 {% if not no_menu %}
                 <div id="navigation" class="col-lg-2 d-none d-lg-block">
-                    Meni
+                    {% trans "Menu" %}
                     <hr/>
 
                     {% if user.is_authenticated %}
-                    <a href="/" class="navigation">Klađenje</a>
-                    <a href="/standings" class="navigation">Tabele</a>
-                    <a href="/results" class="navigation">Rezultati</a>
-                    <a href="/profile" class="navigation">Profil</a>
-                    <a href="/proposition" class="navigation">Pravila</a>
-                    <a href="/logout" class="navigation">Logout</a>
+                    <a href="/" class="navigation">{% trans "Betting" %}</a>
+                    <a href="/standings" class="navigation">{% trans "Standings" %}</a>
+                    <a href="/results" class="navigation">{% trans "Fixtures" %}</a>
+                    <a href="/profile" class="navigation">{% trans "Profile" %}</a>
+                    <a href="/proposition" class="navigation">{% trans "Propositions" %}</a>
+                    <a href="/logout" class="navigation">{% trans "Logout" %}</a>
                     {% else %}
-                    <a href="/login" class="navigation">Login</a>
-                    <a href="/proposition" class="navigation">Pravila</a>
+                    <a href="/login" class="navigation">{% trans "Login" %}</a>
+                    <a href="/proposition" class="navigation">{% trans "Propositions" %}</a>
                     {% endif %}
 
                     {% if user.is_staff %}
@@ -155,46 +157,55 @@
                     <br/>
                     <br/>
 
-                    Admin meni
+                    {% trans "Admin menu" %}
                     <hr/>
-                    <a href="/admin/rounds" class="navigation">Kola</a>
-                    <a href="/admin/matches" class="navigation">Mečevi</a>
-                    <a href="/admin/results" class="navigation">Rezultati</a>
+                    <a href="/admin/rounds" class="navigation">{% trans "Rounds" %}</a>
+                    <a href="/admin/matches" class="navigation">{% trans "Matches" %}</a>
+                    <a href="/admin/results" class="navigation">{% trans "Results" %}</a>
                     {% endif %}
                 </div>
                 <div id="content" class="col-12 col-lg-10">
                 {% else %}
                 <div id="content" class="col-12 col-lg-6 text-center">
                 {% endif %}
+
                     {% block content %}{% endblock %}
+
                 </div>
             </div>
         </main>
 
         <footer class="footer">
+            {% trans "Number of registered players" as registered_players_count %}
+            {% trans "real money players" as real_money_players_count %}
+            {% trans "Prize money" as prize_money %}
+            {% trans "1. place" as place1 %}
+            {% trans "2. place" as place2 %}
+            {% trans "3. place" as place3 %}
+
             <div class="container">
                 <hr />
                 <div class="text-muted d-none d-sm-block">
-                    Ukupno prijavljenih igrača: <strong>{{ ctx_stats.player_count }}</strong>, igrača prijavljenih u pare: <strong>{{ ctx_stats.player_money_count }}</strong>
+                    {{ registered_players_count }}: <strong>{{ ctx_stats.player_count }}</strong>, {{ real_money_players_count }}: <strong>{{ ctx_stats.player_money_count }}</strong>
                 </div>
                 <div class="text-muted d-sm-none">
-                    Ukupno prijavljenih igrača: <strong>{{ ctx_stats.player_count }}</strong>,
+                    {{ registered_players_count }}: <strong>{{ ctx_stats.player_count }}</strong>,
                     <br />
-                    igrača prijavljenih u pare: <strong>{{ ctx_stats.player_money_count }}</strong>
+                    {{ real_money_players_count }}: <strong>{{ ctx_stats.player_money_count }}</strong>
                 </div>
                 <div class="text-muted d-none d-sm-block">
-                    Raspored nagrada &mdash; 1. mesto: <strong>{{ ctx_stats.reward_money.1 }}€</strong>, 2. mesto: <strong>{{ ctx_stats.reward_money.2 }}€</strong>, 3. mesto: <strong>{{ ctx_stats.reward_money.3 }}€</strong>
+                    {{ prize_money }} &mdash; {{ place1 }}: <strong>{{ ctx_stats.reward_money.1 }}€</strong>, {{ place2 }}: <strong>{{ ctx_stats.reward_money.2 }}€</strong>, {{ place3 }}: <strong>{{ ctx_stats.reward_money.3 }}€</strong>
                 </div>
                 <div class="text-muted d-sm-none">
-                    Raspored nagrada &mdash; 1. mesto: <strong>{{ ctx_stats.reward_money.1 }}€</strong>,
+                    {{ prize_money }} &mdash; {{ place1 }}: <strong>{{ ctx_stats.reward_money.1 }}€</strong>,
                     <br />
-                    2. mesto: <strong>{{ ctx_stats.reward_money.2 }}€</strong>,
+                    {{ place2 }}: <strong>{{ ctx_stats.reward_money.2 }}€</strong>,
                     <br />
-                    3. mesto: <strong>{{ ctx_stats.reward_money.3 }}€</strong>
+                    {{ place3 }}: <strong>{{ ctx_stats.reward_money.3 }}€</strong>
                 </div>
                 {% if user.is_authenticated %}
                 <div class="text-muted d-none d-sm-block">
-                    ©2008-2018 Sva pitanja, želje, čestitke i pozdrave uputiti na nmk@kokanovic.org
+                    ©2008-2018 {% trans "All questions, wishes and bug reports direct to nmk@kokanovic.org" %}
                 </div>
                 <div class="text-muted d-sm-none">
                     ©2008-2018 nmk@kokanovic.org

@@ -1,5 +1,6 @@
 import os
 import sys
+from django.utils.translation import gettext_lazy as _
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -57,6 +58,7 @@ STATIC_URL = '/static/'
 
 MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -84,7 +86,16 @@ DATABASES = {
 #     DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
 
 # Internationalization
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
+
+LANGUAGES = [
+    ('en', _('English')),
+    ('sr', _('Serbian')),
+]
+
+LOCALE_PATHS = (
+    'locale',
+)
 
 TIME_ZONE = 'Europe/Belgrade'
 
