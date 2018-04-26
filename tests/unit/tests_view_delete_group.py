@@ -66,6 +66,6 @@ class DeleteGroupTests(NmkUnitTestCase):
         self.assertEqual(response.status_code, 200)
         context = response.context
         self.assertEqual(context['error'],
-                         'Ne možeš da izbrišeš ekipu koju nisi ti napravio, možeš samo da izađeš iz nje.')
+                         'You cannot delete crew that you are not owner of, you can only leave it.')
         self.assertIsNotNone(context['group'])
         self.assertEqual(context['group'].id, 2)

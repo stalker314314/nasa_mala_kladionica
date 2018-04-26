@@ -27,7 +27,7 @@ class ForgotPasswordTests(NmkUnitTestCase):
         self.assertTrue(context['reset'])
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].to, ['branko@kokanovi.com'])
-        self.assertEqual(mail.outbox[0].subject, '[nmk] Zahtev za resetovanjem lozinke')
+        self.assertEqual(mail.outbox[0].subject, '[nmk] Reset password request')
 
     def test_reset_password_unknown_mail(self):
         client = Client()

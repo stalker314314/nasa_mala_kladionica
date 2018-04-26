@@ -31,7 +31,7 @@ class HomeTests(NmkUnitTestCase):
         self.assertEqual(len(context['shots']), 0)
         self.assertEqual(len(context['messages']), 1)
         self.assertEqual(list(context['messages'])[0].message,
-                         'Trenutno nema aktivnog kola za klađenje, pokušaj kasnije')
+                         'There is no active round currently to place bets, try again later')
 
     def test_active_round_in_past(self):
         """
@@ -48,7 +48,7 @@ class HomeTests(NmkUnitTestCase):
         context = response.context
         self.assertEqual(len(context['bets']), 1)
         bet = context['bets'][0]
-        self.assertEqual(bet['time_left'], 'prvi meč već počeo')
+        self.assertEqual(bet['time_left'], 'first match already started')
         self.assertEqual(bet['round'].id, 3)
         self.assertIsNone(bet['form'])
         self.assertEqual(len(bet['shots']), 1)

@@ -87,7 +87,7 @@ class ResetPasswordTests(NmkUnitTestCase):
         self.assertEqual(response.status_code, 200)
         context = response.context
         self.assertIsNotNone(context['form'])
-        self.assertTrue('Lozinke se ne poklapaju' in
+        self.assertTrue('Passwords do not match' in
                         str(context['form'].errors['password2']))
         self.assertFalse(context['reset'])
         self.assertEqual(context['username'], 'kokan')
