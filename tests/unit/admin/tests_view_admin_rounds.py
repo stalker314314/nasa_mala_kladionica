@@ -38,7 +38,7 @@ class AdminRoundsTests(NmkUnitTestCase):
             response = self.client.get('{}?set_active={}'.format(reverse(views.admin_rounds), new_round_id))
             self.assertEqual(response.status_code, 200)
             self.assertEqual(len(mail.outbox), 1)
-            self.assertEqual(mail.outbox[0].subject, '[nmk] Novo aktivno kolo Final2')
+            self.assertEqual(mail.outbox[0].subject, '[nmk] New round "Final2" available')
         rounds = self._get_all_rounds()
         self.assertFalse(rounds[0].active)
         self.assertFalse(rounds[1].active)

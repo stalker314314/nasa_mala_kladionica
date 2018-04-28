@@ -1,7 +1,8 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
-<h1>Kup rezultati</h1>
+<h1>{% trans "Cup results" %}</h1>
 
 {% for round in rounds %}
 <h2>
@@ -11,9 +12,9 @@
 <table class="sortable">
 	<thead>
 		<tr>
-			<th scope="col">Vreme</th>
-			<th scope="col">Meč</th>
-			<th scope="col">Rezultat</th>
+			<th scope="col">{% trans "Date/time" %}</th>
+			<th scope="col">{% trans "Match" %}</th>
+			<th scope="col">{% trans "Score" %}</th>
 		</tr>
 	</thead>
 	<tbody>

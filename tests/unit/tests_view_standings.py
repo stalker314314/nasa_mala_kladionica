@@ -23,7 +23,6 @@ class StandingsTests(NmkUnitTestCase):
         context = response.context
         self.check_full_standings_context(context)
 
-
     def check_full_standings_context(self, context):
         self.assertEqual(len(context['rounds']), 3)
         self.assertTrue(context['rounds'][0].id, 1)

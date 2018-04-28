@@ -47,7 +47,7 @@ class RegisterTests(NmkUnitTestCase):
         self.assertTrue(context['no_menu'])
 
         self.assertEqual(len(mail.outbox), 1)
-        self.assertEqual(mail.outbox[0].subject, '[nmk] Registracija na NMK uspešna')
+        self.assertEqual(mail.outbox[0].subject, '[nmk] NMK registration successful')
 
         users = models.User.objects.filter(username='foo')
         self.assertEqual(len(users), 1)

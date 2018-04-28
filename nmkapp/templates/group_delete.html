@@ -1,18 +1,19 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
-<h1>Brisanje ekipe</h1>
+<h1>{% trans "Crew deletion" %}</h1>
 
 <p>
 	{% if error %}
 	{{ error }}
 	{% else %}
-	Hmmm...da li si baš siguran da želiš da zauvek izbrišeš ekipu <b>{{ group.name }}</b> i sve njene članove?
+	{% blocktrans %}Huh... are you really sure you want to delete crew <b>{{ group.name }}</b> and all its members forever?{% endblocktrans %}
 
 	<form method="post" action="/groups/{{ group.id }}/delete">
 		{% csrf_token %}
-		<input value="Da" name="1" type="submit"/>
-		<input value="Ne" name="0" type="submit"/>
+		<input value="{% trans "Yes" %}" name="1" type="submit"/>
+		<input value="{% trans "No" %}" name="0" type="submit"/>
 	</form>
 	{% endif %}
 </p>

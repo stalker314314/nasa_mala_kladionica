@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 
@@ -39,12 +40,12 @@ function refreshPage(sel) {
 
 {% if can_see_standings %}
 
-Odaberi ekipu:
+{% trans "Choose a crew" %}:
 <select name="group" id="id_group" onchange="refreshPage(this)">
 	{% if selected_group == "" %} 
-	<option selected="selected" value="">Svi</option>
+	<option selected="selected" value="">{% trans "All" %}</option>
 	{% else %}
-	<option value="">Svi</option>
+	<option value="">{% trans "All" %}</option>
 	{% endif %}
 	{% for group in groups %}
 		{% if selected_group == group.name %}
@@ -56,7 +57,8 @@ Odaberi ekipu:
 </select>
 {% if groups %}
 {% else %}
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(hej, pa ti nemaš nijednu ekipu, napravi ekipu na <a href="/profile">profil</a> strani i pozovi ortake!)
+{% blocktrans %}(hey, seems you are not member of any crew.
+Create a crew at <a href="/profile">profile</a> page and invite your buddies){% endblocktrans %}
 {% endif %}
 <br/>
 <br/>
@@ -66,7 +68,7 @@ Odaberi ekipu:
         <thead style="height: 40px">
             <tr>
                 <th>#</th>
-                <th class="firstcol" rowspan="2">Korisnik</th>
+                <th class="firstcol" rowspan="2">{% trans "Player" %}</th>
                 {% for match in matches %}
                 <th class="sorttable_nosort">
                     {% ifequal match.round.get_group_type_display "League" %}
@@ -158,7 +160,7 @@ Odaberi ekipu:
             </tr>
             <tr>
                 <td></td>
-                <td>Tačan rezultat</td>
+                <td>{% trans "Actual score" %}</td>
                 {% for match in matches %}
                 <td class="numbercenter">
                     {% if match.result != None %}

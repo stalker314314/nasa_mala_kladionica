@@ -5,6 +5,7 @@ from django.urls import reverse
 
 from nmkapp import logic, views, cache, models
 
+
 class NmkUnitTestCase(TestCase):
     fixtures = ['initial_data.json']
 

@@ -1,22 +1,23 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
-<h1>Rezultati u grupama</h1>
+<h1>{% trans "League results" %}</h1>
 {% for group in groups %}
 <h2>
-<a name="A">Grupa {{ group.label }} </a>
+<a name="A">{% blocktrans %}Group {{ group.label }}{% endblocktrans %}</a>
 </h2>
 
 
 <table class="sortable">
 	<thead>
 		<tr>
-			<th scope="col" class="firstcol">Tim</th>
-			<th scope="col" class="number">Odigrane</th>
-			<th scope="col" class="number">Pobeda</th>
-			<th scope="col" class="number">Nerešeno</th>
-			<th scope="col" class="number">Izgubljeno</th>
-			<th scope="col" class="number">Broj bodova</th>
+			<th scope="col" class="firstcol">{% trans "Team" %}</th>
+			<th scope="col" class="number">{% trans "Played" %}</th>
+			<th scope="col" class="number">{% trans "Won" %}</th>
+			<th scope="col" class="number">{% trans "Draw" %}</th>
+			<th scope="col" class="number">{% trans "Lost" %}</th>
+			<th scope="col" class="number">{% trans "Points" %}</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -39,10 +40,10 @@
 <table>
 	<thead>
 		<tr>
-			<th scope="col">Kolo</th>
-			<th scope="col">Vreme</th>
-			<th scope="col">Meč</th>
-			<th scope="col">Rezultat</th>
+			<th scope="col">{% trans "Round" %}</th>
+			<th scope="col">{% trans "Date/time" %}</th>
+			<th scope="col">{% trans "Match" %}</th>
+			<th scope="col">{% trans "Score" %}</th>
 		</tr>
 	</thead>
 	<tbody>

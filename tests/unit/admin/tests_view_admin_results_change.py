@@ -4,7 +4,7 @@ from django.core import mail
 from django.test import Client
 from django.urls import reverse
 
-from nmkapp import models,views
+from nmkapp import models, views
 
 from ..nmk_unit_test_case import NmkUnitTestCase
 
@@ -34,7 +34,7 @@ class AdminResultsChangeTests(NmkUnitTestCase):
             self.assertEqual(response.status_code, 302)
             self.assertEqual(reverse(views.admin_results), response['location'])
             self.assertEqual(len(mail.outbox), 1)
-            self.assertEqual(mail.outbox[0].subject, '[nmk] Uneti svi rezultati mečeva iz kola "Final"')
+            self.assertEqual(mail.outbox[0].subject, '[nmk] All results from round "Final" received')
 
         match = models.Match.objects.filter(id=5)[0]
         self.assertEqual(match.result, 1)

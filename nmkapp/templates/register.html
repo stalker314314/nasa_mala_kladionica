@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load staticfiles %}
 {% load nmk_tags %}
 
@@ -6,15 +7,16 @@
 
 <h1>NAŠA MALA KLADIONICA - REGISTRACIJA</h1>
 {% if registered %}
-Uspešno si se registrovao. U mail-u ćeš dobiti link za aktivaciju naloga (proveri i spam, za svaki slučaj)
+{% trans "You successfully registered. You will now receive mail with link to activate your account
+(check spam folder too, just in case" %}
 <br/>
 <br/>
-U međuvremenu, pročitaj <a href="/proposition">uputstva ovde</a>.
+{% blocktrans %}In the meantime, you can read propositions <a href="/proposition">here</a>.{% endblocktrans %}
 <br/>
 <br/>
 <br/>
 <div>
-    <a href="/login">Nazad na prijavu</a>
+    <a href="/login">{% trans "Back to login" %}</a>
 </div>
 {% else %}
 <form method="post" action="/register">
@@ -28,11 +30,11 @@ U međuvremenu, pročitaj <a href="/proposition">uputstva ovde</a>.
         <br/>
 
         <div class="buttonBox">
-            <input type="submit" value="Registruj se" />
+            <input type="submit" value="{% trans "Register" %}" />
         </div>
         <br/>
         <div>
-            <a href="/login">Nazad na prijavu</a>
+            <a href="/login">{% trans "Back to login" %}</a>
         </div>
     </fieldset>
 </form>
