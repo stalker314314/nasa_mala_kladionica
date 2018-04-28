@@ -9,3 +9,4 @@ class SendReminderCronTests(NmkUnitTestCase):
     def test_no_reminders(self):
         rounds = send_reminder_cron.main()
         self.assertEqual(len(rounds), 0)
+
