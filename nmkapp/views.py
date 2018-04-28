@@ -18,7 +18,7 @@ from django.db.models.aggregates import Min
 from django.http.response import HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render
 from django.template import loader
-from django.utils.translation import activate, LANGUAGE_SESSION_KEY, get_language
+from django.utils import translation
 from django.utils.translation import gettext as _
 
 from nmkapp.cache import StandingsCache, RoundStandingsCache
@@ -45,7 +45,7 @@ def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST, user={})
         if form.is_valid():
-            language = get_language()
+            language = translation.get_language()
             available_languages = [lang_code for (lang_code, lang_name) in settings.LANGUAGES]
             if language not in available_languages:
                 language = settings.LANGUAGE_CODE
@@ -63,12 +63,13 @@ def register(request):
             player.language = language
             player.save()
 
-            template = loader.get_template('mail/registered.html')
-            message_text = template.render(
-                {'link': 'http://nmk.kokanovic.org/activate?id=%s' % user.player.activation_code})
+            with translation.override(language):
+                subject = _('[nmk] NMK registration successful')
+                template = loader.get_template('mail/registered.html')
+                message_text = template.render(
+                    {'link': 'http://nmk.kokanovic.org/activate?id=%s' % user.player.activation_code})
             logger.info('Sending mail that user is registered to %s', user.email)
-            msg = EmailMessage(_('[nmk] NMK registration successful'), message_text, 'nmk@kokanovic.org',
-                               to=[user.email, ])
+            msg = EmailMessage(subject, message_text, 'nmk@kokanovic.org', to=[user.email, ])
             msg.content_subtype = 'html'
             msg.send(fail_silently=False)
             registered = True
@@ -91,13 +92,14 @@ def forgotpassword(request):
                 user.player.reset_code = id_generator(size=32)
                 user.player.save()
 
-                template = loader.get_template('mail/resetpassword.html')
-                message_text = template.render(
-                    {'link': 'http://nmk.kokanovic.org/profile/reset?id=%s' % user.player.reset_code,
-                     'username': user.username})
+                with translation.override(user.player.language):
+                    subject = _('[nmk] Reset password request')
+                    template = loader.get_template('mail/resetpassword.html')
+                    message_text = template.render(
+                        {'link': 'http://nmk.kokanovic.org/profile/reset?id=%s' % user.player.reset_code,
+                         'username': user.username})
                 logger.info('Sending mail to reset user\'s password to %s', user.email)
-                msg = EmailMessage(_('[nmk] Reset password request'), message_text, 'nmk@kokanovic.org',
-                                   to=[user.email, ])
+                msg = EmailMessage(subject, message_text, 'nmk@kokanovic.org', to=[user.email, ])
                 msg.content_subtype = 'html'
                 msg.send(fail_silently=False)
                 reset = True
@@ -259,9 +261,9 @@ def profile(request):
             form.save()
             new_language = form.cleaned_data['language']
             if new_language != old_language:
-                activate(new_language)
+                translation.activate(new_language)
                 if hasattr(request, 'session'):
-                    request.session[LANGUAGE_SESSION_KEY] = new_language
+                    request.session[translation.LANGUAGE_SESSION_KEY] = new_language
             messages.add_message(request, messages.INFO, _('Settings successfully saved'))
     else:
         form = PlayerForm(instance=request.user.player)
@@ -540,17 +542,17 @@ def admin_rounds(request):
         messages.add_message(request, messages.INFO, message)
         
         if settings.SEND_MAIL:
-            all_players = Player.objects.all()
-            all_user_mail = [player.user.email for player in all_players
-                             if player.send_mail and player.user.email != '']
+            all_players = Player.objects.exclude(user__email='').filter(user__is_active=True).filter(send_mail=True)
             start_time = Match.objects.\
                 filter(round=should_be_active_round).aggregate(Min('start_time'))['start_time__min']
-            template = loader.get_template('mail/round_active.html')
-            message_text = template.render({'round': should_be_active_round, 'start_time': start_time})
-            logger.info('Sending mail that round %s is active to %s', should_be_active_round.name, all_user_mail)
-            for user_mail in all_user_mail:
-                msg = EmailMessage(_('[nmk] New round "%s" available') % should_be_active_round.name, message_text,
-                                   'nmk@kokanovic.org', to=[user_mail, ])
+            logger.info('Sending mail that round %s is active to %d players',
+                        should_be_active_round.name, len(all_players))
+            for player in all_players:
+                with translation.override(player.language):
+                    subject = _('[nmk] New round "%s" available') % should_be_active_round.name
+                    template = loader.get_template('mail/round_active.html')
+                    message_text = template.render({'round': should_be_active_round, 'start_time': start_time})
+                msg = EmailMessage(subject, message_text, 'nmk@kokanovic.org', to=[player.user.email, ])
                 msg.content_subtype = 'html'
                 msg.send(fail_silently=False)
 
@@ -660,15 +662,15 @@ def admin_results_change(request, match_id):
                 count_matches_without_result = Match.objects.all().\
                     filter(round=match.round).filter(result__isnull=True).count()
                 if count_matches_without_result == 0:
-                    all_players = Player.objects.all()
-                    all_user_mail = [player.user.email for player in all_players
-                                     if player.send_mail and player.user.email != '']
-                    logger.info('Sending mail that round %s have all results to %s', match.round, all_user_mail)
-                    template = loader.get_template('mail/result_added.html')
-                    message_text = template.render({'round': match.round})
-                    for user_mail in all_user_mail:
-                        msg = EmailMessage(_('[nmk] All results from round "%s" received') % match.round.name,
-                                           message_text, 'nmk@kokanovic.org', to=[user_mail, ])
+                    all_players = Player.objects.\
+                        exclude(user__email='').filter(user__is_active=True).filter(send_mail=True)
+                    logger.info('Sending mail that round %s have all results to %d', match.round, len(all_players))
+                    for player in all_players:
+                        with translation.override(player.language):
+                            subject = _('[nmk] All results from round "%s" received') % match.round.name
+                            template = loader.get_template('mail/result_added.html')
+                            message_text = template.render({'round': match.round})
+                        msg = EmailMessage(subject, message_text, 'nmk@kokanovic.org', to=[player.user.email, ])
                         msg.content_subtype = 'html'
                         msg.send(fail_silently=False)
                 
@@ -687,7 +689,7 @@ class CustomLoginView(LoginView):
             language = user.player.language or settings.LANGUAGE_CODE
             available_languages = [lang_code for (lang_code, lang_name) in settings.LANGUAGES]
             if language in available_languages:
-                activate(language)
+                translation.activate(language)
                 if hasattr(self.request, 'session'):
-                    self.request.session[LANGUAGE_SESSION_KEY] = language
+                    self.request.session[translation.LANGUAGE_SESSION_KEY] = language
         return url

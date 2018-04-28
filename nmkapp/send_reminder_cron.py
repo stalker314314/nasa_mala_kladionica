@@ -22,8 +22,9 @@ from nmkapp.models import Round, Match, Shot, Player
 
 from django.conf import settings
 from django.core.mail import EmailMessage
-from django.db.models import Min
+from django.db.models import Min, Q
 from django.template import loader
+from django.utils import translation
 from django.utils.translation import gettext as _
 
 logger = logging.getLogger(__name__)
@@ -43,19 +44,20 @@ def get_rounds_starting_tomorrow():
 
 
 def send_reminder_for_round(nmk_round, min_time):
-    all_players = Player.objects.exclude(user__email="").filter(send_mail=True).filter(user__is_active=True)
-    player_mails = []
+    all_players = Player.objects.exclude(user__email='').filter(send_mail=True).filter(user__is_active=True)
+    players_to_send_mail = []
     for player in all_players:
         if not Shot.objects.filter(user_round__round=nmk_round).filter(user_round__user=player.user).exists():
-            player_mails.append(player.user.email)
-            
-    template = loader.get_template("mail/round_reminder.html")
-    message_text = template.render({"round": nmk_round, "min_time": min_time})
+            players_to_send_mail.append(player)
+
     if settings.SEND_MAIL:
         logger.info("Sending mail that round %s will be starting soon to %s", nmk_round.name, player_mails)
-        for mail in player_mails:
-            msg = EmailMessage(
-                _('[nmk] Round "%s" reminder') % nmk_round.name, message_text, "nmk@kokanovic.org", to=[mail, ])
+        for player in players_to_send_mail:
+            with translation.override(player.language):
+                subject = _('[nmk] Round "%s" reminder') % nmk_round.name
+                template = loader.get_template("mail/round_reminder.html")
+                message_text = template.render({"round": nmk_round, "min_time": min_time})
+            msg = EmailMessage(subject, message_text, "nmk@kokanovic.org", to=[player.user.email, ])
             msg.content_subtype = "html"
             msg.send(fail_silently=False)
 

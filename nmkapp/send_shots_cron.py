@@ -22,6 +22,7 @@ from nmkapp.models import Round, Match, UserRound, Shot, Player
 from django.template import loader
 from django.conf import settings
 from django.core.mail import EmailMessage
+from django.utils import translation
 from django.utils.translation import gettext as _
 
 logger = logging.getLogger(__name__)
@@ -50,16 +51,16 @@ def send_mail_for_round(nmk_round):
         shots = list(Shot.objects.filter(user_round=user_round).order_by("match__start_time", "match"))
         round_standings.append({"user_round": user_round, "shots": shots})
 
-    all_players = Player.objects.all()
-    all_user_mail = [player.user.email for player in all_players
-                     if player.send_mail and player.user.email != "" and player.user.is_active]
-    template = loader.get_template("mail/round_shots.html")
-    message_text = template.render({"round": nmk_round, "matches": matches, "round_standings": round_standings})
+    all_players = Player.objects.exclude(user__email='').filter(user__is_active=True).filter(send_mail=True)
     if settings.SEND_MAIL:
-        logger.info("Sending mail that round %s started to %s", nmk_round.name, all_user_mail)
-        for user_mail in all_user_mail:
-            msg = EmailMessage(
-                _('[nmk] Round "%s" started') % nmk_round.name, message_text, "nmk@kokanovic.org", to=[user_mail, ])
+        logger.info("Sending mail that round %s started to %d players", nmk_round.name, len(all_players))
+        for player in all_players:
+            with translation.override(player.language):
+                subject = _('[nmk] Round "%s" started') % nmk_round.name
+                template = loader.get_template("mail/round_shots.html")
+                message_text = template.render(
+                    {"round": nmk_round, "matches": matches, "round_standings": round_standings})
+            msg = EmailMessage(subject, message_text, "nmk@kokanovic.org", to=[player.user.email, ])
             msg.content_subtype = "html"
             msg.send(fail_silently=False)
 
