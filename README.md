@@ -23,3 +23,4 @@ Django interni sajt za kladjenje
 0 * * * * /usr/bin/python /sites/nmk.kokanovic.org/nmkapp/send_reminder_cron.py
 ```
 * python manage.py collectstatic
+* python manage.py compilemessages
