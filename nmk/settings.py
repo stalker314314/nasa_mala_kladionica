@@ -59,6 +59,7 @@ STATIC_URL = '/static/'
 MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'nmkapp.middlewares.TimezoneMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -97,13 +98,12 @@ LOCALE_PATHS = (
     'locale',
 )
 
-TIME_ZONE = 'Europe/Belgrade'
-
 USE_I18N = True
-
 USE_L10N = False
 
-USE_TZ = False
+USE_TZ = True
+TIME_ZONE = 'UTC'
+TIMEZONE_SESSION_KEY = '_timezone'
 
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'

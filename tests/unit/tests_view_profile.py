@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 
+import datetime
+
 from django.test import Client
 from django.urls import reverse
 from django.conf import settings
+from django.utils import timezone
 
 from nmkapp import views
 from nmkapp import models
@@ -39,7 +42,8 @@ class ProfileTests(NmkUnitTestCase):
         self.assertNotEqual(context['form'].instance.language, language_to_change_to,
                             'Test is not valid as we are changing language to the same one')
 
-        response = self.client.post(reverse(views.profile), {'language': language_to_change_to, 'profile_change': ''})
+        response = self.client.post(reverse(views.profile), {'language': language_to_change_to, 'timezone': 'UTC',
+                                                             'profile_change': ''})
         self.assertEqual(response.status_code, 200)
 
         # Check that message is in new language
@@ -54,3 +58,21 @@ class ProfileTests(NmkUnitTestCase):
         self.assertEqual(response.status_code, 200)
         context = response.context
         self.assertEqual(context['form'].instance.language, language_to_change_to)
+
+    def test_change_timezone(self):
+        """
+        Test changing timezone.
+        TODO: add test that proper times are being shown in templates
+        """
+        response = self.client.post(reverse(views.profile), {'language': 'en', 'timezone': 'Australia/Currie',
+                                                             'profile_change': ''})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(models.Player.objects.filter(user__id=1).get().timezone.zone, 'Australia/Currie')
+
+    def test_change_timezone_invalid(self):
+        response = self.client.post(reverse(views.profile), {'language': 'en', 'timezone': 'Invalid/Timezone',
+                                                             'profile_change': ''})
+        self.assertEqual(response.status_code, 200)
+        context = response.context
+        self.assertEqual(context['form'].errors['timezone'][0],
+                         'Select a valid choice. Invalid/Timezone is not one of the available choices.')

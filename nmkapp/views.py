@@ -3,6 +3,7 @@
 import logging
 import random
 import string
+import pytz
 from datetime import datetime
 from operator import itemgetter
 
@@ -18,7 +19,7 @@ from django.db.models.aggregates import Min
 from django.http.response import HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render
 from django.template import loader
-from django.utils import translation
+from django.utils import timezone, translation
 from django.utils.translation import gettext as _
 
 from nmkapp.cache import StandingsCache, RoundStandingsCache
@@ -37,8 +38,8 @@ def id_generator(size=16, chars=string.ascii_uppercase + string.digits):
 @transaction.atomic
 def register(request):
     logger.info('User is on register page')
-    last_registration_time = datetime(2018, 6, 14, 16, 0)
-    if datetime.now() >= last_registration_time:
+    last_registration_time = datetime(2018, 6, 14, 16, 0, tzinfo=timezone.utc)
+    if timezone.now() >= last_registration_time:
         raise Http404()
 
     registered = False
@@ -56,11 +57,12 @@ def register(request):
                                             first_name=cleaned_data['first_name'],
                                             last_name=cleaned_data['last_name'],
                                             is_active=False,
-                                            last_login=datetime.now())
+                                            last_login=timezone.now())
             user.player.activation_code = id_generator()
             user.player.save()
             player = Player.objects.filter(user__id=user.id).get()
             player.language = language
+            player.timezone = 'Europe/London'
             player.save()
 
             with translation.override(language):
@@ -190,7 +192,7 @@ def home(request):
 
         betting_allowed = True
         for shot in shots:
-            if shot.match.start_time < datetime.now():
+            if shot.match.start_time < timezone.now():
                 betting_allowed = False
                 break
     
@@ -232,7 +234,7 @@ def home(request):
 
 def format_time_left(shots):
     if len(shots) > 0:
-        seconds_left = (shots[0].match.start_time - datetime.now()).total_seconds()
+        seconds_left = (shots[0].match.start_time - timezone.now()).total_seconds()
         if seconds_left > 60*60*24:
             days = int(seconds_left/(60*60*24))
             return '%dd %dh' % (days, int((seconds_left - (days * 60 * 60 * 24))/(60 * 60)))
@@ -259,6 +261,7 @@ def profile(request):
         form = PlayerForm(request.POST, instance=request.user.player)
         if form.is_valid():
             form.save()
+            request.session[settings.TIMEZONE_SESSION_KEY] = form.cleaned_data['timezone'].zone
             new_language = form.cleaned_data['language']
             if new_language != old_language:
                 translation.activate(new_language)
@@ -488,7 +491,7 @@ def round_standings(request, round_id):
     can_see_standings = False
     is_any_match_started = False
     for match in matches:
-        if match.start_time < datetime.now():
+        if match.start_time < timezone.now():
             is_any_match_started = True
             break
     if is_any_match_started:
@@ -698,4 +701,7 @@ class CustomLoginView(LoginView):
                 translation.activate(language)
                 if hasattr(self.request, 'session'):
                     self.request.session[translation.LANGUAGE_SESSION_KEY] = language
+            timezone = user.player.timezone
+            if timezone.zone in pytz.all_timezones:
+                self.request.session[settings.TIMEZONE_SESSION_KEY] = timezone.zone
         return url

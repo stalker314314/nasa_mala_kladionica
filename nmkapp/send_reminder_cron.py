@@ -8,7 +8,6 @@ Cron job to send mail 24h before first game to users that didn't bet.
 # ################ bootstrap django #################################
 import os
 import sys
-import datetime
 import logging
 import django
 
@@ -24,7 +23,7 @@ from django.conf import settings
 from django.core.mail import EmailMessage
 from django.db.models import Min, Q
 from django.template import loader
-from django.utils import translation
+from django.utils import timezone, translation
 from django.utils.translation import gettext as _
 
 logger = logging.getLogger(__name__)
@@ -37,7 +36,7 @@ def get_rounds_starting_tomorrow():
         min_time = Match.objects.filter(round=nmk_round).aggregate(Min('start_time'))['start_time__min']
         if min_time is None:
             continue            
-        hours_diff = (min_time - datetime.datetime.now()).total_seconds() / (60 * 60)
+        hours_diff = (min_time - timezone.now()).total_seconds() / (60 * 60)
         if 23.5 <= hours_diff < 24.5:
             rounds_to_return.append([nmk_round, min_time])
     return rounds_to_return

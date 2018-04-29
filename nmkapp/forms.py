@@ -189,8 +189,8 @@ class PlayerForm(ModelForm):
 
     class Meta:
         model = Player
-        fields = ['send_mail', 'language']
-        labels = {'send_mail': _('Receive e-mail notifications'), 'language': _('Language')}
+        fields = ['send_mail', 'language', 'timezone']
+        labels = {'send_mail': _('Receive e-mail notifications'), 'language': _('Language'), 'timezone': _('Time zone')}
 
     def clean(self):
         cleaned_data = super(PlayerForm, self).clean()

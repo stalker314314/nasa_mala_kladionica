@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-29 10:36+0200\n"
-"PO-Revision-Date: 2018-04-29 10:38+0200\n"
+"POT-Creation-Date: 2018-04-29 20:12+0000\n"
+"PO-Revision-Date: 2018-04-29 22:15+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sr\n"
@@ -19,11 +19,11 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 2.0.7\n"
 
-#: nmk/settings.py:92
+#: nmk/settings.py:93
 msgid "English"
 msgstr "Енглески"
 
-#: nmk/settings.py:93
+#: nmk/settings.py:94
 msgid "Serbian"
 msgstr "Српски"
 
@@ -155,11 +155,15 @@ msgstr "Примај обавештења е-поштом"
 msgid "Language"
 msgstr "Језик"
 
+#: nmkapp/forms.py:193
+msgid "Time zone"
+msgstr "Временска зона"
+
 #: nmkapp/forms.py:200
 msgid "Language {} is not available "
 msgstr "Језик {} није доступан"
 
-#: nmkapp/send_reminder_cron.py:57
+#: nmkapp/send_reminder_cron.py:56
 #, python-format
 msgid "[nmk] Round \"%s\" reminder"
 msgstr "[nmk] Подсетник клађења на коло „%s“"
@@ -423,6 +427,28 @@ msgstr "Меч"
 #: nmkapp/templates/home.html:113
 msgid "Final Decision"
 msgstr "Коначна одлука"
+
+#: nmkapp/templates/home.html:117
+msgid ""
+"<strong>Save</strong> &nbsp;&nbsp; remembers your bets. Saved bets will be "
+"used even if you\n"
+"                        don't click \"Final Decision\" before round starts"
+msgstr ""
+"<strong>Сачувај</strong> &nbsp;&nbsp; памти твоја типовања. Ови типови ће се "
+"користити чак иако не кликнеш\n"
+"                        „Коначна одлука“ пре него што коло почне"
+
+#: nmkapp/templates/home.html:120
+msgid ""
+"<strong>Final Decision</strong> &nbsp;&nbsp; will persist your bets, so you "
+"will not be\n"
+"                        able to change them anymore, but you will be able to "
+"peek into bets of other people"
+msgstr ""
+"<strong>Коначна одлука</strong> &nbsp;&nbsp; ће запамтити твоје типовање "
+"тако да више нећеш имати прилику\n"
+"                        да их промениш, али ћеш зато моћи да видиш типовања "
+"других људи"
 
 #: nmkapp/templates/home.html:134
 msgid "Bet"
@@ -853,35 +879,35 @@ msgstr "Савет: кликни на коло да погледаш резул�
 msgid "Players playing in real money are shown bolded"
 msgstr "Такмичари који играју у праве паре су приказани подебљано"
 
-#: nmkapp/views.py:67
+#: nmkapp/views.py:68
 msgid "[nmk] NMK registration successful"
 msgstr "[nmk] Регистрација успешна"
 
-#: nmkapp/views.py:96
+#: nmkapp/views.py:97
 msgid "[nmk] Reset password request"
 msgstr "[nmk] Захтев за ресетовањем лозинке"
 
-#: nmkapp/views.py:169 nmkapp/views.py:177
+#: nmkapp/views.py:170 nmkapp/views.py:178
 msgid "There is no active round currently to place bets, try again later"
 msgstr "Тренутно нема активних кола за клађење, покушајте касније"
 
-#: nmkapp/views.py:222
+#: nmkapp/views.py:223
 msgid "Bets successfully saved"
 msgstr "Типовања успешно сачувана"
 
-#: nmkapp/views.py:249
+#: nmkapp/views.py:250
 msgid "first match already started"
 msgstr "први меч већ почео"
 
-#: nmkapp/views.py:251
+#: nmkapp/views.py:252
 msgid "N/A"
 msgstr "N/A"
 
-#: nmkapp/views.py:267
+#: nmkapp/views.py:269
 msgid "Settings successfully saved"
 msgstr "Подешавања успешно сачувана"
 
-#: nmkapp/views.py:288
+#: nmkapp/views.py:290
 #, python-format
 msgid ""
 "Crew created successfully. Now you can send invite code \"%s\" to your "
@@ -890,20 +916,20 @@ msgstr ""
 "Екипа успешно направљена. Сада пошаљи шифру-позивницу \"%s\" ортацима преко "
 "е-поште/СМС-ом/Viber-ом, да и они могу да се придруже екипи"
 
-#: nmkapp/views.py:302
+#: nmkapp/views.py:304
 msgid "Joined crew successfully"
 msgstr "Успешно додат у екипу"
 
-#: nmkapp/views.py:333
+#: nmkapp/views.py:335
 msgid "[nmk] Player payed paypal"
 msgstr "[nmk] Играч платио пејпал"
 
-#: nmkapp/views.py:333
+#: nmkapp/views.py:335
 #, python-format
 msgid "Player %s"
 msgstr "Играч %s"
 
-#: nmkapp/views.py:431
+#: nmkapp/views.py:433
 msgid ""
 "You cannot leave a crew that you created, you can only completely delete "
 "that crew."
@@ -911,51 +937,51 @@ msgstr ""
 "Не можеш да напустиш екипу коју си ти направио, можеш само да је комплетно "
 "избришеш."
 
-#: nmkapp/views.py:439
+#: nmkapp/views.py:441
 #, python-format
 msgid "Successfully left a crw \"%s\""
 msgstr "Успешно изашао из екипе „%s“"
 
-#: nmkapp/views.py:454
+#: nmkapp/views.py:456
 msgid ""
 "You cannot delete crew that you are not owner of, you can only leave it."
 msgstr ""
 "Не можеш да обришеш екипу коју ниси ти направио, можеш само да изађеш из ње."
 
-#: nmkapp/views.py:464
+#: nmkapp/views.py:466
 #, python-format
 msgid "Crew \"%s\" deleted"
 msgstr "Екипа „%s“ избрисана"
 
-#: nmkapp/views.py:547
+#: nmkapp/views.py:549
 #, python-format
 msgid "Round \"%s\" set as active"
 msgstr "[nmk] Почело коло „%s“"
 
-#: nmkapp/views.py:558
+#: nmkapp/views.py:560
 #, python-format
 msgid "[nmk] New round \"%s\" available"
 msgstr "[nmk] Доступно је ново коло „%s“"
 
-#: nmkapp/views.py:569
+#: nmkapp/views.py:571
 #, python-format
 msgid "Round \"%s\" set as inactive"
 msgstr "Коло „%s“ постављено као неактивно"
 
-#: nmkapp/views.py:596
+#: nmkapp/views.py:598
 #, python-format
 msgid "New round \"%s\" created successfully"
 msgstr "Ново коло „%s“ успешно направљено"
 
-#: nmkapp/views.py:617
+#: nmkapp/views.py:619
 msgid "Match successfully added"
 msgstr "Меч успешно додат"
 
-#: nmkapp/views.py:652
+#: nmkapp/views.py:654
 msgid "Result added successfully"
 msgstr "Резултат успешно унесен"
 
-#: nmkapp/views.py:676
+#: nmkapp/views.py:678
 #, python-format
 msgid "[nmk] All results from round \"%s\" received"
 msgstr "[nmk] Унесени сви резултати из кола „%s“"

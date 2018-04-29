@@ -22,14 +22,14 @@ from nmkapp.models import Round, Match, UserRound, Shot, Player
 from django.template import loader
 from django.conf import settings
 from django.core.mail import EmailMessage
-from django.utils import translation
+from django.utils import timezone, translation
 from django.utils.translation import gettext as _
 
 logger = logging.getLogger(__name__)
 
 
 def get_rounds_just_started():
-    current_time = datetime.datetime.now()
+    current_time = timezone.now()
     previous_time = current_time - datetime.timedelta(minutes=15)
     
     all_rounds = Round.objects.all()
