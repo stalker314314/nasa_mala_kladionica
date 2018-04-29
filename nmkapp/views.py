@@ -268,6 +268,13 @@ def profile(request):
     else:
         form = PlayerForm(instance=request.user.player)
 
+    groups = Group.objects.filter(players__in=[request.user])
+    return render(request, 'profile.html', {'form': form, 'current_user': request.user})
+
+
+@login_required
+@transaction.atomic
+def crew(request):
     if request.method == 'POST' and 'new_group' in request.POST:
         form_new_group = NewGroupForm(request.POST, group={})
         if form_new_group.is_valid():
@@ -297,9 +304,8 @@ def profile(request):
         form_add_group = AddToGroupForm(request.user.player, group_key={})
 
     groups = Group.objects.filter(players__in=[request.user])
-    return render(request,
-                  'profile.html',
-                  {'form': form, 'form_new_group': form_new_group, 'form_add_group': form_add_group,
+    return render(request, 'crew.html',
+                  {'form_new_group': form_new_group, 'form_add_group': form_add_group,
                    'groups': groups, 'current_user': request.user}
                   )
 
@@ -426,12 +432,12 @@ def group_leave(request, group_id):
 
     if not error and request.method == 'POST':
         if '0' in request.POST:
-            return HttpResponseRedirect('/profile')
+            return HttpResponseRedirect('/crew')
         elif '1' in request.POST:
             RoundStandingsCache.clear_group(group)
             group.players.remove(request.user)
             messages.add_message(request, messages.INFO, _('Successfully left a crw "%s"') % group.name)
-            return HttpResponseRedirect('/profile')
+            return HttpResponseRedirect('/crew')
     return render(request, 'group_leave.html', {'error': error, 'group': group})
 
 
@@ -449,14 +455,14 @@ def group_delete(request, group_id):
 
     if not error and request.method == 'POST':
         if '0' in request.POST:
-            return HttpResponseRedirect('/profile')
+            return HttpResponseRedirect('/crew')
         elif '1' in request.POST:
             group.players.clear()
             RoundStandingsCache.clear_group(group)
             StandingsCache(group).clear()
             group.delete()
             messages.add_message(request, messages.INFO, _('Crew "%s" deleted') % group.name)
-            return HttpResponseRedirect('/profile')
+            return HttpResponseRedirect('/crew')
     return render(request, 'group_delete.html', {'error': error, 'group': group})
 
 

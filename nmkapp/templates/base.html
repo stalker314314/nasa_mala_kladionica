@@ -96,6 +96,9 @@
                         <a class="navigation nav-link" href="/profile">{% trans "Profile" %}</a>
                     </li>
                     <li class="nav-item">
+                        <a class="navigation nav-link" href="/crew">{% trans "Crews" %}</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="navigation nav-link" href="/proposition">{% trans "Propositions" %}</a>
                     </li>
                     {% if user.is_staff %}
@@ -145,6 +148,7 @@
                     <a href="/standings" class="navigation">{% trans "Standings" %}</a>
                     <a href="/results" class="navigation">{% trans "Fixtures" %}</a>
                     <a href="/profile" class="navigation">{% trans "Profile" %}</a>
+                    <a href="/crew" class="navigation">{% trans "Crews" %}</a>
                     <a href="/proposition" class="navigation">{% trans "Propositions" %}</a>
                     <a href="/logout" class="navigation">{% trans "Logout" %}</a>
                     {% else %}

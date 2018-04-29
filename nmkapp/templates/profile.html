@@ -53,69 +53,6 @@ You can sign up for this 1h before first match starts latest!
 </form>
 <br/>
 
-<h1>{% trans "MY CREWS" %}</h1>
-{% if groups %}
-<div style="font-size: 120%">
-    {% blocktrans %}
-    Listed below are all the crews you are member of.
-    If you want to add friends to some crew,
-    send them (chat, mail, SMS...) invite code from table below.
-    Tell them to go to their "Profile" page and to type this at the bottom of it."
-    {% endblocktrans %}
-</div>
-<br/>
-
-<table class="sortable mediumtable" style="width: 40%">
-	<thead>
-		<tr>
-		<th style="width: 40%">{% trans "Crew name" %}</th>
-		<th style="width: 20%">{% trans "Invite code" %}</th>
-		<th>{% trans "Leave a crew" %}</th>
-		<th>{% trans "Delete a crew" %}</th>
-	</thead>
-	{% for group in groups %}
-	<tr>
-		<td>{{ group.name }}</td>
-		<td>{{ group.group_key }}</td>
-		<td>
-			{% if group.owner != current_user %}
-			{% if group.id != 1 %}
-			<a href="/groups/{{ group.id }}/leave"><img width="16px" height="16px" border="0" alt="[{% trans "Leave" %}]" title="{% trans "Leave" %}" src="/static/img/leave_group.png"></a>
-			{% endif %}
-			{% endif %}
-		</td>
-		<td>
-			{% if group.owner == current_user %}
-			<a href="/groups/{{ group.id }}/delete"><img width="16px" height="16px" border="0" alt="[{% trans "Delete" %}]" title="{% trans "Delete" %}" src="/static/img/delete_group.png"></a>
-			{% endif %}
-		</td>
-	<tr>
-	{% endfor %}
-</table>
-{% else %}
-<h3>{% trans "You are not in any crew" %}<img src="/static/img/facebook-frown-emoticon.png" />.
-{% trans "Create your own crew and invite people. That way, you will be able to filter only you guys in the standings" %}</h3>
-{% endif %}
-
-<p>
-	<form method="post" action="/profile">
-		{% csrf_token %}
-		<input name="new_group" value="new_group" type="hidden">
-		{{ form_new_group }}
-		<input value="{% trans "Create" %}" type="submit"/>
-	</form>
-</p>
-<br/>
-<p>
-	<form method="post" action="/profile">
-		{% csrf_token %}
-		<input name="add_to_group" value="add_to_group" type="hidden">
-		{{ form_add_group }}
-		<input value="{% trans "Join" %}" type="submit"/>
-	</form>
-</p>
-<br/>
-
 <h1>{% trans "CHANGE PASSWORD" %}</h1>
 
 <form method="get" action="/profile/password">

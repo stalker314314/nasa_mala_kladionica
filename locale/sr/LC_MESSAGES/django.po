@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-28 22:16+0200\n"
-"PO-Revision-Date: 2018-04-28 22:17+0200\n"
+"POT-Creation-Date: 2018-04-29 10:36+0200\n"
+"PO-Revision-Date: 2018-04-29 10:38+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sr\n"
@@ -43,82 +43,82 @@ msgstr "Е-пошта*"
 msgid "Username*"
 msgstr "Корисничко име*"
 
-#: nmkapp/forms.py:21 nmkapp/forms.py:58
+#: nmkapp/forms.py:21 nmkapp/forms.py:60
 msgid "Password*"
 msgstr "Лозинка*"
 
-#: nmkapp/forms.py:27
+#: nmkapp/forms.py:28
 msgid "First name must be shorter than 28 characters in length"
 msgstr "Име мора бити краће од 28 карактера"
 
-#: nmkapp/forms.py:29
+#: nmkapp/forms.py:30
 msgid "Last name must be shorter than 28 characters in length"
 msgstr "Презиме мора бити краће од 28 карактера"
 
-#: nmkapp/forms.py:31
+#: nmkapp/forms.py:32
 msgid "E-mail address must be shorter than 74 characters"
 msgstr "Адреса е-поште мора бити краћа од 74 карактера"
 
-#: nmkapp/forms.py:33
+#: nmkapp/forms.py:34
 msgid "Username must be shorter than 28 characters"
 msgstr "Корисничко име мора бити краће од 28 карактера"
 
-#: nmkapp/forms.py:38
+#: nmkapp/forms.py:39
 msgid "Username already exists"
 msgstr "Корисничко име већ постоји"
 
-#: nmkapp/forms.py:43
+#: nmkapp/forms.py:44
 msgid ""
 "This e-mail address already exists. If this is your e-mail, please reset "
 "password."
 msgstr ""
 "Ова адреса е-поште већ постоји. Ако је ово Ваша адреса, ресетујте лозинку."
 
-#: nmkapp/forms.py:51
+#: nmkapp/forms.py:53
 msgid "E-mail"
 msgstr "Е-пошта"
 
-#: nmkapp/forms.py:60
+#: nmkapp/forms.py:62
 msgid "Repeat password*"
 msgstr "Лозинка поново*"
 
-#: nmkapp/forms.py:67
+#: nmkapp/forms.py:69
 msgid "Passwords do not match"
 msgstr "Лозинке се не поклапају"
 
-#: nmkapp/forms.py:75
+#: nmkapp/forms.py:77
 msgid "Create a new crew"
 msgstr "Направи нову екипу"
 
-#: nmkapp/forms.py:82
+#: nmkapp/forms.py:84
 msgid "Crew name too long"
 msgstr "Име екипе предугачко"
 
-#: nmkapp/forms.py:85
+#: nmkapp/forms.py:87
 msgid "Sorry, but crew name is already taken"
 msgstr "Нажалост, име екипе је већ узето"
 
-#: nmkapp/forms.py:95
+#: nmkapp/forms.py:97
 msgid "Please enter invite code to join a crew, if you got one:"
 msgstr "Ако сте је добили. унесите шифру-позивницу да се придружите екипи:"
 
-#: nmkapp/forms.py:102
+#: nmkapp/forms.py:104
 msgid "Invite code should contain 8 numbers"
 msgstr "Шифра-позивница мора да садржи 8 бројева"
 
-#: nmkapp/forms.py:105
+#: nmkapp/forms.py:107
 msgid "Invite code invalid"
 msgstr "Неисправна шифра-позивница"
 
-#: nmkapp/forms.py:107
+#: nmkapp/forms.py:109
 msgid "You are already member of this crew"
 msgstr "Већ сте члан ове екипе"
 
-#: nmkapp/forms.py:132
+#: nmkapp/forms.py:134
 msgid "Team cannot play match against itself"
 msgstr "Тим не може да игра против самог себе"
 
-#: nmkapp/forms.py:135
+#: nmkapp/forms.py:137
 msgid ""
 "You cannot add new matches in this round, as some players already placed "
 "bets in this round"
@@ -126,48 +126,48 @@ msgstr ""
 "Не можете додати меч у овом колу, пошто су неки играчи већ типовали у овом "
 "колу"
 
-#: nmkapp/forms.py:139 nmkapp/forms.py:141
+#: nmkapp/forms.py:141 nmkapp/forms.py:143
 #, python-format
 msgid "Team %s already plays in this round"
 msgstr "Тим %s  је већ играо у овом колу"
 
-#: nmkapp/forms.py:149
+#: nmkapp/forms.py:151
 msgid "Result (in the <host>:<guest> format)"
 msgstr "Резултат (у формату <домаћин>:<гост>)"
 
-#: nmkapp/forms.py:156
+#: nmkapp/forms.py:158
 msgid "There should be colon between two numbers"
 msgstr "Између два броја мора да постоје две тачке"
 
-#: nmkapp/forms.py:161
+#: nmkapp/forms.py:163
 msgid "Cannot parse numbers in result"
 msgstr "Не могу да парсирам резултат"
 
-#: nmkapp/forms.py:181
+#: nmkapp/forms.py:183
 msgid "You must place all bets"
 msgstr "Морате типовати све утакмице"
 
-#: nmkapp/forms.py:191
+#: nmkapp/forms.py:193
 msgid "Receive e-mail notifications"
 msgstr "Примај обавештења е-поштом"
 
-#: nmkapp/forms.py:191
+#: nmkapp/forms.py:193
 msgid "Language"
 msgstr "Језик"
 
-#: nmkapp/forms.py:198
+#: nmkapp/forms.py:200
 msgid "Language {} is not available "
 msgstr "Језик {} није доступан"
 
-#: nmkapp/send_reminder_cron.py:58
+#: nmkapp/send_reminder_cron.py:57
 #, python-format
 msgid "[nmk] Round \"%s\" reminder"
-msgstr "[nmk] Подсетник клађења на коло \"%s\""
+msgstr "[nmk] Подсетник клађења на коло „%s“"
 
-#: nmkapp/send_shots_cron.py:62
+#: nmkapp/send_shots_cron.py:59
 #, python-format
 msgid "[nmk] Round \"%s\" started"
-msgstr "[nmk] Почело коло \"%s\""
+msgstr "[nmk] Почело коло „%s“"
 
 #: nmkapp/templates/activation.html:10
 msgid "You successfully activated account. Fun can start... now!"
@@ -196,82 +196,152 @@ msgstr "Неисправна активација"
 msgid "Back to login"
 msgstr "Назад на пријаву"
 
-#: nmkapp/templates/base.html:87 nmkapp/templates/base.html:144
+#: nmkapp/templates/base.html:87 nmkapp/templates/base.html:147
 msgid "Betting"
 msgstr "Клађење"
 
-#: nmkapp/templates/base.html:90 nmkapp/templates/base.html:145
+#: nmkapp/templates/base.html:90 nmkapp/templates/base.html:148
 msgid "Standings"
 msgstr "Табеле"
 
-#: nmkapp/templates/base.html:93 nmkapp/templates/base.html:146
+#: nmkapp/templates/base.html:93 nmkapp/templates/base.html:149
 msgid "Fixtures"
 msgstr "Резултати"
 
-#: nmkapp/templates/base.html:96 nmkapp/templates/base.html:147
+#: nmkapp/templates/base.html:96 nmkapp/templates/base.html:150
 msgid "Profile"
 msgstr "Профил"
 
-#: nmkapp/templates/base.html:99 nmkapp/templates/base.html:120
-#: nmkapp/templates/base.html:148 nmkapp/templates/base.html:152
+#: nmkapp/templates/base.html:99 nmkapp/templates/base.html:151
+msgid "Crews"
+msgstr "Моје екипе"
+
+#: nmkapp/templates/base.html:102 nmkapp/templates/base.html:123
+#: nmkapp/templates/base.html:152 nmkapp/templates/base.html:156
 msgid "Propositions"
 msgstr "Правила"
 
-#: nmkapp/templates/base.html:104 nmkapp/templates/base.html:160
+#: nmkapp/templates/base.html:107 nmkapp/templates/base.html:164
 msgid "Admin menu"
 msgstr "Админ мени"
 
-#: nmkapp/templates/base.html:106 nmkapp/templates/base.html:162
+#: nmkapp/templates/base.html:109 nmkapp/templates/base.html:166
 msgid "Rounds"
 msgstr "Кола"
 
-#: nmkapp/templates/base.html:107 nmkapp/templates/base.html:163
+#: nmkapp/templates/base.html:110 nmkapp/templates/base.html:167
 msgid "Matches"
 msgstr "Мечеви"
 
-#: nmkapp/templates/base.html:108 nmkapp/templates/base.html:164
+#: nmkapp/templates/base.html:111 nmkapp/templates/base.html:168
 msgid "Results"
 msgstr "Резултати"
 
-#: nmkapp/templates/base.html:113 nmkapp/templates/base.html:149
+#: nmkapp/templates/base.html:116 nmkapp/templates/base.html:153
 msgid "Logout"
 msgstr "Одјава"
 
-#: nmkapp/templates/base.html:117 nmkapp/templates/base.html:151
+#: nmkapp/templates/base.html:120 nmkapp/templates/base.html:155
 msgid "Login"
 msgstr "Пријава"
 
-#: nmkapp/templates/base.html:140
+#: nmkapp/templates/base.html:143
 msgid "Menu"
 msgstr "Мени"
 
-#: nmkapp/templates/base.html:179
+#: nmkapp/templates/base.html:183
 msgid "Number of registered players"
 msgstr "Укупно пријављених играча"
 
-#: nmkapp/templates/base.html:180
+#: nmkapp/templates/base.html:184
 msgid "real money players"
 msgstr "играча пријављених у паре"
 
-#: nmkapp/templates/base.html:181
+#: nmkapp/templates/base.html:185
 msgid "Prize money"
 msgstr "Наградни фонд"
 
-#: nmkapp/templates/base.html:182
+#: nmkapp/templates/base.html:186
 msgid "1. place"
 msgstr "1. место"
 
-#: nmkapp/templates/base.html:183
+#: nmkapp/templates/base.html:187
 msgid "2. place"
 msgstr "2. место"
 
-#: nmkapp/templates/base.html:184
+#: nmkapp/templates/base.html:188
 msgid "3. place"
 msgstr "3. место"
 
-#: nmkapp/templates/base.html:208
+#: nmkapp/templates/base.html:212
 msgid "All questions, wishes and bug reports direct to nmk@kokanovic.org"
 msgstr "Сва питања, жеље, честитке и поздраве упутити на nmk@kokanovic.org"
+
+#: nmkapp/templates/crew.html:13
+msgid "MY CREWS"
+msgstr "МОЈЕ ЕКИПЕ"
+
+#: nmkapp/templates/crew.html:16
+msgid ""
+"\n"
+"    Listed below are all the crews you are member of.\n"
+"    If you want to add friends to some crew,\n"
+"    send them (chat, mail, SMS...) invite code from table below.\n"
+"    Tell them to go to their \"Crew\" page and to type this at the bottom of "
+"it.\n"
+"    "
+msgstr ""
+"\n"
+"    Излистане испод су екипе чији си члан.\n"
+"    Ако желиш да додаш ортаке у неку екипу,\n"
+"    пошаљи им (чет, мејл, СМС...) шифру-позивницу из табеле испод\n"
+"    и реци им да оду на \"Профил\" страну и да унесу ову шифру на дну ове "
+"стране.\n"
+"    "
+
+#: nmkapp/templates/crew.html:28
+msgid "Crew name"
+msgstr "Име екипе"
+
+#: nmkapp/templates/crew.html:29
+msgid "Invite code"
+msgstr "Шифра-позивница"
+
+#: nmkapp/templates/crew.html:30 nmkapp/templates/group_leave.html:5
+msgid "Leave a crew"
+msgstr "Изађи из екипе"
+
+#: nmkapp/templates/crew.html:31
+msgid "Delete a crew"
+msgstr "Избриши екипу"
+
+#: nmkapp/templates/crew.html:40
+msgid "Leave"
+msgstr "Изађи"
+
+#: nmkapp/templates/crew.html:46
+msgid "Delete"
+msgstr "Избриши"
+
+#: nmkapp/templates/crew.html:53
+msgid "You are not in any crew"
+msgstr "Ниси ни у једној екипи"
+
+#: nmkapp/templates/crew.html:54
+msgid ""
+"Create your own crew and invite people. That way, you will be able to filter "
+"only you guys in the standings"
+msgstr ""
+"Направи своју екипу, позови ортаке и моћи ћеш да филтрираш само вас на свим "
+"табелама"
+
+#: nmkapp/templates/crew.html:62
+msgid "Create"
+msgstr "Направи"
+
+#: nmkapp/templates/crew.html:71
+msgid "Join"
+msgstr "Придружи се"
 
 #: nmkapp/templates/forgotpassword.html:10
 msgid ""
@@ -308,10 +378,6 @@ msgstr "Да"
 #: nmkapp/templates/home.html:28
 msgid "No"
 msgstr "Не"
-
-#: nmkapp/templates/group_leave.html:5 nmkapp/templates/profile.html:73
-msgid "Leave a crew"
-msgstr "Изађи из екипе"
 
 #: nmkapp/templates/group_leave.html:11
 #, python-format
@@ -399,7 +465,7 @@ msgstr "овде"
 msgid "Username"
 msgstr "Корисничко име"
 
-#: nmkapp/templates/login.html:30 nmkapp/templates/password.html:27
+#: nmkapp/templates/login.html:30 nmkapp/templates/password.html:28
 msgid "Password"
 msgstr "Лозинка"
 
@@ -409,7 +475,7 @@ msgstr "Погрешно корисничко име или лозинка. По
 
 #: nmkapp/templates/login.html:43
 msgid "Log me in"
-msgstr "Пријави ме"
+msgstr "Пријава"
 
 #: nmkapp/templates/login.html:46
 msgid "I forgot my password"
@@ -423,19 +489,19 @@ msgstr "Региструј се"
 msgid "(registration is allowed until 1h before start of the first match"
 msgstr "(регистрација је дозвољена до 1h пред прву утакмицу"
 
-#: nmkapp/templates/password.html:5
+#: nmkapp/templates/password.html:6
 msgid "PASSWORD CHANGE"
 msgstr "ПРОМЕНА ЛОЗИНКЕ"
 
-#: nmkapp/templates/password.html:19
+#: nmkapp/templates/password.html:20
 msgid "Old password"
 msgstr "Стара лозинка"
 
-#: nmkapp/templates/password.html:35
+#: nmkapp/templates/password.html:36
 msgid "Password again"
 msgstr "Лозинка поново"
 
-#: nmkapp/templates/password.html:44 nmkapp/templates/profile.html:51
+#: nmkapp/templates/password.html:45 nmkapp/templates/profile.html:51
 msgid "Change"
 msgstr "Промени"
 
@@ -501,72 +567,10 @@ msgid "SETTINGS"
 msgstr "ПОДЕШАВАЊА"
 
 #: nmkapp/templates/profile.html:56
-msgid "MY CREWS"
-msgstr "МОЈЕ ЕКИПЕ"
-
-#: nmkapp/templates/profile.html:59
-msgid ""
-"\n"
-"    Listed below are all the crews you are member of.\n"
-"    If you want to add friends to some crew,\n"
-"    send them (chat, mail, SMS...) invite code from table below.\n"
-"    Tell them to go to their \"Profile\" page and to type this at the bottom "
-"of it.\"\n"
-"    "
-msgstr ""
-"\n"
-"    Излистане испод су екипе чији си члан.\n"
-"    Ако желиш да додаш ортаке у неку екипу,\n"
-"    пошаљи им (чет, мејл, СМС...) шифру-позивницу из табеле испод\n"
-"    и реци им да оду на \"Профил\" страну и да унесу ову шифру на дну ове "
-"стране.\"\n"
-"    "
-
-#: nmkapp/templates/profile.html:71
-msgid "Crew name"
-msgstr "Име екипе"
-
-#: nmkapp/templates/profile.html:72
-msgid "Invite code"
-msgstr "Шифра-позивница"
-
-#: nmkapp/templates/profile.html:74
-msgid "Delete a crew"
-msgstr "Избриши екипу"
-
-#: nmkapp/templates/profile.html:83
-msgid "Leave"
-msgstr "Изађи"
-
-#: nmkapp/templates/profile.html:89
-msgid "Delete"
-msgstr "Избриши"
-
-#: nmkapp/templates/profile.html:96
-msgid "You are not in any crew"
-msgstr "Ниси ни у једној екипи"
-
-#: nmkapp/templates/profile.html:97
-msgid ""
-"Create your own crew and invite people. That way, you will be able to filter "
-"only you guys in the standings"
-msgstr ""
-"Направи своју екипу, позови ортаке и моћи ћеш да филтрираш само вас на свим "
-"табелама"
-
-#: nmkapp/templates/profile.html:105
-msgid "Create"
-msgstr "Направи"
-
-#: nmkapp/templates/profile.html:114
-msgid "Join"
-msgstr "Придружи се"
-
-#: nmkapp/templates/profile.html:119
 msgid "CHANGE PASSWORD"
 msgstr "ПРОМЕНА ЛОЗИНКЕ"
 
-#: nmkapp/templates/profile.html:122
+#: nmkapp/templates/profile.html:59
 msgid "Change password"
 msgstr "Промени лозинку"
 
@@ -827,11 +831,11 @@ msgstr "Сви"
 #: nmkapp/templates/roundstandings.html:60 nmkapp/templates/standings.html:34
 msgid ""
 "(hey, seems you are not member of any crew.\n"
-"Create a crew at <a href=\"/profile\">profile</a> page and invite your "
-"buddies)"
+"Create your crew at <a href=\"/crew\">crew</a> page and invite your buddies)"
 msgstr ""
 "(хеј, изгледа да ниси ни у једној екипи,\n"
-"напрaви нову екипу на <a href=\"/profile\">профил</a> страни и позови ортаке)"
+"напрaви нову екипу на страни „<a href=\"/profile\">Моје екипе</a>“ и позови "
+"ортаке)"
 
 #: nmkapp/templates/roundstandings.html:71 nmkapp/templates/standings.html:48
 msgid "Player"
@@ -849,35 +853,35 @@ msgstr "Савет: кликни на коло да погледаш резул�
 msgid "Players playing in real money are shown bolded"
 msgstr "Такмичари који играју у праве паре су приказани подебљано"
 
-#: nmkapp/views.py:63
+#: nmkapp/views.py:67
 msgid "[nmk] NMK registration successful"
 msgstr "[nmk] Регистрација успешна"
 
-#: nmkapp/views.py:92
+#: nmkapp/views.py:96
 msgid "[nmk] Reset password request"
 msgstr "[nmk] Захтев за ресетовањем лозинке"
 
-#: nmkapp/views.py:160 nmkapp/views.py:168
+#: nmkapp/views.py:169 nmkapp/views.py:177
 msgid "There is no active round currently to place bets, try again later"
 msgstr "Тренутно нема активних кола за клађење, покушајте касније"
 
-#: nmkapp/views.py:213
+#: nmkapp/views.py:222
 msgid "Bets successfully saved"
 msgstr "Типовања успешно сачувана"
 
-#: nmkapp/views.py:240
+#: nmkapp/views.py:249
 msgid "first match already started"
 msgstr "први меч већ почео"
 
-#: nmkapp/views.py:242
+#: nmkapp/views.py:251
 msgid "N/A"
 msgstr "N/A"
 
-#: nmkapp/views.py:258
+#: nmkapp/views.py:267
 msgid "Settings successfully saved"
 msgstr "Подешавања успешно сачувана"
 
-#: nmkapp/views.py:272
+#: nmkapp/views.py:288
 #, python-format
 msgid ""
 "Crew created successfully. Now you can send invite code \"%s\" to your "
@@ -886,20 +890,20 @@ msgstr ""
 "Екипа успешно направљена. Сада пошаљи шифру-позивницу \"%s\" ортацима преко "
 "е-поште/СМС-ом/Viber-ом, да и они могу да се придруже екипи"
 
-#: nmkapp/views.py:286
+#: nmkapp/views.py:302
 msgid "Joined crew successfully"
 msgstr "Успешно додат у екипу"
 
-#: nmkapp/views.py:318
+#: nmkapp/views.py:333
 msgid "[nmk] Player payed paypal"
 msgstr "[nmk] Играч платио пејпал"
 
-#: nmkapp/views.py:318
+#: nmkapp/views.py:333
 #, python-format
 msgid "Player %s"
 msgstr "Играч %s"
 
-#: nmkapp/views.py:416
+#: nmkapp/views.py:431
 msgid ""
 "You cannot leave a crew that you created, you can only completely delete "
 "that crew."
@@ -907,51 +911,51 @@ msgstr ""
 "Не можеш да напустиш екипу коју си ти направио, можеш само да је комплетно "
 "избришеш."
 
-#: nmkapp/views.py:424
+#: nmkapp/views.py:439
 #, python-format
 msgid "Successfully left a crw \"%s\""
-msgstr "Успешно изашао из екипе \"%s\""
+msgstr "Успешно изашао из екипе „%s“"
 
-#: nmkapp/views.py:439
+#: nmkapp/views.py:454
 msgid ""
 "You cannot delete crew that you are not owner of, you can only leave it."
 msgstr ""
 "Не можеш да обришеш екипу коју ниси ти направио, можеш само да изађеш из ње."
 
-#: nmkapp/views.py:449
+#: nmkapp/views.py:464
 #, python-format
 msgid "Crew \"%s\" deleted"
-msgstr "Екипа \"%s\" избрисана"
+msgstr "Екипа „%s“ избрисана"
 
-#: nmkapp/views.py:532
+#: nmkapp/views.py:547
 #, python-format
 msgid "Round \"%s\" set as active"
-msgstr "[nmk] Почело коло \"%s\""
+msgstr "[nmk] Почело коло „%s“"
 
-#: nmkapp/views.py:545
+#: nmkapp/views.py:558
 #, python-format
 msgid "[nmk] New round \"%s\" available"
-msgstr "[nmk] Доступно је ново коло \"%s\""
+msgstr "[nmk] Доступно је ново коло „%s“"
 
-#: nmkapp/views.py:554
+#: nmkapp/views.py:569
 #, python-format
 msgid "Round \"%s\" set as inactive"
-msgstr "Коло \"%s\" постављено као неактивно"
+msgstr "Коло „%s“ постављено као неактивно"
 
-#: nmkapp/views.py:581
+#: nmkapp/views.py:596
 #, python-format
 msgid "New round \"%s\" created successfully"
-msgstr "Ново коло \"%s\" успешно направљено"
+msgstr "Ново коло „%s“ успешно направљено"
 
-#: nmkapp/views.py:602
+#: nmkapp/views.py:617
 msgid "Match successfully added"
 msgstr "Меч успешно додат"
 
-#: nmkapp/views.py:637
+#: nmkapp/views.py:652
 msgid "Result added successfully"
 msgstr "Резултат успешно унесен"
 
-#: nmkapp/views.py:663
+#: nmkapp/views.py:676
 #, python-format
 msgid "[nmk] All results from round \"%s\" received"
-msgstr "[nmk] Унесени сви резултати из кола \"%s\""
+msgstr "[nmk] Унесени сви резултати из кола „%s“"
