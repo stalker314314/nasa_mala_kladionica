@@ -3,10 +3,10 @@
 import logging
 import random
 import string
-import pytz
 from datetime import datetime
 from operator import itemgetter
 
+import pytz
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
@@ -23,9 +23,10 @@ from django.utils import timezone, translation
 from django.utils.translation import gettext as _
 
 from nmkapp.cache import StandingsCache, RoundStandingsCache
-from nmkapp.forms import RegisterForm, ForgotPasswordForm, ResetPasswordForm, NewGroupForm, AddToGroupForm
-from nmkapp.forms import RoundForm, MatchForm, ResultsForm, BettingForm, PlayerForm, PointsForm
+from nmkapp.forms import AddToGroupForm, BettingForm, ForgotPasswordForm, NewGroupForm, PointsForm, \
+    RegisterForm, ResetPasswordForm
 from nmkapp.logic import recalculate_round_points, recalculate_total_points
+from nmkapp.model_forms import RoundForm, MatchForm, ResultsForm, PlayerForm
 from nmkapp.models import Round, UserRound, Shot, Match, Team, Player, Group
 
 logger = logging.getLogger(__name__)
