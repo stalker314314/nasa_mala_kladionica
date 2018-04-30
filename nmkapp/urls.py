@@ -30,4 +30,5 @@ urlpatterns = [
     url(r'^admin/matches/edit$', views.admin_matches_edit),
     url(r'^admin/results$', views.admin_results),
     url(r'^admin/results/change/(?P<match_id>\d+)$', views.admin_results_change),
+    url(r'^admin/points$', views.admin_points),
 ]

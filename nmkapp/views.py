@@ -24,8 +24,8 @@ from django.utils.translation import gettext as _
 
 from nmkapp.cache import StandingsCache, RoundStandingsCache
 from nmkapp.forms import RegisterForm, ForgotPasswordForm, ResetPasswordForm, NewGroupForm, AddToGroupForm
-from nmkapp.forms import RoundForm, MatchForm, ResultsForm, BettingForm, PlayerForm
-from nmkapp.logic import recalculate_round_points
+from nmkapp.forms import RoundForm, MatchForm, ResultsForm, BettingForm, PlayerForm, PointsForm
+from nmkapp.logic import recalculate_round_points, recalculate_total_points
 from nmkapp.models import Round, UserRound, Shot, Match, Team, Player, Group
 
 logger = logging.getLogger(__name__)
@@ -688,6 +688,43 @@ def admin_results_change(request, match_id):
         form = ResultsForm(instance=match)
 
     return render(request, 'admin_results_change.html', {'form': form, 'match': match})
+
+
+@staff_member_required
+@transaction.atomic
+def admin_points(request):
+    if request.method == 'POST':
+        form = PointsForm(request.POST)
+        if form.is_valid():
+            recalculate_points = form.cleaned_data['recalculate_points']
+            clear_cache = form.cleaned_data['clear_cache']
+            repopulate_cache = form.cleaned_data['repopulate_cache']
+
+            if recalculate_points:
+                rounds = Round.objects.all()
+                for nmk_round in rounds:
+                    recalculate_round_points(nmk_round, recalculate_total=False)
+                recalculate_total_points()
+            if clear_cache or repopulate_cache:
+                groups = Group.objects.all()
+                for group in groups:
+                    StandingsCache(group).clear()
+                StandingsCache().clear()
+                for nmk_round in rounds:
+                    RoundStandingsCache.clear_round(nmk_round)
+            if repopulate_cache:
+                groups = Group.objects.all()
+                rounds = Round.objects.order_by('id')
+                for group in groups:
+                    StandingsCache(group).get(rounds)
+                StandingsCache().get(rounds)
+                for nmk_round in rounds:
+                    for group in groups:
+                        RoundStandingsCache(nmk_round, group).get()
+                    RoundStandingsCache(nmk_round).get()
+    else:
+        form = PointsForm()
+    return render(request, 'admin_points.html', {'form': form})
 
 
 class CustomLoginView(LoginView):

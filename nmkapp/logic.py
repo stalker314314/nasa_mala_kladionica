@@ -13,7 +13,7 @@ def recalculate_total_points():
         player.save()
 
 
-def recalculate_round_points(this_round):
+def recalculate_round_points(this_round, recalculate_total=True):
     user_rounds = UserRound.objects.filter(round=this_round)
     shots = Shot.objects.select_related('user_round', 'match').filter(user_round__round=this_round)
     for user_round in user_rounds:
@@ -28,4 +28,5 @@ def recalculate_round_points(this_round):
                     user_round.points += shot.match.odd2
         user_round.points = round(user_round.points, 2)
         user_round.save()
-    recalculate_total_points()
+    if recalculate_total:
+        recalculate_total_points()

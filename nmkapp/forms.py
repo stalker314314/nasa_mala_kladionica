@@ -184,6 +184,17 @@ class BettingForm(forms.Form):
         return cleaned_data
 
 
+class PointsForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+            super(PointsForm, self).__init__(*args, **kwargs)
+            self.fields['recalculate_points'] = forms.BooleanField(
+                initial=True, required=False, label=_('Recalculate points'))
+            self.fields['clear_cache'] = forms.BooleanField(
+                initial=True, required=False, label=_('Clear cache'))
+            self.fields['repopulate_cache'] = forms.BooleanField(
+                initial=True, required=False, label=_('Repopulate cache'))
+
+
 class PlayerForm(ModelForm):
     language = forms.ChoiceField(choices=settings.LANGUAGES)
 
