@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from nmkapp.models import Player, UserRound, Shot
 
 
@@ -30,3 +32,31 @@ def recalculate_round_points(this_round, recalculate_total=True):
         user_round.save()
     if recalculate_total:
         recalculate_total_points()
+
+
+def convert_odd_format(odd, odd_format_type, precision=2):
+    if odd_format_type == Player.DECIMAL:
+        if odd is None:
+            return ''
+        else:
+            return str(odd)
+    elif odd_format_type == Player.FRACTIONAL:
+        return _odd_to_uk_format(odd, precision)
+    else:
+        return odd
+
+
+def _odd_to_uk_format(odd, precision=2):
+    import math
+    if odd is None:
+        return None
+    if not (isinstance(odd, float) or isinstance(odd, int)):
+        raise TypeError('Odd must be float or int')
+    if odd <= 0:
+        return 'N/A'
+    denumerator = int(math.pow(10, precision))
+    numerator = int(round(odd - 1, precision) * denumerator)
+    gcd = math.gcd(numerator, denumerator)
+    if numerator < 0:
+        gcd = -gcd
+    return "{}/{}".format(int(numerator / gcd), int(denumerator / gcd))

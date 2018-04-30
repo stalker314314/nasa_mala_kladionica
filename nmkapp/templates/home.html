@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load staticfiles %}
+{% load nmk_tags %}
 
 {% block content %}
 
@@ -153,11 +154,11 @@
 				<td>
 				{% if shot.shot != None %}
 					{% if shot.shot == 1 %}
-					{{ shot.match.odd1 }}
+					{{ shot.match.odd1|odd_format:user.player.odd_format }}
 					{% elif shot.shot == 0 %}
-					{{ shot.match.oddX }}
+					{{ shot.match.oddX|odd_format:user.player.odd_format }}
 					{% else %}
-					{{ shot.match.odd2 }}
+					{{ shot.match.odd2|odd_format:user.player.odd_format }}
 					{% endif %}
 				{% else %}
 				-

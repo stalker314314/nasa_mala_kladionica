@@ -3,11 +3,18 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
+from django.utils.translation import gettext as _
 
 from timezone_field import TimeZoneField
 
 
 class Player(models.Model):
+    DECIMAL = 1
+    FRACTIONAL = 2
+    ODD_FORMAT = (
+        (1, _('Decimal (European)')),
+        (2, _('Fractional (UK)')),
+    )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     in_money = models.BooleanField(default=False)
     points = models.FloatField(default=0)
@@ -16,6 +23,7 @@ class Player(models.Model):
     reset_code = models.CharField(max_length=255)
     language = models.CharField(max_length=255, blank=True, null=True, default='en')
     timezone = TimeZoneField(default='Europe/London')
+    odd_format = models.IntegerField(choices=ODD_FORMAT, default=DECIMAL)
 
     def __str__(self):
         return '%s (money: %s, points: %.2f)' % (self.user, 'yes' if self.in_money else 'no', self.points)

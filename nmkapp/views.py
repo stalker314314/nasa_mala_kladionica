@@ -64,6 +64,7 @@ def register(request):
             player = Player.objects.filter(user__id=user.id).get()
             player.language = language
             player.timezone = 'Europe/London'
+            player.odd_format = Player.DECIMAL
             player.save()
 
             with translation.override(language):
@@ -206,7 +207,7 @@ def home(request):
                     ('save_'+str(active_round.id) in request.POST or
                      'final_save_'+str(active_round.id) in request.POST):
                 logger.info('User %s posted betting', request.user)
-                form = BettingForm(request.POST, shots=shots)
+                form = BettingForm(request.POST, shots=shots, player=request.user.player)
                 if form.is_valid():
                     logger.info('User %s posted valid form %s', request.user, form.cleaned_data)
                     for user_round_match in form.cleaned_data:
@@ -225,7 +226,7 @@ def home(request):
                     messages.add_message(request, messages.INFO, _('Bets successfully saved'))
                     return HttpResponseRedirect('/')
             else:
-                form = BettingForm(shots=shots)
+                form = BettingForm(shots=shots, player=request.user.player)
 
         time_left = format_time_left(shots)
         one_round_to_bet = {'form': form, 'shots': shots, 'round': active_round, 'time_left': time_left}

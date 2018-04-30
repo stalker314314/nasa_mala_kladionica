@@ -6,6 +6,7 @@ from django.forms.widgets import PasswordInput
 from django.utils.translation import gettext as _
 
 from nmkapp.models import Group
+from nmkapp.logic import convert_odd_format
 
 
 class RegisterForm(forms.Form):
@@ -110,15 +111,18 @@ class AddToGroupForm(forms.Form):
 
 class BettingForm(forms.Form):
     def __init__(self, *args, **kwargs):
-            shots = kwargs.pop('shots')
-            super(BettingForm, self).__init__(*args, **kwargs)
-            for shot in shots:
-                self.fields['%d_%d' % (shot.user_round.id, shot.match.id)] = forms.IntegerField(
-                    initial=shot.shot,
-                    required=False,
-                    label='%s - %s' % (shot.match.home_team.name, shot.match.away_team.name),
-                    widget=forms.RadioSelect(
-                        choices=[[1, str(shot.match.odd1)], [0, str(shot.match.oddX)], [2, str(shot.match.odd2)]]))
+        shots = kwargs.pop('shots')
+        player = kwargs.pop('player')
+        super(BettingForm, self).__init__(*args, **kwargs)
+        for shot in shots:
+            odd1 = convert_odd_format(shot.match.odd1, player.odd_format)
+            oddX = convert_odd_format(shot.match.oddX, player.odd_format)
+            odd2 = convert_odd_format(shot.match.odd2, player.odd_format)
+            self.fields['%d_%d' % (shot.user_round.id, shot.match.id)] = forms.IntegerField(
+                initial=shot.shot,
+                required=False,
+                label='%s - %s' % (shot.match.home_team.name, shot.match.away_team.name),
+                widget=forms.RadioSelect(choices=[[1, odd1], [0, oddX], [2, odd2]]))
 
     def clean(self):
         cleaned_data = super(BettingForm, self).clean()
