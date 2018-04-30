@@ -67,9 +67,13 @@ class PlayerForm(ModelForm):
 
     class Meta:
         model = Player
-        fields = ['send_mail', 'language', 'timezone', 'odd_format']
-        labels = {'send_mail': _('Receive e-mail notifications'), 'language': _('Language'), 'timezone': _('Time zone'),
-                  'odd_format': _('Odd format')}
+        fields = ['language', 'timezone', 'odd_format', 'send_mail_round_started', 'send_mail_reminder',
+                  'send_mail_new_round', 'send_mail_results_available']
+        labels = {'language': _('Language'), 'timezone': _('Time zone'), 'odd_format': _('Odd format'),
+                  'send_mail_reminder': _('Betting reminder'),
+                  'send_mail_round_started': _('All bets are final'),
+                  'send_mail_new_round': _('New round available'),
+                  'send_mail_results_available': _('All results are final')}
 
     def clean(self):
         cleaned_data = super(PlayerForm, self).clean()

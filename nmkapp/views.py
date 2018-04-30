@@ -546,9 +546,10 @@ def admin_rounds(request):
         should_be_active_round.save()
         message = _('Round "%s" set as active') % should_be_active_round.name
         messages.add_message(request, messages.INFO, message)
-        
+
         if settings.SEND_MAIL:
-            all_players = Player.objects.exclude(user__email='').filter(user__is_active=True).filter(send_mail=True)
+            all_players = Player.objects.\
+                exclude(user__email='').filter(user__is_active=True).filter(send_mail_new_round=True)
             start_time = Match.objects.\
                 filter(round=should_be_active_round).aggregate(Min('start_time'))['start_time__min']
             logger.info('Sending mail that round %s is active to %d players',
@@ -669,7 +670,7 @@ def admin_results_change(request, match_id):
                     filter(round=match.round).filter(result__isnull=True).count()
                 if count_matches_without_result == 0:
                     all_players = Player.objects.\
-                        exclude(user__email='').filter(user__is_active=True).filter(send_mail=True)
+                        exclude(user__email='').filter(user__is_active=True).filter(send_mail_results_available=True)
                     logger.info('Sending mail that round %s have all results to %d', match.round, len(all_players))
                     for player in all_players:
                         with translation.override(player.language):

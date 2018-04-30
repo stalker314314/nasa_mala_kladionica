@@ -43,14 +43,15 @@ def get_rounds_starting_tomorrow():
 
 
 def send_reminder_for_round(nmk_round, min_time):
-    all_players = Player.objects.exclude(user__email='').filter(send_mail=True).filter(user__is_active=True)
+    all_players = Player.objects.exclude(user__email='').filter(send_mail_reminder=True).filter(user__is_active=True)
     players_to_send_mail = []
     for player in all_players:
         if not Shot.objects.filter(user_round__round=nmk_round).filter(user_round__user=player.user).exists():
             players_to_send_mail.append(player)
 
     if settings.SEND_MAIL:
-        logger.info("Sending mail that round %s will be starting soon to %s", nmk_round.name, player_mails)
+        logger.info("Sending mail that round %s will be starting soon to %d players",
+                    nmk_round.name, len(players_to_send_mail))
         for player in players_to_send_mail:
             with translation.override(player.language):
                 subject = _('[nmk] Round "%s" reminder') % nmk_round.name

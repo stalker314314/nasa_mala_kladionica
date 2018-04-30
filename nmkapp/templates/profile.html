@@ -4,6 +4,14 @@
 
 {% block content %}
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('[data-toggle="popover"]').popover()
+	});
+</script>
+
 {% if messages %}
     {% for message in messages %}
     <div class="entry errors">{{ message }}</div>
@@ -42,14 +50,75 @@ You can sign up for this 1h before first match starts latest!
 <h1>{% trans "SETTINGS" %}</h1>
 
 <form method="post" action="/profile">
-	{% csrf_token %}
-	<input name="profile_change" value="profile_change" type="hidden">
-	{{ form.as_p }}
+    {% csrf_token %}
+    <input name="profile_change" value="profile_change" type="hidden">
 
-	<div id="buttonBox">
-		<br/>
-		<input value="{% trans "Change" %}" type="submit"/>
-	</div>
+    <fieldset>
+        <table class="table table-borderless table-sm table-responsive">
+            <tr>
+                <td><b>{{ form.language.label_tag }}</b></td>
+                <td>{{ form.language.errors }}{{ form.language }}</td>
+            </tr>
+            <tr>
+                <td><b>{{ form.timezone.label_tag }}</b></td>
+                <td>{{ form.timezone.errors }}{{ form.timezone }}</td>
+            </tr>
+            <tr>
+                <td><b>{{ form.odd_format.label_tag }}</b></td>
+                <td>{{ form.odd_format.errors }}{{ form.odd_format }}</td>
+            </tr>
+        </table>
+
+        <h2>{% trans "E-mail notifications" %}</h2>
+        <table class="table table-borderless table-sm table-responsive">
+            <tr>
+                <td>
+                    <b>{{ form.send_mail_reminder.label_tag }}</b>
+                </td>
+                <td>
+                    <i class="fas fa-question-circle fa-lg awesome" data-toggle="popover"
+                       data-content="{% blocktrans %}Send reminder 24h before start of the first match in the round (only if you still didn't bet){% endblocktrans %}"></i>
+                </td>
+                <td>{{ form.send_mail_reminder.errors }}{{ form.send_mail_reminder }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <b>{{ form.send_mail_round_started.label_tag }}</b>
+                </td>
+                <td>
+                    <i class="fas fa-question-circle fa-lg awesome" data-toggle="popover"
+                       data-content="{% blocktrans %}Send verbatim copy of all bets once first match in round starts (to verify there is no tempering with bets afterwards!){% endblocktrans %}"></i>
+                </td>
+                <td>{{ form.send_mail_round_started.errors }}{{ form.send_mail_round_started }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <b>{{ form.send_mail_new_round.label_tag }}</b>
+                </td>
+                <td>
+                    <i class="fas fa-question-circle fa-lg awesome" data-toggle="popover"
+                       data-content="{% blocktrans %}Send announcement that new round started and betting in it is available{% endblocktrans %}"></i>
+                </td>
+                <td>{{ form.send_mail_new_round.errors }}{{ form.send_mail_new_round }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <b>{{ form.send_mail_results_available.label_tag }}</b>
+                </td>
+                <td>
+                    <i class="fas fa-question-circle fa-lg awesome" data-toggle="popover"
+                       data-content="{% blocktrans %}Send announcement that all results from a single round are final and new points are calculated{% endblocktrans %}"></i>
+                </td>
+                <td>{{ form.send_mail_results_available.errors }}{{ form.send_mail_results_available }}</td>
+            </tr>
+        </table>
+        <br/>
+
+        <div id="buttonBox">
+            <br/>
+            <input value="{% trans "Change" %}" type="submit"/>
+        </div>
+    </fieldset>
 </form>
 <br/>
 

@@ -51,7 +51,7 @@ def send_mail_for_round(nmk_round):
         shots = list(Shot.objects.filter(user_round=user_round).order_by("match__start_time", "match"))
         round_standings.append({"user_round": user_round, "shots": shots})
 
-    all_players = Player.objects.exclude(user__email='').filter(user__is_active=True).filter(send_mail=True)
+    all_players = Player.objects.exclude(user__email='').filter(user__is_active=True).filter(send_mail_round_started=True)
     if settings.SEND_MAIL:
         logger.info("Sending mail that round %s started to %d players", nmk_round.name, len(all_players))
         for player in all_players:

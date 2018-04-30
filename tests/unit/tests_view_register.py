@@ -55,7 +55,10 @@ class RegisterTests(NmkUnitTestCase):
         self.assertFalse(users[0].is_superuser)
         self.assertFalse(users[0].player.in_money)
         self.assertEqual(users[0].player.points, 0)
-        self.assertTrue(users[0].player.send_mail)
+        self.assertTrue(users[0].player.send_mail_new_round)
+        self.assertTrue(users[0].player.send_mail_reminder)
+        self.assertTrue(users[0].player.send_mail_round_started)
+        self.assertTrue(users[0].player.send_mail_results_available)
 
     def test_register_already_exists(self):
         # TODO: this currently works, it shouldn't

@@ -153,6 +153,17 @@ h1 {
 	background-color: #FFFFFF;
 }
 
+h2 {
+	color: #FF9900;
+	font-size: 160%;
+	text-decoration: none;
+	text-align: right;
+	margin: 0px 0px 15px 0px;
+	font-weight: normal;
+	padding: 2px 50px 0px 0px;
+	background-color: #FFFFFF;
+}
+
 p {
 	border-color: #999999;
 	border-style: dashed;

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-30 19:49+0000\n"
-"PO-Revision-Date: 2018-04-30 21:50+0200\n"
+"POT-Creation-Date: 2018-04-30 22:23+0000\n"
+"PO-Revision-Date: 2018-05-01 00:23+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sr\n"
@@ -147,15 +147,11 @@ msgstr "Између два броја мора да постоје две та�
 msgid "Cannot parse numbers in result"
 msgstr "Не могу да парсирам резултат"
 
-#: nmkapp/model_forms.py:71
-msgid "Receive e-mail notifications"
-msgstr "Примај обавештења е-поштом"
-
-#: nmkapp/model_forms.py:71
+#: nmkapp/model_forms.py:72
 msgid "Language"
 msgstr "Језик"
 
-#: nmkapp/model_forms.py:71
+#: nmkapp/model_forms.py:72
 msgid "Time zone"
 msgstr "Временска зона"
 
@@ -163,7 +159,23 @@ msgstr "Временска зона"
 msgid "Odd format"
 msgstr "Формат квота"
 
-#: nmkapp/model_forms.py:79
+#: nmkapp/model_forms.py:73
+msgid "Betting reminder"
+msgstr "Подсетник на клађење"
+
+#: nmkapp/model_forms.py:74
+msgid "All bets are final"
+msgstr "Клађење је готово"
+
+#: nmkapp/model_forms.py:75
+msgid "New round available"
+msgstr "Доступно ново коло"
+
+#: nmkapp/model_forms.py:76
+msgid "All results are final"
+msgstr "Сви резултати унесени"
+
+#: nmkapp/model_forms.py:83
 msgid "Language {} is not available "
 msgstr "Језик {} није доступан"
 
@@ -175,7 +187,7 @@ msgstr "Децимални (европски)"
 msgid "Fractional (UK)"
 msgstr "Разломци (Енглеска)"
 
-#: nmkapp/send_reminder_cron.py:56
+#: nmkapp/send_reminder_cron.py:57
 #, python-format
 msgid "[nmk] Round \"%s\" reminder"
 msgstr "[nmk] Подсетник клађења на коло „%s“"
@@ -541,7 +553,7 @@ msgstr "Стара лозинка"
 msgid "Password again"
 msgstr "Лозинка поново"
 
-#: nmkapp/templates/password.html:45 nmkapp/templates/profile.html:51
+#: nmkapp/templates/password.html:45 nmkapp/templates/profile.html:119
 msgid "Change"
 msgstr "Промени"
 
@@ -580,11 +592,11 @@ msgstr ""
 "(као знак да играш у праве паре). Уколико се ово не деси до тад, контактирај "
 "ме на nmk@kokanovic.org.\n"
 
-#: nmkapp/templates/profile.html:18
+#: nmkapp/templates/profile.html:26
 msgid "REAL MONEY BETTING"
 msgstr "ИГРАЊЕ У НОВАЦ"
 
-#: nmkapp/templates/profile.html:20
+#: nmkapp/templates/profile.html:28
 msgid ""
 "\n"
 "If you want to play in real money, that will cost you 10€.\n"
@@ -594,7 +606,7 @@ msgstr ""
 "Ако желиш да играш у паре, то ће те коштати 10€.\n"
 "За играње у паре се можеш пријавити до 1h пре почетка прве утакмице!\n"
 
-#: nmkapp/templates/profile.html:26
+#: nmkapp/templates/profile.html:34
 msgid ""
 "You can see more detail at the page with <a href=\"/proposition"
 "\">propositions</a>."
@@ -602,15 +614,48 @@ msgstr ""
 "Све остале детаље можеш видети на страни са <a href=\"/proposition"
 "\">правилима</a>."
 
-#: nmkapp/templates/profile.html:42
+#: nmkapp/templates/profile.html:50
 msgid "SETTINGS"
 msgstr "ПОДЕШАВАЊА"
 
-#: nmkapp/templates/profile.html:56
+#: nmkapp/templates/profile.html:72
+msgid "E-mail notifications"
+msgstr "Е-мејл обавештења"
+
+#: nmkapp/templates/profile.html:80
+msgid ""
+"Send reminder 24h before start of the first match in the round (only if you "
+"still didn't bet)"
+msgstr ""
+"Шаље подсетник за клађење 24h пре почетка прве утакмице у колу (само ако се "
+"још ниси кладио)"
+
+#: nmkapp/templates/profile.html:90
+msgid ""
+"Send verbatim copy of all bets once first match in round starts (to verify "
+"there is no tempering with bets afterwards!)"
+msgstr ""
+"Шаље копију свих типовања свих корисника за једно коло, када коло почне (да "
+"свако може да се увери да није било накнадног мењања типова!)"
+
+#: nmkapp/templates/profile.html:100
+msgid "Send announcement that new round started and betting in it is available"
+msgstr ""
+"Шаље обавештење да је почело ново коло и да је могуће кладити се на њена"
+
+#: nmkapp/templates/profile.html:110
+msgid ""
+"Send announcement that all results from a single round are final and new "
+"points are calculated"
+msgstr ""
+"Шаље обавештење да су сви резултати из једног кола унесени и да су "
+"израчунати нови поени"
+
+#: nmkapp/templates/profile.html:125
 msgid "CHANGE PASSWORD"
 msgstr "ПРОМЕНА ЛОЗИНКЕ"
 
-#: nmkapp/templates/profile.html:59
+#: nmkapp/templates/profile.html:128
 msgid "Change password"
 msgstr "Промени лозинку"
 
@@ -968,30 +1013,30 @@ msgstr "Екипа „%s“ избрисана"
 msgid "Round \"%s\" set as active"
 msgstr "[nmk] Почело коло „%s“"
 
-#: nmkapp/views.py:558
+#: nmkapp/views.py:559
 #, python-format
 msgid "[nmk] New round \"%s\" available"
 msgstr "[nmk] Доступно је ново коло „%s“"
 
-#: nmkapp/views.py:569
+#: nmkapp/views.py:570
 #, python-format
 msgid "Round \"%s\" set as inactive"
 msgstr "Коло „%s“ постављено као неактивно"
 
-#: nmkapp/views.py:596
+#: nmkapp/views.py:597
 #, python-format
 msgid "New round \"%s\" created successfully"
 msgstr "Ново коло „%s“ успешно направљено"
 
-#: nmkapp/views.py:617
+#: nmkapp/views.py:618
 msgid "Match successfully added"
 msgstr "Меч успешно додат"
 
-#: nmkapp/views.py:652
+#: nmkapp/views.py:653
 msgid "Result added successfully"
 msgstr "Резултат успешно унесен"
 
-#: nmkapp/views.py:676
+#: nmkapp/views.py:677
 #, python-format
 msgid "[nmk] All results from round \"%s\" received"
 msgstr "[nmk] Унесени сви резултати из кола „%s“"
