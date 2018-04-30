@@ -517,11 +517,6 @@ def round_standings(request, round_id):
                 'selected_group': selected_group})
 
 
-@login_required
-def download(request):
-    return render(request, 'download.html')
-
-
 def proposition(request):
     player = None
     if not request.user.is_anonymous:

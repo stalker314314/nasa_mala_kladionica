@@ -21,7 +21,6 @@ urlpatterns = [
     url(r'^roundstandings/(?P<round_id>\d+)$', views.round_standings),
     url(r'^groups/(?P<group_id>\d+)/leave', views.group_leave),
     url(r'^groups/(?P<group_id>\d+)/delete', views.group_delete),
-    url(r'^download$', views.download),
     url(r'^proposition$', views.proposition),
     url(r'^paypal$', views.paypal),
     url(r'^admin/rounds$', views.admin_rounds),
