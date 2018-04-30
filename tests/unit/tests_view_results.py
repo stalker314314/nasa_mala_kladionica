@@ -23,6 +23,6 @@ class ResultsTests(NmkUnitTestCase):
         Test result view with logged user
         """
         self.client = Client()
-        self.assertTrue(self.client.login(username='kokan', password='12345'))
+        self.assertTrue(self.client.login(username='kokan@mail.com', password='12345'))
         response = self.client.get(reverse(views.results))
         self.assertEqual(response.status_code, 200)

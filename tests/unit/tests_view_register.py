@@ -25,7 +25,6 @@ class RegisterTests(NmkUnitTestCase):
         self.client = Client()
         response = self.client.post(reverse(views.register), {})
         self.assertEqual(response.status_code, 200)
-        self.assertFormError(response, 'form', 'username', u'This field is required.')
         self.assertFormError(response, 'form', 'first_name', u'This field is required.')
         self.assertFormError(response, 'form', 'last_name', u'This field is required.')
         self.assertFormError(response, 'form', 'email', u'This field is required.')
@@ -34,7 +33,6 @@ class RegisterTests(NmkUnitTestCase):
     def test_register(self):
         self.client = Client()
         response = self.client.post(reverse(views.register), {
-            'username': 'foo',
             'first_name': 'Foo',
             'last_name': 'Bar',
             'email': 'foo@bar.com',
@@ -49,7 +47,7 @@ class RegisterTests(NmkUnitTestCase):
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].subject, '[nmk] NMK registration successful')
 
-        users = models.User.objects.filter(username='foo')
+        users = models.User.objects.filter(email='foo@bar.com')
         self.assertEqual(len(users), 1)
         self.assertEqual(users[0].email, 'foo@bar.com')
         self.assertFalse(users[0].is_active)

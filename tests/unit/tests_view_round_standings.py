@@ -42,11 +42,11 @@ class RoundStandingsTests(NmkUnitTestCase):
         self.assertEqual(rs[0]['shots'][0]['match_result'], 1)
         self.assertEqual(rs[0]['shots'][1]['shot'], 1)
         self.assertEqual(rs[0]['shots'][1]['match_result'], 2)
-        self.assertEqual(rs[0]['user_round']['username'], 'kokan')
+        self.assertEqual(rs[0]['user_round']['email'], 'kokan@mail.com')
         self.assertEqual(rs[0]['user_round']['points'], 1.5)
         self.assertFalse(rs[0]['user_round']['in_money'])
 
-        self.assertEqual(rs[1]['user_round']['username'], 'gumi')
+        self.assertEqual(rs[1]['user_round']['email'], 'gumi@mail.com')
         self.assertEqual(rs[1]['user_round']['points'], 0.0)
         self.assertFalse(rs[1]['user_round']['in_money'])
         self.assertEqual(rs[1]['shots'][0]['shot'], 0)
@@ -54,7 +54,7 @@ class RoundStandingsTests(NmkUnitTestCase):
         self.assertEqual(rs[1]['shots'][1]['shot'], 0)
         self.assertEqual(rs[1]['shots'][1]['match_result'], 2)
 
-        self.assertEqual(rs[2]['user_round']['username'], 'seki')
+        self.assertEqual(rs[2]['user_round']['email'], 'seki@mail.com')
         self.assertEqual(rs[2]['user_round']['points'], 0.0)
         self.assertFalse(rs[2]['user_round']['in_money'])
         self.assertEqual(rs[2]['shots'][0]['shot'], '')
@@ -92,11 +92,11 @@ class RoundStandingsTests(NmkUnitTestCase):
         self.assertEqual(rs[0]['shots'][0]['match_result'], 1)
         self.assertEqual(rs[0]['shots'][1]['shot'], 1)
         self.assertEqual(rs[0]['shots'][1]['match_result'], 2)
-        self.assertEqual(rs[0]['user_round']['username'], 'kokan')
+        self.assertEqual(rs[0]['user_round']['email'], 'kokan@mail.com')
         self.assertEqual(rs[0]['user_round']['points'], 1.5)
         self.assertFalse(rs[0]['user_round']['in_money'])
 
-        self.assertEqual(rs[1]['user_round']['username'], 'gumi')
+        self.assertEqual(rs[1]['user_round']['email'], 'gumi@mail.com')
         self.assertEqual(rs[1]['user_round']['points'], 0.0)
         self.assertFalse(rs[1]['user_round']['in_money'])
         self.assertEqual(rs[1]['shots'][0]['shot'], 0)
@@ -129,7 +129,7 @@ class RoundStandingsTests(NmkUnitTestCase):
         rs = context['round_standings']
         self.assertEqual(rs[0]['position'], 1)
 
-        self.assertEqual(rs[0]['user_round']['username'], 'kokan')
+        self.assertEqual(rs[0]['user_round']['email'], 'kokan@mail.com')
         self.assertEqual(rs[0]['user_round']['points'], 9.0)
         self.assertFalse(rs[0]['user_round']['in_money'])
         self.assertEqual(len(rs[0]['shots']), 2)
@@ -138,7 +138,7 @@ class RoundStandingsTests(NmkUnitTestCase):
         self.assertEqual(rs[0]['shots'][1]['shot'], 0)
         self.assertEqual(rs[0]['shots'][1]['match_result'], 0)
 
-        self.assertEqual(rs[1]['user_round']['username'], 'gumi')
+        self.assertEqual(rs[1]['user_round']['email'], 'gumi@mail.com')
         self.assertEqual(rs[1]['user_round']['points'], 0.0)
         self.assertFalse(rs[1]['user_round']['in_money'])
         self.assertEqual(rs[1]['shots'][0]['shot'], 2)
@@ -146,7 +146,7 @@ class RoundStandingsTests(NmkUnitTestCase):
         self.assertEqual(rs[1]['shots'][1]['shot'], 2)
         self.assertEqual(rs[1]['shots'][1]['match_result'], 0)
 
-        self.assertEqual(rs[2]['user_round']['username'], 'seki')
+        self.assertEqual(rs[2]['user_round']['email'], 'seki@mail.com')
         self.assertEqual(rs[2]['user_round']['points'], 0.0)
         self.assertFalse(rs[2]['user_round']['in_money'])
         self.assertEqual(rs[2]['shots'][0]['shot'], '')
@@ -165,7 +165,7 @@ class RoundStandingsTests(NmkUnitTestCase):
         match.save()
 
         client = Client()
-        self.assertTrue(client.login(username='gumi', password='12345'))
+        self.assertTrue(client.login(username='gumi@mail.com', password='12345'))
         response = client.get(reverse(views.round_standings, args=(3,)))
         self.assertEqual(response.status_code, 200)
         context = response.context
@@ -177,9 +177,9 @@ class RoundStandingsTests(NmkUnitTestCase):
 
     def test_round_visible_even_if_not_played(self):
         # Make sure this user didn't play this round
-        self.assertFalse(models.UserRound.objects.filter(user__username='seki', round=1)[0].shot_allowed)
+        self.assertFalse(models.UserRound.objects.filter(user__username='seki@mail.com', round=1)[0].shot_allowed)
         client = Client()
-        self.assertTrue(client.login(username='seki', password='12345'))
+        self.assertTrue(client.login(username='seki@mail.com', password='12345'))
         response = client.get(reverse(views.round_standings, args=(1,)))
         self.assertEqual(response.status_code, 200)
         context = response.context
@@ -196,7 +196,7 @@ class RoundStandingsTests(NmkUnitTestCase):
         match.save()
 
         client = Client()
-        self.assertTrue(client.login(username='kokan', password='12345'))
+        self.assertTrue(client.login(username='kokan@mail.com', password='12345'))
         response = client.get(reverse(views.round_standings, args=(3,)))
         self.assertEqual(response.status_code, 200)
         context = response.context

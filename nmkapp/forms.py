@@ -11,12 +11,10 @@ from nmkapp.logic import convert_odd_format
 
 class RegisterForm(forms.Form):
     def __init__(self, *args, **kwargs):
-        user = kwargs.pop('user')
         super(RegisterForm, self).__init__(*args, **kwargs)
         self.fields['first_name'] = forms.CharField(initial='', required=True, label=_('First name*'), max_length=28)
         self.fields['last_name'] = forms.CharField(initial='', required=True, label=_('Last name*'), max_length=28)
         self.fields['email'] = forms.EmailField(initial='', required=True, label=_('E-mail*'), max_length=74)
-        self.fields['username'] = forms.CharField(initial='', required=True, label=_('Username*'), max_length=28)
         self.fields['password'] = forms.CharField(initial='', required=True, label=_('Password*'), max_length=28,
                                                   min_length=5, widget=PasswordInput)
 
@@ -29,13 +27,7 @@ class RegisterForm(forms.Form):
             raise forms.ValidationError({'last_name': [_('Last name must be shorter than 28 characters in length'), ]})
         if 'email' in cleaned_data and len(cleaned_data['email']) > 74:
             raise forms.ValidationError({'email': [_('E-mail address must be shorter than 74 characters'), ]})
-        if 'username' in cleaned_data and len(cleaned_data['username']) > 28:
-            raise forms.ValidationError({'username': [_('Username must be shorter than 28 characters'), ]})
-        
-        if 'username' in cleaned_data:
-            existing_usernames = User.objects.filter(username=cleaned_data['username'])
-            if len(existing_usernames) > 0:
-                raise forms.ValidationError({'username': [_('Username already exists'), ]})
+
         if 'email' in cleaned_data: 
             existing_mails = User.objects.filter(email=cleaned_data['email'])
             if len(existing_mails) > 0:

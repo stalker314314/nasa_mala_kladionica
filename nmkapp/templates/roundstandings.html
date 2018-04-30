@@ -86,14 +86,14 @@ Create your crew at <a href="/crew">crew</a> page and invite your buddies){% end
         <tbody>
             {% for round_standing in round_standings %}
             <tr style="height: 40px">
-                {% if round_standing.user_round.username == user.username %}
+                {% if round_standing.user_round.email == user.email %}
                 <td style="background: rgb(204, 204, 204);">
                 {% else %}
                 <td>
                 {% endif %}
                     {{ round_standing.position }}.
                 </td>
-                {% if round_standing.user_round.username == user.username %}
+                {% if round_standing.user_round.email == user.email %}
                 <td style="background: rgb(204, 204, 204);">
                 {% else %}
                 <td>
@@ -127,7 +127,7 @@ Create your crew at <a href="/crew">crew</a> page and invite your buddies){% end
                 </td>
                 {% endfor %}
                 {% endfor %}
-                {% if round_standing.user_round.username == user.username %}
+                {% if round_standing.user_round.email == user.email %}
                 <td class="number" style="background: rgb(204, 204, 204);">
                 {% else %}
                 <td class="number">

@@ -38,7 +38,7 @@ class HomeTests(NmkUnitTestCase):
         Tests that player cannot play match from past
         """
         self.client = Client()
-        self.assertTrue(self.client.login(username='gumi', password='12345'))
+        self.assertTrue(self.client.login(username='gumi@mail.com', password='12345'))
         round = models.Round.objects.filter(name='Final')[0]
         round.active = True
         round.save()
@@ -83,7 +83,7 @@ class HomeTests(NmkUnitTestCase):
         Tests that player who is eligible to play can actually play
         """
         self.client = Client()
-        self.assertTrue(self.client.login(username='gumi', password='12345'))
+        self.assertTrue(self.client.login(username='gumi@mail.com', password='12345'))
         round = models.Round.objects.filter(name='Final')[0]
         round.active = True
         round.save()
@@ -108,7 +108,7 @@ class HomeTests(NmkUnitTestCase):
         Tests that player who is eligible to play to save
         """
         self.client = Client()
-        self.assertTrue(self.client.login(username='gumi', password='12345'))
+        self.assertTrue(self.client.login(username='gumi@mail.com', password='12345'))
 
         round = models.Round.objects.filter(name='Final')[0]
         round.active = True
@@ -138,7 +138,7 @@ class HomeTests(NmkUnitTestCase):
         Tests that player who is eligible to play to do final save
         """
         self.client = Client()
-        self.assertTrue(self.client.login(username='gumi', password='12345'))
+        self.assertTrue(self.client.login(username='gumi@mail.com', password='12345'))
 
         round = models.Round.objects.filter(name='Final')[0]
         round.active = True

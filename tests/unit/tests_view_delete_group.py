@@ -61,7 +61,7 @@ class DeleteGroupTests(NmkUnitTestCase):
 
     def test_post_visit_delete_group_not_an_owner(self):
         client = Client()
-        self.assertTrue(client.login(username='gumi', password='12345'))
+        self.assertTrue(client.login(username='gumi@mail.com', password='12345'))
         response = client.post(reverse(views.group_delete, args=(2,)), {'1': None})
         self.assertEqual(response.status_code, 200)
         context = response.context

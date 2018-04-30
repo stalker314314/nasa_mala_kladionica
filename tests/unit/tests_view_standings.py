@@ -35,15 +35,15 @@ class StandingsTests(NmkUnitTestCase):
         self.assertEqual(len(context['standings']), 3)
         standings = context['standings']
         self.assertEqual(standings[0][0].user.id, 1)
-        self.assertEqual(standings[0][0].user.username, 'kokan')
+        self.assertEqual(standings[0][0].user.email, 'kokan@mail.com')
         self.assertEqual(standings[0][1], [1.5, 9.0, 0.0])
 
         self.assertEqual(standings[1][0].user.id, 2)
-        self.assertEqual(standings[1][0].user.username, 'gumi')
+        self.assertEqual(standings[1][0].user.email, 'gumi@mail.com')
         self.assertEqual(standings[1][1], [0.0, 0.0, 0.0])
 
         self.assertEqual(standings[2][0].user.id, 3)
-        self.assertEqual(standings[2][0].user.username, 'seki')
+        self.assertEqual(standings[2][0].user.email, 'seki@mail.com')
         self.assertEqual(standings[2][1], [0.0, 0.0, 0.0])
 
     def test_other_group(self):
@@ -62,11 +62,11 @@ class StandingsTests(NmkUnitTestCase):
         self.assertEqual(len(context['standings']), 2)
         standings = context['standings']
         self.assertEqual(standings[0][0].user.id, 1)
-        self.assertEqual(standings[0][0].user.username, 'kokan')
+        self.assertEqual(standings[0][0].user.email, 'kokan@mail.com')
         self.assertEqual(standings[0][1], [1.5, 9.0, 0.0])
 
         self.assertEqual(standings[1][0].user.id, 2)
-        self.assertEqual(standings[1][0].user.username, 'gumi')
+        self.assertEqual(standings[1][0].user.email, 'gumi@mail.com')
         self.assertEqual(standings[1][1], [0.0, 0.0, 0.0])
 
     def test_other_group_not_visible(self):

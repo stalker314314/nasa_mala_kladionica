@@ -15,7 +15,7 @@ class NmkUnitTestCase(TestCase):
     def setUp(self):
         super().setUp()
         self.client = Client()
-        self.assertTrue(self.client.login(username='kokan', password='12345'))
+        self.assertTrue(self.client.login(username='kokan@mail.com', password='12345'))
 
         # Recalculate all points in DB (we don't trust fixtures to contain properly calculated points)
         logic.recalculate_round_points(1)

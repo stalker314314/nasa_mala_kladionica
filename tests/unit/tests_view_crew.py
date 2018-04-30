@@ -57,7 +57,7 @@ class CrewTests(NmkUnitTestCase):
         new_group = models.Group.objects.filter(name='foobar')[0]
 
         # Login gumi and add gumi to newly created group
-        self.assertTrue(self.client.login(username='gumi', password='12345'))
+        self.assertTrue(self.client.login(username='gumi@mail.com', password='12345'))
         response = self.client.post(reverse(views.crew), {'add_to_group': None, 'key': new_group.group_key})
         self.assertEqual(response.status_code, 200)
 

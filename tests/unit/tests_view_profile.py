@@ -90,7 +90,7 @@ class ProfileTests(NmkUnitTestCase):
         match.save()
         # We will use 'gumi' player in this test, log in as 'gumi'
         client = Client()
-        self.assertTrue(client.login(username='gumi', password='12345'))
+        self.assertTrue(client.login(username='gumi@mail.com', password='12345'))
 
         # Check how odds are formatted before we change them to be fractional (they should be decimal)
         response = client.get(reverse(views.home))

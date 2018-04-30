@@ -45,14 +45,14 @@ def register(request):
 
     registered = False
     if request.method == 'POST':
-        form = RegisterForm(request.POST, user={})
+        form = RegisterForm(request.POST)
         if form.is_valid():
             language = translation.get_language()
             available_languages = [lang_code for (lang_code, lang_name) in settings.LANGUAGES]
             if language not in available_languages:
                 language = settings.LANGUAGE_CODE
             cleaned_data = form.cleaned_data
-            user = User.objects.create_user(username=cleaned_data['username'],
+            user = User.objects.create_user(username=cleaned_data['email'],
                                             email=cleaned_data['email'],
                                             password=cleaned_data['password'],
                                             first_name=cleaned_data['first_name'],
@@ -78,7 +78,7 @@ def register(request):
             msg.send(fail_silently=False)
             registered = True
     else:
-        form = RegisterForm(user={})
+        form = RegisterForm()
     return render(request, 'register.html', {'form': form, 'registered': registered, 'no_menu': True})
 
 
@@ -101,7 +101,7 @@ def forgotpassword(request):
                     template = loader.get_template('mail/resetpassword.html')
                     message_text = template.render(
                         {'link': 'http://nmk.kokanovic.org/profile/reset?id=%s' % user.player.reset_code,
-                         'username': user.username})
+                         'email': user.email})
                 logger.info('Sending mail to reset user\'s password to %s', user.email)
                 msg = EmailMessage(subject, message_text, 'nmk@kokanovic.org', to=[user.email, ])
                 msg.content_subtype = 'html'
@@ -159,7 +159,7 @@ def reset_password(request):
     return render(request,
                   'resetpassword.html',
                   {'form': form, 'id': reset_code, 'nonvalid': nonvalid, 'reset': reset,
-                   'username': player.user.username}
+                   'email': player.user.email}
                   )
 
 
@@ -321,10 +321,10 @@ def results(request):
 
 
 def paypal(request):
-    username = 'not logged'
+    email = 'not logged'
     success = False
     if request.user.is_authenticated:
-        username = request.user.username
+        email = request.user.email
         request.user.player.in_money = True
         request.user.player.save()
         
@@ -335,8 +335,8 @@ def paypal(request):
         RoundStandingsCache.clear_group(group)
         success = True
 
-    msg = EmailMessage(_('[nmk] Player payed paypal'), _('Player %s') % username, 'nmk@kokanovic.org',
-                       to=['branko@kokanovic.org', ])
+    msg = EmailMessage(_('[nmk] Player payed paypal'), _('Player %s') % email, 'nmk@kokanovic.org',
+                       to=['branko@kokanovi.org', ])
     msg.content_subtype = 'html'
     msg.send(fail_silently=True)
     return render(request, 'paypal.html', {'success': success})

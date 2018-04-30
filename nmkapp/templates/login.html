@@ -22,7 +22,7 @@
 
 	<fieldset>
 		<div>
-			<label for="login:username">{% trans "Username" %}</label>
+			<label for="login:username">{% trans "E-mail" %}</label>
 			<br/>
 			{{ form.username }}
 		</div>
@@ -32,7 +32,7 @@
 			{{ form.password }}
 		</div>
 		{% if form.errors %}
-		<div class="errors">{% trans "Wrong username or password. Try again." %}</div>
+		<div class="errors">{% trans "Wrong e-mail or password. Try again." %}</div>
 		{% endif %}
     </fieldset>
 		{% if form.errors %}
@@ -40,7 +40,7 @@
 		{% else %}
 		<div class="buttonBox">
 		{% endif %}
-			<input type="submit" value="{% trans "Log me in" %}" />
+			<input type="submit" value="{% trans "Login" %}" />
 			<input type="hidden" name="next" value="{{ next }}" />
 			{% if form.errors %}
 			&nbsp;&nbsp;<a href="/forgotpassword" style="font-size: 11px;">{% trans "I forgot my password" %}</a>

@@ -135,7 +135,7 @@ class RoundStandingsCache:
             for shot in shots:
                 if last_user_round is not None and last_user_round != shot.user_round:
                     ur_simple = {
-                                 'username': last_user_round.user.username,
+                                 'email': last_user_round.user.email,
                                  'in_money': last_user_round.user.player.in_money,
                                  'full_name': '%s %s' % (last_user_round.user.first_name,
                                                          last_user_round.user.last_name),
@@ -157,7 +157,7 @@ class RoundStandingsCache:
             # Process last one
             if last_user_round is not None:
                 ur_simple = {
-                             'username': last_user_round.user.username,
+                             'email': last_user_round.user.email,
                              'in_money': last_user_round.user.player.in_money,
                              'full_name': '%s %s' % (last_user_round.user.first_name, last_user_round.user.last_name),
                              'points': last_user_round.points
@@ -180,7 +180,7 @@ class RoundStandingsCache:
                                                 })
                 for user_round_not_player in user_rounds_not_played:
                     ur_simple = {
-                                 'username': user_round_not_player.user.username,
+                                 'email': user_round_not_player.user.email,
                                  'in_money': user_round_not_player.user.player.in_money,
                                  'full_name': '%s %s' % (user_round_not_player.user.first_name,
                                                          user_round_not_player.user.last_name),

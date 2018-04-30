@@ -58,7 +58,7 @@ Create your crew at <a href="/crew">crew</a> page and invite your buddies){% end
         </thead>
         <tbody>
             {% for standing in standings %}
-            {% if standing.0.user.username == user.username %}
+            {% if standing.0.user.email == user.email %}
             <tr style="background: rgb(204, 204, 204);">
             {% else %}
             <tr>

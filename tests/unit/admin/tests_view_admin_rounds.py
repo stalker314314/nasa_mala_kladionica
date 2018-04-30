@@ -17,7 +17,7 @@ class AdminRoundsTests(NmkUnitTestCase):
 
     def test_regular_user(self):
         client = Client()
-        self.assertTrue(client.login(username='seki', password='12345'))
+        self.assertTrue(client.login(username='seki@mail.com', password='12345'))
         response = client.get(reverse(views.admin_rounds))
         self.assertEqual(response.status_code, 302)
 
@@ -37,7 +37,7 @@ class AdminRoundsTests(NmkUnitTestCase):
         with self.settings(SEND_MAIL=True):
             response = self.client.get('{}?set_active={}'.format(reverse(views.admin_rounds), new_round_id))
             self.assertEqual(response.status_code, 200)
-            self.assertEqual(len(mail.outbox), 1)
+            self.assertEqual(len(mail.outbox), 3)
             self.assertEqual(mail.outbox[0].subject, '[nmk] New round "Final2" available')
         rounds = self._get_all_rounds()
         self.assertFalse(rounds[0].active)

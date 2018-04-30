@@ -29,19 +29,19 @@ class ActivationTests(NmkUnitTestCase):
     def test_anon_user_activation(self):
         self.client = Client()
         response = self.client.post(reverse(views.register), {
-            'username': 'foo',
             'first_name': 'Foo',
             'last_name': 'Bar',
             'email': 'foo@bar.com',
             'password': 'foo123'
         })
         self.assertEqual(response.status_code, 200)
-        activation_code = models.Player.objects.filter(user__username='foo')[0].activation_code
+        activation_code = models.Player.objects.filter(user__email='foo@bar.com')[0].activation_code
 
         client = Client()
         response = client.get('{}?id={}'.format(reverse(views.activation), activation_code))
         self.assertEqual(response.status_code, 200)
         context = response.context
         self.assertIsNotNone(context['player'])
-        self.assertEqual(context['player'].user.username, 'foo')
+        self.assertEqual(context['player'].user.username, 'foo@bar.com')
+        self.assertEqual(context['player'].user.email, 'foo@bar.com')
         self.assertTrue(context['success'])

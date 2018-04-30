@@ -16,7 +16,7 @@ class AdminPointsTests(NmkUnitTestCase):
 
     def test_regular_user(self):
         client = Client()
-        self.assertTrue(client.login(username='seki', password='12345'))
+        self.assertTrue(client.login(username='seki@mail.com', password='12345'))
         response = client.get(reverse(views.admin_points))
         self.assertEqual(response.status_code, 302)
 

@@ -20,18 +20,18 @@ class ForgotPasswordTests(NmkUnitTestCase):
 
     def test_reset_password(self):
         client = Client()
-        response = client.post(reverse(views.forgotpassword), {'email': 'branko@kokanovi.com'})
+        response = client.post(reverse(views.forgotpassword), {'email': 'kokan@mail.com'})
         self.assertEqual(response.status_code, 200)
         context = response.context
         self.assertIsNotNone(context['form'])
         self.assertTrue(context['reset'])
         self.assertEqual(len(mail.outbox), 1)
-        self.assertEqual(mail.outbox[0].to, ['branko@kokanovi.com'])
+        self.assertEqual(mail.outbox[0].to, ['kokan@mail.com'])
         self.assertEqual(mail.outbox[0].subject, '[nmk] Reset password request')
 
     def test_reset_password_unknown_mail(self):
         client = Client()
-        response = client.post(reverse(views.forgotpassword), {'email': 'branko@kokanovi2.com'})
+        response = client.post(reverse(views.forgotpassword), {'email': 'kokan@mail2.com'})
         self.assertEqual(response.status_code, 200)
         context = response.context
         self.assertIsNotNone(context['form'])
