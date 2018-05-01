@@ -1,8 +1,10 @@
+{% load i18n %}
+
 <p>
-Novo kolo {{ round.name }} je postavljeno i možeš se kladiti na njega sve do {{ start_time }} kada počinje prvi meč.
-<br/>
-<br/>
-Srećno!
+    {% blocktrans %}New round {{ round.name }} is available, and you can bet on it all the way until {{ start_time }} when the first match from round starts.{% endblocktrans %}
+    <br/>
+    <br/>
+    {% trans "Good luck!" %}
 </p>
 
 {% include "mail/footer.html" %}

@@ -1,7 +1,9 @@
+{% load i18n %}
+
 <p>
-Svi rezultata mečeva iz kola <b>{{ round.name }}</b> su uneti u NMK.
-<br/>
-Pogledaj kako si ti i ostali korisnici tipovali na <a href="http://nmk.kokanovic.org/roundstandings/{{ round.id }}">tabeli kola</a>.
+    {% blocktrans %}All results for matches from round <b>{{ round.name }}</b> are final.{% endblocktrans %}
+    <br/>
+    {% blocktrans %}Check out how you and other player did this round at <a href="http://nmk.kokanovic.org/roundstandings/{{ round.id }}">round standings</a>.{% endblocktrans %}
 </p>
 
 {% include "mail/footer.html" %}

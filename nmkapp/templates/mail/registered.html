@@ -1,11 +1,13 @@
+{% load i18n %}
+
 <p>
-Hvala na registraciji za NMK. Da bi mogao da se prijaviš, moraš prvo da aktiviraš nalog klikom na sledeći link:
+    {% trans "Thanks for NMK registration. To activate your account, click on the following link:" %}
 </p>
 <p>
-<a href="{{ link }}">{{ link }}</a>
+    <a href="{{ link }}">{{ link }}</a>
 </p>
 <br/>
-Pročitaj i <a href="http://nmk.kokanovic.org/proposition">uputstva ovde</a>.
+{% blocktrans %}You might also read <a href="http://nmk.kokanovic.org/proposition">propositions here</a>.{% endblocktrans %}
 <br/>
 <br/>
 

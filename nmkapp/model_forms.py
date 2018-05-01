@@ -80,5 +80,5 @@ class PlayerForm(ModelForm):
         language = cleaned_data.get('language')
         available_languages = [lang_code for (lang_code, lang_name) in settings.LANGUAGES]
         if language not in available_languages:
-            raise forms.ValidationError({'language': [_('Language {} is not available ').format(language), ]})
+            raise forms.ValidationError({'language': [_('Language {} is not available').format(language), ]})
         return cleaned_data

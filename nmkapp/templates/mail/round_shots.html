@@ -1,5 +1,7 @@
+{% load i18n %}
+
 <p>
-Počele su utakmice <b>{{ round.name }}</b> kola. Nema laži, nema prevare, slede tipovi svih igrača iz ovog kola u trenutku kada je klađenje završeno:
+	{% blocktrans %}First matches from round <b>{{ round.name }}</b> started. For a full transparency, here are all the bets from all the players at the moment when all bets were off:{% endblocktrans %}
 </p>
 <br/>
 <br/>
@@ -7,7 +9,7 @@ Počele su utakmice <b>{{ round.name }}</b> kola. Nema laži, nema prevare, sled
 <table id="roundstandings" border="1px">
 	<thead style="height: 40px">
 		<tr>
-			<th class="firstcol" rowspan="2">Korisnik</th>
+			<th class="firstcol" rowspan="2">{% trans "Player" %}</th>
 			{% for match in matches %}
 			<th>{{ match.home_team.name }} - {{ match.away_team.name }}</th>
 			{% endfor %}
