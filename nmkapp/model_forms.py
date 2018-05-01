@@ -51,6 +51,8 @@ class ResultsForm(ModelForm):
     def clean(self):
         cleaned_data = super(ResultsForm, self).clean()
         score = cleaned_data.get('score')
+        if score is None:
+            raise forms.ValidationError(_('There should be colon between two numbers'))
         scores = score.split(':')
         if len(scores) != 2:
             raise forms.ValidationError(_('There should be colon between two numbers'))

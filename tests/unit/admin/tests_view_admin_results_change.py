@@ -36,6 +36,31 @@ class AdminResultsChangeTests(NmkUnitTestCase):
             self.assertEqual(len(mail.outbox), 3)
             self.assertEqual(mail.outbox[0].subject, '[nmk] All results from round "Final" received')
 
-        match = models.Match.objects.filter(id=5)[0]
+        match = models.Match.objects.filter(id=5).get()
         self.assertEqual(match.result, 1)
         self.assertEqual(match.score, '5:2')
+
+    def test_change_result_wrong_format(self):
+        all_various_scores_that_can_fail = ['', '1', 'foo', '52']
+        for score in all_various_scores_that_can_fail:
+            with self.settings(SEND_MAIL=True):
+                response = self.client.post(reverse(views.admin_results_change, args=(5,)), {'score': score})
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(len(mail.outbox), 0)
+
+            self.assertEqual(response.status_code, 200)
+            self.assertTrue('There should be colon between two numbers' in str(response.context['form'].errors))
+            match = models.Match.objects.filter(id=5).get()
+            self.assertEqual(match.result, None)
+
+        all_various_scores_that_cannot_be_parsed = [':', '1:', ':1', 'foo:1', '1:foo']
+        for score in all_various_scores_that_cannot_be_parsed:
+            with self.settings(SEND_MAIL=True):
+                response = self.client.post(reverse(views.admin_results_change, args=(5,)), {'score': score})
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(len(mail.outbox), 0)
+
+            self.assertEqual(response.status_code, 200)
+            self.assertTrue('Cannot parse numbers in result' in str(response.context['form'].errors))
+            match = models.Match.objects.filter(id=5).get()
+            self.assertEqual(match.result, None)
