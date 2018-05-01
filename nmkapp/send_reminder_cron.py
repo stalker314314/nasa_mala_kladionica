@@ -43,7 +43,8 @@ def get_rounds_starting_tomorrow():
 
 
 def send_reminder_for_round(nmk_round, min_time):
-    all_players = Player.objects.exclude(user__email='').filter(send_mail_reminder=True).filter(user__is_active=True)
+    all_players = Player.objects.exclude(user__email='').\
+        filter(send_mail_reminder=True).filter(user__is_active=True).order_by('user__id')
     players_to_send_mail = []
     for player in all_players:
         if not Shot.objects.filter(user_round__round=nmk_round).filter(user_round__user=player.user).exists():

@@ -13,7 +13,8 @@ class SendReminderCronTests(NmkUnitTestCase):
         """
         Tests that there is reminder when round is not starting in next 24h
         """
-        rounds = send_reminder_cron.main()
+        with self.settings(SEND_MAIL=True):
+            rounds = send_reminder_cron.main()
         self.assertEqual(len(rounds), 0)
         self.assertEqual(len(mail.outbox), 0)
 
@@ -38,7 +39,9 @@ class SendReminderCronTests(NmkUnitTestCase):
         self.assertEqual(len(rounds), 1)
         self.assertEqual(rounds[0][0].id, 3)
         self.assertEqual(len(mail.outbox), 2)
+        self.assertEqual(mail.outbox[0].to, ['gumi@mail.com', ])
         self.assertEqual(mail.outbox[0].subject, '[nmk] Round "Final" reminder')
+        self.assertEqual(mail.outbox[1].to, ['seki@mail.com', ])
         self.assertEqual(mail.outbox[1].subject, '[nmk] Подсетник клађења на коло „Final“')
 
     def test_send_reminder_no_receivers(self):
