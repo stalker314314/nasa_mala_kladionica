@@ -95,7 +95,7 @@ LANGUAGES = [
 ]
 
 LOCALE_PATHS = (
-    'locale',
+    os.path.join(BASE_DIR, 'locale'),
 )
 
 USE_I18N = True
