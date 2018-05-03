@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-03 06:42+0000\n"
-"PO-Revision-Date: 2018-05-03 08:45+0200\n"
+"POT-Creation-Date: 2018-05-03 21:45+0000\n"
+"PO-Revision-Date: 2018-05-03 23:46+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sr\n"
@@ -218,8 +218,8 @@ msgid "Invalid activation"
 msgstr "Неисправна активација"
 
 #: nmkapp/templates/activation.html:42 nmkapp/templates/forgotpassword.html:14
-#: nmkapp/templates/forgotpassword.html:30 nmkapp/templates/register.html:19
-#: nmkapp/templates/register.html:37 nmkapp/templates/resetpassword.html:17
+#: nmkapp/templates/forgotpassword.html:30 nmkapp/templates/register.html:18
+#: nmkapp/templates/register.html:36 nmkapp/templates/resetpassword.html:17
 #: nmkapp/templates/resetpassword.html:35
 msgid "Back to login"
 msgstr "Назад на пријаву"
@@ -523,7 +523,7 @@ msgstr "Погрешна адреса е-поште или лозинка. По�
 msgid "I forgot my password"
 msgstr "Заборавио сам лозинку"
 
-#: nmkapp/templates/login.html:50 nmkapp/templates/register.html:33
+#: nmkapp/templates/login.html:50 nmkapp/templates/register.html:32
 msgid "Register"
 msgstr "Региструј се"
 
@@ -909,7 +909,15 @@ msgstr ""
 "Ако је Жика био испод њих са 49 поена, он не добија паре за друго место, већ "
 "за треће, тј. 16.6%%."
 
-#: nmkapp/templates/register.html:14
+#: nmkapp/templates/register.html:10
+msgid ""
+"You successfully registered. You will now receive mail with link to activate "
+"your account (check spam folder too, just in case)"
+msgstr ""
+"Успешно сте се регистровали. Добићете е-пошту са линком за активирање Вашег "
+"налога (проверите и спам фасциклу, за сваки случај)"
+
+#: nmkapp/templates/register.html:13
 msgid ""
 "In the meantime, you can read propositions <a href=\"/proposition\">here</a>."
 msgstr ""
