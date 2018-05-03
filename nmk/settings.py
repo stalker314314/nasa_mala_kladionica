@@ -241,6 +241,7 @@ if DEBUG:
 if not DEBUG:
     SECRET_KEY = os.environ['NMK_SECRET_KEY']
     DATABASES['default']['HOST'] = os.environ['NMK_DB_HOST']
+    DATABASES['default']['NAME'] = os.environ['NMK_DB_NAME']
     DATABASES['default']['USER'] = os.environ['NMK_DB_USER']
     DATABASES['default']['PASSWORD'] = os.environ['NMK_DB_PASSWORD']
     ANYMAIL['MAILJET_API_KEY'] = os.environ['NMK_MAILJET_API_KEY']
