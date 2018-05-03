@@ -43,6 +43,6 @@ class SendShotsCronTests(NmkUnitTestCase):
         self.assertEqual(rounds[0].id, 3)
         self.assertEqual(len(mail.outbox), 2)
         self.assertEqual(mail.outbox[0].to, ['kokan@mail.com', ])
-        self.assertEqual(mail.outbox[0].subject, '[nmk] Round "Final" started')
+        self.assertEqual(mail.outbox[0].subject, '[sharkz.bet] Round "Final" started')
         self.assertEqual(mail.outbox[1].to, ['gumi@mail.com', ])
-        self.assertEqual(mail.outbox[1].subject, '[nmk] Почело коло „Final“')
+        self.assertEqual(mail.outbox[1].subject, '[sharkz.bet] Почело коло „Final“')

@@ -55,10 +55,10 @@ def send_reminder_for_round(nmk_round, min_time):
                     nmk_round.name, len(players_to_send_mail))
         for player in players_to_send_mail:
             with translation.override(player.language):
-                subject = _('[nmk] Round "%s" reminder') % nmk_round.name
+                subject = _('[sharkz.bet] Round "%s" reminder') % nmk_round.name
                 template = loader.get_template("mail/round_reminder.html")
                 message_text = template.render({"round": nmk_round, "min_time": min_time})
-            msg = EmailMessage(subject, message_text, "nmk@kokanovic.org", to=[player.user.email, ])
+            msg = EmailMessage(subject, message_text, "admin@sharkz.bet", to=[player.user.email, ])
             msg.content_subtype = "html"
             msg.send(fail_silently=False)
 

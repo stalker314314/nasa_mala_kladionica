@@ -6,7 +6,7 @@ path = '/sites/'
 if path not in sys.path:
         sys.path.append(path)
 
-path = '/sites/nmk.kokanovic.org/'
+path = '/sites/sharkz.bet/'
 if path not in sys.path:
         sys.path.append(path)
 

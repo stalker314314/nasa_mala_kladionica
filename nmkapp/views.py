@@ -68,12 +68,12 @@ def register(request):
             player.save()
 
             with translation.override(language):
-                subject = _('[nmk] NMK registration successful')
+                subject = _('[sharkz.bet] NMK registration successful')
                 template = loader.get_template('mail/registered.html')
                 message_text = template.render(
-                    {'link': 'http://nmk.kokanovic.org/activate?id=%s' % user.player.activation_code})
+                    {'link': 'https://sharkz.bet/activate?id=%s' % user.player.activation_code})
             logger.info('Sending mail that user is registered to %s', user.email)
-            msg = EmailMessage(subject, message_text, 'nmk@kokanovic.org', to=[user.email, ])
+            msg = EmailMessage(subject, message_text, 'admin@sharkz.bet', to=[user.email, ])
             msg.content_subtype = 'html'
             msg.send(fail_silently=False)
             registered = True
@@ -97,13 +97,13 @@ def forgotpassword(request):
                 user.player.save()
 
                 with translation.override(user.player.language):
-                    subject = _('[nmk] Reset password request')
+                    subject = _('[sharkz.bet] Reset password request')
                     template = loader.get_template('mail/resetpassword.html')
                     message_text = template.render(
-                        {'link': 'http://nmk.kokanovic.org/profile/reset?id=%s' % user.player.reset_code,
+                        {'link': 'https://sharkz.bet/profile/reset?id=%s' % user.player.reset_code,
                          'email': user.email})
                 logger.info('Sending mail to reset user\'s password to %s', user.email)
-                msg = EmailMessage(subject, message_text, 'nmk@kokanovic.org', to=[user.email, ])
+                msg = EmailMessage(subject, message_text, 'admin@sharkz.bet', to=[user.email, ])
                 msg.content_subtype = 'html'
                 msg.send(fail_silently=False)
                 reset = True
@@ -335,8 +335,8 @@ def paypal(request):
         RoundStandingsCache.clear_group(group)
         success = True
 
-    msg = EmailMessage(_('[nmk] Player payed paypal'), _('Player %s') % email, 'nmk@kokanovic.org',
-                       to=['branko@kokanovi.org', ])
+    msg = EmailMessage(_('[sharkz.bet] Player payed paypal'), _('Player %s') % email, 'admin@sharkz.bet',
+                       to=['admin@sharkz.bet', ])
     msg.content_subtype = 'html'
     msg.send(fail_silently=True)
     return render(request, 'paypal.html', {'success': success})
@@ -556,10 +556,10 @@ def admin_rounds(request):
                         should_be_active_round.name, len(all_players))
             for player in all_players:
                 with translation.override(player.language):
-                    subject = _('[nmk] New round "%s" available') % should_be_active_round.name
+                    subject = _('[sharkz.bet] New round "%s" available') % should_be_active_round.name
                     template = loader.get_template('mail/round_active.html')
                     message_text = template.render({'round': should_be_active_round, 'start_time': start_time})
-                msg = EmailMessage(subject, message_text, 'nmk@kokanovic.org', to=[player.user.email, ])
+                msg = EmailMessage(subject, message_text, 'admin@sharkz.bet', to=[player.user.email, ])
                 msg.content_subtype = 'html'
                 msg.send(fail_silently=False)
 
@@ -674,10 +674,10 @@ def admin_results_change(request, match_id):
                     logger.info('Sending mail that round %s have all results to %d', match.round, len(all_players))
                     for player in all_players:
                         with translation.override(player.language):
-                            subject = _('[nmk] All results from round "%s" received') % match.round.name
+                            subject = _('[sharkz.bet] All results from round "%s" received') % match.round.name
                             template = loader.get_template('mail/result_added.html')
                             message_text = template.render({'round': match.round})
-                        msg = EmailMessage(subject, message_text, 'nmk@kokanovic.org', to=[player.user.email, ])
+                        msg = EmailMessage(subject, message_text, 'admin@sharkz.bet', to=[player.user.email, ])
                         msg.content_subtype = 'html'
                         msg.send(fail_silently=False)
                 

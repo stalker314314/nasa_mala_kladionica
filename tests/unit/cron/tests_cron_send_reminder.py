@@ -40,9 +40,9 @@ class SendReminderCronTests(NmkUnitTestCase):
         self.assertEqual(rounds[0][0].id, 3)
         self.assertEqual(len(mail.outbox), 2)
         self.assertEqual(mail.outbox[0].to, ['gumi@mail.com', ])
-        self.assertEqual(mail.outbox[0].subject, '[nmk] Round "Final" reminder')
+        self.assertEqual(mail.outbox[0].subject, '[sharkz.bet] Round "Final" reminder')
         self.assertEqual(mail.outbox[1].to, ['seki@mail.com', ])
-        self.assertEqual(mail.outbox[1].subject, '[nmk] Подсетник клађења на коло „Final“')
+        self.assertEqual(mail.outbox[1].subject, '[sharkz.bet] Подсетник клађења на коло „Final“')
 
     def test_send_reminder_no_receivers(self):
         """

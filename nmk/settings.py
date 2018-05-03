@@ -121,9 +121,9 @@ ANYMAIL = {
 }
 EMAIL_BACKEND = 'anymail.backends.mailjet.EmailBackend'
 
-DEFAULT_FROM_EMAIL = "nmk@kokanovic.org"
-SERVER_EMAIL = 'nmk@kokanovic.org'
-ADMINS = [('Nasa Mala Kladionica', 'nmk@kokanovic.org')]
+DEFAULT_FROM_EMAIL = "admin@sharkz.bet"
+SERVER_EMAIL = 'admin@sharkz.bet'
+ADMINS = [('Sharkz.bet', 'admin@sharkz.bet')]
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
@@ -148,7 +148,7 @@ LOGGING_DEBUG = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': 'nmk.log',
+            'filename': 'sb.log',
             'formatter': 'verbose',
             'when': 'midnight',
             'interval': 1
@@ -184,7 +184,7 @@ LOGGING_PROD = {
         'file': {
             'level': 'INFO',
             'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': '/var/log/nmk/nmk.log',
+            'filename': '/var/log/sharkz.bet/sb.log',
             'formatter': 'verbose',
             'when': 'midnight',
             'interval': 1
@@ -245,5 +245,5 @@ if not DEBUG:
     DATABASES['default']['PASSWORD'] = os.environ['NMK_DB_PASSWORD']
     ANYMAIL['MAILJET_API_KEY'] = os.environ['NMK_MAILJET_API_KEY']
     ANYMAIL['MAILJET_SECRET_KEY'] = os.environ['NMK_MAILJET_SECRET_KEY']
-    ALLOWED_HOSTS = ['localhost', '.nmk.kokanovic.org', '.nmk.kokanovic.org.']
+    ALLOWED_HOSTS = ['localhost', '.nmk.kokanovic.org', '.nmk.kokanovic.org.', '.sharkz.bet', '.sharkz.bet.']
     LOGGING = LOGGING_PROD

@@ -57,11 +57,11 @@ def send_mail_for_round(nmk_round):
         logger.info("Sending mail that round %s started to %d players", nmk_round.name, len(all_players))
         for player in all_players:
             with translation.override(player.language):
-                subject = _('[nmk] Round "%s" started') % nmk_round.name
+                subject = _('[sharkz.bet] Round "%s" started') % nmk_round.name
                 template = loader.get_template("mail/round_shots.html")
                 message_text = template.render(
                     {"round": nmk_round, "matches": matches, "round_standings": round_standings})
-            msg = EmailMessage(subject, message_text, "nmk@kokanovic.org", to=[player.user.email, ])
+            msg = EmailMessage(subject, message_text, "admin@sharkz.bet", to=[player.user.email, ])
             msg.content_subtype = "html"
             msg.send(fail_silently=False)
 

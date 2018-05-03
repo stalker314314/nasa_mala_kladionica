@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-01 19:51+0000\n"
-"PO-Revision-Date: 2018-05-01 21:54+0200\n"
+"POT-Creation-Date: 2018-05-03 06:42+0000\n"
+"PO-Revision-Date: 2018-05-03 08:45+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sr\n"
@@ -139,43 +139,43 @@ msgstr "Тим %s  је већ играо у овом колу"
 msgid "Result (in the <host>:<guest> format)"
 msgstr "Резултат (у формату <домаћин>:<гост>)"
 
-#: nmkapp/model_forms.py:56
+#: nmkapp/model_forms.py:55 nmkapp/model_forms.py:58
 msgid "There should be colon between two numbers"
 msgstr "Између два броја мора да постоје две тачке"
 
-#: nmkapp/model_forms.py:61
+#: nmkapp/model_forms.py:63
 msgid "Cannot parse numbers in result"
 msgstr "Не могу да парсирам резултат"
 
-#: nmkapp/model_forms.py:72
+#: nmkapp/model_forms.py:74
 msgid "Language"
 msgstr "Језик"
 
-#: nmkapp/model_forms.py:72
+#: nmkapp/model_forms.py:74
 msgid "Time zone"
 msgstr "Временска зона"
 
-#: nmkapp/model_forms.py:72
+#: nmkapp/model_forms.py:74
 msgid "Odd format"
 msgstr "Формат квота"
 
-#: nmkapp/model_forms.py:73
+#: nmkapp/model_forms.py:75
 msgid "Betting reminder"
 msgstr "Подсетник на клађење"
 
-#: nmkapp/model_forms.py:74
+#: nmkapp/model_forms.py:76
 msgid "All bets are final"
 msgstr "Клађење је готово"
 
-#: nmkapp/model_forms.py:75
+#: nmkapp/model_forms.py:77
 msgid "New round available"
 msgstr "Доступно ново коло"
 
-#: nmkapp/model_forms.py:76
+#: nmkapp/model_forms.py:78
 msgid "All results are final"
 msgstr "Сви резултати унесени"
 
-#: nmkapp/model_forms.py:83
+#: nmkapp/model_forms.py:85
 msgid "Language {} is not available"
 msgstr "Језик {} није доступан"
 
@@ -187,15 +187,15 @@ msgstr "Децимални (европски)"
 msgid "Fractional (UK)"
 msgstr "Разломци (Енглеска)"
 
-#: nmkapp/send_reminder_cron.py:57
+#: nmkapp/send_reminder_cron.py:58
 #, python-format
-msgid "[nmk] Round \"%s\" reminder"
-msgstr "[nmk] Подсетник клађења на коло „%s“"
+msgid "[sharkz.bet] Round \"%s\" reminder"
+msgstr "[sharkz.bet] Подсетник клађења на коло „%s“"
 
-#: nmkapp/send_shots_cron.py:59
+#: nmkapp/send_shots_cron.py:60
 #, python-format
-msgid "[nmk] Round \"%s\" started"
-msgstr "[nmk] Почело коло „%s“"
+msgid "[sharkz.bet] Round \"%s\" started"
+msgstr "[sharkz.bet] Почело коло „%s“"
 
 #: nmkapp/templates/activation.html:10
 msgid "You successfully activated account. Fun can start... now!"
@@ -312,8 +312,8 @@ msgid "3. place"
 msgstr "3. место"
 
 #: nmkapp/templates/base.html:214
-msgid "All questions, wishes and bug reports direct to nmk@kokanovic.org"
-msgstr "Сва питања, жеље, честитке и поздраве упутити на nmk@kokanovic.org"
+msgid "Direct all questions, wishes and bug reports to admin@sharkz.bet"
+msgstr "Сва питања, жеље, честитке и поздраве упутити на admin@sharkz.bet"
 
 #: nmkapp/templates/crew.html:13
 msgid "MY CREWS"
@@ -531,38 +531,39 @@ msgstr "Региструј се"
 msgid "(registration is allowed until 1h before start of the first match"
 msgstr "(регистрација је дозвољена до 1h пред прву утакмицу"
 
-#: nmkapp/templates/mail/footer.html:3
+#: nmkapp/templates/mail/footer.html:5
 msgid "Automated mail, do not reply."
 msgstr "Аутоматски генерисана порука."
 
-#: nmkapp/templates/mail/footer.html:4
+#: nmkapp/templates/mail/footer.html:6
 msgid ""
-"If you do not want to receive any more mail from NMK, please log in and "
-"change settings at <a href=\"http://nmk.kokanovic.org/profile\">profile</a> "
+"If you do not want to receive any more mail from sharkz.bet, please log in "
+"and change settings at <a href=\"https://sharkz.bet/profile\">profile</a> "
 "page."
 msgstr ""
-"Ако не желиш да примаш више мејлове са НМК, улогуј се и промени подешавања "
-"на <a href=\"http://nmk.kokanovic.org/profile\">профил</a> страни."
+"Ако не желиш да примаш више мејлове са sharkz.bet-а, улогуј се и промени "
+"подешавања на <a href=\"https://sharkz.bet/profile\">профил</a> страни."
 
-#: nmkapp/templates/mail/footer.html:7
+#: nmkapp/templates/mail/footer.html:9
 msgid "FB group"
 msgstr "FB група"
 
-#: nmkapp/templates/mail/registered.html:2
+#: nmkapp/templates/mail/registered.html:4
 msgid ""
-"Thanks for NMK registration. To activate your account, click on the "
+"Thanks for sharkz.bet registration. To activate your account, click on the "
 "following link:"
 msgstr ""
-"Хвала на регистрацији за НМК. Да би могао да се пријавиш, мораш прво да "
-"активираш налог кликом на следећи линк:"
+"Хвала на регистрацији за sharkz.bet сајт. Да би могао да се пријавиш, мораш "
+"прво да активираш налог кликом на следећи линк:"
 
-#: nmkapp/templates/mail/registered.html:8
+#: nmkapp/templates/mail/registered.html:10
 msgid ""
-"You might also read <a href=\"http://nmk.kokanovic.org/proposition"
-"\">propositions here</a>."
-msgstr "Прочитај и правила <a href=\"/proposition\">овде</a>."
+"You might also read <a href=\"https://sharkz.bet/proposition\">propositions "
+"here</a>."
+msgstr ""
+"Прочитај и правила <a href=\"https://sharkz.bet/proposition\">овде</a>."
 
-#: nmkapp/templates/mail/resetpassword.html:2
+#: nmkapp/templates/mail/resetpassword.html:4
 #, python-format
 msgid ""
 "We received request to reset password. If you were not the one who requested "
@@ -573,21 +574,21 @@ msgstr ""
 "поднео захтев, не мораш да радиш ништа. На следећем линку можеш да унесеш "
 "лозинку за налог <b>%(email)s</b>:"
 
-#: nmkapp/templates/mail/result_added.html:2
+#: nmkapp/templates/mail/result_added.html:4
 #, python-format
 msgid "All results for matches from round <b>%(round.name)s</b> are final."
 msgstr "Сви резултати мечева из кола <b>%(round.name)s</b> су унети у НМК."
 
-#: nmkapp/templates/mail/result_added.html:4
+#: nmkapp/templates/mail/result_added.html:6
 #, python-format
 msgid ""
-"Check out how you and other player did this round at <a href=\"http://nmk."
-"kokanovic.org/roundstandings/%(round.id)s\">round standings</a>."
+"Check out how you and other player did this round at <a href=\"https://"
+"sharkz.bet/roundstandings/%(round.id)s\">round standings</a>."
 msgstr ""
-"Погледај како сте ти и остали играчи типовали на  <a href=\"http://nmk."
-"kokanovic.org/roundstandings/%(round.id)s\">табели кола</a>."
+"Погледај како сте ти и остали играчи типовали на <a href=\"https://sharkz."
+"bet/roundstandings/%(round.id)s\">табели кола</a>."
 
-#: nmkapp/templates/mail/round_active.html:2
+#: nmkapp/templates/mail/round_active.html:4
 #, python-format
 msgid ""
 "New round %(round.name)s is available, and you can bet on it all the way "
@@ -596,11 +597,11 @@ msgstr ""
 "Ново коло %(round.name)s  је постављено и можеш се кладити на њега све до "
 "%(start_time)s када почиње први меч."
 
-#: nmkapp/templates/mail/round_active.html:5
+#: nmkapp/templates/mail/round_active.html:7
 msgid "Good luck!"
 msgstr "Срећно!"
 
-#: nmkapp/templates/mail/round_reminder.html:2
+#: nmkapp/templates/mail/round_reminder.html:4
 #, python-format
 msgid ""
 "This mail is a reminder to bet on round <b>%(round.name)s</b>. Betting is "
@@ -610,14 +611,12 @@ msgstr ""
 "Овај мејл је подсетник да се кладиш на коло  <b>%(round.name)s</b>. Клађење "
 "је могуће до %(min_time.date)s у %(min_time.time)s када почиње прва утакмица!"
 
-#: nmkapp/templates/mail/round_reminder.html:6
-msgid ""
-"You can bet at the <a href=\"http://nmk.kokanovic.org\">betting page</a>."
+#: nmkapp/templates/mail/round_reminder.html:8
+msgid "You can bet at the <a href=\"https://sharkz.bet\">betting page</a>."
 msgstr ""
-"Можеш се кладити на <a href=\"http://nmk.kokanovic.org\">страни за клађење</"
-"a>."
+"Можеш се кладити на <a href=\"https://sharkz.bet\">страни за клађење</a>."
 
-#: nmkapp/templates/mail/round_shots.html:2
+#: nmkapp/templates/mail/round_shots.html:4
 #, python-format
 msgid ""
 "First matches from round <b>%(round.name)s</b> started. For a full "
@@ -627,7 +626,7 @@ msgstr ""
 "Почеле су утакмице кола <b>%(round.name)s</b>. Нема лажи, нема преваре, "
 "следе типови свих играча из овог кола у тренутку када је клађење завршено:"
 
-#: nmkapp/templates/mail/round_shots.html:10
+#: nmkapp/templates/mail/round_shots.html:12
 #: nmkapp/templates/roundstandings.html:72 nmkapp/templates/standings.html:48
 msgid "Player"
 msgstr "Такмичар"
@@ -675,13 +674,13 @@ msgid ""
 "You will see your name bolded in all <a href=\"/standings\">standings</a> "
 "and tables in the next 24h\n"
 "(as a sign that you play in real money). If this doesn't happen, feel free "
-"to contact nmk@kokanovic.org.\n"
+"to contact admin@sharkz.bet.\n"
 msgstr ""
 "\n"
 "Видећеш своје име подебљано на <a href=\"/standings\">табелама</a> у "
 "наредних 24h\n"
 "(као знак да играш у праве паре). Уколико се ово не деси до тад, контактирај "
-"ме на nmk@kokanovic.org.\n"
+"ме на admin@sharkz.bet.\n"
 
 #: nmkapp/templates/profile.html:26
 msgid "REAL MONEY BETTING"
@@ -1018,12 +1017,12 @@ msgid "Players playing in real money are shown bolded"
 msgstr "Такмичари који играју у праве паре су приказани подебљано"
 
 #: nmkapp/views.py:71
-msgid "[nmk] NMK registration successful"
-msgstr "[nmk] Регистрација успешна"
+msgid "[sharkz.bet] NMK registration successful"
+msgstr "[sharkz.bet] Регистрација успешна"
 
 #: nmkapp/views.py:100
-msgid "[nmk] Reset password request"
-msgstr "[nmk] Захтев за ресетовањем лозинке"
+msgid "[sharkz.bet] Reset password request"
+msgstr "[sharkz.bet] Захтев за ресетовањем лозинке"
 
 #: nmkapp/views.py:173 nmkapp/views.py:181
 msgid "There is no active round currently to place bets, try again later"
@@ -1059,8 +1058,8 @@ msgid "Joined crew successfully"
 msgstr "Успешно додат у екипу"
 
 #: nmkapp/views.py:338
-msgid "[nmk] Player payed paypal"
-msgstr "[nmk] Играч платио пејпал"
+msgid "[sharkz.bet] Player payed paypal"
+msgstr "[sharkz.bet] Играч платио пејпал"
 
 #: nmkapp/views.py:338
 #, python-format
@@ -1098,8 +1097,8 @@ msgstr "[nmk] Почело коло „%s“"
 
 #: nmkapp/views.py:559
 #, python-format
-msgid "[nmk] New round \"%s\" available"
-msgstr "[nmk] Доступно је ново коло „%s“"
+msgid "[sharkz.bet] New round \"%s\" available"
+msgstr "[sharkz.bet] Доступно је ново коло „%s“"
 
 #: nmkapp/views.py:570
 #, python-format
@@ -1121,8 +1120,8 @@ msgstr "Резултат успешно унесен"
 
 #: nmkapp/views.py:677
 #, python-format
-msgid "[nmk] All results from round \"%s\" received"
-msgstr "[nmk] Унесени сви резултати из кола „%s“"
+msgid "[sharkz.bet] All results from round \"%s\" received"
+msgstr "[sharkz.bet] Унесени сви резултати из кола „%s“"
 
 #~ msgid "Username*"
 #~ msgstr "Корисничко име*"
