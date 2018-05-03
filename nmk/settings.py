@@ -69,7 +69,7 @@ MIDDLEWARE = (
 
 ROOT_URLCONF = 'nmk.urls'
 
-WSGI_APPLICATION = 'nmk.wsgi.application'
+WSGI_APPLICATION = 'sharkz.bet.wsgi.application'
 
 # Database
 DATABASES = {
