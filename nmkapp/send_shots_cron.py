@@ -61,7 +61,7 @@ def send_mail_for_round(nmk_round):
                 template = loader.get_template("mail/round_shots.html")
                 message_text = template.render(
                     {"round": nmk_round, "matches": matches, "round_standings": round_standings})
-            msg = EmailMessage(subject, message_text, "admin@sharkz.bet", to=[player.user.email, ])
+            msg = EmailMessage(subject, message_text, "notifications@sharkz.bet", to=[player.user.email, ])
             msg.content_subtype = "html"
             msg.send(fail_silently=False)
 

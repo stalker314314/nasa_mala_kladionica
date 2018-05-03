@@ -246,5 +246,5 @@ if not DEBUG:
     DATABASES['default']['PASSWORD'] = os.environ['NMK_DB_PASSWORD']
     ANYMAIL['MAILJET_API_KEY'] = os.environ['NMK_MAILJET_API_KEY']
     ANYMAIL['MAILJET_SECRET_KEY'] = os.environ['NMK_MAILJET_SECRET_KEY']
-    ALLOWED_HOSTS = ['localhost', '.nmk.kokanovic.org', '.nmk.kokanovic.org.', '.sharkz.bet', '.sharkz.bet.']
+    ALLOWED_HOSTS = ['localhost', '.sharkz.bet', '.sharkz.bet.']
     LOGGING = LOGGING_PROD

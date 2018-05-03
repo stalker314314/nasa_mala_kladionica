@@ -73,7 +73,7 @@ def register(request):
                 message_text = template.render(
                     {'link': 'https://sharkz.bet/activate?id=%s' % user.player.activation_code})
             logger.info('Sending mail that user is registered to %s', user.email)
-            msg = EmailMessage(subject, message_text, 'admin@sharkz.bet', to=[user.email, ])
+            msg = EmailMessage(subject, message_text, 'support@sharkz.bet', to=[user.email, ])
             msg.content_subtype = 'html'
             msg.send(fail_silently=False)
             registered = True
@@ -103,7 +103,7 @@ def forgotpassword(request):
                         {'link': 'https://sharkz.bet/profile/reset?id=%s' % user.player.reset_code,
                          'email': user.email})
                 logger.info('Sending mail to reset user\'s password to %s', user.email)
-                msg = EmailMessage(subject, message_text, 'admin@sharkz.bet', to=[user.email, ])
+                msg = EmailMessage(subject, message_text, 'support@sharkz.bet', to=[user.email, ])
                 msg.content_subtype = 'html'
                 msg.send(fail_silently=False)
                 reset = True
