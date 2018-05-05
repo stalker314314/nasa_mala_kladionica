@@ -1,3 +1,4 @@
+print*
 import os
 import sys
 sys.stdout = sys.stderr

@@ -20,9 +20,10 @@
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 		<link href="{% static "css/css.css" %}" rel="stylesheet" type="text/css" />
 		<link href="{% static "css/tipsy.css" %}" rel="stylesheet" type="text/css" />
-        <link href="{% static "css/sticky-footer.css" %}" rel="stylesheet" type="text/css" />
+        <link href="{% static "css/footer.css" %}" rel="stylesheet" type="text/css" />
 		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
 		<script src="{% static "js/sorttable.js" %}"></script>
 		<script src="{% static "js/jquery.tipsy.js" %}"></script>
@@ -181,45 +182,68 @@
             </div>
         </main>
 
-        <footer class="footer">
-            {% trans "Number of registered players" as registered_players_count %}
-            {% trans "real money players" as real_money_players_count %}
-            {% trans "Prize money" as prize_money %}
-            {% trans "1. place" as place1 %}
-            {% trans "2. place" as place2 %}
-            {% trans "3. place" as place3 %}
-
+        <footer class="footer-bs">
+            <hr/>
             <div class="container">
-                <hr />
-                <div class="text-muted d-none d-sm-block">
-                    {{ registered_players_count }}: <strong>{{ ctx_stats.player_count }}</strong>, {{ real_money_players_count }}: <strong>{{ ctx_stats.player_money_count }}</strong>
+                <div class="row">
+                    <div class="col-md-3 footer-brand">
+                        <a href="/">
+                            <img src="{% static "img/logo.png" %}" class="img-fluid img-responsive mx-auto d-block" alt="logo">
+                        </a>
+                        <p>
+                            <div class="text-muted">
+                                {% trans "Number of registered players" %}: <strong>{{ ctx_stats.player_count }}</strong>,
+                                <br />
+                                {% trans "real money players" %}: <strong>{{ ctx_stats.player_money_count }}</strong>
+                            </div>
+                            <div class="text-muted">
+                                {% trans "Prize money" %}:
+                                1. <strong>{{ ctx_stats.reward_money.1 }}€</strong>,
+                                2. <strong>{{ ctx_stats.reward_money.2 }}€</strong>,
+                                3. <strong>{{ ctx_stats.reward_money.3 }}€</strong>
+                            </div>
+                        </p>
+                        <p>
+                            {% blocktrans %}©2018 sharkz.bet, All rights reserved{% endblocktrans %}
+                        </p>
+                    </div>
+                    <div class="col-md-5 footer-nav">
+                        <h4>{% trans "Website" %}</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="pages">
+                                    {% if user.is_authenticated %}
+                                    <li><a href="/">{% trans "Betting" %}</a></li>
+                                    <li><a href="/standings">{% trans "Standings" %}</a></li>
+                                    <li><a href="/profile">{% trans "Profile" %}</a></li>
+                                    <li><a href="/crew">{% trans "Crews" %}</a></li>
+                                    <li><a href="/logout">{% trans "Logout" %}</a></li>
+                                    {% else %}
+                                    <li><a href="/login">{% trans "Login" %}</a></li>
+                                    <li><a href="/proposition">{% trans "Propositions" %}</a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list">
+                                    <li><a href="/about">{% trans "About us" %}</a></li>
+                                    <li><a href="mailto:support@sharkz.bet">{% trans "Contact" %}</a></li>
+                                    <li><a href="/terms">{% trans "Terms & Condition" %}</a></li>
+                                    <li><a href="/privacy">{% trans "Privacy Policy" %}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 footer-social">
+                        <h4>Follow Us</h4>
+                        <ul>
+                            <li><a href="#"><i class="fab fa-facebook fa-lg"></i>&nbsp;{% trans "Facebook" %}</a></li>
+                            <li><a href="#"><i class="fab fa-twitter fa-lg"></i>&nbsp;{% trans "Twitter" %}</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="text-muted d-sm-none">
-                    {{ registered_players_count }}: <strong>{{ ctx_stats.player_count }}</strong>,
-                    <br />
-                    {{ real_money_players_count }}: <strong>{{ ctx_stats.player_money_count }}</strong>
-                </div>
-                <div class="text-muted d-none d-sm-block">
-                    {{ prize_money }} &mdash; {{ place1 }}: <strong>{{ ctx_stats.reward_money.1 }}€</strong>, {{ place2 }}: <strong>{{ ctx_stats.reward_money.2 }}€</strong>, {{ place3 }}: <strong>{{ ctx_stats.reward_money.3 }}€</strong>
-                </div>
-                <div class="text-muted d-sm-none">
-                    {{ prize_money }} &mdash; {{ place1 }}: <strong>{{ ctx_stats.reward_money.1 }}€</strong>,
-                    <br />
-                    {{ place2 }}: <strong>{{ ctx_stats.reward_money.2 }}€</strong>,
-                    <br />
-                    {{ place3 }}: <strong>{{ ctx_stats.reward_money.3 }}€</strong>
-                </div>
-                {% if user.is_authenticated %}
-                <div class="text-muted d-none d-sm-block">
-                    ©2008-2018 {% trans "Direct all questions, wishes and bug reports to admin@sharkz.bet" %}
-                </div>
-                <div class="text-muted d-sm-none">
-                    ©2008-2018 sharkz.bet
-                </div>
-                {% endif %}
             </div>
         </footer>
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 	</body>
