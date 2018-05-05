@@ -55,8 +55,8 @@ def register(request):
             user = User.objects.create_user(username=cleaned_data['email'],
                                             email=cleaned_data['email'],
                                             password=cleaned_data['password'],
-                                            first_name=cleaned_data['first_name'],
-                                            last_name=cleaned_data['last_name'],
+                                            first_name=cleaned_data['display_name'],
+                                            last_name='',
                                             is_active=False,
                                             last_login=timezone.now())
             user.player.activation_code = id_generator()

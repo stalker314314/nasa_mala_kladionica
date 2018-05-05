@@ -29,8 +29,7 @@ class ActivationTests(NmkUnitTestCase):
     def test_anon_user_activation(self):
         self.client = Client()
         response = self.client.post(reverse(views.register), {
-            'first_name': 'Foo',
-            'last_name': 'Bar',
+            'display_name': 'Foo',
             'email': 'foo@bar.com',
             'password': 'foo123'
         })

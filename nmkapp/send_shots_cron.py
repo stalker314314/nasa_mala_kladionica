@@ -46,7 +46,7 @@ def send_mail_for_round(nmk_round):
     matches = list(Match.objects.filter(round=nmk_round).order_by("start_time", "id"))
     round_standings = []
     
-    user_rounds = UserRound.objects.filter(round=nmk_round).order_by("user__first_name", "user__last_name")
+    user_rounds = UserRound.objects.filter(round=nmk_round).order_by("user__first_name")
     for user_round in user_rounds:
         shots = list(Shot.objects.filter(user_round=user_round).order_by("match__start_time", "match"))
         round_standings.append({"user_round": user_round, "shots": shots})

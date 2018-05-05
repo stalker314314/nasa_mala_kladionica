@@ -12,19 +12,16 @@ from nmkapp.logic import convert_odd_format
 class RegisterForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(RegisterForm, self).__init__(*args, **kwargs)
-        self.fields['first_name'] = forms.CharField(initial='', required=True, label=_('First name*'), max_length=28)
-        self.fields['last_name'] = forms.CharField(initial='', required=True, label=_('Last name*'), max_length=28)
-        self.fields['email'] = forms.EmailField(initial='', required=True, label=_('E-mail*'), max_length=74)
-        self.fields['password'] = forms.CharField(initial='', required=True, label=_('Password*'), max_length=28,
+        self.fields['display_name'] = forms.CharField(initial='', required=True, label=_('Display name'), max_length=28)
+        self.fields['email'] = forms.EmailField(initial='', required=True, label=_('E-mail'), max_length=74)
+        self.fields['password'] = forms.CharField(initial='', required=True, label=_('Password'), max_length=28,
                                                   min_length=5, widget=PasswordInput)
 
     def clean(self):
         cleaned_data = super(RegisterForm, self).clean()
-        if 'first_name' in cleaned_data and len(cleaned_data['first_name']) > 28:
+        if 'display_name' in cleaned_data and len(cleaned_data['display_name']) > 28:
             raise forms.ValidationError(
-                {'first_name': [_('First name must be shorter than 28 characters in length'), ]})
-        if 'last_name' in cleaned_data and len(cleaned_data['last_name']) > 28:
-            raise forms.ValidationError({'last_name': [_('Last name must be shorter than 28 characters in length'), ]})
+                {'display_name': [_('Display name must be shorter than 28 characters in length'), ]})
         if 'email' in cleaned_data and len(cleaned_data['email']) > 74:
             raise forms.ValidationError({'email': [_('E-mail address must be shorter than 74 characters'), ]})
 
@@ -34,6 +31,12 @@ class RegisterForm(forms.Form):
                 raise forms.ValidationError(
                     {'email': [_('This e-mail address already exists. '
                                  'If this is your e-mail, please reset password.'), ]})
+        if 'display_name' in cleaned_data:
+            existing_first_name = User.objects.filter(first_name=cleaned_data['display_name'])
+            if len(existing_first_name) > 0:
+                raise forms.ValidationError(
+                    {'display_name': [_('This display name is already taken. '
+                                 'If this is your display name by any chance, please log in.'), ]})
         return cleaned_data
 
 

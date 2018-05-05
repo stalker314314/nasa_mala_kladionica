@@ -66,9 +66,9 @@ Create your crew at <a href="/crew">crew</a> page and invite your buddies){% end
                 <td>{{ standing.3 }}.</td>
                 <td>
                 {% if standing.0.user.player.in_money %}
-                    <b>{{ standing.0.user.first_name }} {{ standing.0.user.last_name }}</b>
+                    <b>{{ standing.0.user.first_name }}</b>
                 {% else %}
-                    {{ standing.0.user.first_name }} {{ standing.0.user.last_name }}
+                    {{ standing.0.user.first_name }}
                 {% endif %}
                 </td>
                 {% for round_standing in standing.1 %}

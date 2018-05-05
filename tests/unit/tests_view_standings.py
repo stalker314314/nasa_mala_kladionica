@@ -38,12 +38,12 @@ class StandingsTests(NmkUnitTestCase):
         self.assertEqual(standings[0][0].user.email, 'kokan@mail.com')
         self.assertEqual(standings[0][1], [1.5, 9.0, 0.0])
 
-        self.assertEqual(standings[1][0].user.id, 2)
-        self.assertEqual(standings[1][0].user.email, 'gumi@mail.com')
+        self.assertEqual(standings[1][0].user.id, 3)
+        self.assertEqual(standings[1][0].user.email, 'seki@mail.com')
         self.assertEqual(standings[1][1], [0.0, 0.0, 0.0])
 
-        self.assertEqual(standings[2][0].user.id, 3)
-        self.assertEqual(standings[2][0].user.email, 'seki@mail.com')
+        self.assertEqual(standings[2][0].user.id, 2)
+        self.assertEqual(standings[2][0].user.email, 'gumi@mail.com')
         self.assertEqual(standings[2][1], [0.0, 0.0, 0.0])
 
     def test_other_group(self):

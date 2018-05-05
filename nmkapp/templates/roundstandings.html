@@ -99,9 +99,9 @@ Create your crew at <a href="/crew">crew</a> page and invite your buddies){% end
                 <td>
                 {% endif %}
                 {% if round_standing.user_round.in_money %}
-                    <b>{{ round_standing.user_round.full_name }}</b>
+                    <b>{{ round_standing.user_round.display_name }}</b>
                 {% else %}
-                    {{ round_standing.user_round.full_name }}
+                    {{ round_standing.user_round.display_name }}
                 {% endif %}
                 </td>
                 {% for shot in round_standing.shots %}

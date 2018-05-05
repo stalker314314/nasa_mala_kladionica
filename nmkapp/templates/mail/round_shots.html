@@ -20,9 +20,9 @@
 		<tr style="height: 40px">
 			<td>
 			{% if round_standing.user_round.user.player.in_money %}
-				<b>{{ round_standing.user_round.user.first_name }} {{ round_standing.user_round.user.last_name }}</b>
+				<b>{{ round_standing.user_round.user.first_name }}</b>
 			{% else %}
-				{{ round_standing.user_round.user.first_name }} {{ round_standing.user_round.user.last_name }}
+				{{ round_standing.user_round.user.first_name }}
 			{% endif %}
 			</td>
 			{% for shot in round_standing.shots %}

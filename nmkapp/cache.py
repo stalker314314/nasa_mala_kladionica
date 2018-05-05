@@ -52,7 +52,7 @@ class StandingsCache:
                     round_standings.append(user_round)
                 standing = [player, round_standings, player.points]
                 standings.append(standing)
-            standings = sorted(standings, key=lambda s: (-s[2], s[0].user.first_name, s[0].user.last_name))
+            standings = sorted(standings, key=lambda s: (-s[2], s[0].user.first_name))
             # populate positions
             position = 1
             position_increment = 1
@@ -127,8 +127,8 @@ class RoundStandingsCache:
                 filter(user_round__user__is_active=True)
             if self.group is not None:
                 shots = shots.filter(user_round__user__nmkgroup__in=[self.group])
-            shots = shots.order_by('-user_round__points', 'user_round__user__first_name', 'user_round__user__last_name',
-                                   'match__start_time', 'match__id')
+            shots = shots.order_by(
+                '-user_round__points', 'user_round__user__first_name', 'match__start_time', 'match__id')
             
             last_user_round = None
             shots_in_user_round = []
@@ -137,8 +137,7 @@ class RoundStandingsCache:
                     ur_simple = {
                                  'email': last_user_round.user.email,
                                  'in_money': last_user_round.user.player.in_money,
-                                 'full_name': '%s %s' % (last_user_round.user.first_name,
-                                                         last_user_round.user.last_name),
+                                 'display_name': last_user_round.user.first_name,
                                  'points': last_user_round.points
                                  }
                     round_standings.append({'user_round': ur_simple, 'shots': shots_in_user_round,
@@ -159,7 +158,7 @@ class RoundStandingsCache:
                 ur_simple = {
                              'email': last_user_round.user.email,
                              'in_money': last_user_round.user.player.in_money,
-                             'full_name': '%s %s' % (last_user_round.user.first_name, last_user_round.user.last_name),
+                             'display_name': last_user_round.user.first_name,
                              'points': last_user_round.points
                              }
                 round_standings.append({'user_round': ur_simple, 'shots': shots_in_user_round, 'position': position})
@@ -169,7 +168,7 @@ class RoundStandingsCache:
                 filter(round=self.round).filter(shot=None).filter(user__is_active=True)
             if self.group is not None:
                 user_rounds_not_played = user_rounds_not_played.filter(user__nmkgroup__in=[self.group])
-            user_rounds_not_played = user_rounds_not_played.order_by('-points', 'user__first_name', 'user__last_name')
+            user_rounds_not_played = user_rounds_not_played.order_by('-points', 'user__first_name')
             if len(user_rounds_not_played) > 0:
                 matches = Match.objects.filter(round=self.round).order_by('start_time', 'id')
                 shots_in_user_round = []
@@ -182,8 +181,7 @@ class RoundStandingsCache:
                     ur_simple = {
                                  'email': user_round_not_player.user.email,
                                  'in_money': user_round_not_player.user.player.in_money,
-                                 'full_name': '%s %s' % (user_round_not_player.user.first_name,
-                                                         user_round_not_player.user.last_name),
+                                 'display_name': user_round_not_player.user.first_name,
                                  'points': user_round_not_player.points
                                  }
     
