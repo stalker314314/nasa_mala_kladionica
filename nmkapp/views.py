@@ -524,6 +524,10 @@ def proposition(request):
     return render(request, 'proposition.html', {'player': player})
 
 
+def about(request):
+    return render(request, 'about.html')
+
+
 @staff_member_required
 def admin_rounds(request):
     rounds = Round.objects.order_by('id')

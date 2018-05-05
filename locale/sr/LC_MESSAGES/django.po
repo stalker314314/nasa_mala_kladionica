@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-05 17:00+0000\n"
-"PO-Revision-Date: 2018-05-05 19:08+0200\n"
+"POT-Creation-Date: 2018-05-05 20:03+0000\n"
+"PO-Revision-Date: 2018-05-05 22:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sr\n"
@@ -197,6 +197,100 @@ msgstr "[sharkz.bet] Подсетник клађења на коло „%s“"
 msgid "[sharkz.bet] Round \"%s\" started"
 msgstr "[sharkz.bet] Почело коло „%s“"
 
+#: nmkapp/templates/about.html:7 nmkapp/templates/base.html:229
+msgid "About us"
+msgstr "О нама"
+
+#: nmkapp/templates/about.html:10
+msgid ""
+"Sharkz.bet started more than 15 years ago, when bunch of friends decided to "
+"have a pool bet on matches in\n"
+"UEFA Champions League. At that time, we used state of the art in pool "
+"betting &mdash; Excel:). Soon enough,\n"
+"we learned that it is not very convenient to have Excel spreadsheet being "
+"sent over e-mail, especially in finals\n"
+"when there was blanket finish. At these point, leader were simply deadlocked "
+"because no one wanted to bet first!"
+msgstr ""
+"Sharkz.bet је започет пре више од 15 година, када је група ортака одлучила "
+"да направи интерну кладионицу на утакмице\n"
+"Лиге Шампиона. У то време, користили смо најбољи софтвер за интерно клађење "
+"&mdash; Excel:) Ускоро смо укапирали\n"
+"да није баш најзгодније да користимо Excel који шаљемо мејлом, нарочите у "
+"финалу Лиге Шампиона, када је фото финиш.\n"
+"У том тренутку, нико ко се бори за прво место неће да одигра први, да остали "
+"не виде шта је играо!"
+
+#: nmkapp/templates/about.html:17
+msgid ""
+"So, we developed sharkz.bet and used it internally for last 10 years! Over "
+"time, we started to invite friends and\n"
+"colleagues to join us for larger events, like World Cups or European "
+"Championships. However, this year,\n"
+"for World Cup 2018, for the first time, we decided to open it up with whole "
+"world!"
+msgstr ""
+"И тако смо направили sharkz.bet и интерно га користили последњих 10 година! "
+"Током времена, почели смо да зовемо\n"
+"друге ортаке и колеге да нам се придруже за веће догађаје, као што су "
+"Светско првенство и Европско првенство.\n"
+"Ове године, за Светско првенство у Русији, по први пут, одлучили смо да "
+"отворимо сајт са целим светом!"
+
+#: nmkapp/templates/about.html:23
+msgid ""
+"In some ways, we are small startup with an idea to create small, affordable "
+"pool bet with <i>realistic</i> chances\n"
+"to win it (or end up in first 3 places). This is because we don't want "
+"thousands of people with unreal\n"
+"prizes of millions of pounds. We want fair game, nice atmosphere among "
+"players and to have fun along\n"
+"the way. Making matches more interesting to watch and healthy ball busting "
+"among your buddies is only a bonus;)"
+msgstr ""
+"На неки начин, ми смо мали стартап са идејом да направимо мало, приступачно "
+"интерно клађење са\n"
+"<i>реалним</i> шансама да се победи (или бар буде у прва 3 места). Ово је "
+"просто зато што не желимо хиљаде људи\n"
+"и нереалне награде у милионима евра. Желимо поштену игру, пријатну атмосферу "
+"међу играчима и да се успут и\n"
+"забавимо. Да утакмице на светском буду занимљивије и мало зезања ко је међу "
+"ортацима и колегама бољи кладионичар може бити само бонус;)"
+
+#: nmkapp/templates/about.html:30
+msgid ""
+"As a self-proclaimed startup that we are, we do have a lot of ideas on our "
+"mind. Of course, all of them only if\n"
+"this experiment called \"World Cup 2018\" turns out to be successful. We "
+"want to expend on national leagues,\n"
+"private pools, prizes that goes to charities… If you like these ideas, or "
+"have some others, please &ndash; do\n"
+"<strong>not</strong> hesitate to contact us at <a href=\"mailto:"
+"support@sharkz.bet\">support@sharkz.bet</a>.\n"
+"We would like to hear what you do like here, what you don't and what other "
+"ideas you might also have!"
+msgstr ""
+"Као самопрокламовани стартап, имамо још гомилу идеја у глави. Наравно, само "
+"под условом да овај експеримент\n"
+"звани \"Светско првенство 2018\" буде успешан. Желимо интерну кладионице на "
+"велике лиге, приватна интерна клађења,\n"
+"награде које иду у хуманитарне сврхе… Ако Вам се ове идеје свиђају или имате "
+"још неке молимо Вас &ndash;\n"
+"<strong>не</strong> оклевајте да нас цимате на <a href=\"mailto:"
+"support@sharkz.bet\">support@sharkz.bet</a>.\n"
+"Стварно бисмо желели да чујемо шта Вам се свиђа на сајту, шта не, као и које "
+"друге идеје још имате!"
+
+#: nmkapp/templates/about.html:38
+msgid ""
+"With sincere wishes that you will have fun here for this tournament in "
+"Russia,"
+msgstr "Уз искрене жеље да ћете се добро забавити за ово првенство у Русији,"
+
+#: nmkapp/templates/about.html:40
+msgid "Branko Kokanovic"
+msgstr "Бранко Кокановић"
+
 #: nmkapp/templates/activation.html:8
 msgid "SHARKZ.BET - ACTIVATION"
 msgstr "SHARKZ.BET - АКТИВАЦИЈА"
@@ -316,10 +410,6 @@ msgstr "©2018 sharkz.bet, сва права резервисана"
 #: nmkapp/templates/base.html:211
 msgid "Website"
 msgstr "Веб сајт"
-
-#: nmkapp/templates/base.html:229
-msgid "About us"
-msgstr "О нама"
 
 #: nmkapp/templates/base.html:230
 msgid "Contact"
@@ -1136,35 +1226,35 @@ msgstr ""
 msgid "Crew \"%s\" deleted"
 msgstr "Екипа „%s“ избрисана"
 
-#: nmkapp/views.py:547
+#: nmkapp/views.py:551
 #, python-format
 msgid "Round \"%s\" set as active"
 msgstr "[nmk] Почело коло „%s“"
 
-#: nmkapp/views.py:559
+#: nmkapp/views.py:563
 #, python-format
 msgid "[sharkz.bet] New round \"%s\" available"
 msgstr "[sharkz.bet] Доступно је ново коло „%s“"
 
-#: nmkapp/views.py:570
+#: nmkapp/views.py:574
 #, python-format
 msgid "Round \"%s\" set as inactive"
 msgstr "Коло „%s“ постављено као неактивно"
 
-#: nmkapp/views.py:597
+#: nmkapp/views.py:601
 #, python-format
 msgid "New round \"%s\" created successfully"
 msgstr "Ново коло „%s“ успешно направљено"
 
-#: nmkapp/views.py:618
+#: nmkapp/views.py:622
 msgid "Match successfully added"
 msgstr "Меч успешно додат"
 
-#: nmkapp/views.py:653
+#: nmkapp/views.py:657
 msgid "Result added successfully"
 msgstr "Резултат успешно унесен"
 
-#: nmkapp/views.py:677
+#: nmkapp/views.py:681
 #, python-format
 msgid "[sharkz.bet] All results from round \"%s\" received"
 msgstr "[sharkz.bet] Унесени сви резултати из кола „%s“"

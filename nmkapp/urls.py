@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^groups/(?P<group_id>\d+)/leave', views.group_leave),
     url(r'^groups/(?P<group_id>\d+)/delete', views.group_delete),
     url(r'^proposition$', views.proposition),
+    url(r'^about$', views.about),
     url(r'^paypal$', views.paypal),
     url(r'^admin/rounds$', views.admin_rounds),
     url(r'^admin/rounds/edit$', views.admin_rounds_edit),
