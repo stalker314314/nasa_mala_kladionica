@@ -68,7 +68,7 @@ def register(request):
             player.save()
 
             with translation.override(language):
-                subject = _('[sharkz.bet] NMK registration successful')
+                subject = _('[sharkz.bet] Registration successful')
                 template = loader.get_template('mail/registered.html')
                 message_text = template.render(
                     {'link': 'https://sharkz.bet/activate?id=%s' % user.player.activation_code})

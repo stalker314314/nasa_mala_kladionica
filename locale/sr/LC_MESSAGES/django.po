@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-06 14:25+0000\n"
-"PO-Revision-Date: 2018-05-06 16:25+0200\n"
+"POT-Creation-Date: 2018-05-06 21:29+0000\n"
+"PO-Revision-Date: 2018-05-06 23:34+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sr\n"
@@ -214,8 +214,8 @@ msgid ""
 "betting &mdash; Excel:). Soon enough,\n"
 "we learned that it is not very convenient to have Excel spreadsheet being "
 "sent over e-mail, especially in finals\n"
-"when there was blanket finish. At these point, leader were simply deadlocked "
-"because no one wanted to bet first!"
+"when there was blanket finish. At these point, leaders were simply "
+"deadlocked because no one wanted to bet first!"
 msgstr ""
 "Sharkz.bet је започет пре више од 15 година, када је група ортака одлучила "
 "да направи интерну кладионицу на утакмице\n"
@@ -244,8 +244,8 @@ msgstr ""
 
 #: nmkapp/templates/about.html:23
 msgid ""
-"In some ways, we are small startup with an idea to create small, affordable "
-"pool bet with <i>realistic</i> chances\n"
+"In some ways, we are a small startup with an idea to create small, "
+"affordable pool betting with <i>realistic</i> chances\n"
 "to win it (or end up in first 3 places). This is because we don't want "
 "thousands of people with unreal\n"
 "prizes of millions of pounds. We want fair game, nice atmosphere among "
@@ -267,13 +267,13 @@ msgid ""
 "As a self-proclaimed startup that we are, we do have a lot of ideas on our "
 "mind. Of course, all of them only if\n"
 "this experiment called \"World Cup 2018\" turns out to be successful. We "
-"want to expend on national leagues,\n"
+"want to extend to national leagues,\n"
 "private pools, prizes that goes to charities… If you like these ideas, or "
 "have some others, please &ndash; do\n"
 "<strong>not</strong> hesitate to contact us at <a href=\"mailto:"
 "support@sharkz.bet\">support@sharkz.bet</a>.\n"
-"We would like to hear what you do like here, what you don't and what other "
-"ideas you might also have!"
+"We would like to hear what you do or do not like and what other ideas you "
+"might have!"
 msgstr ""
 "Као самопрокламовани стартап, имамо још гомилу идеја у глави. Наравно, само "
 "под условом да овај експеримент\n"
@@ -293,8 +293,8 @@ msgid ""
 msgstr "Уз искрене жеље да ћете се добро забавити за ово првенство у Русији,"
 
 #: nmkapp/templates/about.html:40
-msgid "Branko Kokanovic"
-msgstr "Бранко Кокановић"
+msgid "sharkz.bet team"
+msgstr "sharkz.bet тип"
 
 #: nmkapp/templates/activation.html:8
 msgid "SHARKZ.BET - ACTIVATION"
@@ -625,11 +625,11 @@ msgstr "SHARKZ.BET - ПРИЈАВА"
 
 #: nmkapp/templates/login.html:10
 msgid ""
-"NMK is website for recreational betting or real money betting for World Cup "
+"sharkz.bet is a website for recreational or real money betting for World Cup "
 "2018. (or \"Чемпионат мира по футболу 2018\")"
 msgstr ""
-"НМК је сајт за право или рекреативно клађење на светском првенству у фудбалу "
-"2018 (или \"Чемпионат мира по футболу 2018\")"
+"sharkz.bet је сајт за право или рекреативно клађење на светском првенству у "
+"фудбалу 2018 (или \"Чемпионат мира по футболу 2018\")"
 
 #: nmkapp/templates/login.html:12
 msgid "Sign up, invite your crew, bet and show 'em all who's the best!"
@@ -706,7 +706,7 @@ msgstr ""
 #: nmkapp/templates/mail/result_added.html:4
 #, python-format
 msgid "All results for matches from round <b>%(round.name)s</b> are final."
-msgstr "Сви резултати мечева из кола <b>%(round.name)s</b> су унети у НМК."
+msgstr "Унети су сви резултати мечева из кола <b>%(round.name)s</b>."
 
 #: nmkapp/templates/mail/result_added.html:6
 #, python-format
@@ -894,94 +894,94 @@ msgstr ""
 #, python-format
 msgid ""
 "Stake is 10€ and money is split among top three places, in 3:2:1 ratios. "
-"First place take 50%%, second 33.3%% and third place 16.6%%."
+"First place takes 50%%, second 33.3%% and third place 16.6%%."
 msgstr ""
 "Ако се игра у новац, улог је 10€, а паре се деле међу прва три места, и то у "
 "односу 3:2:1, тј. прво место узима 50%%, друго 33.3%%, а треће 16.6%%."
 
 #: nmkapp/templates/proposition.html:17
 msgid ""
-"NMK will take all provision costs during both receiving and sending money "
-"over Paypal. So, if prize 100€, NMK will pay you 103.8€, to cover Paypal "
-"provision costs."
+"Sharkz.bet will take all provision costs during both receiving and sending "
+"money over Paypal. So, if the prize is 100€, sharkz.bet will pay you 103.8€ "
+"to cover Paypal provision costs."
 msgstr ""
-"НМК сноси трошкове провизије и приликом уплате и приликом исплате преко "
-"PayPal-а. Значи, уколико је награда 100€, НМК ти уплаћује 103.8€ (да "
-"покријемо провизију PayPal-а)."
+"sharkz.bet сноси трошкове провизије и приликом уплате и приликом исплате "
+"преко PayPal-а. Значи, уколико је награда 100€, sharkz.bet ти уплаћује "
+"103.8€ (да покријемо провизију PayPal-а)."
 
 #: nmkapp/templates/proposition.html:20
 #, python-format
 msgid ""
-"Total prize money is 10%% less than total amount of people playing with real "
+"Total prize money is 10%% less than total amount of people playing for real "
 "money * 10€. This is to cover our provision costs and to pay off for costs "
-"of web site, but we are not making profit out of this."
+"of running a web site."
 msgstr ""
 "Укупан фонд за награде је за 10%% мањи од укупног броја људи који су дали "
-"паре * 10€. Ово је чисто да покријемо провизије и да платимо сајт, не "
-"зарађујемо ни динара од овога."
+"паре * 10€. Ово је чисто да покријемо провизије и да платимо сајт."
 
 #: nmkapp/templates/proposition.html:23
 msgid ""
-"If you skip or you don't play any round, you are eligible for money return."
+"If you skip or if you don't play any round, you are not eligible for a "
+"refund."
 msgstr ""
 "Уколико прескочиш или не стигнеш да одиграш неко коло, новац се не враћа."
 
-#: nmkapp/templates/proposition.html:31
+#: nmkapp/templates/proposition.html:33
 msgid ""
-"Now, if everything said above is clear, click on the button below and bet in "
-"real money for 10€ stake.\n"
-"That's not too much, but as many of us is here &ndash; higher the prize "
-"money!\n"
-"At most after 24h after payment, you should see you name in bold in <a href="
-"\"/standings\">standings</a>."
+"Now, if everything said above is clear, click on the button below and bet "
+"for real money. Stake is just 10€ &mdash; but the more players the merrier! "
+"Within 24h of payment received, you will see your name bolded at <a href=\"/"
+"standings\">standings</a>."
 msgstr ""
 "Када ти је све ово јасно, кликни на дугме испод и учипи се са 10€.\n"
 "То није много, а што нас је више &ndash; већа и награда!\n"
 "У року од 24h од уплате на <a href=\"/standings\">табелама</a> треба да "
 "видиш своје име подебљано."
 
-#: nmkapp/templates/proposition.html:49
+#: nmkapp/templates/proposition.html:50
 msgid "Rules of play"
 msgstr "Правила игре"
 
-#: nmkapp/templates/proposition.html:53
+#: nmkapp/templates/proposition.html:54
 msgid ""
 "You are betting on one whole round. In cup phase, you are betting on each "
-"parts separately - eighth-finals, quarterfinals, semifinals and final."
+"part separately - eighth-finals, quarterfinals, semifinals and final."
 msgstr ""
 "Типује се једно цело коло на такмичењу. У куп фази се посебно типују осмина "
 "финала, четвртфинале, полуфинале и финале."
 
-#: nmkapp/templates/proposition.html:55
+#: nmkapp/templates/proposition.html:56
 msgid ""
-"There is no discrimination, we are taking odds from first booking site that "
-"publishes them (this is because we want to enable you to bet as soon as "
-"possible), no matter is it Bet365, BWin or some third one. Odds on NMK are "
-"<strong>not changing</strong> after initial publishing."
+"There is no discrimination, we are taking odds from the first booking site "
+"that publishes them (this is because we want to enable you to bet as soon as "
+"possible). Odds on sharkz.bet are <strong>not changing</strong> after "
+"initial publishing."
 msgstr ""
 "Нема дискриминације, квоте се узимају са првог сајта који их објави (да "
-"бисмо омогућили гласање што пре), па био то Bet365, BWin или Mozzartbet. "
-"Квоте на НМК се <strong>не мењају</strong> после тога."
+"бисмо омогућили гласање што пре). Квоте на sharkz.bet-у се <strong>не "
+"мењају</strong> после тога."
 
-#: nmkapp/templates/proposition.html:58
+#: nmkapp/templates/proposition.html:59
 msgid "You are betting only on final result (1X2) in regular game time."
 msgstr "Типује се само коначан исход меча, и то у регуларном делу утакмице."
 
-#: nmkapp/templates/proposition.html:61
+#: nmkapp/templates/proposition.html:62
 msgid ""
-"All registered account that do not bet on first round will be automatically "
-"deleted (not to waste necessary space in standings)."
+"All registered accounts that are not playing for money and do not bet in "
+"first round will be automatically deleted (not to waste precious space in "
+"standings)."
 msgstr ""
 "Сви регистровани налози који не истипују прво коло се аутоматски бришу из "
-"система (да не заузимају простор без потребе у табелама)."
+"система (да не заузимају без потребе простор у табелама)."
 
-#: nmkapp/templates/proposition.html:64
+#: nmkapp/templates/proposition.html:65
 msgid ""
-"Odds are not multiplied, but summed. If you miss one game, it does not "
-"affect your final score from the same round.\n"
+"Odds are not being multiplied, but added.\n"
+"If you lose a bet in one match, it does not affect your final score from the "
+"same round.\n"
 "You can look at this as you are betting a single ticket for each and every "
 "match and your stake is 1 point.\n"
-"This means, if you guess odd of 3.4, you will get 3.4 points."
+"This means, if you win a match with an odd of 3.4, you will get 3.4 points."
 msgstr ""
 "Квоте се не множе већ сабирају. Промашен тип не утиче на остале утакмице из "
 "истог или других кола.\n"
@@ -989,15 +989,15 @@ msgstr ""
 "један поен за сваку утакмицу, тј. ако погодите квоту која је 3.4 - добијате "
 "3.4 поена."
 
-#: nmkapp/templates/proposition.html:69
+#: nmkapp/templates/proposition.html:71
 msgid ""
 "You are not able to see other players' bets until you click 'Final "
 "Decision'.\n"
 "After that point, you will be able to see other players' bets, but that "
 "doesn't mean they also clicked 'Final Decision', e.g. other players might be "
 "able to still modify their respective bets.\n"
-"Only when first match in round starts, you can consider those bets final "
-"bets from all players, as betting is off from that point."
+"At the start of the match in round, the bets are final for all players. "
+"Betting is not allowed after that point for that round."
 msgstr ""
 "Не можете видети шта су други типовали док не кликнете на „Коначан "
 "одговор“.\n"
@@ -1006,28 +1006,28 @@ msgstr ""
 "Тек када први меч у колу почне, то се могу сматрати коначни типови свих "
 "такмичара јер је од тог тренутка типовање забрањено."
 
-#: nmkapp/templates/proposition.html:74
+#: nmkapp/templates/proposition.html:76
 msgid ""
 "This web site must be available 24/7.\n"
 "If web site is not available for more than 10 minutes, or we notice any "
-"online attacks that can compromise or affect fair competition, whole "
-"competition is cancelled and all money is returned to their respective "
-"players."
+"online attacks that can compromise or affect fair competition, the whole "
+"competition will be cancelled and all money will be returned to their "
+"respective players."
 msgstr ""
 "Сајт мора увек да буде стабилно доступан. Уколико сајт није доступан дуже од "
 "10 минута по колу или приметимо било какве нападе који могу да угрозе "
 "такмичење, све се прекида и паре се враћају."
 
-#: nmkapp/templates/proposition.html:78
+#: nmkapp/templates/proposition.html:80
 #, python-format
 msgid ""
-"If there are multiple players with same amount of points, they are splitting "
-"prize money out of all places they are on.\n"
+"If there are multiple players with same amount of points, the prize money "
+"will be split out of all places they are on.\n"
 "Example: if John and Jane are first and they have 50 points each, they are "
-"splitting prize money for both 1. and 2. place - (50%% + 33.3%%) / 2 = "
-"41.66%%.\n"
-"If Peter is below them with 49 points, Peter does not get prize money for 2. "
-"place, but for the third one, e.g. 16.6%%."
+"splitting the prize money for both 1. and 2. place &mdash; (50%% + 33.3%%) / "
+"2 = 41.66%%.\n"
+"If Peter is below them with 49 points, Peter gets the prize for the 3. "
+"place, e.g. 16.6%%."
 msgstr ""
 "Уколико више учесника има исто поена, они не деле паре само од тог места "
 "које су освојили, већ од свих места које су освојили.\n"
@@ -1156,7 +1156,7 @@ msgid "Players playing in real money are shown bolded"
 msgstr "Такмичари који играју у праве паре су приказани подебљано"
 
 #: nmkapp/views.py:71
-msgid "[sharkz.bet] NMK registration successful"
+msgid "[sharkz.bet] Registration successful"
 msgstr "[sharkz.bet] Регистрација успешна"
 
 #: nmkapp/views.py:100
@@ -1232,7 +1232,7 @@ msgstr "Екипа „%s“ избрисана"
 #: nmkapp/views.py:551
 #, python-format
 msgid "Round \"%s\" set as active"
-msgstr "[nmk] Почело коло „%s“"
+msgstr "Коло „%s“ постављено као активно"
 
 #: nmkapp/views.py:563
 #, python-format
@@ -1261,6 +1261,9 @@ msgstr "Резултат успешно унесен"
 #, python-format
 msgid "[sharkz.bet] All results from round \"%s\" received"
 msgstr "[sharkz.bet] Унесени сви резултати из кола „%s“"
+
+#~ msgid "Branko Kokanovic"
+#~ msgstr "Бранко Кокановић"
 
 #~ msgid "Last name*"
 #~ msgstr "Презиме*"
