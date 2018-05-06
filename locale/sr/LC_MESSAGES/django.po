@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-05 20:43+0000\n"
-"PO-Revision-Date: 2018-05-05 22:44+0200\n"
+"POT-Creation-Date: 2018-05-06 09:11+0000\n"
+"PO-Revision-Date: 2018-05-06 11:12+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sr\n"
@@ -198,7 +198,7 @@ msgstr "[sharkz.bet] Подсетник клађења на коло „%s“"
 msgid "[sharkz.bet] Round \"%s\" started"
 msgstr "[sharkz.bet] Почело коло „%s“"
 
-#: nmkapp/templates/about.html:7 nmkapp/templates/base.html:229
+#: nmkapp/templates/about.html:7 nmkapp/templates/base.html:236
 msgid "About us"
 msgstr "О нама"
 
@@ -327,108 +327,112 @@ msgstr "Назад на пријаву"
 msgid "Update"
 msgstr "Ажурирај"
 
-#: nmkapp/templates/base.html:88 nmkapp/templates/base.html:149
-#: nmkapp/templates/base.html:216
+#: nmkapp/templates/base.html:87
+msgid "Navigation"
+msgstr "Навигација"
+
+#: nmkapp/templates/base.html:95 nmkapp/templates/base.html:156
+#: nmkapp/templates/base.html:223
 msgid "Betting"
 msgstr "Клађење"
 
-#: nmkapp/templates/base.html:91 nmkapp/templates/base.html:150
-#: nmkapp/templates/base.html:217
+#: nmkapp/templates/base.html:98 nmkapp/templates/base.html:157
+#: nmkapp/templates/base.html:224
 msgid "Standings"
 msgstr "Табеле"
 
-#: nmkapp/templates/base.html:94 nmkapp/templates/base.html:151
+#: nmkapp/templates/base.html:101 nmkapp/templates/base.html:158
 msgid "Fixtures"
 msgstr "Резултати"
 
-#: nmkapp/templates/base.html:97 nmkapp/templates/base.html:152
-#: nmkapp/templates/base.html:218
+#: nmkapp/templates/base.html:104 nmkapp/templates/base.html:159
+#: nmkapp/templates/base.html:225
 msgid "Profile"
 msgstr "Профил"
 
-#: nmkapp/templates/base.html:100 nmkapp/templates/base.html:153
-#: nmkapp/templates/base.html:219
+#: nmkapp/templates/base.html:107 nmkapp/templates/base.html:160
+#: nmkapp/templates/base.html:226
 msgid "Crews"
 msgstr "Моје екипе"
 
-#: nmkapp/templates/base.html:103 nmkapp/templates/base.html:125
-#: nmkapp/templates/base.html:154 nmkapp/templates/base.html:158
-#: nmkapp/templates/base.html:223
+#: nmkapp/templates/base.html:110 nmkapp/templates/base.html:132
+#: nmkapp/templates/base.html:161 nmkapp/templates/base.html:165
+#: nmkapp/templates/base.html:230
 msgid "Propositions"
 msgstr "Правила"
 
-#: nmkapp/templates/base.html:108 nmkapp/templates/base.html:166
+#: nmkapp/templates/base.html:115 nmkapp/templates/base.html:173
 msgid "Admin menu"
 msgstr "Админ мени"
 
-#: nmkapp/templates/base.html:110 nmkapp/templates/base.html:168
+#: nmkapp/templates/base.html:117 nmkapp/templates/base.html:175
 msgid "Rounds"
 msgstr "Кола"
 
-#: nmkapp/templates/base.html:111 nmkapp/templates/base.html:169
+#: nmkapp/templates/base.html:118 nmkapp/templates/base.html:176
 msgid "Matches"
 msgstr "Мечеви"
 
-#: nmkapp/templates/base.html:112 nmkapp/templates/base.html:170
+#: nmkapp/templates/base.html:119 nmkapp/templates/base.html:177
 msgid "Results"
 msgstr "Резултати"
 
-#: nmkapp/templates/base.html:113 nmkapp/templates/base.html:171
+#: nmkapp/templates/base.html:120 nmkapp/templates/base.html:178
 #: nmkapp/templates/results_league.html:20
 msgid "Points"
 msgstr "Бодова"
 
-#: nmkapp/templates/base.html:118 nmkapp/templates/base.html:155
-#: nmkapp/templates/base.html:220
+#: nmkapp/templates/base.html:125 nmkapp/templates/base.html:162
+#: nmkapp/templates/base.html:227
 msgid "Logout"
 msgstr "Одјава"
 
-#: nmkapp/templates/base.html:122 nmkapp/templates/base.html:157
-#: nmkapp/templates/base.html:222 nmkapp/templates/login.html:40
+#: nmkapp/templates/base.html:129 nmkapp/templates/base.html:164
+#: nmkapp/templates/base.html:229 nmkapp/templates/login.html:40
 msgid "Login"
 msgstr "Пријава"
 
-#: nmkapp/templates/base.html:145
+#: nmkapp/templates/base.html:152
 msgid "Menu"
 msgstr "Мени"
 
-#: nmkapp/templates/base.html:195
+#: nmkapp/templates/base.html:202
 msgid "Number of registered players"
 msgstr "Укупно пријављених играча"
 
-#: nmkapp/templates/base.html:197
+#: nmkapp/templates/base.html:204
 msgid "real money players"
 msgstr "играча пријављених у паре"
 
-#: nmkapp/templates/base.html:200
+#: nmkapp/templates/base.html:207
 msgid "Prize money"
 msgstr "Наградни фонд"
 
-#: nmkapp/templates/base.html:207
+#: nmkapp/templates/base.html:214
 msgid "©2018 sharkz.bet, All rights reserved"
 msgstr "©2018 sharkz.bet, сва права резервисана"
 
-#: nmkapp/templates/base.html:211
+#: nmkapp/templates/base.html:218
 msgid "Website"
 msgstr "Веб сајт"
 
-#: nmkapp/templates/base.html:230
+#: nmkapp/templates/base.html:237
 msgid "Contact"
 msgstr "Контакт"
 
-#: nmkapp/templates/base.html:231
+#: nmkapp/templates/base.html:238
 msgid "Terms & Condition"
 msgstr "Услови коришћења"
 
-#: nmkapp/templates/base.html:232
+#: nmkapp/templates/base.html:239
 msgid "Privacy Policy"
 msgstr "Политика приватности"
 
-#: nmkapp/templates/base.html:240
+#: nmkapp/templates/base.html:247
 msgid "Facebook"
 msgstr "Фејсбук"
 
-#: nmkapp/templates/base.html:241
+#: nmkapp/templates/base.html:248
 msgid "Twitter"
 msgstr "Твитер"
 
@@ -764,7 +768,7 @@ msgstr "Стара лозинка"
 msgid "Password again"
 msgstr "Лозинка поново"
 
-#: nmkapp/templates/password.html:45 nmkapp/templates/profile.html:119
+#: nmkapp/templates/password.html:45 nmkapp/templates/profile.html:131
 msgid "Change"
 msgstr "Промени"
 
@@ -803,11 +807,11 @@ msgstr ""
 "(као знак да играш у праве паре). Уколико се ово не деси до тад, контактирај "
 "ме на admin@sharkz.bet.\n"
 
-#: nmkapp/templates/profile.html:26
+#: nmkapp/templates/profile.html:38
 msgid "REAL MONEY BETTING"
 msgstr "ИГРАЊЕ У НОВАЦ"
 
-#: nmkapp/templates/profile.html:28
+#: nmkapp/templates/profile.html:40
 msgid ""
 "\n"
 "If you want to play in real money, that will cost you 10€.\n"
@@ -817,7 +821,7 @@ msgstr ""
 "Ако желиш да играш у паре, то ће те коштати 10€.\n"
 "За играње у паре се можеш пријавити до 1h пре почетка прве утакмице!\n"
 
-#: nmkapp/templates/profile.html:34
+#: nmkapp/templates/profile.html:46
 msgid ""
 "You can see more detail at the page with <a href=\"/proposition"
 "\">propositions</a>."
@@ -825,15 +829,15 @@ msgstr ""
 "Све остале детаље можеш видети на страни са <a href=\"/proposition"
 "\">правилима</a>."
 
-#: nmkapp/templates/profile.html:50
+#: nmkapp/templates/profile.html:62
 msgid "SETTINGS"
 msgstr "ПОДЕШАВАЊА"
 
-#: nmkapp/templates/profile.html:72
+#: nmkapp/templates/profile.html:84
 msgid "E-mail notifications"
 msgstr "Е-мејл обавештења"
 
-#: nmkapp/templates/profile.html:80
+#: nmkapp/templates/profile.html:92
 msgid ""
 "Send reminder 24h before start of the first match in the round (only if you "
 "still didn't bet)"
@@ -841,7 +845,7 @@ msgstr ""
 "Шаље подсетник за клађење 24h пре почетка прве утакмице у колу (само ако се "
 "још ниси кладио)"
 
-#: nmkapp/templates/profile.html:90
+#: nmkapp/templates/profile.html:102
 msgid ""
 "Send verbatim copy of all bets once first match in round starts (to verify "
 "there is no tempering with bets afterwards!)"
@@ -849,12 +853,12 @@ msgstr ""
 "Шаље копију свих типовања свих корисника за једно коло, када коло почне (да "
 "свако може да се увери да није било накнадног мењања типова!)"
 
-#: nmkapp/templates/profile.html:100
+#: nmkapp/templates/profile.html:112
 msgid "Send announcement that new round started and betting in it is available"
 msgstr ""
 "Шаље обавештење да је почело ново коло и да је могуће кладити се на њена"
 
-#: nmkapp/templates/profile.html:110
+#: nmkapp/templates/profile.html:122
 msgid ""
 "Send announcement that all results from a single round are final and new "
 "points are calculated"
@@ -862,11 +866,11 @@ msgstr ""
 "Шаље обавештење да су сви резултати из једног кола унесени и да су "
 "израчунати нови поени"
 
-#: nmkapp/templates/profile.html:125
+#: nmkapp/templates/profile.html:137
 msgid "CHANGE PASSWORD"
 msgstr "ПРОМЕНА ЛОЗИНКЕ"
 
-#: nmkapp/templates/profile.html:128
+#: nmkapp/templates/profile.html:140
 msgid "Change password"
 msgstr "Промени лозинку"
 
@@ -875,20 +879,27 @@ msgid "Real money betting"
 msgstr "Играње у паре"
 
 #: nmkapp/templates/proposition.html:11
+#, fuzzy
+#| msgid ""
+#| "You don't have to play in real money, this is optional. However, if you "
+#| "do want to play in real money, you must apply 1h before start of the "
+#| "first match (14.06.2018 20:00)."
 msgid ""
-"You don't have to play in real money, this is optional. However, if you do "
-"want to play in real money, you must apply 1h before start of the first "
-"match (14.06.2018 20:00)."
+"It is optional to play for real money. If you want to play for real money, "
+"you must apply 1h before first match starts (14.06.2018 20:00)."
 msgstr ""
 "Не мора се играти у новац, тј. новац је опциона ствар. Ако се игра у новац, "
 "мораш се пријавити 1h пре почетка прве утакмице (14.06.2018 20:00)."
 
 #: nmkapp/templates/proposition.html:14
-#, python-format
+#, fuzzy, python-format
+#| msgid ""
+#| "When you bet in real money, stake is 10€ and money is split among first "
+#| "three best places, in 3:2:1 ratios. First place take 50%%, second 33.3%% "
+#| "and third place 16.6%%."
 msgid ""
-"When you bet in real money, stake is 10€ and money is split among first "
-"three best places, in 3:2:1 ratios. First place take 50%%, second 33.3%% and "
-"third place 16.6%%."
+"Stake is 10€ and money is split among top three places, in 3:2:1 ratios. "
+"First place take 50%%, second 33.3%% and third place 16.6%%."
 msgstr ""
 "Ако се игра у новац, улог је 10€, а паре се деле међу прва три места, и то у "
 "односу 3:2:1, тј. прво место узима 50%%, друго 33.3%%, а треће 16.6%%."

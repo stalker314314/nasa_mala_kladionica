@@ -15,7 +15,6 @@
 
         <!-- Bootstrap core JavaScript -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <!-- <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script> -->
 
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -28,6 +27,14 @@
 		<script src="{% static "js/sorttable.js" %}"></script>
 		<script src="{% static "js/jquery.tipsy.js" %}"></script>
 		<script type="text/javascript">
+		    $(document).ready(function() {
+		        $('.navbar-collapse a').click(function(){
+		            $(".navbar-collapse").collapse('hide');
+                });
+                $('html').click(function(e) {
+                    $(".navbar-collapse").collapse('hide');
+                });
+		    });
 			function notify(message, type, timeout) {
 				// default values
 				message = typeof message !== 'undefined' ? message : 'Hello!';
@@ -76,12 +83,12 @@
         {% if not no_menu %}
         <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top d-lg-none">
             <a class="navbar-brand" href="#">sharkz.bet</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-                    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Navigacija">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault"
+                    aria-controls="navbarsDefault" aria-expanded="false" aria-label="{% trans "Navigation" %}">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <div class="collapse navbar-collapse" id="navbarsDefault">
                 <ul class="navbar-nav mr-auto">
                     {% if user.is_authenticated %}
                     <li class="nav-item">
