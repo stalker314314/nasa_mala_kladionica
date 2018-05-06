@@ -92,6 +92,7 @@ LANGUAGE_CODE = 'en'
 LANGUAGES = [
     ('en', _('English')),
     ('sr', _('Serbian')),
+    ('sr-Latn', _('Serbian latin')),
 ]
 
 LOCALE_PATHS = (
