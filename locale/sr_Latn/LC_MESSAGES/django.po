@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-06 21:29+0000\n"
-"PO-Revision-Date: 2018-05-06 23:34+0200\n"
+"POT-Creation-Date: 2018-05-07 19:46+0000\n"
+"PO-Revision-Date: 2018-05-07 21:46+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sr\n"
@@ -31,35 +31,51 @@ msgstr "Srpski (ćirilica)"
 msgid "Serbian latin"
 msgstr "Srpski (latinica)"
 
-#: nmkapp/forms.py:15
+#: nmkapp/forms.py:16
 msgid "Display name"
 msgstr "Nadimak"
 
-#: nmkapp/forms.py:16 nmkapp/forms.py:47 nmkapp/templates/login.html:22
+#: nmkapp/forms.py:17 nmkapp/forms.py:64 nmkapp/templates/login.html:22
 msgid "E-mail"
 msgstr "E-pošta"
 
-#: nmkapp/forms.py:17 nmkapp/templates/login.html:27
+#: nmkapp/forms.py:18 nmkapp/templates/login.html:27
 #: nmkapp/templates/password.html:28
 msgid "Password"
 msgstr "Lozinka"
 
-#: nmkapp/forms.py:24
+#: nmkapp/forms.py:20
+msgid "You have to accept terms and conditions to register"
+msgstr "Da biste se registrovali morate prihvatiti uslove korišćenja"
+
+#: nmkapp/forms.py:22
+msgid "I accept <a href=\"/terms\">Terms and Conditions</a>"
+msgstr "Prihvatam <a href=\"/terms\">Uslove korišćenja</a>"
+
+#: nmkapp/forms.py:28
+msgid "You must be over 18 to play on sharkz.bet"
+msgstr "Morate imati preko 18 godina da učestvujete na sharkz.bet sajtu"
+
+#: nmkapp/forms.py:30
+msgid "I am over 18 years old"
+msgstr "Imam preko 18 godina"
+
+#: nmkapp/forms.py:41
 msgid "Display name must be shorter than 28 characters in length"
 msgstr "Nadimak mora biti kraći od 28 karaktera"
 
-#: nmkapp/forms.py:26
+#: nmkapp/forms.py:43
 msgid "E-mail address must be shorter than 74 characters"
 msgstr "Adresa e-pošte mora biti kraća od 74 karaktera"
 
-#: nmkapp/forms.py:32
+#: nmkapp/forms.py:49
 msgid ""
 "This e-mail address already exists. If this is your e-mail, please reset "
 "password."
 msgstr ""
 "Ova adresa e-pošte već postoji. Ako je ovo Vaša adresa, resetujte lozinku."
 
-#: nmkapp/forms.py:38
+#: nmkapp/forms.py:55
 msgid ""
 "This display name is already taken. If this is your display name by any "
 "chance, please log in."
@@ -67,59 +83,59 @@ msgstr ""
 "Ovaj nadimak je već zauzet. Ukoliko je ovo kojim slučajem tvoj nadimak, idi "
 "na prijavu."
 
-#: nmkapp/forms.py:54
+#: nmkapp/forms.py:71
 msgid "Password*"
 msgstr "Lozinka*"
 
-#: nmkapp/forms.py:56
+#: nmkapp/forms.py:73
 msgid "Repeat password*"
 msgstr "Lozinka ponovo*"
 
-#: nmkapp/forms.py:63
+#: nmkapp/forms.py:80
 msgid "Passwords do not match"
 msgstr "Lozinke se ne poklapaju"
 
-#: nmkapp/forms.py:71
+#: nmkapp/forms.py:88
 msgid "Create a new crew"
 msgstr "Napravi novu ekipu"
 
-#: nmkapp/forms.py:78
+#: nmkapp/forms.py:95
 msgid "Crew name too long"
 msgstr "Ime ekipe predugačko"
 
-#: nmkapp/forms.py:81
+#: nmkapp/forms.py:98
 msgid "Sorry, but crew name is already taken"
 msgstr "Nažalost, ime ekipe je već uzeto"
 
-#: nmkapp/forms.py:91
+#: nmkapp/forms.py:108
 msgid "Please enter invite code to join a crew, if you got one:"
 msgstr "Ako ste je dobili. unesite šifru-pozivnicu da se pridružite ekipi:"
 
-#: nmkapp/forms.py:98
+#: nmkapp/forms.py:115
 msgid "Invite code should contain 8 numbers"
 msgstr "Šifra-pozivnica mora da sadrži 8 brojeva"
 
-#: nmkapp/forms.py:101
+#: nmkapp/forms.py:118
 msgid "Invite code invalid"
 msgstr "Neispravna šifra-pozivnica"
 
-#: nmkapp/forms.py:103
+#: nmkapp/forms.py:120
 msgid "You are already member of this crew"
 msgstr "Već ste član ove ekipe"
 
-#: nmkapp/forms.py:126
+#: nmkapp/forms.py:143
 msgid "You must place all bets"
 msgstr "Morate tipovati sve utakmice"
 
-#: nmkapp/forms.py:134
+#: nmkapp/forms.py:151
 msgid "Recalculate points"
 msgstr "Preračunaj poene"
 
-#: nmkapp/forms.py:136
+#: nmkapp/forms.py:153
 msgid "Clear cache"
 msgstr "Očisti keš"
 
-#: nmkapp/forms.py:138
+#: nmkapp/forms.py:155
 msgid "Repopulate cache"
 msgstr "Ponovo popuni keš"
 
@@ -1229,35 +1245,35 @@ msgstr ""
 msgid "Crew \"%s\" deleted"
 msgstr "Ekipa „%s“ izbrisana"
 
-#: nmkapp/views.py:551
+#: nmkapp/views.py:559
 #, python-format
 msgid "Round \"%s\" set as active"
 msgstr "Kolo „%s“ postavljeno kao aktivno"
 
-#: nmkapp/views.py:563
+#: nmkapp/views.py:571
 #, python-format
 msgid "[sharkz.bet] New round \"%s\" available"
 msgstr "[sharkz.bet] Dostupno je novo kolo „%s“"
 
-#: nmkapp/views.py:574
+#: nmkapp/views.py:582
 #, python-format
 msgid "Round \"%s\" set as inactive"
 msgstr "Kolo „%s“ postavljeno kao neaktivno"
 
-#: nmkapp/views.py:601
+#: nmkapp/views.py:609
 #, python-format
 msgid "New round \"%s\" created successfully"
 msgstr "Novo kolo „%s“ uspešno napravljeno"
 
-#: nmkapp/views.py:622
+#: nmkapp/views.py:630
 msgid "Match successfully added"
 msgstr "Meč uspešno dodat"
 
-#: nmkapp/views.py:657
+#: nmkapp/views.py:665
 msgid "Result added successfully"
 msgstr "Rezultat uspešno unesen"
 
-#: nmkapp/views.py:681
+#: nmkapp/views.py:689
 #, python-format
 msgid "[sharkz.bet] All results from round \"%s\" received"
 msgstr "[sharkz.bet] Uneseni svi rezultati iz kola „%s“"

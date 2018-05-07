@@ -4,6 +4,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.forms.widgets import PasswordInput
 from django.utils.translation import gettext as _
+from django.utils.safestring import mark_safe
 
 from nmkapp.models import Group
 from nmkapp.logic import convert_odd_format
@@ -16,6 +17,22 @@ class RegisterForm(forms.Form):
         self.fields['email'] = forms.EmailField(initial='', required=True, label=_('E-mail'), max_length=74)
         self.fields['password'] = forms.CharField(initial='', required=True, label=_('Password'), max_length=28,
                                                   min_length=5, widget=PasswordInput)
+        accept_terms_validity_message = _('You have to accept terms and conditions to register')
+        self.fields['accept_terms'] = forms.BooleanField(
+            initial=True, required=True, label=mark_safe(_('I accept <a href="/terms">Terms and Conditions</a>')),
+            error_messages={'required': accept_terms_validity_message},
+            widget = forms.CheckboxInput(attrs={
+                'oninvalid': 'this.setCustomValidity(\'{0}\')'.format(accept_terms_validity_message),
+                'onchange': "setCustomValidity('')"
+            }))
+        over_18_validity_message = _('You must be over 18 to play on sharkz.bet')
+        self.fields['over_18'] = forms.BooleanField(
+            initial=True, required=True, label=_('I am over 18 years old'),
+            error_messages={'required': over_18_validity_message},
+            widget=forms.CheckboxInput(attrs={
+                'oninvalid': 'this.setCustomValidity(\'{0}\')'.format(over_18_validity_message),
+                'onchange': "setCustomValidity('')"
+            }))
 
     def clean(self):
         cleaned_data = super(RegisterForm, self).clean()
