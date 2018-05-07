@@ -123,9 +123,6 @@ a.small-navigation:hover {
 ***********************************/
 #header {
 	padding: 5px 0px 5px 0px;
-	border-color: #999999;
-	border-style: solid;
-	border-width: 0px 0px 1px 0px;
 	background-color: #FFFFFF;
 	text-align: center;
 }

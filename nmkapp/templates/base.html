@@ -82,7 +82,10 @@
     {% endif %}
         {% if not no_menu %}
         <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top d-lg-none">
-            <a class="navbar-brand" href="#">sharkz.bet</a>
+            <a class="navbar-brand float-left" href="/">
+                <img src="{% static "img/logo32.png" %}" class="img-fluid img-responsive mx-auto d-block" alt="logo">
+            </a>
+            <span class="navbar-text float-left d-md-none">sharkz.bet</span>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault"
                     aria-controls="navbarsDefault" aria-expanded="false" aria-label="{% trans "Navigation" %}">
                 <span class="navbar-toggler-icon"></span>
@@ -137,8 +140,8 @@
         </nav>
         {% endif %}
 
-        <div id="header">
-            <a href="/"><img src="{% static "img/logo.png" %}" class="img-fluid img-responsive mx-auto d-block" alt="logo"></a>
+        <div id="header" class="d-none d-lg-block">
+            <a href="/"><img src="{% static "img/logo80w.png" %}" class="img-fluid img-responsive mx-auto d-block" alt="logo"></a>
         </div>
 
         <main role="main" class="container">
@@ -194,25 +197,29 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 footer-brand">
-                        <a href="/">
-                            <img src="{% static "img/logo.png" %}" class="img-fluid img-responsive mx-auto d-block" alt="logo">
-                        </a>
-                        <p>
-                            <div class="text-muted">
-                                {% trans "Number of registered players" %}: <strong>{{ ctx_stats.player_count }}</strong>,
-                                <br />
-                                {% trans "real money players" %}: <strong>{{ ctx_stats.player_money_count }}</strong>
+                        <div class="text-muted">
+                            {% trans "Number of registered players" %}: <strong>{{ ctx_stats.player_count }}</strong>,
+                            <br />
+                            {% trans "real money players" %}: <strong>{{ ctx_stats.player_money_count }}</strong>
+                        </div>
+                        <div class="text-muted">
+                            {% trans "Prize money" %}:
+                            1. <strong>{{ ctx_stats.reward_money.1 }}€</strong>,
+                            2. <strong>{{ ctx_stats.reward_money.2 }}€</strong>,
+                            3. <strong>{{ ctx_stats.reward_money.3 }}€</strong>
+                        </div>
+                        <p style="padding: 0px;"/>
+                        <div class="row">
+                            <div class="col-auto">
+                                <a class="navbar-brand" href="/">
+                                    <img src="{% static "img/logo32.png" %}" class="img-fluid img-responsive mx-auto d-block" alt="logo">
+                                </a>
                             </div>
-                            <div class="text-muted">
-                                {% trans "Prize money" %}:
-                                1. <strong>{{ ctx_stats.reward_money.1 }}€</strong>,
-                                2. <strong>{{ ctx_stats.reward_money.2 }}€</strong>,
-                                3. <strong>{{ ctx_stats.reward_money.3 }}€</strong>
+                            <div class="col">
+                                {% blocktrans %}©2018 sharkz.bet, All rights reserved{% endblocktrans %}
                             </div>
-                        </p>
-                        <p>
-                            {% blocktrans %}©2018 sharkz.bet, All rights reserved{% endblocktrans %}
-                        </p>
+                        </div>
+                        <p style="padding: 0px;"/>
                     </div>
                     <div class="col-md-5 footer-nav">
                         <h4>{% trans "Website" %}</h4>
