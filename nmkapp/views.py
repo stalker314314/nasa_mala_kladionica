@@ -528,6 +528,14 @@ def about(request):
     return render(request, 'about.html')
 
 
+def privacy(request):
+    return render(request, 'privacy.html')
+
+
+def terms(request):
+    return render(request, 'terms.html')
+
+
 @staff_member_required
 def admin_rounds(request):
     rounds = Round.objects.order_by('id')
