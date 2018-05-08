@@ -1,0 +1,1124 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-05-08 13:29+0000\n"
+"PO-Revision-Date: 2018-05-08 15:50+0200\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: nmk/settings.py:93
+msgid "English"
+msgstr "Englisch"
+
+#: nmk/settings.py:94
+msgid "Serbian"
+msgstr "Serbisch"
+
+#: nmk/settings.py:95
+msgid "Serbian latin"
+msgstr "Serbisch (lateinisch)"
+
+#: nmkapp/forms.py:16
+msgid "Display name"
+msgstr ""
+
+#: nmkapp/forms.py:17 nmkapp/forms.py:64 nmkapp/templates/login.html:22
+msgid "E-mail"
+msgstr "E-Mail"
+
+#: nmkapp/forms.py:18 nmkapp/templates/login.html:27
+#: nmkapp/templates/password.html:28
+msgid "Password"
+msgstr "Passwort"
+
+#: nmkapp/forms.py:20
+msgid "You have to accept terms and conditions to register"
+msgstr ""
+
+#: nmkapp/forms.py:22
+msgid "I accept <a href=\"/terms\">Terms and Conditions</a>"
+msgstr ""
+
+#: nmkapp/forms.py:28
+msgid "You must be over 18 to play on sharkz.bet"
+msgstr ""
+
+#: nmkapp/forms.py:30
+msgid "I am over 18 years old"
+msgstr ""
+
+#: nmkapp/forms.py:41
+msgid "Display name must be shorter than 28 characters in length"
+msgstr ""
+
+#: nmkapp/forms.py:43
+msgid "E-mail address must be shorter than 74 characters"
+msgstr ""
+
+#: nmkapp/forms.py:49
+msgid ""
+"This e-mail address already exists. If this is your e-mail, please reset "
+"password."
+msgstr ""
+
+#: nmkapp/forms.py:55
+msgid ""
+"This display name is already taken. If this is your display name by any "
+"chance, please log in."
+msgstr ""
+
+#: nmkapp/forms.py:71
+msgid "Password*"
+msgstr "Passwort*"
+
+#: nmkapp/forms.py:73
+msgid "Repeat password*"
+msgstr ""
+
+#: nmkapp/forms.py:80
+msgid "Passwords do not match"
+msgstr ""
+
+#: nmkapp/forms.py:88
+msgid "Create a new crew"
+msgstr ""
+
+#: nmkapp/forms.py:95
+msgid "Crew name too long"
+msgstr ""
+
+#: nmkapp/forms.py:98
+msgid "Sorry, but crew name is already taken"
+msgstr ""
+
+#: nmkapp/forms.py:108
+msgid "Please enter invite code to join a crew, if you got one:"
+msgstr ""
+
+#: nmkapp/forms.py:115
+msgid "Invite code should contain 8 numbers"
+msgstr ""
+
+#: nmkapp/forms.py:118
+msgid "Invite code invalid"
+msgstr ""
+
+#: nmkapp/forms.py:120
+msgid "You are already member of this crew"
+msgstr ""
+
+#: nmkapp/forms.py:143
+msgid "You must place all bets"
+msgstr ""
+
+#: nmkapp/forms.py:151
+msgid "Recalculate points"
+msgstr ""
+
+#: nmkapp/forms.py:153
+msgid "Clear cache"
+msgstr ""
+
+#: nmkapp/forms.py:155
+msgid "Repopulate cache"
+msgstr ""
+
+#: nmkapp/model_forms.py:32
+msgid "Team cannot play match against itself"
+msgstr ""
+
+#: nmkapp/model_forms.py:35
+msgid ""
+"You cannot add new matches in this round, as some players already placed "
+"bets in this round"
+msgstr ""
+
+#: nmkapp/model_forms.py:39 nmkapp/model_forms.py:41
+#, python-format
+msgid "Team %s already plays in this round"
+msgstr ""
+
+#: nmkapp/model_forms.py:49
+msgid "Result (in the <host>:<guest> format)"
+msgstr ""
+
+#: nmkapp/model_forms.py:55 nmkapp/model_forms.py:58
+msgid "There should be colon between two numbers"
+msgstr ""
+
+#: nmkapp/model_forms.py:63
+msgid "Cannot parse numbers in result"
+msgstr ""
+
+#: nmkapp/model_forms.py:74
+msgid "Language"
+msgstr "Sprache"
+
+#: nmkapp/model_forms.py:74
+msgid "Time zone"
+msgstr ""
+
+#: nmkapp/model_forms.py:74
+msgid "Odd format"
+msgstr ""
+
+#: nmkapp/model_forms.py:75
+msgid "Betting reminder"
+msgstr ""
+
+#: nmkapp/model_forms.py:76
+msgid "All bets are final"
+msgstr ""
+
+#: nmkapp/model_forms.py:77
+msgid "New round available"
+msgstr ""
+
+#: nmkapp/model_forms.py:78
+msgid "All results are final"
+msgstr ""
+
+#: nmkapp/model_forms.py:85
+msgid "Language {} is not available"
+msgstr ""
+
+#: nmkapp/models.py:15
+msgid "Decimal (European)"
+msgstr ""
+
+#: nmkapp/models.py:16
+msgid "Fractional (UK)"
+msgstr ""
+
+#: nmkapp/send_reminder_cron.py:58
+#, python-format
+msgid "[sharkz.bet] Round \"%s\" reminder"
+msgstr ""
+
+#: nmkapp/send_shots_cron.py:60
+#, python-format
+msgid "[sharkz.bet] Round \"%s\" started"
+msgstr ""
+
+#: nmkapp/templates/about.html:7 nmkapp/templates/base.html:243
+msgid "About us"
+msgstr ""
+
+#: nmkapp/templates/about.html:10
+msgid ""
+"Sharkz.bet started more than 15 years ago, when bunch of friends decided to "
+"have a pool bet on matches in\n"
+"UEFA Champions League. At that time, we used state of the art in pool "
+"betting &mdash; Excel:). Soon enough,\n"
+"we learned that it is not very convenient to have Excel spreadsheet being "
+"sent over e-mail, especially in finals\n"
+"when there was blanket finish. At these point, leaders were simply "
+"deadlocked because no one wanted to bet first!"
+msgstr ""
+
+#: nmkapp/templates/about.html:17
+msgid ""
+"So, we developed sharkz.bet and used it internally for last 10 years! Over "
+"time, we started to invite friends and\n"
+"colleagues to join us for larger events, like World Cups or European "
+"Championships. However, this year,\n"
+"for World Cup 2018, for the first time, we decided to open it up with whole "
+"world!"
+msgstr ""
+
+#: nmkapp/templates/about.html:23
+msgid ""
+"In some ways, we are a small startup with an idea to create small, "
+"affordable pool betting with <i>realistic</i> chances\n"
+"to win it (or end up in first 3 places). This is because we don't want "
+"thousands of people with unreal\n"
+"prizes of millions of pounds. We want fair game, nice atmosphere among "
+"players and to have fun along\n"
+"the way. Making matches more interesting to watch and healthy ball busting "
+"among your buddies is only a bonus;)"
+msgstr ""
+
+#: nmkapp/templates/about.html:30
+msgid ""
+"As a self-proclaimed startup that we are, we do have a lot of ideas on our "
+"mind. Of course, all of them only if\n"
+"this experiment called \"World Cup 2018\" turns out to be successful. We "
+"want to extend to national leagues,\n"
+"private pools, prizes that goes to charities… If you like these ideas, or "
+"have some others, please &ndash; do\n"
+"<strong>not</strong> hesitate to contact us at <a href=\"mailto:"
+"support@sharkz.bet\">support@sharkz.bet</a>.\n"
+"We would like to hear what you do or do not like and what other ideas you "
+"might have!"
+msgstr ""
+
+#: nmkapp/templates/about.html:38
+msgid ""
+"With sincere wishes that you will have fun here for this tournament in "
+"Russia,"
+msgstr ""
+
+#: nmkapp/templates/about.html:40
+msgid "sharkz.bet team"
+msgstr "sharkz.bet Team"
+
+#: nmkapp/templates/activation.html:8
+msgid "SHARKZ.BET - ACTIVATION"
+msgstr ""
+
+#: nmkapp/templates/activation.html:10
+msgid "You successfully activated account. Fun can start... now!"
+msgstr ""
+
+#: nmkapp/templates/activation.html:19
+msgid "If you want to play in real money, that will cost you"
+msgstr ""
+
+#: nmkapp/templates/activation.html:21
+msgid ""
+"You can find all other details at the <a href=\"/proposition\">proposition</"
+"a> page."
+msgstr ""
+
+#: nmkapp/templates/activation.html:37
+msgid "Invalid activation"
+msgstr ""
+
+#: nmkapp/templates/activation.html:42 nmkapp/templates/forgotpassword.html:14
+#: nmkapp/templates/forgotpassword.html:30 nmkapp/templates/register.html:18
+#: nmkapp/templates/register.html:36 nmkapp/templates/resetpassword.html:17
+#: nmkapp/templates/resetpassword.html:35
+msgid "Back to login"
+msgstr ""
+
+#: nmkapp/templates/admin_points.html:20
+msgid "Update"
+msgstr ""
+
+#: nmkapp/templates/base.html:90
+msgid "Navigation"
+msgstr ""
+
+#: nmkapp/templates/base.html:98 nmkapp/templates/base.html:159
+#: nmkapp/templates/base.html:230
+msgid "Betting"
+msgstr ""
+
+#: nmkapp/templates/base.html:101 nmkapp/templates/base.html:160
+#: nmkapp/templates/base.html:231
+msgid "Standings"
+msgstr ""
+
+#: nmkapp/templates/base.html:104 nmkapp/templates/base.html:161
+msgid "Fixtures"
+msgstr ""
+
+#: nmkapp/templates/base.html:107 nmkapp/templates/base.html:162
+#: nmkapp/templates/base.html:232
+msgid "Profile"
+msgstr ""
+
+#: nmkapp/templates/base.html:110 nmkapp/templates/base.html:163
+#: nmkapp/templates/base.html:233
+msgid "Crews"
+msgstr ""
+
+#: nmkapp/templates/base.html:113 nmkapp/templates/base.html:135
+#: nmkapp/templates/base.html:164 nmkapp/templates/base.html:168
+#: nmkapp/templates/base.html:237
+msgid "Propositions"
+msgstr ""
+
+#: nmkapp/templates/base.html:118 nmkapp/templates/base.html:176
+msgid "Admin menu"
+msgstr ""
+
+#: nmkapp/templates/base.html:120 nmkapp/templates/base.html:178
+msgid "Rounds"
+msgstr ""
+
+#: nmkapp/templates/base.html:121 nmkapp/templates/base.html:179
+msgid "Matches"
+msgstr ""
+
+#: nmkapp/templates/base.html:122 nmkapp/templates/base.html:180
+msgid "Results"
+msgstr ""
+
+#: nmkapp/templates/base.html:123 nmkapp/templates/base.html:181
+#: nmkapp/templates/results_league.html:20
+msgid "Points"
+msgstr ""
+
+#: nmkapp/templates/base.html:128 nmkapp/templates/base.html:165
+#: nmkapp/templates/base.html:234
+msgid "Logout"
+msgstr ""
+
+#: nmkapp/templates/base.html:132 nmkapp/templates/base.html:167
+#: nmkapp/templates/base.html:236 nmkapp/templates/login.html:40
+msgid "Login"
+msgstr ""
+
+#: nmkapp/templates/base.html:155
+msgid "Menu"
+msgstr ""
+
+#: nmkapp/templates/base.html:201
+msgid "Number of registered players"
+msgstr ""
+
+#: nmkapp/templates/base.html:203
+msgid "real money players"
+msgstr ""
+
+#: nmkapp/templates/base.html:206
+msgid "Prize money"
+msgstr ""
+
+#: nmkapp/templates/base.html:219
+msgid "©2018 sharkz.bet, All rights reserved"
+msgstr ""
+
+#: nmkapp/templates/base.html:225
+msgid "Website"
+msgstr "Webseite"
+
+#: nmkapp/templates/base.html:244
+msgid "Contact"
+msgstr ""
+
+#: nmkapp/templates/base.html:245
+msgid "Terms & Condition"
+msgstr ""
+
+#: nmkapp/templates/base.html:246
+msgid "Privacy Policy"
+msgstr ""
+
+#: nmkapp/templates/base.html:254
+msgid "Facebook"
+msgstr ""
+
+#: nmkapp/templates/base.html:255
+msgid "Twitter"
+msgstr ""
+
+#: nmkapp/templates/crew.html:13
+msgid "MY CREWS"
+msgstr ""
+
+#: nmkapp/templates/crew.html:16
+msgid ""
+"Listed below are all the crews you are member of.\n"
+"If you want to add friends to some crew, send them (chat, mail, SMS...) "
+"invite code from table below.\n"
+"Tell them to go to their \"Crew\" page and to type this at the bottom of it."
+msgstr ""
+
+#: nmkapp/templates/crew.html:25
+msgid "Crew name"
+msgstr ""
+
+#: nmkapp/templates/crew.html:26
+msgid "Invite code"
+msgstr ""
+
+#: nmkapp/templates/crew.html:27 nmkapp/templates/group_leave.html:5
+msgid "Leave a crew"
+msgstr ""
+
+#: nmkapp/templates/crew.html:28
+msgid "Delete a crew"
+msgstr ""
+
+#: nmkapp/templates/crew.html:37
+msgid "Leave"
+msgstr ""
+
+#: nmkapp/templates/crew.html:43
+msgid "Delete"
+msgstr "Löschen"
+
+#: nmkapp/templates/crew.html:50
+msgid "You are not in any crew"
+msgstr ""
+
+#: nmkapp/templates/crew.html:51
+msgid ""
+"Create your own crew and invite people. That way, you will be able to filter "
+"only you guys in the standings"
+msgstr ""
+
+#: nmkapp/templates/crew.html:59
+msgid "Create"
+msgstr "Erstellen"
+
+#: nmkapp/templates/crew.html:68
+msgid "Join"
+msgstr ""
+
+#: nmkapp/templates/forgotpassword.html:8 nmkapp/templates/resetpassword.html:8
+msgid "SHARKZ.BET - PASSWORD RESET"
+msgstr ""
+
+#: nmkapp/templates/forgotpassword.html:10
+msgid ""
+"Password reset successfully. You will get mail with a list to set new "
+"password (check spam folder too, just in case)"
+msgstr ""
+
+#: nmkapp/templates/forgotpassword.html:27
+#: nmkapp/templates/resetpassword.html:32
+msgid "Reset password"
+msgstr ""
+
+#: nmkapp/templates/group_delete.html:5
+msgid "Crew deletion"
+msgstr ""
+
+#: nmkapp/templates/group_delete.html:11
+#, python-format
+msgid ""
+"Huh... are you really sure you want to delete crew <b>%(group.name)s</b> and "
+"all its members forever?"
+msgstr ""
+
+#: nmkapp/templates/group_delete.html:15 nmkapp/templates/group_leave.html:15
+#: nmkapp/templates/home.html:26
+msgid "Yes"
+msgstr "Ja"
+
+#: nmkapp/templates/group_delete.html:16 nmkapp/templates/group_leave.html:16
+#: nmkapp/templates/home.html:27
+msgid "No"
+msgstr "Nein"
+
+#: nmkapp/templates/group_leave.html:11
+#, python-format
+msgid ""
+"Huh... are you really sure you want to leave crew <b>%(group.name)s</b>?"
+msgstr ""
+
+#: nmkapp/templates/home.html:8
+msgid "Active rounds"
+msgstr ""
+
+#: nmkapp/templates/home.html:17
+msgid "Confirmation"
+msgstr ""
+
+#: nmkapp/templates/home.html:18
+msgid "Close"
+msgstr "Schließen"
+
+#: nmkapp/templates/home.html:23
+msgid ""
+"Once you click Final Decision, you will not be able to change bets! Are you "
+"really sure?"
+msgstr ""
+
+#: nmkapp/templates/home.html:41 nmkapp/templates/home.html:111
+msgid "Save"
+msgstr "Speichern"
+
+#: nmkapp/templates/home.html:73
+msgid "remaining bet time:"
+msgstr ""
+
+#: nmkapp/templates/home.html:90 nmkapp/templates/home.html:132
+#: nmkapp/templates/results_cup.html:16 nmkapp/templates/results_league.html:45
+msgid "Match"
+msgstr ""
+
+#: nmkapp/templates/home.html:112
+msgid "Final Decision"
+msgstr ""
+
+#: nmkapp/templates/home.html:116
+msgid ""
+"<strong>Save</strong> &nbsp;&nbsp; remembers your bets. Saved bets will be "
+"used even if you\n"
+"                        don't click \"Final Decision\" before round starts"
+msgstr ""
+
+#: nmkapp/templates/home.html:119
+msgid ""
+"<strong>Final Decision</strong> &nbsp;&nbsp; will persist your bets, so you "
+"will not be\n"
+"                        able to change them anymore, but you will be able to "
+"peek into bets of other people"
+msgstr ""
+
+#: nmkapp/templates/home.html:133
+msgid "Bet"
+msgstr ""
+
+#: nmkapp/templates/home.html:134 nmkapp/templates/roundstandings.html:143
+msgid "Odd"
+msgstr ""
+
+#: nmkapp/templates/home.html:172
+msgid "Other players' bets"
+msgstr ""
+
+#: nmkapp/templates/login.html:8
+msgid "SHARKZ.BET - LOGIN"
+msgstr ""
+
+#: nmkapp/templates/login.html:10
+msgid ""
+"sharkz.bet is a website for recreational or real money betting for World Cup "
+"2018. (or \"Чемпионат мира по футболу 2018\")"
+msgstr ""
+
+#: nmkapp/templates/login.html:12
+msgid "Sign up, invite your crew, bet and show 'em all who's the best!"
+msgstr ""
+
+#: nmkapp/templates/login.html:14
+msgid "You can read rules and propositions"
+msgstr ""
+
+#: nmkapp/templates/login.html:14
+msgid "here"
+msgstr ""
+
+#: nmkapp/templates/login.html:32
+msgid "Wrong e-mail or password. Try again."
+msgstr ""
+
+#: nmkapp/templates/login.html:43
+msgid "I forgot my password"
+msgstr ""
+
+#: nmkapp/templates/login.html:50 nmkapp/templates/register.html:32
+msgid "Register"
+msgstr ""
+
+#: nmkapp/templates/login.html:51
+msgid "(registration is allowed until 1h before start of the first match"
+msgstr ""
+
+#: nmkapp/templates/mail/footer.html:5
+msgid "Automated mail, do not reply."
+msgstr ""
+
+#: nmkapp/templates/mail/footer.html:6
+msgid ""
+"If you do not want to receive any more mail from sharkz.bet, please log in "
+"and change settings at <a href=\"https://sharkz.bet/profile\">profile</a> "
+"page."
+msgstr ""
+
+#: nmkapp/templates/mail/footer.html:9
+msgid "FB group"
+msgstr ""
+
+#: nmkapp/templates/mail/registered.html:4
+msgid ""
+"Thanks for sharkz.bet registration. To activate your account, click on the "
+"following link:"
+msgstr ""
+
+#: nmkapp/templates/mail/registered.html:10
+msgid ""
+"You might also read <a href=\"https://sharkz.bet/proposition\">propositions "
+"here</a>."
+msgstr ""
+
+#: nmkapp/templates/mail/resetpassword.html:4
+#, python-format
+msgid ""
+"We received request to reset password. If you were not the one who requested "
+"this, you don't have to do anything. You can enter new password for account "
+"<b>%(email)s</b> in the following link: "
+msgstr ""
+
+#: nmkapp/templates/mail/result_added.html:4
+#, python-format
+msgid "All results for matches from round <b>%(round.name)s</b> are final."
+msgstr ""
+
+#: nmkapp/templates/mail/result_added.html:6
+#, python-format
+msgid ""
+"Check out how you and other player did this round at <a href=\"https://"
+"sharkz.bet/roundstandings/%(round.id)s\">round standings</a>."
+msgstr ""
+
+#: nmkapp/templates/mail/round_active.html:4
+#, python-format
+msgid ""
+"New round %(round.name)s is available, and you can bet on it all the way "
+"until %(start_time)s when the first match from round starts."
+msgstr ""
+
+#: nmkapp/templates/mail/round_active.html:7
+msgid "Good luck!"
+msgstr ""
+
+#: nmkapp/templates/mail/round_reminder.html:4
+#, python-format
+msgid ""
+"This mail is a reminder to bet on round <b>%(round.name)s</b>. Betting is "
+"possible up to %(min_time.date)s until %(min_time.time)s when the first "
+"match in the round starts!"
+msgstr ""
+
+#: nmkapp/templates/mail/round_reminder.html:8
+msgid "You can bet at the <a href=\"https://sharkz.bet\">betting page</a>."
+msgstr ""
+
+#: nmkapp/templates/mail/round_shots.html:4
+#, python-format
+msgid ""
+"First matches from round <b>%(round.name)s</b> started. For a full "
+"transparency, here are all the bets from all the players at the moment when "
+"all bets were off:"
+msgstr ""
+
+#: nmkapp/templates/mail/round_shots.html:12
+#: nmkapp/templates/roundstandings.html:72 nmkapp/templates/standings.html:48
+msgid "Player"
+msgstr ""
+
+#: nmkapp/templates/password.html:6
+msgid "PASSWORD CHANGE"
+msgstr ""
+
+#: nmkapp/templates/password.html:20
+msgid "Old password"
+msgstr ""
+
+#: nmkapp/templates/password.html:36
+msgid "Password again"
+msgstr ""
+
+#: nmkapp/templates/password.html:45 nmkapp/templates/profile.html:131
+msgid "Change"
+msgstr "Ändern"
+
+#: nmkapp/templates/paypal.html:6
+msgid "THANKS"
+msgstr ""
+
+#: nmkapp/templates/paypal.html:9
+msgid "Thank You for your payment"
+msgstr ""
+
+#: nmkapp/templates/paypal.html:12
+msgid ""
+"\n"
+"Your payment just went through and you have been added to <strong>\"Real "
+"money\"</strong> crew.\n"
+"Your name will be shown bold in all standings and tables.\n"
+msgstr ""
+
+#: nmkapp/templates/paypal.html:17
+msgid ""
+"\n"
+"You will see your name bolded in all <a href=\"/standings\">standings</a> "
+"and tables in the next 24h\n"
+"(as a sign that you play in real money). If this doesn't happen, feel free "
+"to contact admin@sharkz.bet.\n"
+msgstr ""
+
+#: nmkapp/templates/profile.html:38
+msgid "REAL MONEY BETTING"
+msgstr ""
+
+#: nmkapp/templates/profile.html:40
+msgid ""
+"\n"
+"If you want to play in real money, that will cost you 10€.\n"
+"You can sign up for this 1h before first match starts latest!\n"
+msgstr ""
+
+#: nmkapp/templates/profile.html:46
+msgid ""
+"You can see more detail at the page with <a href=\"/proposition"
+"\">propositions</a>."
+msgstr ""
+
+#: nmkapp/templates/profile.html:62
+msgid "SETTINGS"
+msgstr ""
+
+#: nmkapp/templates/profile.html:84
+msgid "E-mail notifications"
+msgstr ""
+
+#: nmkapp/templates/profile.html:92
+msgid ""
+"Send reminder 24h before start of the first match in the round (only if you "
+"still didn't bet)"
+msgstr ""
+
+#: nmkapp/templates/profile.html:102
+msgid ""
+"Send verbatim copy of all bets once first match in round starts (to verify "
+"there is no tempering with bets afterwards!)"
+msgstr ""
+
+#: nmkapp/templates/profile.html:112
+msgid "Send announcement that new round started and betting in it is available"
+msgstr ""
+
+#: nmkapp/templates/profile.html:122
+msgid ""
+"Send announcement that all results from a single round are final and new "
+"points are calculated"
+msgstr ""
+
+#: nmkapp/templates/profile.html:137
+msgid "CHANGE PASSWORD"
+msgstr ""
+
+#: nmkapp/templates/profile.html:140
+msgid "Change password"
+msgstr ""
+
+#: nmkapp/templates/proposition.html:7
+msgid "Real money betting"
+msgstr ""
+
+#: nmkapp/templates/proposition.html:11
+msgid ""
+"It is optional to play for real money. If you want to play for real money, "
+"you must apply 1h before first match starts (14.06.2018 20:00)."
+msgstr ""
+
+#: nmkapp/templates/proposition.html:14
+#, python-format
+msgid ""
+"Stake is 10€ and money is split among top three places, in 3:2:1 ratios. "
+"First place takes 50%%, second 33.3%% and third place 16.6%%."
+msgstr ""
+
+#: nmkapp/templates/proposition.html:17
+msgid ""
+"Sharkz.bet will take all provision costs during both receiving and sending "
+"money over Paypal. So, if the prize is 100€, sharkz.bet will pay you 103.8€ "
+"to cover Paypal provision costs."
+msgstr ""
+
+#: nmkapp/templates/proposition.html:20
+#, python-format
+msgid ""
+"Total prize money is 10%% less than total amount of people playing for real "
+"money * 10€. This is to cover our provision costs and to pay off for costs "
+"of running a web site."
+msgstr ""
+
+#: nmkapp/templates/proposition.html:23
+msgid ""
+"If you skip or if you don't play any round, you are not eligible for a "
+"refund."
+msgstr ""
+
+#: nmkapp/templates/proposition.html:33
+msgid ""
+"Now, if everything said above is clear, click on the button below and bet "
+"for real money. Stake is just 10€ &mdash; but the more players the merrier! "
+"Within 24h of payment received, you will see your name bolded at <a href=\"/"
+"standings\">standings</a>."
+msgstr ""
+
+#: nmkapp/templates/proposition.html:50
+msgid "Rules of play"
+msgstr ""
+
+#: nmkapp/templates/proposition.html:54
+msgid ""
+"You are betting on one whole round. In cup phase, you are betting on each "
+"part separately - eighth-finals, quarterfinals, semifinals and final."
+msgstr ""
+
+#: nmkapp/templates/proposition.html:56
+msgid ""
+"There is no discrimination, we are taking odds from the first booking site "
+"that publishes them (this is because we want to enable you to bet as soon as "
+"possible). Odds on sharkz.bet are <strong>not changing</strong> after "
+"initial publishing."
+msgstr ""
+
+#: nmkapp/templates/proposition.html:59
+msgid "You are betting only on final result (1X2) in regular game time."
+msgstr ""
+
+#: nmkapp/templates/proposition.html:62
+msgid ""
+"All registered accounts that are not playing for money and do not bet in "
+"first round will be automatically deleted (not to waste precious space in "
+"standings)."
+msgstr ""
+
+#: nmkapp/templates/proposition.html:65
+msgid ""
+"Odds are not being multiplied, but added.\n"
+"If you lose a bet in one match, it does not affect your final score from the "
+"same round.\n"
+"You can look at this as you are betting a single ticket for each and every "
+"match and your stake is 1 point.\n"
+"This means, if you win a match with an odd of 3.4, you will get 3.4 points."
+msgstr ""
+
+#: nmkapp/templates/proposition.html:71
+msgid ""
+"You are not able to see other players' bets until you click 'Final "
+"Decision'.\n"
+"After that point, you will be able to see other players' bets, but that "
+"doesn't mean they also clicked 'Final Decision', e.g. other players might be "
+"able to still modify their respective bets.\n"
+"At the start of the match in round, the bets are final for all players. "
+"Betting is not allowed after that point for that round."
+msgstr ""
+
+#: nmkapp/templates/proposition.html:76
+msgid ""
+"This web site must be available 24/7.\n"
+"If web site is not available for more than 10 minutes, or we notice any "
+"online attacks that can compromise or affect fair competition, the whole "
+"competition will be cancelled and all money will be returned to their "
+"respective players."
+msgstr ""
+
+#: nmkapp/templates/proposition.html:80
+#, python-format
+msgid ""
+"If there are multiple players with same amount of points, the prize money "
+"will be split out of all places they are on.\n"
+"Example: if John and Jane are first and they have 50 points each, they are "
+"splitting the prize money for both 1. and 2. place &mdash; (50%% + 33.3%%) / "
+"2 = 41.66%%.\n"
+"If Peter is below them with 49 points, Peter gets the prize for the 3. "
+"place, e.g. 16.6%%."
+msgstr ""
+
+#: nmkapp/templates/register.html:8
+msgid "SHARKZ.BET - REGISTRATION"
+msgstr ""
+
+#: nmkapp/templates/register.html:10
+msgid ""
+"You successfully registered. You will now receive mail with link to activate "
+"your account (check spam folder too, just in case)"
+msgstr ""
+
+#: nmkapp/templates/register.html:13
+msgid ""
+"In the meantime, you can read propositions <a href=\"/proposition\">here</a>."
+msgstr ""
+
+#: nmkapp/templates/resetpassword.html:10
+msgid "Invalid request to reset password"
+msgstr ""
+
+#: nmkapp/templates/resetpassword.html:13
+msgid "Password reset successfully"
+msgstr ""
+
+#: nmkapp/templates/resetpassword.html:24
+#, python-format
+msgid "Changing password for user <b>%(email)s</b>"
+msgstr ""
+
+#: nmkapp/templates/results.html:9
+msgid "Select a part"
+msgstr ""
+
+#: nmkapp/templates/results.html:14
+msgid "League part"
+msgstr ""
+
+#: nmkapp/templates/results.html:19
+msgid "Cup part"
+msgstr ""
+
+#: nmkapp/templates/results_cup.html:5
+msgid "Cup results"
+msgstr ""
+
+#: nmkapp/templates/results_cup.html:15 nmkapp/templates/results_league.html:44
+msgid "Date/time"
+msgstr ""
+
+#: nmkapp/templates/results_cup.html:17 nmkapp/templates/results_league.html:46
+msgid "Score"
+msgstr ""
+
+#: nmkapp/templates/results_league.html:5
+msgid "League results"
+msgstr ""
+
+#: nmkapp/templates/results_league.html:8
+#, python-format
+msgid "Group %(group.label)s"
+msgstr ""
+
+#: nmkapp/templates/results_league.html:15
+msgid "Team"
+msgstr ""
+
+#: nmkapp/templates/results_league.html:16
+msgid "Played"
+msgstr ""
+
+#: nmkapp/templates/results_league.html:17
+msgid "Won"
+msgstr ""
+
+#: nmkapp/templates/results_league.html:18
+msgid "Draw"
+msgstr ""
+
+#: nmkapp/templates/results_league.html:19
+msgid "Lost"
+msgstr ""
+
+#: nmkapp/templates/results_league.html:43
+msgid "Round"
+msgstr ""
+
+#: nmkapp/templates/roundstandings.html:44 nmkapp/templates/standings.html:17
+msgid "Choose a crew"
+msgstr ""
+
+#: nmkapp/templates/roundstandings.html:47
+#: nmkapp/templates/roundstandings.html:49 nmkapp/templates/standings.html:20
+#: nmkapp/templates/standings.html:22
+msgid "All"
+msgstr ""
+
+#: nmkapp/templates/roundstandings.html:61 nmkapp/templates/standings.html:34
+msgid ""
+"(hey, seems you are not member of any crew.\n"
+"Create your crew at <a href=\"/crew\">crew</a> page and invite your buddies)"
+msgstr ""
+
+#: nmkapp/templates/roundstandings.html:164
+msgid "Actual score"
+msgstr ""
+
+#: nmkapp/templates/standings.html:40
+msgid "Tip: click on the round to look only at that round's results!"
+msgstr ""
+
+#: nmkapp/templates/standings.html:87
+msgid "Players playing in real money are shown bolded"
+msgstr ""
+
+#: nmkapp/views.py:71
+msgid "[sharkz.bet] Registration successful"
+msgstr ""
+
+#: nmkapp/views.py:100
+msgid "[sharkz.bet] Reset password request"
+msgstr ""
+
+#: nmkapp/views.py:173 nmkapp/views.py:181
+msgid "There is no active round currently to place bets, try again later"
+msgstr ""
+
+#: nmkapp/views.py:226
+msgid "Bets successfully saved"
+msgstr ""
+
+#: nmkapp/views.py:253
+msgid "first match already started"
+msgstr ""
+
+#: nmkapp/views.py:255
+msgid "N/A"
+msgstr ""
+
+#: nmkapp/views.py:272
+msgid "Settings successfully saved"
+msgstr ""
+
+#: nmkapp/views.py:293
+#, python-format
+msgid ""
+"Crew created successfully. Now you can send invite code \"%s\" to your "
+"friends using chat/mail/SMS, so they too can join your new crew"
+msgstr ""
+
+#: nmkapp/views.py:307
+msgid "Joined crew successfully"
+msgstr ""
+
+#: nmkapp/views.py:338
+msgid "[sharkz.bet] Player payed paypal"
+msgstr ""
+
+#: nmkapp/views.py:338
+#, python-format
+msgid "Player %s"
+msgstr ""
+
+#: nmkapp/views.py:436
+msgid ""
+"You cannot leave a crew that you created, you can only completely delete "
+"that crew."
+msgstr ""
+
+#: nmkapp/views.py:444
+#, python-format
+msgid "Successfully left a crw \"%s\""
+msgstr ""
+
+#: nmkapp/views.py:459
+msgid ""
+"You cannot delete crew that you are not owner of, you can only leave it."
+msgstr ""
+
+#: nmkapp/views.py:469
+#, python-format
+msgid "Crew \"%s\" deleted"
+msgstr ""
+
+#: nmkapp/views.py:559
+#, python-format
+msgid "Round \"%s\" set as active"
+msgstr ""
+
+#: nmkapp/views.py:571
+#, python-format
+msgid "[sharkz.bet] New round \"%s\" available"
+msgstr ""
+
+#: nmkapp/views.py:582
+#, python-format
+msgid "Round \"%s\" set as inactive"
+msgstr ""
+
+#: nmkapp/views.py:609
+#, python-format
+msgid "New round \"%s\" created successfully"
+msgstr ""
+
+#: nmkapp/views.py:630
+msgid "Match successfully added"
+msgstr ""
+
+#: nmkapp/views.py:665
+msgid "Result added successfully"
+msgstr ""
+
+#: nmkapp/views.py:689
+#, python-format
+msgid "[sharkz.bet] All results from round \"%s\" received"
+msgstr ""
