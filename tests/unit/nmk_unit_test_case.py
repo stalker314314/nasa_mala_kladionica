@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 
-from django.test import TestCase, Client
+from django.db import connection, connections, DEFAULT_DB_ALIAS
 from django.urls import reverse
+from django.test import TransactionTestCase, Client
+from django.test.utils import CaptureQueriesContext
+
 
 from nmkapp import logic, views, cache, models
 
 
-class NmkUnitTestCase(TestCase):
+class NmkUnitTestCase(TransactionTestCase):
     fixtures = ['initial_data.json']
 
     def __init__(self, *args, **kwargs):
@@ -39,3 +42,35 @@ class NmkUnitTestCase(TestCase):
         self.assertTrue('rounds' in context)
         self.assertIsNotNone(context['rounds'])
         return context['rounds']
+
+    def assertNumQueriesLessThan(self, num, func=None, *args, using=DEFAULT_DB_ALIAS, **kwargs):
+        conn = connections[using]
+
+        context = _AssertNumQueriesContext(self, num, conn)
+        if func is None:
+            return context
+
+        with context:
+            func(*args, **kwargs)
+
+#changed assertEqual to assertLess
+class _AssertNumQueriesContext(CaptureQueriesContext):
+    def __init__(self, test_case, num, connection):
+        self.test_case = test_case
+        self.num = num
+        super().__init__(connection)
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        super().__exit__(exc_type, exc_value, traceback)
+        if exc_type is not None:
+            return
+        executed = len(self)
+        self.test_case.assertLess(
+            executed, self.num,
+            "%d queries executed, %d expected\nCaptured queries were:\n%s" % (
+                executed, self.num,
+                '\n'.join(
+                    '%d. %s' % (i, query['sql']) for i, query in enumerate(self.captured_queries, start=1)
+                )
+            )
+        )
