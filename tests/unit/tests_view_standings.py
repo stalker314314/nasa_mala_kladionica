@@ -14,6 +14,7 @@ class StandingsTests(NmkUnitTestCase):
         response = client.get(reverse(views.standings))
         self.assertEqual(response.status_code, 302)
 
+    @NmkUnitTestCase.assertNumQueriesLessThan(20)
     def test_regular_user(self):
         """
         Test visiting standings page
@@ -46,6 +47,7 @@ class StandingsTests(NmkUnitTestCase):
         self.assertEqual(standings[2][0].user.email, 'gumi@mail.com')
         self.assertEqual(standings[2][1], [0.0, 0.0, 0.0])
 
+    @NmkUnitTestCase.assertNumQueriesLessThan(20)
     def test_other_group(self):
         link_with_group = '{}?group=kokangumi'.format(reverse(views.standings))
         response = self.client.get(link_with_group)
