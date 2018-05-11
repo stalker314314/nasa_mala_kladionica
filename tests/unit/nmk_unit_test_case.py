@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from django.db import connection, connections, DEFAULT_DB_ALIAS
-from django.urls import reverse
 from django.test import TransactionTestCase, Client
+from django.urls import reverse
 from django.test.utils import CaptureQueriesContext
-
 
 from nmkapp import logic, views, cache, models
 
@@ -43,17 +42,21 @@ class NmkUnitTestCase(TransactionTestCase):
         self.assertIsNotNone(context['rounds'])
         return context['rounds']
 
-    def assertNumQueriesLessThan(self, num, func=None, *args, using=DEFAULT_DB_ALIAS, **kwargs):
-        conn = connections[using]
+    @classmethod
+    def assertNumQueriesLessThan(cls, num, using=DEFAULT_DB_ALIAS):
+        def wrapper(f):
+            def wrapped(self, *args, **kwargs):
+                conn = connections[using]
 
-        context = _AssertNumQueriesContext(self, num, conn)
-        if func is None:
-            return context
+                context = _AssertNumQueriesContext(self, num, conn)
 
-        with context:
-            func(*args, **kwargs)
+                with context:
+                    f(self, *args, **kwargs)
 
-#changed assertEqual to assertLess
+            return wrapped
+        return wrapper
+
+
 class _AssertNumQueriesContext(CaptureQueriesContext):
     def __init__(self, test_case, num, connection):
         self.test_case = test_case
