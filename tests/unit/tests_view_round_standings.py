@@ -17,7 +17,7 @@ class RoundStandingsTests(NmkUnitTestCase):
         response = client.get(reverse(views.round_standings, args=(1,)))
         self.assertEqual(response.status_code, 302)
 
-    @NmkUnitTestCase.assertNumQueriesLessThan(20)
+    @NmkUnitTestCase.assertNumQueriesLessThan(15)
     def test_regular_user_round_1(self):
         """
         Test visiting standings page
@@ -67,7 +67,7 @@ class RoundStandingsTests(NmkUnitTestCase):
         self.assertTrue(1 in [group.id for group in context['groups']])
         self.assertTrue(2 in [group.id for group in context['groups']])
 
-    @NmkUnitTestCase.assertNumQueriesLessThan(20)
+    @NmkUnitTestCase.assertNumQueriesLessThan(15)
     def test_regular_user_round_1_other_group(self):
         """
         Test visiting standings page with some other group
@@ -110,7 +110,7 @@ class RoundStandingsTests(NmkUnitTestCase):
         self.assertTrue(1 in [group.id for group in context['groups']])
         self.assertTrue(2 in [group.id for group in context['groups']])
 
-    @NmkUnitTestCase.assertNumQueriesLessThan(20)
+    @NmkUnitTestCase.assertNumQueriesLessThan(15)
     def test_regular_user_round_2(self):
         """
         Test visiting standings page
