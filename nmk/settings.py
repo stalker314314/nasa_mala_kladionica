@@ -23,6 +23,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -30,13 +31,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'nmkapp.nmk_context_processor.player_stats'
-            ],
-            'loaders': [
-                ('django.template.loaders.cached.Loader', [
-                    'django.template.loaders.filesystem.Loader',
-                    'django.template.loaders.app_directories.Loader'
-                    ]
-                 )
             ],
         },
     },
@@ -249,3 +243,13 @@ if not DEBUG:
     ANYMAIL['MAILJET_SECRET_KEY'] = os.environ['NMK_MAILJET_SECRET_KEY']
     ALLOWED_HOSTS = ['localhost', '.sharkz.bet', '.sharkz.bet.']
     LOGGING = LOGGING_PROD
+    
+    #enable loaders(caching) for prod
+    del TEMPLATES['APP_DIRS']
+    TEMPLATES['OPTIONS']['loaders'] = [
+        ('django.template.loaders.cached.Loader', [
+            'django.template.loaders.filesystem.Loader',
+            'django.template.loaders.app_directories.Loader'
+            ]
+         )
+    ]
