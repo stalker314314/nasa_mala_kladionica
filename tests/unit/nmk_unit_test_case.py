@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 
 from django.db import connection, connections, DEFAULT_DB_ALIAS
-from django.test import TransactionTestCase, Client
+from django.test import TestCase, Client
 from django.test.utils import CaptureQueriesContext
 from django.urls import reverse
 
 from nmkapp import logic, views, cache, models
 
 
-class NmkUnitTestCase(TransactionTestCase):
+class NmkUnitTestCase(TestCase):
     fixtures = ['initial_data.json']
 
     def __init__(self, *args, **kwargs):
