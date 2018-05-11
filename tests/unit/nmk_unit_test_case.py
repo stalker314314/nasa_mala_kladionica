@@ -2,8 +2,8 @@
 
 from django.db import connection, connections, DEFAULT_DB_ALIAS
 from django.test import TransactionTestCase, Client
-from django.urls import reverse
 from django.test.utils import CaptureQueriesContext
+from django.urls import reverse
 
 from nmkapp import logic, views, cache, models
 
