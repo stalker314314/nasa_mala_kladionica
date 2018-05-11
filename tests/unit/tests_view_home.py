@@ -16,6 +16,7 @@ class HomeTests(NmkUnitTestCase):
         response = client.get(reverse(views.home))
         self.assertEqual(response.status_code, 302)
 
+    @NmkUnitTestCase.assertNumQueriesLessThan(20)
     def test_no_active_round(self):
         """
         Test home view when there is no active rounds
@@ -78,6 +79,7 @@ class HomeTests(NmkUnitTestCase):
         self.assertEqual(bet['shots'][0].match.id, 5)
         self.assertEqual(bet['shots'][0].shot, 0)
 
+    @NmkUnitTestCase.assertNumQueriesLessThan(20)
     def test_active_round_playable(self):
         """
         Tests that player who is eligible to play can actually play
