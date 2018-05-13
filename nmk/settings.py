@@ -85,6 +85,7 @@ LANGUAGE_CODE = 'en'
 
 LANGUAGES = [
     ('en', _('English')),
+    ('de', _('German')),
     ('sr', _('Serbian')),
     ('sr-Latn', _('Serbian latin')),
 ]
