@@ -3,7 +3,7 @@
 from django import forms
 from django.conf import settings
 from django.forms.models import ModelForm
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 
 from nmkapp.models import Round, Match, Shot, Player, Team
 
