@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-14 11:06+0000\n"
-"PO-Revision-Date: 2018-05-14 13:07+0200\n"
+"POT-Creation-Date: 2018-05-14 14:20+0000\n"
+"PO-Revision-Date: 2018-05-14 16:34+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -337,6 +337,12 @@ msgid ""
 msgstr ""
 "Sie können die Details auf der Seite mit den <a href=\"/proposition"
 "\">Angeboten</a> finden."
+
+#: nmkapp/templates/activation.html:30 nmkapp/templates/activation.html:31
+#: nmkapp/templates/profile.html:59 nmkapp/templates/profile.html:60
+#: nmkapp/templates/proposition.html:40 nmkapp/templates/proposition.html:41
+msgid "en_US"
+msgstr "de_DE"
 
 #: nmkapp/templates/activation.html:37
 msgid "Invalid activation"
