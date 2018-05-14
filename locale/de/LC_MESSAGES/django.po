@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-14 15:48+0000\n"
-"PO-Revision-Date: 2018-05-14 17:51+0200\n"
+"POT-Creation-Date: 2018-05-14 22:10+0000\n"
+"PO-Revision-Date: 2018-05-15 00:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -27,10 +27,14 @@ msgid "German"
 msgstr "Deutsch"
 
 #: nmk/settings.py:89
+msgid "French"
+msgstr "Französisch"
+
+#: nmk/settings.py:90
 msgid "Serbian"
 msgstr "Serbisch"
 
-#: nmk/settings.py:90
+#: nmk/settings.py:91
 msgid "Serbian latin"
 msgstr "Serbisch (lateinisch)"
 
@@ -338,9 +342,8 @@ msgstr ""
 "Sie können die Details auf der Seite mit den <a href=\"/proposition"
 "\">Angeboten</a> finden."
 
-#: nmkapp/templates/activation.html:30 nmkapp/templates/activation.html:31
-#: nmkapp/templates/profile.html:59 nmkapp/templates/profile.html:60
-#: nmkapp/templates/proposition.html:40 nmkapp/templates/proposition.html:41
+#: nmkapp/templates/activation.html:30 nmkapp/templates/profile.html:59
+#: nmkapp/templates/proposition.html:40
 msgid "en_US"
 msgstr "de_DE"
 
