@@ -246,8 +246,8 @@ if not DEBUG:
     LOGGING = LOGGING_PROD
     
     #enable loaders(caching) for prod
-    del TEMPLATES['APP_DIRS']
-    TEMPLATES['OPTIONS']['loaders'] = [
+    del TEMPLATES[0]['APP_DIRS']
+    TEMPLATES[0]['OPTIONS']['loaders'] = [
         ('django.template.loaders.cached.Loader', [
             'django.template.loaders.filesystem.Loader',
             'django.template.loaders.app_directories.Loader'
