@@ -5,7 +5,12 @@
 
 {% if messages %}
     {% for message in messages %}
-    <div class="entry errors">{{ message }}</div>
+    <div class="alert alert-warning alert-dismissible fade show text-left" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="{% trans "Close" %}>
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     {% endfor %}
 {% endif %}
 

@@ -61,7 +61,9 @@
 
 {% if messages %}
     {% for message in messages %}
-    <div class="entry errors">{{ message }}</div>
+    <div role="alert" class="alert alert-warning text-center">
+        {{ message }}
+    </div>
     {% endfor %}
 {% endif %}
 
@@ -79,7 +81,12 @@
 
 	{% if bet.form %}
 		{% for error in bet.form.non_field_errors %}
-		    <div class="entry errors" style="color: rgb(255, 0, 0);">{{ error }}</div>
+        <div class="alert alert-error alert-dismissible fade show text-left" role="alert">
+            {{ error }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="{% trans "Close" %}>
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
 		{% endfor %}
 		
 		<form id="save_{{ bet.round.id }}" name="save_{{ bet.round.id }}" method="post" action="/">

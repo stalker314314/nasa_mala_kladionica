@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-14 09:16+0000\n"
-"PO-Revision-Date: 2018-05-14 11:16+0200\n"
+"POT-Creation-Date: 2018-05-14 11:06+0000\n"
+"PO-Revision-Date: 2018-05-14 13:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sr\n"
@@ -44,7 +44,7 @@ msgid "E-mail"
 msgstr "E-pošta"
 
 #: nmkapp/forms.py:18 nmkapp/templates/login.html:27
-#: nmkapp/templates/password.html:28
+#: nmkapp/templates/password.html:33
 msgid "Password"
 msgstr "Lozinka"
 
@@ -347,7 +347,19 @@ msgstr "Neispravna aktivacija"
 msgid "Back to login"
 msgstr "Nazad na prijavu"
 
-#: nmkapp/templates/admin_points.html:20
+#: nmkapp/templates/admin_matches.html:10
+#: nmkapp/templates/admin_matches_edit.html:10
+#: nmkapp/templates/admin_points.html:10 nmkapp/templates/admin_results.html:10
+#: nmkapp/templates/admin_results_change.html:10
+#: nmkapp/templates/admin_rounds.html:12
+#: nmkapp/templates/admin_rounds_edit.html:10 nmkapp/templates/crew.html:11
+#: nmkapp/templates/home.html:18 nmkapp/templates/home.html:86
+#: nmkapp/templates/password.html:12 nmkapp/templates/profile.html:31
+#: nmkapp/templates/roundstandings.html:207
+msgid "Close"
+msgstr "Zatvori"
+
+#: nmkapp/templates/admin_points.html:25
 msgid "Update"
 msgstr "Ažuriraj"
 
@@ -460,11 +472,11 @@ msgstr "Fejsbuk"
 msgid "Twitter"
 msgstr "Tviter"
 
-#: nmkapp/templates/crew.html:13
+#: nmkapp/templates/crew.html:18
 msgid "MY CREWS"
 msgstr "MOJE EKIPE"
 
-#: nmkapp/templates/crew.html:16
+#: nmkapp/templates/crew.html:21
 msgid ""
 "Listed below are all the crews you are member of.\n"
 "If you want to add friends to some crew, send them (chat, mail, SMS...) "
@@ -476,35 +488,35 @@ msgstr ""
 "pozivnicu iz tabele ispod i reci im da odu na \"Profil\" stranu i da unesu "
 "ovu šifru na dnu ove strane."
 
-#: nmkapp/templates/crew.html:25
+#: nmkapp/templates/crew.html:30
 msgid "Crew name"
 msgstr "Ime ekipe"
 
-#: nmkapp/templates/crew.html:26
+#: nmkapp/templates/crew.html:31
 msgid "Invite code"
 msgstr "Šifra-pozivnica"
 
-#: nmkapp/templates/crew.html:27 nmkapp/templates/group_leave.html:5
+#: nmkapp/templates/crew.html:32 nmkapp/templates/group_leave.html:5
 msgid "Leave a crew"
 msgstr "Izađi iz ekipe"
 
-#: nmkapp/templates/crew.html:28
+#: nmkapp/templates/crew.html:33
 msgid "Delete a crew"
 msgstr "Izbriši ekipu"
 
-#: nmkapp/templates/crew.html:37
+#: nmkapp/templates/crew.html:42
 msgid "Leave"
 msgstr "Izađi"
 
-#: nmkapp/templates/crew.html:43
+#: nmkapp/templates/crew.html:48
 msgid "Delete"
 msgstr "Izbriši"
 
-#: nmkapp/templates/crew.html:50
+#: nmkapp/templates/crew.html:55
 msgid "You are not in any crew"
 msgstr "Nisi ni u jednoj ekipi"
 
-#: nmkapp/templates/crew.html:51
+#: nmkapp/templates/crew.html:56
 msgid ""
 "Create your own crew and invite people. That way, you will be able to filter "
 "only you guys in the standings"
@@ -512,11 +524,11 @@ msgstr ""
 "Napravi svoju ekipu, pozovi ortake i moći ćeš da filtriraš samo vas na svim "
 "tabelama"
 
-#: nmkapp/templates/crew.html:59
+#: nmkapp/templates/crew.html:64
 msgid "Create"
 msgstr "Napravi"
 
-#: nmkapp/templates/crew.html:68
+#: nmkapp/templates/crew.html:73
 msgid "Join"
 msgstr "Pridruži se"
 
@@ -576,10 +588,6 @@ msgstr "Aktivna kola"
 msgid "Confirmation"
 msgstr "Potvrda"
 
-#: nmkapp/templates/home.html:18
-msgid "Close"
-msgstr "Zatvori"
-
 #: nmkapp/templates/home.html:23
 msgid ""
 "Once you click Final Decision, you will not be able to change bets! Are you "
@@ -588,24 +596,24 @@ msgstr ""
 "Jednom kada kliknete konačnu odluku, nećete više moći da promenite tipove! "
 "Da li ste sigurni?"
 
-#: nmkapp/templates/home.html:41 nmkapp/templates/home.html:111
+#: nmkapp/templates/home.html:41 nmkapp/templates/home.html:118
 msgid "Save"
 msgstr "Sačuvaj"
 
-#: nmkapp/templates/home.html:73
+#: nmkapp/templates/home.html:75
 msgid "remaining bet time:"
 msgstr "preostalo vreme za klađenje:"
 
-#: nmkapp/templates/home.html:90 nmkapp/templates/home.html:132
+#: nmkapp/templates/home.html:97 nmkapp/templates/home.html:139
 #: nmkapp/templates/results_cup.html:16 nmkapp/templates/results_league.html:45
 msgid "Match"
 msgstr "Meč"
 
-#: nmkapp/templates/home.html:112
+#: nmkapp/templates/home.html:119
 msgid "Final Decision"
 msgstr "Konačna odluka"
 
-#: nmkapp/templates/home.html:116
+#: nmkapp/templates/home.html:123
 msgid ""
 "<strong>Save</strong> &nbsp;&nbsp; remembers your bets. Saved bets will be "
 "used even if you\n"
@@ -615,7 +623,7 @@ msgstr ""
 "koristiti čak iako ne klikneš\n"
 "                        „Konačna odluka“ pre nego što kolo počne"
 
-#: nmkapp/templates/home.html:119
+#: nmkapp/templates/home.html:126
 msgid ""
 "<strong>Final Decision</strong> &nbsp;&nbsp; will persist your bets, so you "
 "will not be\n"
@@ -627,15 +635,15 @@ msgstr ""
 "                        da ih promeniš, ali ćeš zato moći da vidiš tipovanja "
 "drugih ljudi"
 
-#: nmkapp/templates/home.html:133
+#: nmkapp/templates/home.html:140
 msgid "Bet"
 msgstr "Tip"
 
-#: nmkapp/templates/home.html:134 nmkapp/templates/roundstandings.html:143
+#: nmkapp/templates/home.html:141 nmkapp/templates/roundstandings.html:143
 msgid "Odd"
 msgstr "Kvota"
 
-#: nmkapp/templates/home.html:172
+#: nmkapp/templates/home.html:179
 msgid "Other players' bets"
 msgstr "Šta su drugi igrali"
 
@@ -784,15 +792,15 @@ msgstr "Takmičar"
 msgid "PASSWORD CHANGE"
 msgstr "PROMENA LOZINKE"
 
-#: nmkapp/templates/password.html:20
+#: nmkapp/templates/password.html:25
 msgid "Old password"
 msgstr "Stara lozinka"
 
-#: nmkapp/templates/password.html:36
+#: nmkapp/templates/password.html:41
 msgid "Password again"
 msgstr "Lozinka ponovo"
 
-#: nmkapp/templates/password.html:45 nmkapp/templates/profile.html:131
+#: nmkapp/templates/password.html:50 nmkapp/templates/profile.html:136
 msgid "Change"
 msgstr "Promeni"
 
@@ -831,11 +839,11 @@ msgstr ""
 "(kao znak da igraš u prave pare). Ukoliko se ovo ne desi do tad, kontaktiraj "
 "nas na admin@sharkz.bet.\n"
 
-#: nmkapp/templates/profile.html:38
+#: nmkapp/templates/profile.html:43
 msgid "REAL MONEY BETTING"
 msgstr "IGRANjE U NOVAC"
 
-#: nmkapp/templates/profile.html:40
+#: nmkapp/templates/profile.html:45
 msgid ""
 "\n"
 "If you want to play in real money, that will cost you 10€.\n"
@@ -845,7 +853,7 @@ msgstr ""
 "Ako želiš da igraš u pare, to će te koštati 10€.\n"
 "Za igranje u pare se možeš prijaviti do 1h pre početka prve utakmice!\n"
 
-#: nmkapp/templates/profile.html:46
+#: nmkapp/templates/profile.html:51
 msgid ""
 "You can see more detail at the page with <a href=\"/proposition"
 "\">propositions</a>."
@@ -853,15 +861,15 @@ msgstr ""
 "Sve ostale detalje možeš videti na strani sa <a href=\"/proposition"
 "\">pravilima</a>."
 
-#: nmkapp/templates/profile.html:62
+#: nmkapp/templates/profile.html:67
 msgid "SETTINGS"
 msgstr "PODEŠAVANjA"
 
-#: nmkapp/templates/profile.html:84
+#: nmkapp/templates/profile.html:89
 msgid "E-mail notifications"
 msgstr "E-mejl obaveštenja"
 
-#: nmkapp/templates/profile.html:92
+#: nmkapp/templates/profile.html:97
 msgid ""
 "Send reminder 24h before start of the first match in the round (only if you "
 "still didn't bet)"
@@ -869,7 +877,7 @@ msgstr ""
 "Šalje podsetnik za klađenje 24h pre početka prve utakmice u kolu (samo ako se "
 "još nisi kladio)"
 
-#: nmkapp/templates/profile.html:102
+#: nmkapp/templates/profile.html:107
 msgid ""
 "Send verbatim copy of all bets once first match in round starts (to verify "
 "there is no tempering with bets afterwards!)"
@@ -877,12 +885,12 @@ msgstr ""
 "Šalje kopiju svih tipovanja svih korisnika za jedno kolo, kada kolo počne (da "
 "svako može da se uveri da nije bilo naknadnog menjanja tipova!)"
 
-#: nmkapp/templates/profile.html:112
+#: nmkapp/templates/profile.html:117
 msgid "Send announcement that new round started and betting in it is available"
 msgstr ""
 "Šalje obaveštenje da je počelo novo kolo i da je moguće kladiti se na njena"
 
-#: nmkapp/templates/profile.html:122
+#: nmkapp/templates/profile.html:127
 msgid ""
 "Send announcement that all results from a single round are final and new "
 "points are calculated"
@@ -890,11 +898,11 @@ msgstr ""
 "Šalje obaveštenje da su svi rezultati iz jednog kola uneseni i da su "
 "izračunati novi poeni"
 
-#: nmkapp/templates/profile.html:137
+#: nmkapp/templates/profile.html:142
 msgid "CHANGE PASSWORD"
 msgstr "PROMENA LOZINKE"
 
-#: nmkapp/templates/profile.html:140
+#: nmkapp/templates/profile.html:145
 msgid "Change password"
 msgstr "Promeni lozinku"
 
@@ -1167,13 +1175,21 @@ msgstr ""
 msgid "Actual score"
 msgstr "Tačan rezultat"
 
+#: nmkapp/templates/roundstandings.html:181 nmkapp/templates/standings.html:87
+msgid "Players playing in real money are shown bolded"
+msgstr "Takmičari koji igraju u prave pare su prikazani podebljano"
+
+#: nmkapp/templates/roundstandings.html:206
+msgid ""
+"You have no permission to peek at other players' bets until you also place "
+"bets for this round."
+msgstr ""
+"Nemate prava da pogledate tipovanja drugih ljudi dok i Vi ne istipujete "
+"rezultate ovog kola."
+
 #: nmkapp/templates/standings.html:40
 msgid "Tip: click on the round to look only at that round's results!"
 msgstr "Savet: klikni na kolo da pogledaš rezultate samo iz tog kola!"
-
-#: nmkapp/templates/standings.html:87
-msgid "Players playing in real money are shown bolded"
-msgstr "Takmičari koji igraju u prave pare su prikazani podebljano"
 
 #: nmkapp/views.py:71
 msgid "[sharkz.bet] Registration successful"

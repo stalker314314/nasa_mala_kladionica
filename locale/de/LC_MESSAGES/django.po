@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-14 09:16+0000\n"
-"PO-Revision-Date: 2018-05-14 11:14+0200\n"
+"POT-Creation-Date: 2018-05-14 11:06+0000\n"
+"PO-Revision-Date: 2018-05-14 13:07+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -43,7 +43,7 @@ msgid "E-mail"
 msgstr "E-Mail"
 
 #: nmkapp/forms.py:18 nmkapp/templates/login.html:27
-#: nmkapp/templates/password.html:28
+#: nmkapp/templates/password.html:33
 msgid "Password"
 msgstr "Passwort"
 
@@ -349,7 +349,19 @@ msgstr "Ungültige Aktivierung"
 msgid "Back to login"
 msgstr "Zurück zur Anmeldung"
 
-#: nmkapp/templates/admin_points.html:20
+#: nmkapp/templates/admin_matches.html:10
+#: nmkapp/templates/admin_matches_edit.html:10
+#: nmkapp/templates/admin_points.html:10 nmkapp/templates/admin_results.html:10
+#: nmkapp/templates/admin_results_change.html:10
+#: nmkapp/templates/admin_rounds.html:12
+#: nmkapp/templates/admin_rounds_edit.html:10 nmkapp/templates/crew.html:11
+#: nmkapp/templates/home.html:18 nmkapp/templates/home.html:86
+#: nmkapp/templates/password.html:12 nmkapp/templates/profile.html:31
+#: nmkapp/templates/roundstandings.html:207
+msgid "Close"
+msgstr "Schließen"
+
+#: nmkapp/templates/admin_points.html:25
 msgid "Update"
 msgstr "Aktualisieren"
 
@@ -462,11 +474,11 @@ msgstr "Facebook"
 msgid "Twitter"
 msgstr "Twitter"
 
-#: nmkapp/templates/crew.html:13
+#: nmkapp/templates/crew.html:18
 msgid "MY CREWS"
 msgstr "MEINE MANNSCHAFTEN"
 
-#: nmkapp/templates/crew.html:16
+#: nmkapp/templates/crew.html:21
 msgid ""
 "Listed below are all the crews you are member of.\n"
 "If you want to add friends to some crew, send them (chat, mail, SMS...) "
@@ -479,35 +491,35 @@ msgstr ""
 "Sagen Sie ihnen auf die \"Mannschaft\" Seite zu gehen und dort das Code "
 "einzuführen."
 
-#: nmkapp/templates/crew.html:25
+#: nmkapp/templates/crew.html:30
 msgid "Crew name"
 msgstr "Name der Mannschaft"
 
-#: nmkapp/templates/crew.html:26
+#: nmkapp/templates/crew.html:31
 msgid "Invite code"
 msgstr "Einladungscode"
 
-#: nmkapp/templates/crew.html:27 nmkapp/templates/group_leave.html:5
+#: nmkapp/templates/crew.html:32 nmkapp/templates/group_leave.html:5
 msgid "Leave a crew"
 msgstr "Die Mannschaft verlassen"
 
-#: nmkapp/templates/crew.html:28
+#: nmkapp/templates/crew.html:33
 msgid "Delete a crew"
 msgstr "Mannschaft löschen"
 
-#: nmkapp/templates/crew.html:37
+#: nmkapp/templates/crew.html:42
 msgid "Leave"
 msgstr "Verlassen"
 
-#: nmkapp/templates/crew.html:43
+#: nmkapp/templates/crew.html:48
 msgid "Delete"
 msgstr "Löschen"
 
-#: nmkapp/templates/crew.html:50
+#: nmkapp/templates/crew.html:55
 msgid "You are not in any crew"
 msgstr "Sie haben noch keine Mannschaft"
 
-#: nmkapp/templates/crew.html:51
+#: nmkapp/templates/crew.html:56
 msgid ""
 "Create your own crew and invite people. That way, you will be able to filter "
 "only you guys in the standings"
@@ -515,11 +527,11 @@ msgstr ""
 "Erstellen Sie Ihre eigene Mannschaft und laden sie Menschen ein. Auf dieser "
 "Weise können Sie nur euch in der Wertung filtern"
 
-#: nmkapp/templates/crew.html:59
+#: nmkapp/templates/crew.html:64
 msgid "Create"
 msgstr "Erstellen"
 
-#: nmkapp/templates/crew.html:68
+#: nmkapp/templates/crew.html:73
 msgid "Join"
 msgstr "Beitreten"
 
@@ -528,15 +540,11 @@ msgid "SHARKZ.BET - PASSWORD RESET"
 msgstr "SHARKZ.BET- PASSWORT ZURÜCKSETZEN"
 
 #: nmkapp/templates/forgotpassword.html:10
-#, fuzzy
-#| msgid ""
-#| "Password reset successfully. You will get mail with a list to set new "
-#| "password (check spam folder too, just in case)"
 msgid ""
 "Password reset successfully. You will get mail with a link to set new "
 "password (check spam folder too, just in case)"
 msgstr ""
-"Passwortrücksetzung erfolgreich. Sie werden eine E-Mail mit der Liste "
+"Passwortrücksetzung erfolgreich. Sie werden eine E-Mail mit dem Link "
 "bekommen, um ein neues Passwort zu setzen (überprüfen Sie den Spamfolder "
 "auch)"
 
@@ -584,10 +592,6 @@ msgstr "Aktive Spielrunden"
 msgid "Confirmation"
 msgstr "Bestätigung"
 
-#: nmkapp/templates/home.html:18
-msgid "Close"
-msgstr "Schließen"
-
 #: nmkapp/templates/home.html:23
 msgid ""
 "Once you click Final Decision, you will not be able to change bets! Are you "
@@ -596,24 +600,24 @@ msgstr ""
 "Wenn Sie auf die Finale Entscheidung klicken, sind Sie nicht mehr in "
 "Möglichkeit, die Wetten zu ändern! Sind Sie sicher?"
 
-#: nmkapp/templates/home.html:41 nmkapp/templates/home.html:111
+#: nmkapp/templates/home.html:41 nmkapp/templates/home.html:118
 msgid "Save"
 msgstr "Speichern"
 
-#: nmkapp/templates/home.html:73
+#: nmkapp/templates/home.html:75
 msgid "remaining bet time:"
 msgstr "verbleibende Wettenzeit:"
 
-#: nmkapp/templates/home.html:90 nmkapp/templates/home.html:132
+#: nmkapp/templates/home.html:97 nmkapp/templates/home.html:139
 #: nmkapp/templates/results_cup.html:16 nmkapp/templates/results_league.html:45
 msgid "Match"
 msgstr "Match"
 
-#: nmkapp/templates/home.html:112
+#: nmkapp/templates/home.html:119
 msgid "Final Decision"
 msgstr "Finale Entscheidung"
 
-#: nmkapp/templates/home.html:116
+#: nmkapp/templates/home.html:123
 msgid ""
 "<strong>Save</strong> &nbsp;&nbsp; remembers your bets. Saved bets will be "
 "used even if you\n"
@@ -623,7 +627,7 @@ msgstr ""
 "Wetten werden benutzt, obwohl\n"
 "Sie auf die \"Finale Entscheidung\" nicht geklickt haben vor der Spielrunde"
 
-#: nmkapp/templates/home.html:119
+#: nmkapp/templates/home.html:126
 msgid ""
 "<strong>Final Decision</strong> &nbsp;&nbsp; will persist your bets, so you "
 "will not be\n"
@@ -634,15 +638,15 @@ msgstr ""
 "so dass Sie sie nicht mehr ändern können, aber Sie können die Wetten anderer "
 "Spieler sehen"
 
-#: nmkapp/templates/home.html:133
+#: nmkapp/templates/home.html:140
 msgid "Bet"
 msgstr "Wette"
 
-#: nmkapp/templates/home.html:134 nmkapp/templates/roundstandings.html:143
+#: nmkapp/templates/home.html:141 nmkapp/templates/roundstandings.html:143
 msgid "Odd"
 msgstr "Gewinnchancen"
 
-#: nmkapp/templates/home.html:172
+#: nmkapp/templates/home.html:179
 msgid "Other players' bets"
 msgstr "Wetten anderer Spieler"
 
@@ -797,15 +801,15 @@ msgstr "Spieler"
 msgid "PASSWORD CHANGE"
 msgstr "PASSWORT ÄNDERN"
 
-#: nmkapp/templates/password.html:20
+#: nmkapp/templates/password.html:25
 msgid "Old password"
 msgstr "Altes Passwort"
 
-#: nmkapp/templates/password.html:36
+#: nmkapp/templates/password.html:41
 msgid "Password again"
 msgstr "Kennwort wiederholen"
 
-#: nmkapp/templates/password.html:45 nmkapp/templates/profile.html:131
+#: nmkapp/templates/password.html:50 nmkapp/templates/profile.html:136
 msgid "Change"
 msgstr "Ändern"
 
@@ -843,11 +847,11 @@ msgstr ""
 "(als ein Zeichen, dass Sie echtes Geld eingesetzt haben). Falls das nicht "
 "passiert, kontaktieren Sie den Admin der Seite admin@sharkz.bet.\n"
 
-#: nmkapp/templates/profile.html:38
+#: nmkapp/templates/profile.html:43
 msgid "REAL MONEY BETTING"
 msgstr "WETTEN MIT ECHTEM GELD"
 
-#: nmkapp/templates/profile.html:40
+#: nmkapp/templates/profile.html:45
 msgid ""
 "\n"
 "If you want to play in real money, that will cost you 10€.\n"
@@ -858,21 +862,21 @@ msgstr ""
 "Sie können sich dafür bewerben mindestens eine Stunde vor dem ersten Spiel!\n"
 "\n"
 
-#: nmkapp/templates/profile.html:46
+#: nmkapp/templates/profile.html:51
 msgid ""
 "You can see more detail at the page with <a href=\"/proposition"
 "\">propositions</a>."
 msgstr "Für mehr Details, sehen Sie <a href=\"/proposition\">Angeboten</a>."
 
-#: nmkapp/templates/profile.html:62
+#: nmkapp/templates/profile.html:67
 msgid "SETTINGS"
 msgstr "EINSTELLUNGEN"
 
-#: nmkapp/templates/profile.html:84
+#: nmkapp/templates/profile.html:89
 msgid "E-mail notifications"
 msgstr "E-Mail Nachrichten"
 
-#: nmkapp/templates/profile.html:92
+#: nmkapp/templates/profile.html:97
 msgid ""
 "Send reminder 24h before start of the first match in the round (only if you "
 "still didn't bet)"
@@ -880,7 +884,7 @@ msgstr ""
 "Erinnerungen 24 Stunden vor dem ersten Spiel schicken (nur falls Sie noch "
 "nicht gewettet haben)"
 
-#: nmkapp/templates/profile.html:102
+#: nmkapp/templates/profile.html:107
 msgid ""
 "Send verbatim copy of all bets once first match in round starts (to verify "
 "there is no tempering with bets afterwards!)"
@@ -888,13 +892,13 @@ msgstr ""
 "Eine Verbatim Kopie schicken, wenn das erste Spiel der Runde beginnt (zu "
 "versichern, dass es keine Änderungen mehr gibt!)"
 
-#: nmkapp/templates/profile.html:112
+#: nmkapp/templates/profile.html:117
 msgid "Send announcement that new round started and betting in it is available"
 msgstr ""
 "Eine Notifikation schicken, um zu wissen, dass eine neue Spielrunde verfügba "
 "ist und,dass Sie wetten können"
 
-#: nmkapp/templates/profile.html:122
+#: nmkapp/templates/profile.html:127
 msgid ""
 "Send announcement that all results from a single round are final and new "
 "points are calculated"
@@ -902,11 +906,11 @@ msgstr ""
 "Eine Notifikation schicken, dass alle Resultate aus einer Runde final sind "
 "und das die Punkte gerechnet werden"
 
-#: nmkapp/templates/profile.html:137
+#: nmkapp/templates/profile.html:142
 msgid "CHANGE PASSWORD"
 msgstr "PASSWORT ÄNDERN"
 
-#: nmkapp/templates/profile.html:140
+#: nmkapp/templates/profile.html:145
 msgid "Change password"
 msgstr "Passwort ändern"
 
@@ -1189,13 +1193,19 @@ msgstr ""
 msgid "Actual score"
 msgstr "Tatschächliches Resultat"
 
+#: nmkapp/templates/roundstandings.html:181 nmkapp/templates/standings.html:87
+msgid "Players playing in real money are shown bolded"
+msgstr "Die Spieler, die mit echtem Geld spielen sind sicher mutig"
+
+#: nmkapp/templates/roundstandings.html:206
+msgid ""
+"You have no permission to peek at other players' bets until you also place "
+"bets for this round."
+msgstr ""
+
 #: nmkapp/templates/standings.html:40
 msgid "Tip: click on the round to look only at that round's results!"
 msgstr "Tipp: klicken sie auf die Runde um die Resultate zu sehen!"
-
-#: nmkapp/templates/standings.html:87
-msgid "Players playing in real money are shown bolded"
-msgstr "Die Spieler, die mit echtem Geld spielen sind sicher mutig"
 
 #: nmkapp/views.py:71
 msgid "[sharkz.bet] Registration successful"
