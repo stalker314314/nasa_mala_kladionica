@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-14 14:20+0000\n"
-"PO-Revision-Date: 2018-05-14 16:34+0200\n"
+"POT-Creation-Date: 2018-05-14 15:48+0000\n"
+"PO-Revision-Date: 2018-05-14 17:51+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -471,6 +471,10 @@ msgstr "Allgemeine Bedingungen"
 #: nmkapp/templates/base.html:246
 msgid "Privacy Policy"
 msgstr "Datenschutzklärung"
+
+#: nmkapp/templates/base.html:252
+msgid "Follow Us"
+msgstr "Folge uns"
 
 #: nmkapp/templates/base.html:254
 msgid "Facebook"
