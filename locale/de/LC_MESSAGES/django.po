@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-14 07:49+0000\n"
-"PO-Revision-Date: 2018-05-14 09:49+0200\n"
+"POT-Creation-Date: 2018-05-14 07:48+0000\n"
+"PO-Revision-Date: 2018-05-14 11:14+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -49,7 +49,7 @@ msgstr "Passwort"
 
 #: nmkapp/forms.py:20
 msgid "You have to accept terms and conditions to register"
-msgstr "Sie müssen die Allgemeinen Geschäftsbedingungen akzeptieren."
+msgstr "Sie müssen die Allgemeinen Geschäftsbedingungen akzeptieren"
 
 #: nmkapp/forms.py:22
 msgid "I accept <a href=\"/terms\">Terms and Conditions</a>"
@@ -78,7 +78,7 @@ msgid ""
 "password."
 msgstr ""
 "Diese E- Mail-Adresse ist bereits vorhanden. Ist dies Ihre E-Mail-Adresse? "
-"Bitte setzen Sie Ihr Passwort zurück"
+"Bitte setzen Sie Ihr Passwort zurück."
 
 #: nmkapp/forms.py:55
 msgid ""
@@ -86,7 +86,7 @@ msgid ""
 "chance, please log in."
 msgstr ""
 "Dieser Benutzername ist bereits vergeben. Ist das Ihr Benutzername, bitte "
-"melden Sie sich an"
+"melden Sie sich an."
 
 #: nmkapp/forms.py:71
 msgid "Password*"
@@ -94,7 +94,7 @@ msgstr "Passwort*"
 
 #: nmkapp/forms.py:73
 msgid "Repeat password*"
-msgstr "Passwort wiederholen"
+msgstr "Passwort wiederholen*"
 
 #: nmkapp/forms.py:80
 msgid "Passwords do not match"
@@ -114,8 +114,7 @@ msgstr "Entschuldigung, der Mannschaftsname ist bereits besetzt"
 
 #: nmkapp/forms.py:108
 msgid "Please enter invite code to join a crew, if you got one:"
-msgstr ""
-"Bitte setzen Sie ein Einladungscode ein, wenn Sie  bereits einen haben :"
+msgstr "Bitte setzen Sie ein Einladungscode ein, wenn Sie bereits einen haben:"
 
 #: nmkapp/forms.py:115
 msgid "Invite code should contain 8 numbers"
@@ -139,7 +138,7 @@ msgstr "Punkte nachrechnen"
 
 #: nmkapp/forms.py:153
 msgid "Clear cache"
-msgstr "Zwischenspeicher leehren"
+msgstr "Zwischenspeicher leeren"
 
 #: nmkapp/forms.py:155
 msgid "Repopulate cache"
@@ -164,7 +163,7 @@ msgstr "Mannschaft %s spielt bereits in dieser Runde"
 
 #: nmkapp/model_forms.py:49
 msgid "Result (in the <host>:<guest> format)"
-msgstr "Ergebnis  (in the <host>:<guest> format)"
+msgstr "Ergebnis (in the <host>:<guest> format)"
 
 #: nmkapp/model_forms.py:55 nmkapp/model_forms.py:58
 msgid "There should be colon between two numbers"
@@ -184,7 +183,7 @@ msgstr "Zeitzone"
 
 #: nmkapp/model_forms.py:74
 msgid "Odd format"
-msgstr "Falscher Format"
+msgstr "Gewinnchancen Format"
 
 #: nmkapp/model_forms.py:75
 msgid "Betting reminder"
@@ -200,7 +199,7 @@ msgstr "Neue Runde verfügbar"
 
 #: nmkapp/model_forms.py:78
 msgid "All results are final"
-msgstr "Alle Ergebnisse snd endgültig"
+msgstr "Alle Ergebnisse sind endgültig"
 
 #: nmkapp/model_forms.py:85
 msgid "Language {} is not available"
@@ -217,7 +216,7 @@ msgstr "Bruhzahl (GB)"
 #: nmkapp/send_reminder_cron.py:58
 #, python-format
 msgid "[sharkz.bet] Round \"%s\" reminder"
-msgstr "[sharkz.bet] Runde \"%s\"  Erinnerung"
+msgstr "[sharkz.bet] Runde \"%s\" Erinnerung"
 
 #: nmkapp/send_shots_cron.py:60
 #, python-format
@@ -246,7 +245,7 @@ msgstr ""
 "lernten wir, dass es nicht so gut geeignet ist Excel Tabellen über E-mail zu "
 "schicken, besonders in den Finalen\n"
 "wo das Ende ausgeblendet wurde. Dann waren die Leiter im Stillstand, da "
-"niemand als Erster wetten wollte"
+"niemand als Erster wetten wollte!"
 
 #: nmkapp/templates/about.html:17
 msgid ""
@@ -301,7 +300,7 @@ msgstr ""
 "Natürlich, falls das Experiment names \"World Cup 2018\"\n"
 "erfolgreich wird. Wir wollen uns auf die nationalen Ligas ausweiten, private "
 "Wetten, Preise die Wohltätigkeitsorganisationen bekommen\n"
-"Wenn Ihnen diese Ideen gefallen, oder Sie manche haben , bitte  &ndash; do\n"
+"Wenn Ihnen diese Ideen gefallen, oder Sie manche haben , bitte &ndash; do\n"
 "<strong>zweifeln Sie nicht</strong>uns zu kontaktieren auf<a href=\"mailto:"
 "support@sharkz.bet\">support@sharkz.bet</a>.\n"
 "Wir wollen auch hören, was ihre Wünsche sind und was für Ideen Sie haben!"
@@ -312,7 +311,7 @@ msgid ""
 "Russia,"
 msgstr ""
 "Mit aufrichtigen Wünschen, dass Sie Spaß wärend des Turniers in Russland "
-"haben werden, "
+"haben werden,"
 
 #: nmkapp/templates/about.html:40
 msgid "sharkz.bet team"
@@ -336,8 +335,8 @@ msgid ""
 "You can find all other details at the <a href=\"/proposition\">proposition</"
 "a> page."
 msgstr ""
-"Sie können die Details auf der Seite mit den Angeboten finden <a href=\"/"
-"proposition\"></a>"
+"Sie können die Details auf der Seite mit den <a href=\"/proposition"
+"\">Angeboten</a> finden."
 
 #: nmkapp/templates/activation.html:37
 msgid "Invalid activation"
@@ -465,7 +464,7 @@ msgstr "Twitter"
 
 #: nmkapp/templates/crew.html:13
 msgid "MY CREWS"
-msgstr "Meine Mannschaften"
+msgstr "MEINE MANNSCHAFTEN"
 
 #: nmkapp/templates/crew.html:16
 msgid ""
@@ -514,7 +513,7 @@ msgid ""
 "only you guys in the standings"
 msgstr ""
 "Erstellen Sie Ihre eigene Mannschaft und laden sie Menschen ein. Auf dieser "
-"Weise können Sie nur euch filtern"
+"Weise können Sie nur euch in der Wertung filtern"
 
 #: nmkapp/templates/crew.html:59
 msgid "Create"
@@ -526,7 +525,7 @@ msgstr "Beitreten"
 
 #: nmkapp/templates/forgotpassword.html:8 nmkapp/templates/resetpassword.html:8
 msgid "SHARKZ.BET - PASSWORD RESET"
-msgstr "SHARKZ.BET- PASSWORT RÜCKSETZEN"
+msgstr "SHARKZ.BET- PASSWORT ZURÜCKSETZEN"
 
 #: nmkapp/templates/forgotpassword.html:10
 msgid ""
@@ -540,7 +539,7 @@ msgstr ""
 #: nmkapp/templates/forgotpassword.html:27
 #: nmkapp/templates/resetpassword.html:32
 msgid "Reset password"
-msgstr "Paswort rücksetzen"
+msgstr "Paswort zurücksetzen"
 
 #: nmkapp/templates/group_delete.html:5
 msgid "Crew deletion"
@@ -637,7 +636,7 @@ msgstr "Wette"
 
 #: nmkapp/templates/home.html:134 nmkapp/templates/roundstandings.html:143
 msgid "Odd"
-msgstr "Gewinnchansen"
+msgstr "Gewinnchancen"
 
 #: nmkapp/templates/home.html:172
 msgid "Other players' bets"
@@ -684,11 +683,11 @@ msgstr "Registrieren"
 #: nmkapp/templates/login.html:51
 msgid "(registration is allowed until 1h before start of the first match"
 msgstr ""
-"Registrierung ist zugelassen mindestens eine Stunde vor dem ersten Spiel"
+"(registrierung ist zugelassen mindestens eine Stunde vor dem ersten Spiel"
 
 #: nmkapp/templates/mail/footer.html:5
 msgid "Automated mail, do not reply."
-msgstr "Automatische E-Mail, bitte antworten Sie nicht"
+msgstr "Automatische E-Mail, bitte antworten Sie nicht."
 
 #: nmkapp/templates/mail/footer.html:6
 msgid ""
@@ -698,7 +697,7 @@ msgid ""
 msgstr ""
 "Wenn Sie keine E-Mails von unserer Seite bekommen möchten, loggen Sie sich "
 "ein und ändern Sie das in den Einstellungen <a href=\"https://sharkz.bet/"
-"profile\">profile</a> page"
+"profile\">profile</a> page."
 
 #: nmkapp/templates/mail/footer.html:9
 msgid "FB group"
@@ -718,7 +717,7 @@ msgid ""
 "here</a>."
 msgstr ""
 "Sie können die Angebote <a href=\"https://sharkz.bet/proposition\"> hier "
-"lesen</a>. "
+"lesen</a>."
 
 #: nmkapp/templates/mail/resetpassword.html:4
 #, python-format
@@ -729,13 +728,13 @@ msgid ""
 msgstr ""
 "Wir haben eine E-Mail über die Passwortrücksetzung erhalten. Wenn Sie das "
 "nicht gewesen sind, müssen Sie nichts weiter machen. Sie können Ihr Passwort "
-"für das Konto <b>%(email)s</b> mit dem Link ändern"
+"für das Konto <b>%(email)s</b> mit dem Link ändern: "
 
 #: nmkapp/templates/mail/result_added.html:4
 #, python-format
 msgid "All results for matches from round <b>%(round.name)s</b> are final."
 msgstr ""
-"Alle Resultate der Spiele aus der Runde <b>%(round.name)s</b>  sind endgültig"
+"Alle Resultate der Spiele aus der Runde <b>%(round.name)s</b> sind endgültig."
 
 #: nmkapp/templates/mail/result_added.html:6
 #, python-format
@@ -753,11 +752,11 @@ msgid ""
 "until %(start_time)s when the first match from round starts."
 msgstr ""
 "Neue Runde %(round.name)s ist verfügbar, und Sie können wetten bis das erste "
-"Spiel der Runde beginnt , um  %(start_time)s"
+"Spiel der Runde beginnt , um %(start_time)s."
 
 #: nmkapp/templates/mail/round_active.html:7
 msgid "Good luck!"
-msgstr "Viel Glück"
+msgstr "Viel Gluck!"
 
 #: nmkapp/templates/mail/round_reminder.html:4
 #, python-format
@@ -767,14 +766,12 @@ msgid ""
 "match in the round starts!"
 msgstr ""
 "Diese Mail ist eine Erinnerung , damit Sie auf die Runde <b>%(round.name)s</"
-"b> wetten. Wetten ist möglich bis zu  %(min_time.date)s until "
-"%(min_time.time)s  wenn das erste Spiel beginnt"
+"b> wetten. Wetten ist möglich bis zu %(min_time.date)s until "
+"%(min_time.time)s wenn das erste Spiel beginnt!"
 
 #: nmkapp/templates/mail/round_reminder.html:8
 msgid "You can bet at the <a href=\"https://sharkz.bet\">betting page</a>."
-msgstr ""
-"Sie können auf der Seite  <a href=\"https://sharkz.bet\">betting page</a>. "
-"wetten"
+msgstr "Sie können <a href=\"https://sharkz.bet\">auf der Seite wetten</a>."
 
 #: nmkapp/templates/mail/round_shots.html:4
 #, python-format
@@ -785,7 +782,7 @@ msgid ""
 msgstr ""
 "Erste Spiele aus der Runde <b>%(round.name)s</b> haben begonnen. Damit Sie "
 "die ganze Transparenz haben, sehen Sie die Wetten anderer Spieler in diesem "
-"Moment, wenn alle wetten vorbei sind"
+"Moment, wenn alle wetten vorbei sind:"
 
 #: nmkapp/templates/mail/round_shots.html:12
 #: nmkapp/templates/roundstandings.html:72 nmkapp/templates/standings.html:48
@@ -824,8 +821,8 @@ msgid ""
 "Your name will be shown bold in all standings and tables.\n"
 msgstr ""
 "\n"
-"Ihre Zahlung ist durchgegangen und Sie werden in die Mannschaft  <strong>"
-"\"Real money\"</strong> crew. hinzugefügt\n"
+"Ihre Zahlung ist durchgegangen und Sie werden in die Mannschaft <strong>"
+"\"Real money\"</strong> hinzugefügt\n"
 "Ihr Name wird boldiert auf allen Tabellen und Listen gezeigt\n"
 
 #: nmkapp/templates/paypal.html:17
@@ -837,8 +834,8 @@ msgid ""
 "to contact admin@sharkz.bet.\n"
 msgstr ""
 "\n"
-"Sie werden Ihren Namen boldiert in <a href=\"/standings\">standings</a> "
-"allen Tabellen innehalb der nächte Stunden\n"
+"Sie werden Ihren Namen boldiert in <a href=\"/standings\">Wertung</a> allen "
+"Tabellen innehalb der nächte Stunden\n"
 "(als ein Zeichen, dass Sie echtes Geld eingesetzt haben). Falls das nicht "
 "passiert, kontaktieren Sie den Admin der Seite admin@sharkz.bet.\n"
 
@@ -861,8 +858,7 @@ msgstr ""
 msgid ""
 "You can see more detail at the page with <a href=\"/proposition"
 "\">propositions</a>."
-msgstr ""
-"Für mehr Details, sehen Sie  <a href=\"/proposition\">propositions</a>."
+msgstr "Für mehr Details, sehen Sie <a href=\"/proposition\">Angeboten</a>."
 
 #: nmkapp/templates/profile.html:62
 msgid "SETTINGS"
@@ -877,7 +873,7 @@ msgid ""
 "Send reminder 24h before start of the first match in the round (only if you "
 "still didn't bet)"
 msgstr ""
-"Erinnerungen 24 Stunden vor dem ersten Spiel schicken(nur falls Sie noch "
+"Erinnerungen 24 Stunden vor dem ersten Spiel schicken (nur falls Sie noch "
 "nicht gewettet haben)"
 
 #: nmkapp/templates/profile.html:102
@@ -891,8 +887,8 @@ msgstr ""
 #: nmkapp/templates/profile.html:112
 msgid "Send announcement that new round started and betting in it is available"
 msgstr ""
-"Eine Notifikation schicken, um zu wissen, dass eine neue Runde verfügba ist "
-"und,dass Sie wetten können"
+"Eine Notifikation schicken, um zu wissen, dass eine neue Spielrunde verfügba "
+"ist und,dass Sie wetten können"
 
 #: nmkapp/templates/profile.html:122
 msgid ""
@@ -930,7 +926,7 @@ msgid ""
 "First place takes 50%%, second 33.3%% and third place 16.6%%."
 msgstr ""
 "Beteildigung ist 10€ und das Geld wird geteilt an die ersten drei Plätze, im "
-"Verhältnis 3:2:1. Der erste Platz bekommt 50%%, zweiter 33.3%% und dritter  "
+"Verhältnis 3:2:1. Der erste Platz bekommt 50%%, zweiter 33.3%% und dritter "
 "16.6%%."
 
 #: nmkapp/templates/proposition.html:17
@@ -941,7 +937,7 @@ msgid ""
 msgstr ""
 "Sharkz.bet wird die Versandkosten für das Erhalten sowohl das Senden des "
 "Geldes über Paypal. So, wenn das Preis 100€ ist, wird sharkz.bet 103,8€ "
-"zahlen, um die Paypal kosten zu befriedigen"
+"zahlen, um die Paypal kosten zu befriedigen."
 
 #: nmkapp/templates/proposition.html:20
 #, python-format
@@ -951,8 +947,8 @@ msgid ""
 "of running a web site."
 msgstr ""
 "Das Preisegeld ist 10%% weniger als die totale Zahl von den Spielern, die "
-"fürs echte Geld spielen *10€. Das ist für die  Deckung der Beschffungskosten "
-"und die  Kosten für das leiten dieser Webseite"
+"fürs echte Geld spielen *10€. Das ist für die Deckung der Beschffungskosten "
+"und die Kosten für das leiten dieser Webseite."
 
 #: nmkapp/templates/proposition.html:23
 msgid ""
@@ -960,7 +956,7 @@ msgid ""
 "refund."
 msgstr ""
 "Wenn Sie das überspringen oder keine Runde spielen, können Sie Ihr Geld "
-"nicht zurückbekommen "
+"nicht zurückbekommen."
 
 #: nmkapp/templates/proposition.html:33
 msgid ""
@@ -970,9 +966,9 @@ msgid ""
 "standings\">standings</a>."
 msgstr ""
 "Jetzt, falls alles oben geschriebene klar ist, klicken Sie auf den Knopf "
-"unter und wetten Sie mit echtem Geld. Teilnehmung ist  10€ &mdash; aber so "
+"unter und wetten Sie mit echtem Geld. Teilnehmung ist 10€ &mdash; aber so "
 "mehr Spieler desto besser! Innerhalb der 24 Stunden nach der Zahlung, "
-"bekommen Sie Ihren Namen boldiert auf <a href=\"/standings\">standings</a>."
+"bekommen Sie Ihren Namen boldiert auf <a href=\"/standings\">Wertung </a>."
 
 #: nmkapp/templates/proposition.html:50
 msgid "Rules of play"
@@ -984,7 +980,7 @@ msgid ""
 "part separately - eighth-finals, quarterfinals, semifinals and final."
 msgstr ""
 "Sie wetten auf die ganze Runde. In der Meisterschaftphase, wetten Sie auf "
-"die Teile getrennt- Achtelfinale, Vierterfinale, Halbfinale und das Finale"
+"die Teile getrennt- Achtelfinale, Vierterfinale, Halbfinale und das Finale."
 
 #: nmkapp/templates/proposition.html:56
 msgid ""
@@ -995,12 +991,12 @@ msgid ""
 msgstr ""
 "Es gibt keine Diskrimination, wir nehmen die Chancen aus den ersten "
 "Wettseiten und veröffentlichen sie (das ist, weil wir so schnell wie möglich "
-"sein wollen). Chancen auf sharkz.bet werden<strong>nicht geändert   </"
-"strong> nach der Veröffentlichung"
+"sein wollen). Chancen auf sharkz.bet warden <strong>nicht geändert</strong> "
+"nach der Veröffentlichung."
 
 #: nmkapp/templates/proposition.html:59
 msgid "You are betting only on final result (1X2) in regular game time."
-msgstr "Sie wetten nur auf den Endresultat  (1X2) in der regulären Spielzeit."
+msgstr "Sie wetten nur auf den Endresultat (1X2) in der regulären Spielzeit."
 
 #: nmkapp/templates/proposition.html:62
 msgid ""
@@ -1009,8 +1005,8 @@ msgid ""
 "standings)."
 msgstr ""
 "Alle registrierten Konten, die nicht für Geld spielen oder nicht in der "
-"ersten Runde gewettet haben, werden  automatisch gelöscht(um die Plätze der "
-"Liste nicht zu verschwenden)"
+"ersten Spielrunde gewettet haben, werden automatisch gelöscht(um die Plätze "
+"der Liste nicht zu verschwenden)"
 
 #: nmkapp/templates/proposition.html:65
 msgid ""
@@ -1040,10 +1036,10 @@ msgid ""
 "Betting is not allowed after that point for that round."
 msgstr ""
 "Sie können die Wetten anderer Spieler nicht sehen, bevor Sie auf die "
-"Endwetten klicken \n"
+"Endwetten klicken.\n"
 "Von diesem Moment an, können Sie die Wetten anderer Spieler sehen, aber das "
 "heißt nicht, dass sie auf die \"Endwetten\" geklickt haben. Zum Beispiel "
-"können diese Spieler ihre Wetten ändern"
+"können diese Spieler ihre Wetten ändern."
 
 #: nmkapp/templates/proposition.html:76
 msgid ""
@@ -1053,10 +1049,10 @@ msgid ""
 "competition will be cancelled and all money will be returned to their "
 "respective players."
 msgstr ""
-"Diese Webseite soll 24/7 aktiv sein\n"
+"Diese Webseite soll 24/7 aktiv sein.\n"
 "Falls die Seite für länger als 10 Minuten unaktiv bleibt, oder wir mache "
 "online Probleme spüren, die die Funktion der Seite stüren, werden die Wetten "
-"abgesagt und das Geld wird allen Spielern zurückgeschickt"
+"abgesagt und das Geld wird allen Spielern zurückgeschickt."
 
 #: nmkapp/templates/proposition.html:80
 #, python-format
@@ -1071,10 +1067,10 @@ msgid ""
 msgstr ""
 "Falls es mehrere Spieler mit der gleichen Zahl der Punkte gibt, wird das "
 "Preisgeld geteilt\n"
-"Beispiel: falls John und Jane auf dem ersten Platz stehen und haben beide 50 "
-"Punkte, bekommen sie das Geld für den ersten und den zweiten Platz geteilt "
-"&mdash; (50%% + 33.3%%) / 2 = 41.66%%.\n"
-"Falls Peter unter ihnen mit 49 Punkten steht, bekommt er das Geld für den "
+"Beispiel: falls Hans und Franz auf dem ersten Platz stehen und haben beide "
+"50 Punkte, bekommen sie das Geld für den ersten und den zweiten Platz "
+"geteilt &mdash; (50%% + 33.3%%) / 2 = 41.66%%.\n"
+"Falls Erika unter ihnen mit 49 Punkten steht, bekommt er das Geld für den "
 "dritten Platz, e.g. 16.6%%."
 
 #: nmkapp/templates/register.html:8
@@ -1093,7 +1089,7 @@ msgstr ""
 msgid ""
 "In the meantime, you can read propositions <a href=\"/proposition\">here</a>."
 msgstr ""
-"In der Zwischenzeit lesen Sie unsere Angebote <a href=\"/proposition\">here</"
+"In der Zwischenzeit lesen Sie unsere Angebote <a href=\"/proposition\">hier</"
 "a>."
 
 #: nmkapp/templates/resetpassword.html:10
@@ -1102,7 +1098,7 @@ msgstr "Ungültiger Versuch das Passwort zu verändern"
 
 #: nmkapp/templates/resetpassword.html:13
 msgid "Password reset successfully"
-msgstr "Paswort wurde erfolgreich geändert"
+msgstr "Passwort wurde erfolgreich geändert"
 
 #: nmkapp/templates/resetpassword.html:24
 #, python-format
@@ -1164,7 +1160,7 @@ msgstr "Verloren"
 
 #: nmkapp/templates/results_league.html:43
 msgid "Round"
-msgstr "Runde"
+msgstr "Spielrunde"
 
 #: nmkapp/templates/roundstandings.html:44 nmkapp/templates/standings.html:17
 msgid "Choose a crew"
@@ -1182,8 +1178,8 @@ msgid ""
 "Create your crew at <a href=\"/crew\">crew</a> page and invite your buddies)"
 msgstr ""
 "(Hey, es sieht so aus, dass Sie Mitglied keiner Mannschaft sind\n"
-"Kreieren Sie Ihre eigene Mannschaft auf  <a href=\"/crew\">crew</a> Seite "
-"und laden Sie ihre Freunde ein)"
+"Kreieren Sie Ihre eigene Mannschaft auf <a href=\"/crew\">Mannschaft</a> "
+"Seite und laden Sie ihre Freunde ein)"
 
 #: nmkapp/templates/roundstandings.html:164
 msgid "Actual score"
@@ -1191,7 +1187,7 @@ msgstr "Tatschächliches Resultat"
 
 #: nmkapp/templates/standings.html:40
 msgid "Tip: click on the round to look only at that round's results!"
-msgstr "Tipp: klicken sie auf die Runde um die Resultate zu sehen"
+msgstr "Tipp: klicken sie auf die Runde um die Resultate zu sehen!"
 
 #: nmkapp/templates/standings.html:87
 msgid "Players playing in real money are shown bolded"
@@ -1208,7 +1204,7 @@ msgstr "[sharkz.bet] Anfrage zu Passwortrücksetzung"
 #: nmkapp/views.py:173 nmkapp/views.py:181
 msgid "There is no active round currently to place bets, try again later"
 msgstr ""
-"Es gibt keine aktuellen Runden fürs Wetten, bitte versuchen Sie es später"
+"Es gibt keine aktuellen Spielrunde fürs Wetten, bitte versuchen Sie es später"
 
 #: nmkapp/views.py:226
 msgid "Bets successfully saved"
@@ -1216,7 +1212,7 @@ msgstr "Wetten erfolgreich gespeichert"
 
 #: nmkapp/views.py:253
 msgid "first match already started"
-msgstr "Das erste Match  hat bereits angefangen"
+msgstr "Das erste Match hat bereits angefangen"
 
 #: nmkapp/views.py:255
 msgid "N/A"
@@ -1232,8 +1228,8 @@ msgid ""
 "Crew created successfully. Now you can send invite code \"%s\" to your "
 "friends using chat/mail/SMS, so they too can join your new crew"
 msgstr ""
-"Die Mannschaft wurde erfolgreich kreiert. Sie können jetzt Einladungscode  "
-"\"%s\"  ihren Freunde schicken per chat/E-Mail/SMS, sodass sie Ihrer "
+"Die Mannschaft wurde erfolgreich kreiert. Sie können jetzt Einladungscode "
+"\"%s\" ihren Freunde schicken per chat/E-Mail/SMS, sodass sie Ihrer "
 "Mannschaftbeitreten können"
 
 #: nmkapp/views.py:307
@@ -1253,7 +1249,7 @@ msgstr "Spieler %s"
 msgid ""
 "You cannot leave a crew that you created, you can only completely delete "
 "that crew."
-msgstr "Sie können die Mannschaft nicht verlassen, ohne sie zu löschen"
+msgstr "Sie können die Mannschaft nicht verlassen, ohne sie zu löschen."
 
 #: nmkapp/views.py:444
 #, python-format
@@ -1275,22 +1271,22 @@ msgstr "Mannschaft \"%s\" ist gelöscht"
 #: nmkapp/views.py:559
 #, python-format
 msgid "Round \"%s\" set as active"
-msgstr "Runde \"%s\"ist aktiv"
+msgstr "Spielrunde \"%s\" ist aktiv"
 
 #: nmkapp/views.py:571
 #, python-format
 msgid "[sharkz.bet] New round \"%s\" available"
-msgstr "[sharkz.bet] Neue Runde\"%s\" ist verfügbar"
+msgstr "[sharkz.bet] Neue Spielrunde \"%s\" ist verfügbar"
 
 #: nmkapp/views.py:582
 #, python-format
 msgid "Round \"%s\" set as inactive"
-msgstr "Runde \"%s ist nicht aktiv"
+msgstr "Spielrunde \"%s ist nicht aktiv"
 
 #: nmkapp/views.py:609
 #, python-format
 msgid "New round \"%s\" created successfully"
-msgstr "Neue Runde \"%s wurde erfolgreich kreiert"
+msgstr "Neue Spielrunde \"%s wurde erfolgreich kreiert"
 
 #: nmkapp/views.py:630
 msgid "Match successfully added"
@@ -1303,4 +1299,4 @@ msgstr "Ergebniss wurde efolgreich hinzugefügt"
 #: nmkapp/views.py:689
 #, python-format
 msgid "[sharkz.bet] All results from round \"%s\" received"
-msgstr "[sharkz.bet] Alle Ergebnisse der Runde \"%s\" erhalten"
+msgstr "[sharkz.bet] Alle Ergebnisse der Spielrunde \"%s\" erhalten"
