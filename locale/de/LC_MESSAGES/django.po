@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-13 22:00+0000\n"
-"PO-Revision-Date: 2018-05-13 20:46+0200\n"
+"POT-Creation-Date: 2018-05-14 07:49+0000\n"
+"PO-Revision-Date: 2018-05-14 09:49+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -23,10 +23,14 @@ msgid "English"
 msgstr "Englisch"
 
 #: nmk/settings.py:88
+msgid "German"
+msgstr "Deutsch"
+
+#: nmk/settings.py:89
 msgid "Serbian"
 msgstr "Serbisch"
 
-#: nmk/settings.py:89
+#: nmk/settings.py:90
 msgid "Serbian latin"
 msgstr "Serbisch (lateinisch)"
 
@@ -798,7 +802,7 @@ msgstr "Altes Passwort"
 
 #: nmkapp/templates/password.html:36
 msgid "Password again"
-msgstr "Passwort wiederhohlen"
+msgstr "Kennwort wiederholen"
 
 #: nmkapp/templates/password.html:45 nmkapp/templates/profile.html:131
 msgid "Change"
@@ -1253,7 +1257,7 @@ msgstr "Sie können die Mannschaft nicht verlassen, ohne sie zu löschen"
 
 #: nmkapp/views.py:444
 #, python-format
-msgid "Successfully left a crw \"%s\""
+msgid "Successfully left a crew \"%s\""
 msgstr "Die Mannschaft \"%s\" wurde erfolgreich verlassen"
 
 #: nmkapp/views.py:459
