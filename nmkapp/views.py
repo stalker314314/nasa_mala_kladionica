@@ -441,7 +441,7 @@ def group_leave(request, group_id):
         elif '1' in request.POST:
             RoundStandingsCache.clear_group(group)
             group.players.remove(request.user)
-            messages.add_message(request, messages.INFO, _('Successfully left a crw "%s"') % group.name)
+            messages.add_message(request, messages.INFO, _('Successfully left a crew "%s"') % group.name)
             return HttpResponseRedirect('/crew')
     return render(request, 'group_leave.html', {'error': error, 'group': group})
 
