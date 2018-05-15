@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-14 22:10+0000\n"
-"PO-Revision-Date: 2018-05-15 00:10+0200\n"
+"POT-Creation-Date: 2018-05-15 09:49+0000\n"
+"PO-Revision-Date: 2018-05-15 11:58+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #: nmk/settings.py:87
 msgid "English"
@@ -223,12 +223,12 @@ msgstr "Cote fractionnelle (anglaise)"
 #: nmkapp/send_reminder_cron.py:58
 #, python-format
 msgid "[sharkz.bet] Round \"%s\" reminder"
-msgstr "[sharkz.bet] Rappel sur le pari \"%s\""
+msgstr "[sharkz.bet] Rappel sur le tour «%s»"
 
 #: nmkapp/send_shots_cron.py:60
 #, python-format
 msgid "[sharkz.bet] Round \"%s\" started"
-msgstr "[sharkz.bet] Le pari a commencé \"%s\""
+msgstr "[sharkz.bet] Le tour a commencé «%s»"
 
 #: nmkapp/templates/about.html:7 nmkapp/templates/base.html:243
 msgid "About us"
@@ -284,7 +284,7 @@ msgid ""
 "among your buddies is only a bonus;)"
 msgstr ""
 "À certains égards, nous sommes une petite start-up ayant pour but de créer "
-"de petits paris en cagnotte abordables avec des chances <i> réalistes</i>\n"
+"de petits paris en cagnotte abordables avec des chances <i>réalistes</i>\n"
 "pour gagner (ou finir à l'une des 3 premières places). C'est parce que nous "
 "ne voulons pas des milliers de personnes avec des prix\n"
 "irréels de millions de livres. Nous voudrions mettre en place un jeu "
@@ -307,7 +307,7 @@ msgid ""
 msgstr ""
 "En tant que start-up autoproclamée que nous sommes, nous avons beaucoup "
 "d'idées en tête. Bien sûr, toutes ces idées sont possibles seulement si\n"
-"cette expérience appelée \"Coupe du Monde 2018\" s'avère réussie. Nous "
+"cette expérience appelée «Coupe du Monde 2018» s'avère réussie. Nous "
 "souhaitons nous étendre aux ligues nationales,\n"
 "cagnottes privées, des prix qui vont à des organismes de bienfaisance… Si "
 "vous aimez ces idées, ou en avez d'autres, s'il vous plaît &ndash; n'\n"
@@ -380,7 +380,7 @@ msgstr "Fermer"
 
 #: nmkapp/templates/admin_points.html:25
 msgid "Update"
-msgstr "Mettre à jour"
+msgstr "Actualiser"
 
 #: nmkapp/templates/base.html:90
 msgid "Navigation"
@@ -509,7 +509,7 @@ msgstr ""
 "Énumérés ci-dessous sont toutes les équipes dont vous êtes membre.\n"
 "Si vous souhaitez ajouter des amis à une équipe, envoyez-leur (via chat, "
 "mail, SMS ...) le code d'invitation du tableau ci-dessous.\n"
-"Dites-leur d'aller à leur page \"Équipes\" et de rentrer le code en bas de "
+"Dites-leur d'aller à leur page «Équipes» et de rentrer le code en bas de "
 "page."
 
 #: nmkapp/templates/crew.html:30
@@ -644,10 +644,10 @@ msgid ""
 "used even if you\n"
 "                        don't click \"Final Decision\" before round starts"
 msgstr ""
-"<strong>Sauvegarder </strong> &nbsp; &nbsp; enregistre vos paris. Les paris "
+"<strong>Sauvegarder</strong> &nbsp; &nbsp; enregistre vos paris. Les paris "
 "sauvegardés seront utilisés même si vous\n"
-"                         ne cliquez pas sur \"Décision Finale\" avant le "
-"début du tour"
+"                         ne cliquez pas sur «Décision Finale» avant le début "
+"du tour"
 
 #: nmkapp/templates/home.html:126
 msgid ""
@@ -728,7 +728,7 @@ msgid ""
 msgstr ""
 "Si vous ne souhaitez plus recevoir de messages de sharkz.bet, veuillez vous "
 "connecter et modifier les paramètres sur la page <a href=\"https://sharkz."
-"bet/profile\"> profil </a>."
+"bet/profile\">profil</a>."
 
 #: nmkapp/templates/mail/footer.html:9
 msgid "FB group"
@@ -857,7 +857,7 @@ msgid ""
 msgstr ""
 "\n"
 "Votre paiement vient d'être accepté et vous avez été ajouté à l'équipe "
-"<strong>\"Argent réel\"</strong>.\n"
+"<strong>«Argent réel»</strong>.\n"
 "Votre nom apparaîtra en caractères gras dans tous les classements et "
 "tableaux.\n"
 
@@ -1007,7 +1007,7 @@ msgstr ""
 "Maintenant, si tout ce qui est dit ci-dessus est clair, cliquez sur le "
 "bouton ci-dessous et pariez pour de l'argent réel. L'enjeu est juste 10€ "
 "&mdash; mais plus les joueurs sont nombreux plus les gains sont réalisables! "
-"Pandant les 24h après réception de votre paiement, vous verrez votre nom en "
+"Pendant les 24h après réception de votre paiement, vous verrez votre nom en "
 "gras au <a href=\"/standings\">classement</a>."
 
 #: nmkapp/templates/proposition.html:50
@@ -1033,7 +1033,7 @@ msgstr ""
 "Il n'y a pas de discrimination, nous prenons des risques sur le premier site "
 "de réservation qui les publie (c'est parce que nous voulons vous permettre "
 "de parier le plus rapidement possible). Les chances sur sharkz.bet "
-"<strong>ne changent pas </strong> après la publication initiale."
+"<strong>ne changent pas</strong> après la publication initiale."
 
 #: nmkapp/templates/proposition.html:59
 msgid "You are betting only on final result (1X2) in regular game time."
@@ -1079,7 +1079,7 @@ msgid ""
 msgstr ""
 "Vous n'êtes pas en mesure de voir les mises des autres joueurs jusqu'à ce "
 "que vous cliquiez sur 'Décision Finale'.\n"
-"Une fois que c'est fair, vous serez en mesure de voir les paris des autres "
+"Une fois que c'est fait, vous serez en mesure de voir les paris des autres "
 "joueurs, mais cela ne signifie pas qu'ils ont également cliqué sur «Décision "
 "Finale», par ex. les autres joueurs pourraient être en mesure de modifier "
 "leurs paris respectifs.\n"
@@ -1285,7 +1285,7 @@ msgid ""
 "friends using chat/mail/SMS, so they too can join your new crew"
 msgstr ""
 "L'équipe a été créé avec succès. Vous pouvez maintenant envoyer le code "
-"d'invitation \"%s\" à vos amis en utilisant le chat/mail/SMS, afin qu'ils "
+"d'invitation «%s» à vos amis en utilisant le chat/mail/SMS, afin qu'ils "
 "puissent rejoindre votre nouvelle équipe"
 
 #: nmkapp/views.py:307
@@ -1312,7 +1312,7 @@ msgstr ""
 #: nmkapp/views.py:444
 #, python-format
 msgid "Successfully left a crew \"%s\""
-msgstr "A quitté le groupe \"%s\" avec succès"
+msgstr "A quitté le groupe «%s» avec succès"
 
 #: nmkapp/views.py:459
 msgid ""
@@ -1324,27 +1324,27 @@ msgstr ""
 #: nmkapp/views.py:469
 #, python-format
 msgid "Crew \"%s\" deleted"
-msgstr "Équipe \"%s\" supprimée"
+msgstr "Équipe «%s» supprimée"
 
 #: nmkapp/views.py:559
 #, python-format
 msgid "Round \"%s\" set as active"
-msgstr "Tour \"%s\" défini comme actif"
+msgstr "Tour «%s» défini comme actif"
 
 #: nmkapp/views.py:571
 #, python-format
 msgid "[sharkz.bet] New round \"%s\" available"
-msgstr "[sharkz.bet] Nouveau tour \"%s\" disponible"
+msgstr "[sharkz.bet] Nouveau tour «%s» disponible"
 
 #: nmkapp/views.py:582
 #, python-format
 msgid "Round \"%s\" set as inactive"
-msgstr "Tour \"%s\" défini comme inactif"
+msgstr "Tour «%s» défini comme inactif"
 
 #: nmkapp/views.py:609
 #, python-format
 msgid "New round \"%s\" created successfully"
-msgstr "Nouveau tour \"%s\" créé avec succès"
+msgstr "Nouveau tour «%s» créé avec succès"
 
 #: nmkapp/views.py:630
 msgid "Match successfully added"
@@ -1357,4 +1357,4 @@ msgstr "Résultat ajouté avec succès"
 #: nmkapp/views.py:689
 #, python-format
 msgid "[sharkz.bet] All results from round \"%s\" received"
-msgstr "[sharkz.bet] Tous les résultats du tour \"%s\" reçus"
+msgstr "[sharkz.bet] Tous les résultats du tour «%s» reçus"
