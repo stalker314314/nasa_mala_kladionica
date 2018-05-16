@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-15 09:49+0000\n"
-"PO-Revision-Date: 2018-05-15 11:58+0200\n"
+"PO-Revision-Date: 2018-05-16 10:52+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sr\n"
@@ -1154,7 +1154,7 @@ msgstr "Changer le mot de passe pour l'utilisateur <b>%(email)s</b>"
 
 #: nmkapp/templates/results.html:9
 msgid "Select a part"
-msgstr "Sélectionnez une partie"
+msgstr "Sélectionnez une catégorie"
 
 #: nmkapp/templates/results.html:14
 msgid "League part"
