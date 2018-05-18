@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-15 09:49+0000\n"
-"PO-Revision-Date: 2018-05-16 10:52+0200\n"
+"POT-Creation-Date: 2018-05-18 12:31+0000\n"
+"PO-Revision-Date: 2018-05-18 14:34+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sr\n"
@@ -625,6 +625,10 @@ msgstr ""
 msgid "Save"
 msgstr "Sauvegarder"
 
+#: nmkapp/templates/home.html:74 nmkapp/templates/results_league.html:43
+msgid "Round"
+msgstr "Tour"
+
 #: nmkapp/templates/home.html:75
 msgid "remaining bet time:"
 msgstr "temps de pari restant:"
@@ -1181,9 +1185,8 @@ msgid "League results"
 msgstr "Résultats de la Ligue"
 
 #: nmkapp/templates/results_league.html:8
-#, python-format
-msgid "Group %(group.label)s"
-msgstr "Groupe %(group.label)s"
+msgid "Group"
+msgstr "Groupe"
 
 #: nmkapp/templates/results_league.html:15
 msgid "Team"
@@ -1204,10 +1207,6 @@ msgstr "Match nul"
 #: nmkapp/templates/results_league.html:19
 msgid "Lost"
 msgstr "Perdu"
-
-#: nmkapp/templates/results_league.html:43
-msgid "Round"
-msgstr "Tour"
 
 #: nmkapp/templates/roundstandings.html:44 nmkapp/templates/standings.html:17
 msgid "Choose a crew"
@@ -1358,3 +1357,6 @@ msgstr "Résultat ajouté avec succès"
 #, python-format
 msgid "[sharkz.bet] All results from round \"%s\" received"
 msgstr "[sharkz.bet] Tous les résultats du tour «%s» reçus"
+
+#~ msgid "Group %(group.label)s"
+#~ msgstr "Groupe %(group.label)s"

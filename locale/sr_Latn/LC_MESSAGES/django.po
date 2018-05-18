@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-14 22:10+0000\n"
-"PO-Revision-Date: 2018-05-15 00:02+0200\n"
+"POT-Creation-Date: 2018-05-18 12:31+0000\n"
+"PO-Revision-Date: 2018-05-18 14:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sr\n"
@@ -613,6 +613,10 @@ msgstr ""
 msgid "Save"
 msgstr "Sačuvaj"
 
+#: nmkapp/templates/home.html:74 nmkapp/templates/results_league.html:43
+msgid "Round"
+msgstr "Kolo"
+
 #: nmkapp/templates/home.html:75
 msgid "remaining bet time:"
 msgstr "preostalo vreme za klađenje:"
@@ -1137,9 +1141,8 @@ msgid "League results"
 msgstr "Rezultati u ligaškom delu"
 
 #: nmkapp/templates/results_league.html:8
-#, python-format
-msgid "Group %(group.label)s"
-msgstr "Grupa %(group.label)s"
+msgid "Group"
+msgstr "Grupa"
 
 #: nmkapp/templates/results_league.html:15
 msgid "Team"
@@ -1160,10 +1163,6 @@ msgstr "Nerešenih"
 #: nmkapp/templates/results_league.html:19
 msgid "Lost"
 msgstr "Izgubljenih"
-
-#: nmkapp/templates/results_league.html:43
-msgid "Round"
-msgstr "Kolo"
 
 #: nmkapp/templates/roundstandings.html:44 nmkapp/templates/standings.html:17
 msgid "Choose a crew"
@@ -1310,3 +1309,6 @@ msgstr "Rezultat uspešno unesen"
 #, python-format
 msgid "[sharkz.bet] All results from round \"%s\" received"
 msgstr "[sharkz.bet] Uneseni svi rezultati iz kola „%s“"
+
+#~ msgid "Group %(group.label)s"
+#~ msgstr "Grupa %(group.label)s"
