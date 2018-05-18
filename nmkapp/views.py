@@ -616,7 +616,7 @@ def admin_rounds_edit(request):
 
 @staff_member_required
 def admin_matches(request):
-    matches = Match.objects.order_by('round__id', 'start_time')
+    matches = Match.objects.select_related('home_team', 'away_team', 'round').order_by('round__id', 'start_time')
     return render(request, 'admin_matches.html', {'matches': matches})
 
 
@@ -637,7 +637,7 @@ def admin_matches_edit(request):
 
 @staff_member_required
 def admin_results(request):
-    matches = Match.objects.all()
+    matches = Match.objects.select_related('home_team', 'away_team', 'round').all()
     return render(request, 'admin_results.html', {'matches': matches})
 
 
