@@ -1,0 +1,940 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Montserrat|Oleo+Script');
+
+@font-face {
+	font-family: 'flatpack';
+	src:url('../fonts/flatpack.eot?tzy7cr');
+	src:url('../fonts/flatpack.eot?#iefixtzy7cr') format('embedded-opentype'),
+		url('../fonts/flatpack.woff?tzy7cr') format('woff'),
+		url('../fonts/flatpack.ttf?tzy7cr') format('truetype'),
+		url('../fonts/flatpack.svg?tzy7cr#flatpack') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.pi, i {
+	font-family: 'flatpack' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.pixicon-head:before {
+	content: "\e074";
+}
+
+.pixicon-trophy::before {
+  content: "\e05f";
+}
+
+.pixicon-star:before {
+	content: "\e093";
+}
+
+.pixicon-banknote:before {
+	content: "\e620";
+}
+
+:root {
+
+  --color-accent: #7fa8b2;
+  --color-font-light: #b9c6c9;
+  --color-font-dark: #333;
+  --color-title-light: ;
+  --color-title-dark: ;
+  --color-bg-light: ;
+  --color-bg-dark: #02192e;
+  --color-selected-head: #2C7F6B;
+	--color-inactive-head: #e3e3e3;
+  --color-selected-body: #7BBFAF;
+	--color-inactive-body: #f2f2f2;
+  --color-selected-border: #176a56;
+	--color-inactive-border: #ccc;
+
+	--font-family: Montserrat, sans-serif;
+	--font-size: 16px;
+
+
+	/* ~~~~~~~~~~ WELCOME ~~~~~~~~~~ */
+	--welcome-width: calc(100vw - 5px);
+	--welcome-height: 100vh;
+
+	--welcome-logo-width: 450px;
+	--welcome-logo-height: 180px;
+
+	--welcome-text-width: 750px;
+
+	--welcome-background: url('../img/football-field-bg5.jpg');
+
+	--soc-ico-width: 20px;
+
+	--register-width: 70px;
+	--register-height: 30px;
+
+	/* ~~~~~~~~~~ INFO ~~~~~~~~~~ */
+	--info-height: 500px;
+	--info-width: calc(100vw - 5px);
+
+	--info-content-width: 1000px;
+
+	--info-item-height: 85%;
+	--info-item-width: 95%;
+
+	/* ~~~~~~~~~~ PLANS ~~~~~~~~~~ */
+	--plans-height: 700px;
+	--plans-padding-top: 70px;
+
+	--plans-wrapper-width: 1000px;
+	--plans-wrapper-height: 500px;
+
+	--plans-item-width: 300px;
+	--plans-item-height: 420px;
+
+	--plans-body-padding: 40px;
+
+	--register-btn-width: 150px;
+	--register-btn-height: 40px;
+
+	/* ~~~~~~~~~~ FOOTER ~~~~~~~~~~ */
+	--footer-height: 350px;
+
+	--footer-padding-vertical: 40px;
+
+	--footer-wrapper-width: 960px;
+	--footer-wrapper-height: 100%;
+}
+
+::-webkit-scrollbar
+{
+	position: absolute;
+  width: 5px;  /* for vertical scrollbars */
+  height: 5px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: rgba(0, 0, 0, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a:link,
+a:visited,
+a:active {
+	color: white
+}
+
+html,
+body {
+  width: 100%; height: 100%;
+  margin: 0;
+  padding: 0;
+  /* overflow-x: hidden; */
+  font: var( --font-size ) var( --font-family );
+}
+
+#welcome {
+  position: relative;
+  width: var( --welcome-width ); height: var( --welcome-height );
+
+	display: flex;
+  justify-content: center;
+  align-items: center;
+
+	color: var( --color-font-light );
+}
+
+#social {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 99;
+}
+
+
+#register {
+	position: absolute;
+	top: 10px; right: 30px;
+	width: var( --register-width ); height: var( --register-height );
+	z-index: 99;
+
+	cursor: pointer;
+	background: var( --color-accent );
+	border-radius: 3px;
+
+	display: flex;/* TODO: Make a flex-centered class */
+  justify-content: center;
+  align-items: center;
+
+	font-weight: bold;
+  font-size: .8em;
+  color: var( --color-font-dark );
+}
+
+#content-wrapper {
+  width: 100%; height: 80%;
+	z-index: 99;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#welcome-logo {
+  position: absolute;
+	top: 50px;
+  width: var( --welcome-logo-width ); height: var( --welcome-logo-height );
+
+	display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+#welcome-logo img {
+	margin: auto;
+}
+
+#welcome-logo h1 {
+  align-self: center;
+  font-size: 3em;
+}
+
+#logo-subtitle {
+	width: var(--welcome-logo-width);
+	font: 1.7em 'Oleo Script';
+	font-weight: 500;
+	letter-spacing: .02em;
+	text-align: center;
+	color: var(--color-accent);
+}
+
+#welcome-text {
+  width: var( --welcome-text-width );
+  text-align: center;
+  line-height: 1.8;
+  font-size: 1.1em;
+}
+
+#welcome-text em {
+  text-decoration: underline;
+}
+
+#next-step-btn {
+  position: absolute;
+  bottom: 20px;
+  z-index: 99;
+
+	cursor: pointer;
+
+	font-size: 1.4em;
+	font-weight: bold;
+  text-align: center;
+
+	transition: bottom .2s linear,
+							font-size .2s linear,
+							color .2s linear;
+}
+
+#next-step-btn:hover {
+	/* font-size: 1.42em; */
+	bottom: 15px;
+	color: var(--color-accent);
+}
+
+#next-step-btn .fa {
+	width: 100%;
+  font-size: 2em;
+  text-align: center;
+}
+
+#welcome-bg {
+	position: absolute;
+  height: 100%; width: 100%;
+
+	background: var( --welcome-background ) no-repeat center center fixed;
+  background-size: cover;
+}
+
+#welcome-shade {
+	position: absolute;
+  width: 100%; height: 100%;
+	z-index: 1;
+
+	background: black;
+  opacity: .6;
+}
+
+#info {
+	position: relative;
+	height: var( --info-height );
+	width: var( --info-width );
+
+	background: var( --color-bg-dark );
+}
+
+#info::after {
+	position: absolute;
+	bottom: -28px; left: calc(50% - 30px);
+	content: "";
+
+  border-color: var( --color-bg-dark ) transparent transparent transparent;
+  border-style: solid;
+  border-width: 30px 30px 0px 30px;
+
+}
+
+#info-wrapper {
+  width: var( --info-content-width ); height: 100%;
+  padding: calc(var(--info-height) / 10) 0;
+  margin: auto;
+
+	display: grid;
+  grid-template-columns: repeat(2, calc(var(--info-content-width)/2));
+	/*rows calc formula:  height - paddings / 2 */
+  grid-template-rows: repeat(2, calc((var(--info-height)-(var(--info-height)/10))/2));
+
+	font-size: .85em;
+  color: var( --color-accent );
+
+}
+
+/* TODO: Not satisfied with text-to-icon alginment */
+.info-item {
+  width: var( --info-item-width ); height: var( --info-item-height );
+
+	display: grid;
+  grid-template-columns: 2fr 8fr;
+  grid-template-rows: 2fr 8f;
+
+	text-align: right;
+}
+
+.item-head {
+  align-self: center;
+  text-align: center;
+}
+
+.info-heading {
+  font-size: 1.1em;
+}
+
+.item-head .pi {
+  font-size: 3em;
+}
+
+.item-body {
+  width: 90%;
+  margin: auto;
+  line-height: 1.4;
+  text-align: left;
+}
+
+#plans {
+  height: var( --plans-height );
+  padding-top: var( --plans-padding-top );
+}
+
+#plans-intro {
+  font-size: 2em;
+  text-align: center;
+}
+
+#intro-disclaimer {
+  font-size: .6em;
+  opacity: 0;
+  transition: opacity .4s linear;
+}
+
+h1 {
+  margin: 0;
+}
+
+
+#plans-wrapper {
+  position: relative;
+  width: var( --plans-wrapper-width ); height: var( --plans-wrapper-height );
+  margin: auto;
+
+	display: grid;
+	grid-template-columns: repeat(3, var( --plans-item-width ));
+  justify-content: space-around;
+  align-items: center;
+}
+
+#free,
+#regular,
+#jumbo {
+	opacity: 1;
+	transition: opacity .3s ease-in;
+}
+
+.plans-item {
+  margin-top: 1px;
+  width: var( --plans-item-width ); height: var( --plans-item-height );
+
+	border-radius: 3px;
+	cursor: pointer;
+
+	display: grid;
+  grid-template-rows: 25% 55% 20%;
+
+	text-align: center;
+}
+
+.plans-head {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom: 1px solid var( --color-inactive-border );
+  border-right: 1px solid var( --color-inactive-border );
+  padding: 0 10px;
+  background: var( --color-inactive-head );
+  color: grey;
+  transition: color .1s linear,
+              background .1s linear,
+              border .1s linear;
+}
+
+.plan-title {
+	margin-bottom: 3px;
+	margin-top: 20px;
+
+	font-weight: bold;
+	font-size: 2em;
+	transition: color .1s linear,
+	background .1s linear,
+	border .1s linear;
+}
+
+.plan-subtitle {
+	margin-bottom: 20px;
+	margin-top: 3px;
+
+	font-weight: lighter;
+	font-size: 1em;
+}
+
+.plans-body {
+  position: relative;
+  padding: 0 var( --plans-body-padding );
+
+	border-right: 1px solid var( --color-inactive-border );
+  background: var( --color-inactive-body );
+
+	font-size: .9em;
+  color: #444; /* TODO: font vars */
+  transition: color .1s linear,
+              background .1s linear,
+              border .1s linear;
+}
+
+.plans-body p {
+	margin: 25px 0;
+}
+
+.price-desk {
+	position: absolute;
+	bottom: 15px;
+	width: calc( 100% - 2*var( --plans-body-padding ));
+	margin: 0;
+
+	justify-content: center;
+}
+
+.price-mob {
+	display: none;
+}
+
+.plans-foot {
+	border-bottom: 1px solid var( --color-inactive-border );
+	border-right: 1px solid var( --color-inactive-border );
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+
+	background: var( --color-inactive-head );
+	color: grey;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.register-btn {
+  width: var( --register-btn-width ); height: var( --register-btn-height );
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	background: grey;
+	border: none;
+	border-radius: 3px;
+  cursor: pointer;
+
+	font: 1.2em Montserrat, sans-serif;
+  letter-spacing: .05em;
+  color: white;
+  transition: background .2s linear;
+}
+
+.reg-btn-mob {
+	display: none;
+}
+
+/* .hack {
+  position: absolute;
+  visibility: hidden;
+} */
+
+.plans-item:hover > .plans-head,
+.plans-item:hover > .plans-foot {
+  background: var( --color-selected-head );
+  border-bottom: 1px solid var( --color-selected-border );
+  border-right: 1px solid var( --color-selected-border );
+  color: white;
+  transition: background .3s linear,
+              border .3s linear;
+}
+
+.plans-item:hover > .plans-body {
+  background: var( --color-selected-body );
+  /* border-bottom: 1px solid var( --color-selected-border ); */
+  border-right: 1px solid var( --color-selected-border );
+  transition: background .3s linear,
+              border .3s linear;
+}
+
+.plans-item:hover .register-btn {
+	background: var( --color-selected-body );
+}
+
+#grass-wrapper {
+	position: relative;
+	height: 110px;
+}
+
+#grass {
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+	background: url("../img/grass.png");
+	background-size: contain;
+}
+
+#grass-wrapper img {
+	position: absolute;
+	right: 50px;
+	bottom: 5px;
+	height: 100px;
+	z-index: -1;
+}
+
+footer {
+  height: var( --footer-height );
+  padding: var( --footer-padding-vertical ) 0;
+  background: var( --color-bg-dark );
+
+	font-size: .75em;
+  color: var( --color-font-light );
+}
+
+#footer-wrapper {
+  width: var( --footer-wrapper-width ); height: var( --footer-wrapper-height );
+  margin: auto;
+
+	display: grid;
+  grid-template-columns: 5fr 3fr 3fr;
+}
+
+footer h1 {
+  color: #ccc;
+}
+
+footer h2 {
+  color: #aaa;
+}
+
+footer section {
+  width: 90%; height: 80%;
+  margin: auto;
+  padding: 10px 30px;
+  border-right: 1px solid #ffffff22;
+  text-align: left;
+}
+
+#player-stats {
+
+}
+
+#copyrights-desk,
+#copyrights-mob {
+  border-top: 1px dashed #999;
+  border-bottom: 1px dashed #999;
+  padding: 20px 0;
+  margin-top: 20px;
+}
+
+#copyrights-mob {
+	display: none;
+}
+
+#cpr-logo {
+  width: 40px; height: 40px;
+}
+
+#cpr-text {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 20px;
+  text-align: right;
+}
+
+#footer-nav{
+  list-style-type: none;
+  padding-left: 15px;
+}
+
+#footer-nav li {
+  margin: 5px 0;
+}
+
+#footer-nav a{
+  text-decoration: none;
+}
+
+#footer-nav a:hover {
+  font-weight: bold;
+}
+
+#footer-social {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-around;
+}
+
+.footer-soc-item {
+  float: left;
+  font-size: 1.3em;
+}
+
+#footer-contact {
+  margin-top: 50px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.title-small {
+  font-size: 1.2em;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  text-align: center;
+}
+
+footer section:last-child {
+  border-right: none;
+}
+
+@media only screen
+  and ( min-width: 1400px ) {
+  :root {
+    --font-size: 18px;
+
+		--welcome-text-width: 850px;
+		--welcome-logo-width: 500px;
+
+		--info-height: 600px;
+
+		--info-content-width: 1200px;
+
+		--plans-height: 850px;
+		--plans-padding-top: 100px;
+
+		--plans-wrapper-width: 1200px;
+		--plans-wrapper-height: 600px;
+
+		--plans-item-height: 500px;
+  }
+}
+
+@media only screen
+	and ( max-width: 1150px ) {
+	:root {
+
+		--plans-height: 1000px;
+
+		--plans-wrapper-width: 100%;
+		--plans-wrapper-height: 900px;
+
+		--plans-item-width: 90%;
+		--plans-item-height: 200px;
+
+		--register-btn-height: 80px;
+		--register-btn-width: 80px;
+	}
+
+	#plans-wrapper {
+		margin-top: 100px;
+		grid-template-columns: 1fr var( --plans-item-width ) 1fr;
+		grid-template-rows: repeat(3, var( --plans-item-height ));
+		grid-row-gap: 20px;
+	}
+
+	.plans-body {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+	}
+
+	.plans-body p {
+		height: 1em;
+		margin: 0;
+		margin-top: calc( (var( --plans-item-height )/4) - 1em);
+	}
+
+	.plans-item {
+		grid-column: 2/3;
+		grid-template-columns: 25% 55% 20%;
+		grid-template-rows: 1fr;
+
+		margin: 0 5%;
+	}
+
+	.plans-foot {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.register-btn{
+		margin-top: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.reg-btn-mob {
+		display: inline;
+		font-size: 2.2em;
+	}
+
+	.reg-btn-desk {
+		display: none;
+	}
+
+	.price-desk {
+		display: none;
+	}
+
+	.price-mob {
+		display: block;
+			width: calc( 100%  ));
+	}
+
+	.plan-title {
+		margin-top: 50px;
+	}
+}
+
+@media only screen
+	and ( max-width: 1056px ) {
+	:root {
+
+		--info-height: 650px;
+		--info-width: auto;
+
+		--info-content-width: calc(100vw-5px);
+
+		--info-item-height: 150px;
+		--info-item-width: 100%;
+
+		--footer-wrapper-width: 90vw;
+	}
+
+	#info-wrapper {
+		grid-template-columns: 1fr 80% 1fr;
+		grid-template-rows: repeat(4, var(--info-item-height));
+		/* justify-content: center; */
+
+		padding: 20px;
+	}
+
+	.info-item{
+		grid-column: 2/3;
+	}
+}
+
+@media only screen
+	and ( max-width: 870px ) {
+	:root {
+			--welcome-text-width: 400px;
+
+			--footer-height: 750px;
+			--footer-padding-vertical: 0;
+
+	}
+
+	#welcome-text {
+		text-align: justify;
+	}
+
+	#next-step-btn {
+		bottom: 80px;
+	}
+
+	#next-step-btn:hover {
+		bottom: 80px;
+	}
+
+	#footer-wrapper {
+		grid-template-columns: 1fr 90% 1fr;
+		/* width: auto; */
+		grid-template-rows: 120px 270px 220px;
+		grid-row-gap: 25px;
+		padding: 50px 0;
+	}
+
+	footer section {
+		height: 100%;
+		padding: 0;
+		grid-column: 2/3;
+		border: none;
+		border-bottom: 1px dashed #ccc;
+		font-size: 1.3em;
+		text-align: center;
+		padding-bottom: 25px;
+	}
+
+	footer section:last-child {
+		border: none;
+	}
+
+	#player-stats {
+		line-height: 2;
+	}
+
+	#copyrights-desk {
+		display: none;
+	}
+
+	#copyrights-mob {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0;
+		border: none;
+	}
+
+	#cpr-text {
+		font-size: .85em;
+	}
+
+	#footer-nav {
+		padding-left: 0;
+	}
+
+	#footer-nav li {
+		line-height: 2;
+	}
+
+	#footer-social {
+		padding: 0 50px;
+	}
+
+
+}
+
+@media only screen
+	and ( max-width: 870px ) {
+	:root {
+		--welcome-width: 100vw;
+
+		--welcome-logo-width: 350px;
+
+		--welcome-text-width:;
+
+		--plans-height: 700px;
+
+		--plans-item-height: 150px;
+
+		--register-btn-width: 50px;
+		--register-btn-height: 50px;
+	}
+
+	#register {
+		right: 10px;
+	}
+
+	#content-wrapper {
+		margin-top: 50px;
+	}
+
+	#welcome-logo {
+		top: 60px;
+		font-size: .8em;
+	}
+
+	#welcome-text {
+		padding: 0 20px;
+		font-size: .95em;
+	}
+
+	#next-step-btn {
+		bottom: 60px;
+	}
+
+	#info-wrapper {
+		grid-template-columns: 1fr 90% 1fr;
+		padding: 20px 0;
+	}
+
+	#plans-wrapper {
+		margin-top: 50px;
+	}
+
+	#plans-intro h1 {
+		font-size: .85em;
+	}
+
+	#intro-disclaimer{
+		font-size: .45em;
+	}
+
+	.plan-title {
+		font-size: 1.2em;
+		margin-top: 20px;
+	}
+
+	.plan-subtitle {
+		font-size: .8em;
+		margin-bottom: 10px;
+	}
+
+	.plans-body {
+		padding: 15px 0;
+		font-size: .7em;
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(4, 1fr);
+	}
+
+	.plans-body p {
+		margin: 0px 0;
+		margin-top: 10px;
+	}
+
+	.reg-btn-mob {
+		font-size: 1.5em;
+	}
+
+}

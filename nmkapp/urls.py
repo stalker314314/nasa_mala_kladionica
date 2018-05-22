@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^privacy$', views.privacy),
     url(r'^terms$', views.terms),
     url(r'^paypal$', views.paypal),
+    url(r'^landing$', views.landing),
     url(r'^admin/rounds$', views.admin_rounds),
     url(r'^admin/rounds/edit$', views.admin_rounds_edit),
     url(r'^admin/matches$', views.admin_matches),
