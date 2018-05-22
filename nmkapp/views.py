@@ -342,6 +342,10 @@ def paypal(request):
     return render(request, 'paypal.html', {'success': success})
 
 
+def landing(request):
+    return render(request, 'landing.html')
+
+
 @login_required
 def results_league(request):
     groups = []

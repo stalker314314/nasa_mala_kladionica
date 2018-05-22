@@ -1,0 +1,229 @@
+{% load i18n %}
+{% load staticfiles %}
+{% load nmk_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link
+  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+  rel="stylesheet"  type='text/css'>
+  <link rel="stylesheet" href="{% static "landing/css/master.css" %}">
+  <title>Welcome | Sharkz.bet</title>
+</head>
+<body>
+  <main>
+    <section id="welcome">
+      <div id="social">
+        <div class="soc-item fa fa-google-plus">
+        </div>
+        <div class="soc-item fa fa-twitter">
+        </div>
+      </div>
+      <div id="register">{% trans "Register" %}</div>
+      <div id="content-wrapper">
+        <div id="welcome-logo">
+          <img src="{% static "landing/img/logo80w.png" %}" alt="">
+          <h1 id="logo-title">sharkz.bet</h1>
+          <h3 id="logo-subtitle">Bet against your friends and win money!</h3>
+        </div>
+        <div id="welcome-text">
+           <strong>Sharkz.bet </strong> is a unique pool-betting platform, designed specificaly for <em> World Cup 2018</em>.
+           Everyone place same stake before World Cup 2018 starts.
+           You then bet on final score only, but points you get are based on odds!
+           We are capping number of player to just 100, so hurry up to register below!
+           With only 100 players and with first 3 places to take prizes, it should be easy to take the money, right?
+           Well, it just might be, but watch out for other sharks in this pool!
+        </div>
+      </div>
+      <div id="welcome-bg"></div>
+      <div id="welcome-shade"></div>
+      <div id="next-step-btn">
+        Find Out More!
+        <div class="fa fa-chevron-down">
+        </div>
+      </div>
+    </section>
+    <section id="info">
+      <div id="info-wrapper">
+        <div class="info-item">
+          <div class="item-head">
+            <div class="pi pixicon-star"></div>
+            <h2 class="info-heading">Free To Play</h2>
+          </div>
+          <div class="item-body">
+            While the entry fee might be relatively low (10€ ), we think it should
+            never be requirement to have fun. When you register on sharkz.bet,
+            we don't ask for credit card and there is absolutely no strings attached.
+            Decide later to play in real money if you want to (but before World Cup 2018 starts!).
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="item-head">
+            <div class="pi pixicon-banknote"></div>
+            <h2 class="info-heading">Real Chances To Win</h2>
+          </div>
+          <div class="item-body">
+            Compared to other pool bet web sites with thousands of people and with millions in prizes,
+            this is place where your chances to get money are very, very real.
+            There is only 100 players and first 3 places are taking the money.
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="item-head">
+            <div class="pi pixicon-head"></div>
+            <h2 class="info-heading">Compete Against Friends</h2>
+          </div>
+          <div class="item-body">
+            Betting is always more fun with friends. You don't have to watch other
+            players at standings — invite your crew and compete among you guys only!
+            With sharkz.bet, you are reaching new levels of friendly ball busting.
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="item-head">
+            <div class="pi pixicon-trophy"></div>
+            <h2 class="info-heading">Enjoy Every Match</h2>
+          </div>
+          <div class="item-body">
+            With a sharkz.bet's pleasant environment and players, and with a little
+            bit of stake involved, every match will be nerve wrecking one!
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="plans">
+      <div id="plans-intro">
+        <h1>Pick the fun level</h1>
+        <div id="intro-disclaimer">
+          You can always change your preference later
+        </div>
+      </div>
+      <div id="plans-wrapper">
+        <div id="free" class="plans-item">
+          <!-- <input class="hack" id="free-chk" type="radio" name="plan" value=""> -->
+          <div id="free-head" class="plans-head">
+            <h1 class="plan-title">Free</h1>
+            <h3 class="plan-subtitle">Only Pride at Stake</h3>
+            <h2 class="price-mob">0€</h2>
+          </div>
+          <div id="free-body" class="plans-body">
+            <p>Unlimited Number of People</p>
+            <p>Invite friends</p>
+            <p>Enjoy World Cup for free</p>
+            <p>Compare betting skills</p>
+            <h2 class="price-desk">0€</h2>
+          </div>
+          <div class="plans-foot">
+            <div class="register-btn">
+              <span class="reg-btn-desk">REGISTER</span>
+              <span class="reg-btn-mob fa fa-sign-in"></span>
+            </div>
+          </div>
+        </div>
+        <div id="regular" class="plans-item">
+          <!-- <input class="hack" id="regular-chk" type="radio" name="plan" value="" checked> -->
+          <div id="regular-head" class="plans-head">
+            <h1 class="plan-title">Regular</h1>
+            <h3 class="plan-subtitle">Just For Fun</h3>
+            <h2 class="price-mob">10€</h2>
+          </div>
+          <div id="regular-body" class="plans-body">
+            <p>100 Players Max</p>
+            <p>Up to 900€ Prize Money</p>
+            <p>Invite Friends</p>
+            <p>Watch Football with Real Thrill</p>
+            <h2 class="price-desk">10€</h2>
+          </div>
+            <div class="plans-foot">
+              <div class="register-btn" >
+                <span class="reg-btn-desk">REGISTER</span>
+                <span class="reg-btn-mob fa fa-sign-in"></span>
+              </div>
+            </div>
+        </div>
+        <div id="jumbo" class="plans-item">
+          <!-- <input class="hack" id="jumbo-chk" type="radio" name="plan" value=""> -->
+          <div id="jumbo-head" class="plans-head">
+            <h1 class="plan-title">Jumbo</h1>
+            <h3 class="plan-subtitle">Coming Soon</h3>
+            <h2 class="price-mob">20€</h2>
+          </div>
+          <div id="jumbo-body" class="plans-body">
+            <p>200 Players Max</p>
+            <p>3800€ Prize Pool</p>
+            <p>Private Pools</p>
+            <p>Custom Betting Games</p>
+            <h2 class="price-desk">20€</h2>
+          </div>
+            <div class="plans-foot">
+              <div class="register-btn">
+                <span class="reg-btn-desk">REGISTER</span>
+                <span class="reg-btn-mob fa fa-sign-in"></span>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="grass-wrapper">
+    <img src="{% static "landing/img/telstar-ball.webp" %}" alt="">
+    <div id="grass"></div>
+  </div>
+  <footer>
+    <div id="footer-wrapper">
+      <section>
+        <div id="player-stats">
+            {% trans "Number of registered players" %}: {{ ctx_stats.player_count }} <br>
+            {% trans "real money players" %}: {{ ctx_stats.player_money_count }} <br>
+            {% trans "Prize money" %}:
+            1. {{ ctx_stats.reward_money.1 }}€, 2. {{ ctx_stats.reward_money.2 }}€, 3. {{ ctx_stats.reward_money.3 }}€
+        </div>
+        <div id="copyrights-desk">
+          <img id="cpr-logo" src="{% static "landing/img/logo80w.png" %}" alt="sharkz.bet logo">
+          <span id="cpr-text">{% blocktrans %}©2018 sharkz.bet, All rights reserved{% endblocktrans %}</span>
+        </div>
+      </section>
+      <section>
+        <span class="title-small">sharkz.bet</span>
+        <ul id="footer-nav">
+          <li><a href="#">{% trans "Login" %}</a></li>
+          <li><a href="#">{% trans "About us" %}</a></li>
+          <li><a href="#">{% trans "Contact" %}</a></li>
+          <li><a href="#">{% trans "Propositions" %}</a></li>
+          <li><a href="#">{% trans "Terms & Condition" %}</a></li>
+          <li><a href="#">{% trans "Privacy Policy" %}</a></li>
+        </ul>
+      </section>
+      <section>
+        <div class="title-small">{% trans "Follow Us" %}</div>
+        <div id="footer-social">
+          <span class="footer-soc-item fa fa-google-plus">
+          </span>
+          <span class="footer-soc-item fa fa-facebook">
+          </span>
+          <span class="footer-soc-item fa fa-twitter">
+          </span>
+        </div>
+        <div id="footer-contact">
+          Send feedback to:<br> support@sharkz.bet
+        </div>
+        <div id="copyrights-mob">
+          <img id="cpr-logo" src="{% static "landing/img/logo80w.png" %}" alt="sharkz.bet logo">
+          <span id="cpr-text">©2018 sharkz.bet, All rights reserved</span>
+        </div>
+      </section>
+    </div>
+  </footer>
+  <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous">
+  </script>
+  <script type="text/javascript" src="{% static "landing/js/script.js" %}">
+  </script>
+</body>
+</html>
