@@ -938,3 +938,20 @@ footer section:last-child {
 	}
 
 }
+
+
+@media only screen
+	and ( max-width: 450px ) {
+	:root {
+		--font-size: 14px;
+	}
+
+	.plan-title {
+		font-size: 1.05em;
+		margin-top: 30px;
+	}
+
+	.plan-subtitle {
+		font-size: .75em;
+	}
+}
