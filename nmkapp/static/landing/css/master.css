@@ -70,7 +70,7 @@
 
 	--welcome-text-width: 750px;
 
-	--welcome-background: url('../img/football-field-bg5.jpg');
+	--welcome-background: url('../img/football-field-bg6.jpg');
 
 	--soc-ico-width: 20px;
 
@@ -943,7 +943,15 @@ footer section:last-child {
 @media only screen
 	and ( max-width: 450px ) {
 	:root {
-		--font-size: 14px;
+		--font-size: 12px;
+
+		--welcome-logo-width: 260px;
+		--welcome-logo-height: 130px;
+	}
+
+	#logo-subtitle {
+		margin-top: 0;
+		font-size: 1.6em;
 	}
 
 	.plan-title {
