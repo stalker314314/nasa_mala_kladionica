@@ -14,7 +14,7 @@
     {% endfor %}
 {% endif %}
 
-<h1>Administracija rezultata</h1>
+<h1 class="content-header">Administracija rezultata</h1>
 
 <table class="sortable">
 	<thead>
@@ -40,7 +40,7 @@
 			<td>
 			{% if match.score %}
 			Rezultat je postavljen
-			{% else %}	
+			{% else %}
 			<a href="/admin/results/change/{{ match.id }}" >
 				<img width="16px" height="16px" border="0" alt="[Izmeni]" src="/static/img/edit.png">
 			</a>
