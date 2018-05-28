@@ -382,16 +382,17 @@ h1 {
 }
 
 .plans-item {
-  margin-top: 1px;
-  width: var( --plans-item-width ); height: var( --plans-item-height );
+    margin-top: 1px;
+    width: var( --plans-item-width ); height: var( --plans-item-height );
 
-	border-radius: 3px;
-	cursor: pointer;
+    border-radius: 3px;
+    cursor: pointer;
 
-	display: grid;
-  grid-template-rows: 25% 55% 20%;
+    display: grid;
+    grid-template-rows: 25% 55% 20%;
 
-	text-align: center;
+    text-align: center;
+    text-decoration: none;
 }
 
 .plans-head {
