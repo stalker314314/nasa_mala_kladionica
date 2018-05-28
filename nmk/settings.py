@@ -72,7 +72,7 @@ DATABASES = {
         'NAME': 'nmk',
         'HOST': 'localhost',
         'USER': 'postgres',
-        'PASSWORD': ''
+        'PASSWORD': 'postgres'
     }
 }
 
