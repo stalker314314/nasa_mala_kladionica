@@ -5,7 +5,7 @@
 
 {% block content %}
 
-<h1>{% trans "Active rounds" %}</h1>
+<h1 class="content-header">{% trans "Active rounds" %}</h1>
 <br/>
 
 {% for bet in bets %}
@@ -71,12 +71,12 @@
 	<table class="mediumtable">
     	<tbody>
     		<tr>
-        		<td><h2>{% trans "Round" %}: {{ bet.round.name }}</h2></td>
+        		<td><h2 style="text-align:left;">{% trans "Round" %}: {{ bet.round.name }}</h2></td>
         		<td style="text-align: right;">({% trans "remaining bet time:" %} <span style="color: #FF0000;">{{ bet.time_left }}</span>)</td>
     		</tr>
 		</tbody>
 	</table>
-	
+
 	<br/>
 
 	{% if bet.form %}
@@ -88,7 +88,7 @@
             </button>
         </div>
 		{% endfor %}
-		
+
 		<form id="save_{{ bet.round.id }}" name="save_{{ bet.round.id }}" method="post" action="/">
 			{% csrf_token %}
 			<table class="mediumtable">
@@ -130,9 +130,9 @@
             </div>
         </form>
         <p></p>
-	
+
 	{% else %}
-	
+
 	<table class="mediumtable">
 		<thead>
 			<tr>
@@ -173,14 +173,16 @@
 			{% endfor %}
 		</tbody>
 	</table>
-	
+
 	{% if bet.round %}
 	<div class="offset">
 		<a href="/roundstandings/{{ bet.round.id }}">{% trans "Other players' bets" %}</a>
 	</div>
 	{% endif %}
-	
+
 	{% endif %}
+	<br/>
+	<br/>
 {% endfor %}
 
 {% endblock %}

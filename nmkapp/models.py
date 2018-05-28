@@ -22,8 +22,8 @@ class Player(models.Model):
     send_mail_reminder = models.BooleanField(default=True)
     send_mail_new_round = models.BooleanField(default=True)
     send_mail_results_available = models.BooleanField(default=True)
-    activation_code = models.CharField(max_length=255)
-    reset_code = models.CharField(max_length=255)
+    activation_code = models.CharField(max_length=255, blank=True)
+    reset_code = models.CharField(max_length=255, blank=True)
     language = models.CharField(max_length=255, blank=True, null=True, default='en')
     timezone = TimeZoneField(default='Europe/London')
     odd_format = models.IntegerField(choices=ODD_FORMAT, default=DECIMAL)
@@ -36,7 +36,7 @@ class Group(models.Model):
     name = models.CharField(unique=True, max_length=255)
     owner = models.ForeignKey(User, related_name='owner', on_delete=models.PROTECT)
     players = models.ManyToManyField(User, related_name='nmkgroup')
-    group_key = models.CharField(max_length=8)
+    group_key = models.CharField(max_length=8, blank=True)
     
     def __str__(self):
         return self.name

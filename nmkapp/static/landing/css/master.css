@@ -70,7 +70,7 @@
 
 	--welcome-text-width: 750px;
 
-	--welcome-background: url('../img/football-field-bg5.jpg');
+	--welcome-background: url('../img/football-field-bg6.jpg');
 
 	--soc-ico-width: 20px;
 
@@ -382,16 +382,17 @@ h1 {
 }
 
 .plans-item {
-  margin-top: 1px;
-  width: var( --plans-item-width ); height: var( --plans-item-height );
+    margin-top: 1px;
+    width: var( --plans-item-width ); height: var( --plans-item-height );
 
-	border-radius: 3px;
-	cursor: pointer;
+    border-radius: 3px;
+    cursor: pointer;
 
-	display: grid;
-  grid-template-rows: 25% 55% 20%;
+    display: grid;
+    grid-template-rows: 25% 55% 20%;
 
-	text-align: center;
+    text-align: center;
+    text-decoration: none;
 }
 
 .plans-head {
@@ -675,7 +676,7 @@ footer section:last-child {
 		--plans-height: 1000px;
 
 		--plans-wrapper-width: 100%;
-		--plans-wrapper-height: 900px;
+		--plans-wrapper-height: 650px;
 
 		--plans-item-width: 90%;
 		--plans-item-height: 200px;
@@ -937,4 +938,29 @@ footer section:last-child {
 		font-size: 1.5em;
 	}
 
+}
+
+
+@media only screen
+	and ( max-width: 450px ) {
+	:root {
+		--font-size: 12px;
+
+		--welcome-logo-width: 260px;
+		--welcome-logo-height: 130px;
+	}
+
+	#logo-subtitle {
+		margin-top: 0;
+		font-size: 1.6em;
+	}
+
+	.plan-title {
+		font-size: 1.05em;
+		margin-top: 30px;
+	}
+
+	.plan-subtitle {
+		font-size: .75em;
+	}
 }

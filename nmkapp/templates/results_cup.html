@@ -2,10 +2,10 @@
 {% load i18n %}
 
 {% block content %}
-<h1>{% trans "Cup results" %}</h1>
+<h1 class="content-header">{% trans "Cup results" %}</h1>
 
 {% for round in rounds %}
-<h2>
+<h2 class="content-header">
 	<a href="/roundstandings/{{ round.0.id }}">{{ round.0.name }}</a>
 </h2>
 

@@ -245,7 +245,7 @@ if not DEBUG:
     ANYMAIL['MAILJET_SECRET_KEY'] = os.environ['NMK_MAILJET_SECRET_KEY']
     ALLOWED_HOSTS = ['localhost', '.sharkz.bet', '.sharkz.bet.']
     LOGGING = LOGGING_PROD
-    
+
     #enable loaders(caching) for prod
     del TEMPLATES[0]['APP_DIRS']
     TEMPLATES[0]['OPTIONS']['loaders'] = [

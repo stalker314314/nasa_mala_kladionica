@@ -28,8 +28,8 @@
     {% for message in messages %}
     <div class="alert alert-warning alert-dismissible fade show text-left" role="alert">
         {{ message }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="{% trans "Close" %}>
-            <span aria-hidden="true">&times;</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="{% trans "Close" %}">
+            <span aria-hidden="true">×</span>
         </button>
     </div>
     {% endfor %}
@@ -40,7 +40,7 @@
 {% if is_registration_allowed %}
 {% if current_user.in_money %}
 {% else %}
-<h1>{% trans "REAL MONEY BETTING" %}</h1>
+<h1 class="content-header">{% trans "REAL MONEY BETTING" %}</h1>
 
 {% blocktrans %}
 If you want to play in real money, that will cost you 10€.
@@ -64,7 +64,7 @@ You can sign up for this 1h before first match starts latest!
 {% endif %}
 {% endif %}
 
-<h1>{% trans "SETTINGS" %}</h1>
+<h1 class="content-header">{% trans "SETTINGS" %}</h1>
 
 <form method="post" action="/profile">
     {% csrf_token %}
@@ -86,7 +86,7 @@ You can sign up for this 1h before first match starts latest!
             </tr>
         </table>
 
-        <h2>{% trans "E-mail notifications" %}</h2>
+        <h2 class="content-header">{% trans "E-mail notifications" %}</h2>
         <table class="table table-borderless table-sm table-responsive">
             <tr>
                 <td>
@@ -139,7 +139,7 @@ You can sign up for this 1h before first match starts latest!
 </form>
 <br/>
 
-<h1>{% trans "CHANGE PASSWORD" %}</h1>
+<h1 class="content-header">{% trans "CHANGE PASSWORD" %}</h1>
 
 <form method="get" action="/profile/password">
 	<input value="{% trans "Change password" %}" type="submit"/>

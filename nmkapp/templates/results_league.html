@@ -2,9 +2,9 @@
 {% load i18n %}
 
 {% block content %}
-<h1>{% trans "League results" %}</h1>
+<h1 class="content-header">{% trans "League results" %}</h1>
 {% for group in groups %}
-<h2>
+<h2 class="content-header">
 <a name="A">{% blocktrans %}Group{% endblocktrans %} {{ group.label }}</a>
 </h2>
 

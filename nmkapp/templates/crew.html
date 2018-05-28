@@ -15,7 +15,7 @@
     {% endfor %}
 {% endif %}
 
-<h1>{% trans "MY CREWS" %}</h1>
+<h1 class="content-header">{% trans "MY CREWS" %}</h1>
 {% if groups %}
 <div style="font-size: 120%">
     {% blocktrans %}Listed below are all the crews you are member of.
@@ -52,8 +52,10 @@ Tell them to go to their "Crew" page and to type this at the bottom of it.{% end
 	{% endfor %}
 </table>
 {% else %}
-<h3>{% trans "You are not in any crew" %}<img src="/static/img/facebook-frown-emoticon.png" />.
-{% trans "Create your own crew and invite people. That way, you will be able to filter only you guys in the standings" %}</h3>
+<div style="font-size: 120%">
+{% trans "You are not in any crew" %}<img src="/static/img/facebook-frown-emoticon.png" />.
+{% trans "Create your own crew and invite people. That way, you will be able to filter only you guys in the standings" %}
+</div>
 {% endif %}
 
 <p>

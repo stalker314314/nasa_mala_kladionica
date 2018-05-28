@@ -14,7 +14,7 @@
     {% endfor %}
 {% endif %}
 
-<h1>Izmeni rezultat {{ match.home_team.name }} - {{ match.away_team.name }}</h1>
+<h1 class="content-header">Izmeni rezultat {{ match.home_team.name }} - {{ match.away_team.name }}</h1>
 
 <form action="/admin/results/change/{{ match.id }}" method="post">
 	{% csrf_token %}
