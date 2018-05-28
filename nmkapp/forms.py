@@ -42,7 +42,7 @@ class RegisterForm(forms.Form):
         if 'email' in cleaned_data and len(cleaned_data['email']) > 74:
             raise forms.ValidationError({'email': [_('E-mail address must be shorter than 74 characters'), ]})
 
-        if 'email' in cleaned_data: 
+        if 'email' in cleaned_data:
             existing_mails = User.objects.filter(email=cleaned_data['email'])
             if len(existing_mails) > 0:
                 raise forms.ValidationError(
@@ -79,6 +79,13 @@ class ResetPasswordForm(forms.Form):
             if cleaned_data['password'] != cleaned_data['password2']:
                 raise forms.ValidationError({'password2': [_('Passwords do not match'), ]})
         return cleaned_data
+
+
+class RequestPasswordForm(forms.Form):
+    # ovo je cisto tokom testiranja, bice normalnije :D
+    password = forms.CharField(label='Password', max_length=28)
+    confirmed_password = forms.CharField(label='Confirm Password', max_length=28)
+
 
 
 class NewGroupForm(forms.Form):
