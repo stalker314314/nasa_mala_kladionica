@@ -19,6 +19,7 @@ from django.db.models.aggregates import Min
 from django.http.response import HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render
 from django.template import loader
+from django.urls import reverse
 from django.utils import timezone, translation
 from django.utils.translation import gettext as _
 
@@ -343,6 +344,18 @@ def paypal(request):
 
 
 def landing(request):
+    if request.user.is_authenticated:
+        # Do not show landing page for logged users
+        return HttpResponseRedirect(reverse(home))
+
+    language = request.GET.get('lang', '')
+    if language != '':
+        # If there is some language explicitly set, switch to it
+        available_languages = [lang_code for (lang_code, lang_name) in settings.LANGUAGES]
+        if language in available_languages:
+            translation.activate(language)
+            if hasattr(request, 'session'):
+                request.session[translation.LANGUAGE_SESSION_KEY] = language
     return render(request, 'landing.html')
 
 
