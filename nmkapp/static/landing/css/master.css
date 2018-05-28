@@ -663,7 +663,7 @@ footer section:last-child {
 		--plans-padding-top: 100px;
 
 		--plans-wrapper-width: 1200px;
-		--plans-wrapper-height: 500px;
+		--plans-wrapper-height: 600px;
 
 		--plans-item-height: 500px;
   }
@@ -676,7 +676,7 @@ footer section:last-child {
 		--plans-height: 1000px;
 
 		--plans-wrapper-width: 100%;
-		--plans-wrapper-height: 500px;
+		--plans-wrapper-height: 650px;
 
 		--plans-item-width: 90%;
 		--plans-item-height: 200px;
