@@ -43,7 +43,6 @@
 			&nbsp;&nbsp;<a href="/forgotpassword" style="font-size: 11px;">{% trans "I forgot my password" %}</a>
 			{% endif %}
 		</div>
-		<a href="{% url 'social:begin' 'google-oauth2' %}">Google Login</a>
 		<br/>
 		{% is_registration_allowed as is_registration_allowed %}
 		{% if is_registration_allowed %}

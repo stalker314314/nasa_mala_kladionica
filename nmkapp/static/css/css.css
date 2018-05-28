@@ -343,9 +343,9 @@ table.sortable thead {
 ***********************************/
 
 .alert-warning {
-  color: var( --color-bg-dark ); !important
-  background-color: #caeded; !important
-  border-color: #67cccc; !important
+  color: var( --color-bg-dark ) !important;
+  background-color: #caeded !important;
+  border-color: #67cccc !important;
 }
 
 #notification {
