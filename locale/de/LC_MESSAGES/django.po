@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-18 12:31+0000\n"
-"PO-Revision-Date: 2018-05-18 14:33+0200\n"
+"POT-Creation-Date: 2018-05-23 21:26+0000\n"
+"PO-Revision-Date: 2018-05-23 23:11+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -228,6 +228,7 @@ msgid "[sharkz.bet] Round \"%s\" started"
 msgstr "[sharkz.bet] Runde \"%s\" hat begonnen"
 
 #: nmkapp/templates/about.html:7 nmkapp/templates/base.html:243
+#: nmkapp/templates/landing.html:194
 msgid "About us"
 msgstr "Über uns"
 
@@ -404,7 +405,7 @@ msgstr "Mannschaften"
 
 #: nmkapp/templates/base.html:113 nmkapp/templates/base.html:135
 #: nmkapp/templates/base.html:164 nmkapp/templates/base.html:168
-#: nmkapp/templates/base.html:237
+#: nmkapp/templates/base.html:237 nmkapp/templates/landing.html:196
 msgid "Propositions"
 msgstr "Angebote"
 
@@ -435,7 +436,8 @@ msgid "Logout"
 msgstr "Abmelden"
 
 #: nmkapp/templates/base.html:132 nmkapp/templates/base.html:167
-#: nmkapp/templates/base.html:236 nmkapp/templates/login.html:40
+#: nmkapp/templates/base.html:236 nmkapp/templates/landing.html:193
+#: nmkapp/templates/login.html:40
 msgid "Login"
 msgstr "Anmelden"
 
@@ -443,19 +445,20 @@ msgstr "Anmelden"
 msgid "Menu"
 msgstr "Menü"
 
-#: nmkapp/templates/base.html:201
+#: nmkapp/templates/base.html:201 nmkapp/templates/landing.html:180
 msgid "Number of registered players"
 msgstr "Zahl der registrierten Spielern"
 
-#: nmkapp/templates/base.html:203
+#: nmkapp/templates/base.html:203 nmkapp/templates/landing.html:181
 msgid "real money players"
 msgstr "Echte Spieler"
 
-#: nmkapp/templates/base.html:206
+#: nmkapp/templates/base.html:206 nmkapp/templates/landing.html:182
 msgid "Prize money"
 msgstr "Preisgeld"
 
-#: nmkapp/templates/base.html:219
+#: nmkapp/templates/base.html:219 nmkapp/templates/landing.html:187
+#: nmkapp/templates/landing.html:216
 msgid "©2018 sharkz.bet, All rights reserved"
 msgstr "©2018 sharkz.bet, Alle Rechte vorbehalten"
 
@@ -463,19 +466,19 @@ msgstr "©2018 sharkz.bet, Alle Rechte vorbehalten"
 msgid "Website"
 msgstr "Webseite"
 
-#: nmkapp/templates/base.html:244
+#: nmkapp/templates/base.html:244 nmkapp/templates/landing.html:195
 msgid "Contact"
 msgstr "Kontakt"
 
-#: nmkapp/templates/base.html:245
+#: nmkapp/templates/base.html:245 nmkapp/templates/landing.html:197
 msgid "Terms & Condition"
 msgstr "Allgemeine Bedingungen"
 
-#: nmkapp/templates/base.html:246
+#: nmkapp/templates/base.html:246 nmkapp/templates/landing.html:198
 msgid "Privacy Policy"
 msgstr "Datenschutzklärung"
 
-#: nmkapp/templates/base.html:252
+#: nmkapp/templates/base.html:252 nmkapp/templates/landing.html:202
 msgid "Follow Us"
 msgstr "Folge uns"
 
@@ -667,6 +670,171 @@ msgstr "Gewinnchancen"
 msgid "Other players' bets"
 msgstr "Wetten anderer Spieler"
 
+#: nmkapp/templates/landing.html:15
+msgid "Welcome"
+msgstr "Willkommen"
+
+#: nmkapp/templates/landing.html:26 nmkapp/templates/login.html:50
+#: nmkapp/templates/register.html:32
+msgid "Register"
+msgstr "Registrieren"
+
+#: nmkapp/templates/landing.html:31
+msgid "Bet against your friends and win money!"
+msgstr ""
+
+#: nmkapp/templates/landing.html:34
+msgid ""
+"<strong>Sharkz.bet</strong> is a unique pool-betting platform, designed "
+"specifically for <em>World Cup 2018</em>.\n"
+"All players can place the same stake before World Cup 2018 starts.\n"
+"You bet on final score of each match, and points are based on odds &ndash; "
+"the higher the odd, more points you get!\n"
+"We are capping number of players to just 100, so hurry up to register "
+"below!\n"
+"With only 100 players and first 3 places to take prizes, it should be easy "
+"to take the money, right?\n"
+"Well, it just might be, but watch out for other sharks in this pool!"
+msgstr ""
+
+#: nmkapp/templates/landing.html:45
+msgid "Find Out More!"
+msgstr ""
+
+#: nmkapp/templates/landing.html:55
+msgid "Free To Play"
+msgstr ""
+
+#: nmkapp/templates/landing.html:58
+msgid ""
+"While the entry fee is relatively low (10€), we think it should never be a "
+"requirement to have fun.\n"
+"When you register on sharkz.bet, we don't ask for credit card and there is "
+"absolutely no strings attached.\n"
+"Decide later to play for real money if you want to (but before World Cup "
+"2018 starts!)."
+msgstr ""
+
+#: nmkapp/templates/landing.html:66
+msgid "Real Chances To Win"
+msgstr ""
+
+#: nmkapp/templates/landing.html:69
+msgid ""
+"Compared to other pool bet web sites with thousands of people and with "
+"millions in prizes,\n"
+"this is the place where your odds of winning the prize are very, very real.\n"
+"There is only 100 players and first 3 places are winning the money."
+msgstr ""
+
+#: nmkapp/templates/landing.html:77
+msgid "Compete Against Friends"
+msgstr ""
+
+#: nmkapp/templates/landing.html:80
+msgid ""
+"Betting is always more fun with friends.\n"
+"You don't have to compete against players who are not in your group.\n"
+"Just invite your crew and compete in your own private pool.\n"
+"With sharkz.bet, you are reaching new levels of friendly ball busting."
+msgstr ""
+
+#: nmkapp/templates/landing.html:89
+msgid "Enjoy Every Match"
+msgstr ""
+
+#: nmkapp/templates/landing.html:92
+msgid ""
+"Make all games more interesting. With sharkz.bet's friendly environment and "
+"players,\n"
+"every match could be nerve wrecking one if a little bit of stake is involved!"
+msgstr ""
+
+#: nmkapp/templates/landing.html:100
+msgid "Pick the fun level"
+msgstr ""
+
+#: nmkapp/templates/landing.html:102
+msgid "You can always change your preference later"
+msgstr ""
+
+#: nmkapp/templates/landing.html:109
+msgid "Free"
+msgstr ""
+
+#: nmkapp/templates/landing.html:110
+msgid "Only Pride at Stake"
+msgstr ""
+
+#: nmkapp/templates/landing.html:114
+msgid "Unlimited Number of People"
+msgstr ""
+
+#: nmkapp/templates/landing.html:115 nmkapp/templates/landing.html:137
+msgid "Invite Friends"
+msgstr ""
+
+#: nmkapp/templates/landing.html:116
+msgid "Enjoy World Cup for Free"
+msgstr ""
+
+#: nmkapp/templates/landing.html:117
+msgid "Compare Betting Skills"
+msgstr ""
+
+#: nmkapp/templates/landing.html:122 nmkapp/templates/landing.html:143
+#: nmkapp/templates/landing.html:164
+msgid "REGISTER"
+msgstr "REGISTRIEREN"
+
+#: nmkapp/templates/landing.html:130
+msgid "Regular"
+msgstr ""
+
+#: nmkapp/templates/landing.html:131
+msgid "Just For Fun"
+msgstr ""
+
+#: nmkapp/templates/landing.html:135
+msgid "100 Players Max"
+msgstr ""
+
+#: nmkapp/templates/landing.html:136
+msgid "Up to 900€ Prize Money"
+msgstr ""
+
+#: nmkapp/templates/landing.html:138
+msgid "Real Thrill Football"
+msgstr ""
+
+#: nmkapp/templates/landing.html:151
+msgid "Extra"
+msgstr ""
+
+#: nmkapp/templates/landing.html:152
+msgid "Coming Soon"
+msgstr ""
+
+#: nmkapp/templates/landing.html:156
+msgid "200 Players Max"
+msgstr ""
+
+#: nmkapp/templates/landing.html:157
+msgid "3800€ Prize Pool"
+msgstr ""
+
+#: nmkapp/templates/landing.html:158
+msgid "Private Pools"
+msgstr ""
+
+#: nmkapp/templates/landing.html:159
+msgid "Custom Betting Games"
+msgstr ""
+
+#: nmkapp/templates/landing.html:212
+msgid "Send feedback to: <br>support@sharkz.bet"
+msgstr ""
+
 #: nmkapp/templates/login.html:8
 msgid "SHARKZ.BET - LOGIN"
 msgstr "SHARKZ.BET - ANMELDUNG"
@@ -700,10 +868,6 @@ msgstr "Falsche E-Mail oder Passwort. Versuchen Sie es wieder."
 #: nmkapp/templates/login.html:43
 msgid "I forgot my password"
 msgstr "I habe mein Passwort vergessen"
-
-#: nmkapp/templates/login.html:50 nmkapp/templates/register.html:32
-msgid "Register"
-msgstr "Registrieren"
 
 #: nmkapp/templates/login.html:51
 msgid "(registration is allowed until 1h before start of the first match"
@@ -1271,61 +1435,58 @@ msgstr "[sharkz.bet] Spieler bezahlt per Paypal"
 msgid "Player %s"
 msgstr "Spieler %s"
 
-#: nmkapp/views.py:436
+#: nmkapp/views.py:440
 msgid ""
 "You cannot leave a crew that you created, you can only completely delete "
 "that crew."
 msgstr "Sie können die Mannschaft nicht verlassen, ohne sie zu löschen."
 
-#: nmkapp/views.py:444
+#: nmkapp/views.py:448
 #, python-format
 msgid "Successfully left a crew \"%s\""
 msgstr "Die Mannschaft \"%s\" wurde erfolgreich verlassen"
 
-#: nmkapp/views.py:459
+#: nmkapp/views.py:463
 msgid ""
 "You cannot delete crew that you are not owner of, you can only leave it."
 msgstr ""
 "Sie können die Manschaft nicht löschen, da Sie nicht der Grüder sind. Sie "
 "können sie nur verlassen."
 
-#: nmkapp/views.py:469
+#: nmkapp/views.py:473
 #, python-format
 msgid "Crew \"%s\" deleted"
 msgstr "Mannschaft \"%s\" ist gelöscht"
 
-#: nmkapp/views.py:559
+#: nmkapp/views.py:563
 #, python-format
 msgid "Round \"%s\" set as active"
 msgstr "Spielrunde \"%s\" ist aktiv"
 
-#: nmkapp/views.py:571
+#: nmkapp/views.py:575
 #, python-format
 msgid "[sharkz.bet] New round \"%s\" available"
 msgstr "[sharkz.bet] Neue Spielrunde \"%s\" ist verfügbar"
 
-#: nmkapp/views.py:582
+#: nmkapp/views.py:586
 #, python-format
 msgid "Round \"%s\" set as inactive"
 msgstr "Spielrunde \"%s ist nicht aktiv"
 
-#: nmkapp/views.py:609
+#: nmkapp/views.py:613
 #, python-format
 msgid "New round \"%s\" created successfully"
 msgstr "Neue Spielrunde \"%s wurde erfolgreich kreiert"
 
-#: nmkapp/views.py:630
+#: nmkapp/views.py:634
 msgid "Match successfully added"
 msgstr "Match wurde erfolgreich hinzugefügt"
 
-#: nmkapp/views.py:665
+#: nmkapp/views.py:669
 msgid "Result added successfully"
 msgstr "Ergebniss wurde efolgreich hinzugefügt"
 
-#: nmkapp/views.py:689
+#: nmkapp/views.py:693
 #, python-format
 msgid "[sharkz.bet] All results from round \"%s\" received"
 msgstr "[sharkz.bet] Alle Ergebnisse der Spielrunde \"%s\" erhalten"
-
-#~ msgid "Group %(group.label)s"
-#~ msgstr "Gruppe %(group.label)s"
