@@ -195,7 +195,7 @@
             </div>
         </main>
         <div id="grass-wrapper">
-          <img src="{% static "landing/img/telstar-ball.png" %}" alt="">
+          <img src="{% static "landing/img/telstar-ball.png" %}" alt="ball">
           <div id="grass"></div>
         </div>
         <footer>
@@ -215,23 +215,28 @@
             <section>
               <span class="title-small">sharkz.bet</span>
               <ul id="footer-nav">
-                <li><a href="#">{% trans "Login" %}</a></li>
-                <li><a href="#">{% trans "About us" %}</a></li>
-                <li><a href="#">{% trans "Contact" %}</a></li>
-                <li><a href="#">{% trans "Propositions" %}</a></li>
-                <li><a href="#">{% trans "Terms & Condition" %}</a></li>
-                <li><a href="#">{% trans "Privacy Policy" %}</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="/">{% trans "Betting" %}</a></li>
+                <li><a href="/logout">{% trans "Logout" %}</a></li>
+                {% else %}
+                <li><a href="/login">{% trans "Login" %}</a></li>
+                {% endif %}
+                <li><a href="/about">{% trans "About us" %}</a></li>
+                <li><a href="mailto:support@sharkz.bet">{% trans "Contact" %}</a></li>
+                <li><a href="/proposition">{% trans "Propositions" %}</a></li>
+                <li><a href="/terms">{% trans "Terms & Condition" %}</a></li>
+                <li><a href="/privacy">{% trans "Privacy Policy" %}</a></li>
               </ul>
             </section>
             <section>
               <div class="title-small">{% trans "Follow Us" %}</div>
               <div id="footer-social">
-                <span class="footer-soc-item fa fa-google-plus">
-                </span>
-                <span class="footer-soc-item fa fa-facebook">
-                </span>
-                <span class="footer-soc-item fa fa-twitter">
-                </span>
+                <a href="https://www.facebook.com/Sharkzbet-1394383320707658/">
+                    <span class="footer-soc-item fa fa-facebook" />
+                </a>
+                <a href="https://twitter.com/sharkzbet">
+                    <span class="footer-soc-item fa fa-twitter" />
+                </a>
               </div>
               <div id="footer-contact">
                 Send feedback to:<br> support@sharkz.bet
@@ -243,73 +248,7 @@
             </section>
           </div>
       </footer>
-        <!-- <footer class="footer-bs">
-            <hr/>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 footer-brand">
-                        <div class="text-muted">
-                            {% trans "Number of registered players" %}: <strong>{{ ctx_stats.player_count }}</strong>,
-                            <br />
-                            {% trans "real money players" %}: <strong>{{ ctx_stats.player_money_count }}</strong>
-                        </div>
-                        <div class="text-muted">
-                            {% trans "Prize money" %}:
-                            1. <strong>{{ ctx_stats.reward_money.1 }}€</strong>,
-                            2. <strong>{{ ctx_stats.reward_money.2 }}€</strong>,
-                            3. <strong>{{ ctx_stats.reward_money.3 }}€</strong>
-                        </div>
-                        <p style="padding: 0px;"/>
-                        <div class="row">
-                            <div class="col-auto">
-                                <a class="navbar-brand" href="/">
-                                    <img src="{% static "img/logo32.png" %}" class="img-fluid img-responsive mx-auto d-block" alt="logo">
-                                </a>
-                            </div>
-                            <div class="col">
-                                {% blocktrans %}©2018 sharkz.bet, All rights reserved{% endblocktrans %}
-                            </div>
-                        </div>
-                        <p style="padding: 0px;"/>
-                    </div>
-                    <div class="col-md-5 footer-nav">
-                        <h4 class="content-header">{% trans "Website" %}</h4>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <ul class="pages">
-                                    {% if user.is_authenticated %}
-                                    <li><a href="/">{% trans "Betting" %}</a></li>
-                                    <li><a href="/standings">{% trans "Standings" %}</a></li>
-                                    <li><a href="/profile">{% trans "Profile" %}</a></li>
-                                    <li><a href="/crew">{% trans "Crews" %}</a></li>
-                                    <li><a href="/logout">{% trans "Logout" %}</a></li>
-                                    {% else %}
-                                    <li><a href="/login">{% trans "Login" %}</a></li>
-                                    <li><a href="/proposition">{% trans "Propositions" %}</a></li>
-                                    {% endif %}
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <ul class="list">
-                                    <li><a href="/about">{% trans "About us" %}</a></li>
-                                    <li><a href="mailto:support@sharkz.bet">{% trans "Contact" %}</a></li>
-                                    <li><a href="/terms">{% trans "Terms & Condition" %}</a></li>
-                                    <li><a href="/privacy">{% trans "Privacy Policy" %}</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 footer-social">
-                        <h4 class="content-header">{% trans "Follow Us" %}</h4>
-                        <ul>
-                            <li><a href="#"><i class="fab fa-facebook fa-lg"></i>&nbsp;{% trans "Facebook" %}</a></li>
-                            <li><a href="https://twitter.com/sharkzbet"><i class="fab fa-twitter fa-lg"></i>&nbsp;{% trans "Twitter" %}</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer> -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 	</body>
 </html>

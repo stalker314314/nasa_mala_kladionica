@@ -18,15 +18,17 @@
   <main>
     <section id="welcome">
       <div id="social">
-        <div class="soc-item fa fa-google-plus">
-        </div>
-        <div class="soc-item fa fa-twitter">
-        </div>
+        <a href="https://www.facebook.com/Sharkzbet-1394383320707658/">
+          <span class="soc-item fa fa-facebook">
+          </span></a>
+        <a href="https://twitter.com/sharkzbet">
+          <span class="soc-item fa fa-twitter">
+          </span></a>
       </div>
-      <div id="register">{% trans "Register" %}</div>
+      <a href="/login"><div id="register">{% trans "Register" %}</div></a>
       <div id="content-wrapper">
         <div id="welcome-logo">
-          <img src="{% static "landing/img/logo80w.png" %}" alt="">
+          <img src="{% static "landing/img/logo80w.png" %}" alt="logo">
           <h1 id="logo-title">sharkz.bet</h1>
           <h3 id="logo-subtitle">Bet against your friends and win money!</h3>
         </div>
@@ -170,7 +172,7 @@
     </section>
   </main>
   <div id="grass-wrapper">
-    <img src="{% static "landing/img/telstar-ball.webp" %}" alt="">
+    <img src="{% static "landing/img/telstar-ball.webp" %}" alt="ball">
     <div id="grass"></div>
   </div>
   <footer>
@@ -190,23 +192,23 @@
       <section>
         <span class="title-small">sharkz.bet</span>
         <ul id="footer-nav">
-          <li><a href="#">{% trans "Login" %}</a></li>
-          <li><a href="#">{% trans "About us" %}</a></li>
-          <li><a href="#">{% trans "Contact" %}</a></li>
-          <li><a href="#">{% trans "Propositions" %}</a></li>
-          <li><a href="#">{% trans "Terms & Condition" %}</a></li>
-          <li><a href="#">{% trans "Privacy Policy" %}</a></li>
+          <li><a href="/login">{% trans "Login" %}</a></li>
+          <li><a href="/about">{% trans "About us" %}</a></li>
+          <li><a href="mailto:support@sharkz.bet">{% trans "Contact" %}</a></li>
+          <li><a href="/proposition">{% trans "Propositions" %}</a></li>
+          <li><a href="/terms">{% trans "Terms & Condition" %}</a></li>
+          <li><a href="/privacy">{% trans "Privacy Policy" %}</a></li>
         </ul>
       </section>
       <section>
         <div class="title-small">{% trans "Follow Us" %}</div>
         <div id="footer-social">
-          <span class="footer-soc-item fa fa-google-plus">
-          </span>
-          <span class="footer-soc-item fa fa-facebook">
-          </span>
-          <span class="footer-soc-item fa fa-twitter">
-          </span>
+          <a href="https://www.facebook.com/Sharkzbet-1394383320707658/">
+            <span class="footer-soc-item fa fa-facebook" />
+          </a>
+          <a href="https://twitter.com/sharkzbet">
+            <span class="footer-soc-item fa fa-twitter" />
+          </a>
         </div>
         <div id="footer-contact">
           Send feedback to:<br> support@sharkz.bet
