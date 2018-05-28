@@ -17,7 +17,7 @@ from django.core.mail.message import EmailMessage
 from django.db import transaction
 from django.db.models.aggregates import Min
 from django.http.response import HttpResponseRedirect, Http404
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.template import loader
 from django.urls import reverse
 from django.utils import timezone, translation
@@ -25,10 +25,14 @@ from django.utils.translation import gettext as _
 
 from nmkapp.cache import StandingsCache, RoundStandingsCache
 from nmkapp.forms import AddToGroupForm, BettingForm, ForgotPasswordForm, NewGroupForm, PointsForm, \
-    RegisterForm, ResetPasswordForm
+    RegisterForm, ResetPasswordForm, RequestPasswordForm
 from nmkapp.logic import recalculate_round_points, recalculate_total_points
 from nmkapp.model_forms import RoundForm, MatchForm, ResultsForm, PlayerForm
 from nmkapp.models import Round, UserRound, Shot, Match, Team, Player, Group
+
+from social_django.utils import load_strategy
+
+
 
 logger = logging.getLogger(__name__)
 
@@ -139,6 +143,33 @@ def activation(request):
 
 
 @transaction.atomic
+def request_password(request):
+    if request.method == 'POST':
+        form = RequestPasswordForm(request.POST)
+        if form.is_valid():
+            cleaned_data = form.cleaned_data
+            strategy = load_strategy()
+            token = request.session.get('partial_pipeline_token')
+            partial_data = strategy.partial_load(token)
+            user = partial_data.data['kwargs']['user']
+            from pprint import pprint
+            partial_data.data['kwargs']['is_new'] = False
+            pprint(vars(partial_data))
+            partial_data.next_step = partial_data.next_step + 1
+            partial_data.save()
+            print ("partial saved")
+            user.set_password(cleaned_data['password'])
+            print ("user pwd set")
+            user.save()
+            print ("user saved")
+            return redirect('/complete/' + partial_data.backend)
+    else:
+        form = RequestPasswordForm()
+        return render(request, 'request_password.html', {'form': form} )
+
+
+
+@transaction.atomic
 def reset_password(request):
     logger.info('User is on reset password page')
     reset_code = request.GET.get('id', '')
@@ -185,7 +216,7 @@ def home(request):
             messages.add_message(request, messages.INFO,
                                  _('There is no active round currently to place bets, try again later'))
             return render(request, 'home.html', {'shots': []})
-    
+
         user_round = user_rounds[0]
         shots = Shot.objects.select_related('match', 'match__home_team', 'match__away_team', 'user_round').\
             filter(user_round=user_round).order_by('match__start_time')
@@ -202,7 +233,7 @@ def home(request):
             if shot.match.start_time < timezone.now():
                 betting_allowed = False
                 break
-    
+
         if not user_round.shot_allowed:
             betting_allowed = False
 
@@ -332,7 +363,7 @@ def paypal(request):
         email = request.user.email
         request.user.player.in_money = True
         request.user.player.save()
-        
+
         groups = Group.objects.filter(id=1)
         group = groups[0]
         group.players.add(request.user)
@@ -393,7 +424,7 @@ def results_league(request):
                     team_in_league[5] += 1
                 else:
                     team_in_league[4] += 1
-                    
+
             team_in_league = None
             for l in league:
                 if l[0] == match.away_team.name:
@@ -437,7 +468,7 @@ def standings(request):
     logger.info('User %s is on standings page for group %s', request.user, selected_group)
 
     rounds = Round.objects.order_by('id')
-    
+
     nmk_standings = StandingsCache(group).get(rounds)
 
     return render(request,
@@ -512,7 +543,7 @@ def round_standings(request, round_id):
         group = None
     else:
         group = group[0]
-        
+
     can_see_standings = False
     is_any_match_started = False
     for match in matches:
@@ -527,7 +558,7 @@ def round_standings(request, round_id):
             can_see_standings = True
 
     round_standings_list = []
-    
+
     if can_see_standings:
         round_standings_list = RoundStandingsCache(this_round, group).get()
 
@@ -686,7 +717,7 @@ def admin_results_change(request, match_id):
             logger.info('User %s set result for match %s', request.user, match)
             recalculate_round_points(match.round)
             messages.add_message(request, messages.INFO, _('Result added successfully'))
-            
+
             # invalidate cache of shots for all user in this round
             RoundStandingsCache.repopulate_round(match.round)
             groups = Group.objects.all()
@@ -715,7 +746,7 @@ def admin_results_change(request, match_id):
                         msg = EmailMessage(subject, message_text, 'admin@sharkz.bet', to=[player.user.email, ])
                         msg.content_subtype = 'html'
                         msg.send(fail_silently=False)
-                
+
             return HttpResponseRedirect('/admin/results')
     else:
         form = ResultsForm(instance=match)

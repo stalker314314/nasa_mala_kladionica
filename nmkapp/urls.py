@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from nmkapp import views
 from django.contrib.auth.views import logout_then_login, login, password_change
 
@@ -10,6 +10,8 @@ urlpatterns = [
     url(r'^forgotpassword', views.forgotpassword),
     url(r'^login/$', views.CustomLoginView.as_view(template_name='login.html', extra_context={'no_menu': True}),
         name='login'),
+    url('', include('social_django.urls', namespace='social')),
+    url(r'^requestpassword', views.request_password, name='request_password'),
     url(r'^logout$', logout_then_login),
     url(r'^profile/reset$', views.reset_password),
     url(r'^profile/password$', password_change, {"template_name": "password.html", "post_change_redirect": "/"}),
