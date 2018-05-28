@@ -81,6 +81,11 @@ body {
 	padding: 5px 15px 15px 5px;
 	background-color: #fff;
 }
+@media (max-width: 991px) {
+    #content {
+        padding: 60px 15px 15px 5px;
+    }
+}
 
 #contentlogin {
 	margin: 0 auto;
@@ -88,18 +93,6 @@ body {
 	padding: 5px 5px 15px 5px;
 
 }
-
-/* #footer {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 70%;
-	color: #999999;
-	padding: 40px 0px 10px 0px;
-	text-align: center;
-	clear: left;
-	background-color: #FFFFFF;
-} */
-
-
 
 /***********************************
 	LINKS
@@ -404,6 +397,11 @@ ul.proposition {
 .container {
   /* makes the grass look fancily aligned on bottom when empty */
   min-height: calc( 100vh - 110px - 90px );
+}
+@media (max-width: 991px) {
+    .container {
+        min-height: calc( 100vh - 20px - 90px );
+    }
 }
 
 #logo-title {
