@@ -39,7 +39,8 @@ def id_generator(size=16, chars=string.ascii_uppercase + string.digits):
 
 @transaction.atomic
 def register(request):
-    logger.info('User is on register page')
+    registration_type = request.GET.get('type', '')
+    logger.info('User is on register page, going with %s type', registration_type)
     last_registration_time = datetime(2018, 6, 14, 16, 0, tzinfo=timezone.utc)
     if timezone.now() >= last_registration_time:
         raise Http404()
@@ -348,10 +349,12 @@ def paypal(request):
 
 def landing(request):
     if request.user.is_authenticated:
+        logger.info('User %s is on landing page, redirecting to home', request.user.username)
         # Do not show landing page for logged users
         return HttpResponseRedirect(reverse(home))
 
     language = request.GET.get('lang', '')
+    logger.info('User is on landing page, with language %s', language)
     if language != '':
         # If there is some language explicitly set, switch to it
         available_languages = [lang_code for (lang_code, lang_name) in settings.LANGUAGES]
