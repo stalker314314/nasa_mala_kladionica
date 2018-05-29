@@ -437,6 +437,11 @@ ul.proposition {
 	z-index: -1;
 }
 
+#register-link {
+    text-decoration: underline;
+    font-size: 1.4em;
+}
+
 footer {
   height: var( --footer-height );
   padding: var( --footer-padding-vertical ) 0;
