@@ -44,7 +44,6 @@ def register(request):
     if timezone.now() >= last_registration_time:
         raise Http404()
 
-    registered = False
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
@@ -77,10 +76,14 @@ def register(request):
             msg = EmailMessage(subject, message_text, 'support@sharkz.bet', to=[user.email, ])
             msg.content_subtype = 'html'
             msg.send(fail_silently=False)
-            registered = True
+            return HttpResponseRedirect(reverse(register_success))
     else:
         form = RegisterForm()
-    return render(request, 'register.html', {'form': form, 'registered': registered, 'no_menu': True})
+    return render(request, 'register.html', {'form': form, 'no_menu': True})
+
+
+def register_success(request):
+    return render(request, 'register_success.html', {'no_menu': True})
 
 
 @transaction.atomic
