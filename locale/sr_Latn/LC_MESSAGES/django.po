@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-28 21:53+0000\n"
-"PO-Revision-Date: 2018-05-28 23:54+0200\n"
+"POT-Creation-Date: 2018-05-29 19:55+0000\n"
+"PO-Revision-Date: 2018-05-29 21:55+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #: nmk/settings.py:87
 msgid "English"
@@ -244,8 +244,8 @@ msgid ""
 msgstr ""
 "Sharkz.bet je započet pre više od 15 godina, kada je grupa ortaka odlučila "
 "da napravi internu kladionicu na utakmice\n"
-"Lige Šampiona. U to vreme, koristili smo najbolji softver za interno klađenje "
-"&mdash; Excel:) Uskoro smo ukapirali\n"
+"Lige Šampiona. U to vreme, koristili smo najbolji softver za interno "
+"klađenje &mdash; Excel:) Uskoro smo ukapirali\n"
 "da nije baš najzgodnije da koristimo Excel koji šaljemo mejlom, naročite u "
 "finalu Lige Šampiona, kada je foto finiš.\n"
 "U tom trenutku, niko ko se bori za prvo mesto neće da odigra prvi, da ostali "
@@ -284,8 +284,8 @@ msgstr ""
 "prosto zato što ne želimo hiljade ljudi\n"
 "i nerealne nagrade u milionima evra. Želimo poštenu igru, prijatnu atmosferu "
 "među igračima i da se usput i\n"
-"zabavimo. Da utakmice na svetskom budu zanimljivije i malo zezanja ko je među "
-"ortacima i kolegama bolji kladioničar može biti samo bonus;)"
+"zabavimo. Da utakmice na svetskom budu zanimljivije i malo zezanja ko je "
+"među ortacima i kolegama bolji kladioničar može biti samo bonus;)"
 
 #: nmkapp/templates/about.html:30
 msgid ""
@@ -351,8 +351,9 @@ msgid "Invalid activation"
 msgstr "Neispravna aktivacija"
 
 #: nmkapp/templates/activation.html:42 nmkapp/templates/forgotpassword.html:14
-#: nmkapp/templates/forgotpassword.html:30 nmkapp/templates/register.html:18
-#: nmkapp/templates/register.html:36 nmkapp/templates/request_password.html:17
+#: nmkapp/templates/forgotpassword.html:30 nmkapp/templates/register.html:25
+#: nmkapp/templates/register_success.html:18
+#: nmkapp/templates/request_password.html:17
 #: nmkapp/templates/request_password.html:35
 #: nmkapp/templates/resetpassword.html:17
 #: nmkapp/templates/resetpassword.html:35
@@ -627,8 +628,8 @@ msgid ""
 "used even if you\n"
 "                        don't click \"Final Decision\" before round starts"
 msgstr ""
-"<strong>Sačuvaj</strong> &nbsp;&nbsp; pamti tvoja tipovanja. Ovi tipovi će se "
-"koristiti čak iako ne klikneš\n"
+"<strong>Sačuvaj</strong> &nbsp;&nbsp; pamti tvoja tipovanja. Ovi tipovi će "
+"se koristiti čak iako ne klikneš\n"
 "                        „Konačna odluka“ pre nego što kolo počne"
 
 #: nmkapp/templates/home.html:126
@@ -659,8 +660,7 @@ msgstr "Šta su drugi igrali"
 msgid "Welcome"
 msgstr "Dobrodošli"
 
-#: nmkapp/templates/landing.html:55 nmkapp/templates/login.html:50
-#: nmkapp/templates/register.html:32
+#: nmkapp/templates/landing.html:55 nmkapp/templates/register.html:21
 msgid "Register"
 msgstr "Registruj se"
 
@@ -727,8 +727,8 @@ msgid ""
 "this is the place where your odds of winning the prize are very, very real.\n"
 "There is only 100 players and first 3 places are winning the money."
 msgstr ""
-"U odnosu na druge sajtove za interno klađenje sa hiljadama ljudi i sa milionima "
-"evra u nagradama,\n"
+"U odnosu na druge sajtove za interno klađenje sa hiljadama ljudi i sa "
+"milionima evra u nagradama,\n"
 "ovo je mesto gde su šanse da se osvoji neka nagrada veoma realne.\n"
 "Ima samo 100 igrača, a prva 3 mesta uzimaju novac."
 
@@ -854,7 +854,7 @@ msgstr "SHARKZ.BET - PRIJAVA"
 #: nmkapp/templates/login.html:10
 msgid ""
 "sharkz.bet is a website for recreational or real money betting for World Cup "
-"2018. (or \"Čempionat mira po futbolu 2018\")"
+"2018. (or \"Чемпионат мира по футболу 2018\")"
 msgstr ""
 "sharkz.bet je sajt za pravo ili rekreativno klađenje na svetskom prvenstvu u "
 "fudbalu 2018 (ili \"Čempionat mira po futbolu 2018\")"
@@ -879,6 +879,10 @@ msgstr "Pogrešna adresa e-pošte ili lozinka. Pokušajte ponovo."
 #: nmkapp/templates/login.html:43
 msgid "I forgot my password"
 msgstr "Zaboravio sam lozinku"
+
+#: nmkapp/templates/login.html:50
+msgid "Don't have an account yet? Register"
+msgstr "Još nemaš nalog? Registruj se"
 
 #: nmkapp/templates/login.html:51
 msgid "(registration is allowed until 1h before start of the first match"
@@ -962,7 +966,8 @@ msgid ""
 "match in the round starts!"
 msgstr ""
 "Ovaj mejl je podsetnik da se kladiš na kolo <b>%(round.name)s</b>. Klađenje "
-"je moguće do %(min_time.date)s u %(min_time.time)s kada počinje prva utakmica!"
+"je moguće do %(min_time.date)s u %(min_time.time)s kada počinje prva "
+"utakmica!"
 
 #: nmkapp/templates/mail/round_reminder.html:8
 msgid "You can bet at the <a href=\"https://sharkz.bet\">betting page</a>."
@@ -1018,8 +1023,8 @@ msgstr ""
 "\n"
 "Tvoja uplata je uspešno proknjižena i dodat si u ekipu <strong>\"U pare\"</"
 "strong>.\n"
-"Takođe, ime će ti od sada na svim tabelama biti prikazano podebljano kao znak "
-"da igraš u pare.\n"
+"Takođe, ime će ti od sada na svim tabelama biti prikazano podebljano kao "
+"znak da igraš u pare.\n"
 
 #: nmkapp/templates/paypal.html:17
 msgid ""
@@ -1070,16 +1075,16 @@ msgid ""
 "Send reminder 24h before start of the first match in the round (only if you "
 "still didn't bet)"
 msgstr ""
-"Šalje podsetnik za klađenje 24h pre početka prve utakmice u kolu (samo ako se "
-"još nisi kladio)"
+"Šalje podsetnik za klađenje 24h pre početka prve utakmice u kolu (samo ako "
+"se još nisi kladio)"
 
 #: nmkapp/templates/profile.html:107
 msgid ""
 "Send verbatim copy of all bets once first match in round starts (to verify "
 "there is no tempering with bets afterwards!)"
 msgstr ""
-"Šalje kopiju svih tipovanja svih korisnika za jedno kolo, kada kolo počne (da "
-"svako može da se uveri da nije bilo naknadnog menjanja tipova!)"
+"Šalje kopiju svih tipovanja svih korisnika za jedno kolo, kada kolo počne "
+"(da svako može da se uveri da nije bilo naknadnog menjanja tipova!)"
 
 #: nmkapp/templates/profile.html:117
 msgid "Send announcement that new round started and betting in it is available"
@@ -1257,14 +1262,14 @@ msgstr ""
 "koje su osvojili, već od svih mesta koje su osvojili.\n"
 "Primer: ako su Pera i Mika prvi i imaju po 50 poena, oni dele pare namenjene "
 "i za prvo i za drugo mesto, tj. (50%% + 33.3%%) / 2 = 41.66%%.\n"
-"Ako je Žika bio ispod njih sa 49 poena, on ne dobija pare za drugo mesto, već "
-"za treće, tj. 16.6%%."
+"Ako je Žika bio ispod njih sa 49 poena, on ne dobija pare za drugo mesto, "
+"već za treće, tj. 16.6%%."
 
-#: nmkapp/templates/register.html:8
+#: nmkapp/templates/register.html:8 nmkapp/templates/register_success.html:8
 msgid "SHARKZ.BET - REGISTRATION"
 msgstr "SHARKZ.BET - REGISTRACIJA"
 
-#: nmkapp/templates/register.html:10
+#: nmkapp/templates/register_success.html:10
 msgid ""
 "You successfully registered. You will now receive mail with link to activate "
 "your account (check spam folder too, just in case)"
@@ -1272,7 +1277,7 @@ msgstr ""
 "Uspešno ste se registrovali. Dobićete e-poštu sa linkom za aktiviranje Vašeg "
 "naloga (proverite i spam fasciklu, za svaki slučaj)"
 
-#: nmkapp/templates/register.html:13
+#: nmkapp/templates/register_success.html:13
 msgid ""
 "In the meantime, you can read propositions <a href=\"/proposition\">here</a>."
 msgstr ""
@@ -1403,53 +1408,53 @@ msgstr "Savet: klikni na kolo da pogledaš rezultate samo iz tog kola!"
 msgid "[sharkz.bet] Registration successful"
 msgstr "[sharkz.bet] Registracija uspešna"
 
-#: nmkapp/views.py:101
+#: nmkapp/views.py:105
 msgid "[sharkz.bet] Reset password request"
 msgstr "[sharkz.bet] Zahtev za resetovanjem lozinke"
 
-#: nmkapp/views.py:174 nmkapp/views.py:182
+#: nmkapp/views.py:178 nmkapp/views.py:186
 msgid "There is no active round currently to place bets, try again later"
 msgstr "Trenutno nema aktivnih kola za klađenje, pokušajte kasnije"
 
-#: nmkapp/views.py:227
+#: nmkapp/views.py:231
 msgid "Bets successfully saved"
 msgstr "Tipovanja uspešno sačuvana"
 
-#: nmkapp/views.py:254
+#: nmkapp/views.py:258
 msgid "first match already started"
 msgstr "prvi meč već počeo"
 
-#: nmkapp/views.py:256
+#: nmkapp/views.py:260
 msgid "N/A"
 msgstr "N/A"
 
-#: nmkapp/views.py:273
+#: nmkapp/views.py:277
 msgid "Settings successfully saved"
 msgstr "Podešavanja uspešno sačuvana"
 
-#: nmkapp/views.py:294
+#: nmkapp/views.py:298
 #, python-format
 msgid ""
 "Crew created successfully. Now you can send invite code \"%s\" to your "
 "friends using chat/mail/SMS, so they too can join your new crew"
 msgstr ""
-"Ekipa uspešno napravljena. Sada pošalji šifru-pozivnicu \"%s\" ortacima preko "
-"e-pošte/SMS-om/Viber-om, da i oni mogu da se pridruže ekipi"
+"Ekipa uspešno napravljena. Sada pošalji šifru-pozivnicu \"%s\" ortacima "
+"preko e-pošte/SMS-om/Viber-om, da i oni mogu da se pridruže ekipi"
 
-#: nmkapp/views.py:308
+#: nmkapp/views.py:312
 msgid "Joined crew successfully"
 msgstr "Uspešno dodat u ekipu"
 
-#: nmkapp/views.py:339
+#: nmkapp/views.py:343
 msgid "[sharkz.bet] Player payed paypal"
 msgstr "[sharkz.bet] Igrač platio pejpal"
 
-#: nmkapp/views.py:339
+#: nmkapp/views.py:343
 #, python-format
 msgid "Player %s"
 msgstr "Igrač %s"
 
-#: nmkapp/views.py:453
+#: nmkapp/views.py:459
 msgid ""
 "You cannot leave a crew that you created, you can only completely delete "
 "that crew."
@@ -1457,51 +1462,51 @@ msgstr ""
 "Ne možeš da napustiš ekipu koju si ti napravio, možeš samo da je kompletno "
 "izbrišeš."
 
-#: nmkapp/views.py:461
+#: nmkapp/views.py:467
 #, python-format
 msgid "Successfully left a crew \"%s\""
 msgstr "Uspešno izašao iz ekipe „%s“"
 
-#: nmkapp/views.py:476
+#: nmkapp/views.py:482
 msgid ""
 "You cannot delete crew that you are not owner of, you can only leave it."
 msgstr ""
 "Ne možeš da obrišeš ekipu koju nisi ti napravio, možeš samo da izađeš iz nje."
 
-#: nmkapp/views.py:486
+#: nmkapp/views.py:492
 #, python-format
 msgid "Crew \"%s\" deleted"
 msgstr "Ekipa „%s“ izbrisana"
 
-#: nmkapp/views.py:576
+#: nmkapp/views.py:582
 #, python-format
 msgid "Round \"%s\" set as active"
 msgstr "Kolo „%s“ postavljeno kao aktivno"
 
-#: nmkapp/views.py:588
+#: nmkapp/views.py:594
 #, python-format
 msgid "[sharkz.bet] New round \"%s\" available"
 msgstr "[sharkz.bet] Dostupno je novo kolo „%s“"
 
-#: nmkapp/views.py:599
+#: nmkapp/views.py:605
 #, python-format
 msgid "Round \"%s\" set as inactive"
 msgstr "Kolo „%s“ postavljeno kao neaktivno"
 
-#: nmkapp/views.py:626
+#: nmkapp/views.py:632
 #, python-format
 msgid "New round \"%s\" created successfully"
 msgstr "Novo kolo „%s“ uspešno napravljeno"
 
-#: nmkapp/views.py:647
+#: nmkapp/views.py:653
 msgid "Match successfully added"
 msgstr "Meč uspešno dodat"
 
-#: nmkapp/views.py:682
+#: nmkapp/views.py:688
 msgid "Result added successfully"
 msgstr "Rezultat uspešno unesen"
 
-#: nmkapp/views.py:706
+#: nmkapp/views.py:712
 #, python-format
 msgid "[sharkz.bet] All results from round \"%s\" received"
 msgstr "[sharkz.bet] Uneseni svi rezultati iz kola „%s“"

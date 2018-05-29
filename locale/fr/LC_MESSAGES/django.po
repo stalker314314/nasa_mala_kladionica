@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-28 21:53+0000\n"
-"PO-Revision-Date: 2018-05-28 23:51+0200\n"
+"POT-Creation-Date: 2018-05-29 19:55+0000\n"
+"PO-Revision-Date: 2018-05-29 21:53+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #: nmk/settings.py:87
 msgid "English"
@@ -360,8 +360,9 @@ msgid "Invalid activation"
 msgstr "Échec de l'activation"
 
 #: nmkapp/templates/activation.html:42 nmkapp/templates/forgotpassword.html:14
-#: nmkapp/templates/forgotpassword.html:30 nmkapp/templates/register.html:18
-#: nmkapp/templates/register.html:36 nmkapp/templates/request_password.html:17
+#: nmkapp/templates/forgotpassword.html:30 nmkapp/templates/register.html:25
+#: nmkapp/templates/register_success.html:18
+#: nmkapp/templates/request_password.html:17
 #: nmkapp/templates/request_password.html:35
 #: nmkapp/templates/resetpassword.html:17
 #: nmkapp/templates/resetpassword.html:35
@@ -671,14 +672,13 @@ msgstr "Les paris des autres joueurs"
 msgid "Welcome"
 msgstr "Bienvenue"
 
-#: nmkapp/templates/landing.html:55 nmkapp/templates/login.html:50
-#: nmkapp/templates/register.html:32
+#: nmkapp/templates/landing.html:55 nmkapp/templates/register.html:21
 msgid "Register"
 msgstr "Inscription"
 
 #: nmkapp/templates/landing.html:60
 msgid "Bet against your friends and win money!"
-msgstr "Pariez contre vos et gagnez de l'argent!"
+msgstr "Pariez contre vos amis et gagnez de l'argent!"
 
 #: nmkapp/templates/landing.html:63
 msgid ""
@@ -702,9 +702,9 @@ msgstr ""
 "points!\n"
 "Nous limitons le nombre de joueurs à 100, alors dépêchez-vous de vous "
 "inscrire en cliquant ci-dessous!\n"
-"Avec seulement 100 joueurs et les 3 premières places pour obtenir des prix, "
-"il devrait être facile de gagner de l'argent, n'est-ce pas?\n"
-"Eh bien, ce pourrait être, mais attention aux autres requins dans cette "
+"Avec seulement 100 joueurs et les 3 premières places à obtenir des prix, il "
+"devrait être facile de gagner de l'argent, n'est-ce pas?\n"
+"Eh bien, ça paraît réalisable, mais attention aux autres requins dans cette "
 "piscine!"
 
 #: nmkapp/templates/landing.html:74
@@ -836,11 +836,11 @@ msgstr "Jusqu'à 900€ de prix en argent"
 
 #: nmkapp/templates/landing.html:167
 msgid "Real Thrill Football"
-msgstr "Type de football provoquant des frémissements"
+msgstr "Type de football provoquant des frissons"
 
 #: nmkapp/templates/landing.html:180
 msgid "Extra"
-msgstr "Supplément"
+msgstr "Supplémentaire"
 
 #: nmkapp/templates/landing.html:181
 msgid "Coming Soon"
@@ -899,6 +899,10 @@ msgstr "E-mail ou mot de passe erroné. Veuillez réessayer."
 #: nmkapp/templates/login.html:43
 msgid "I forgot my password"
 msgstr "Mot de passe oublié"
+
+#: nmkapp/templates/login.html:50
+msgid "Don't have an account yet? Register"
+msgstr "Vous n'avez pas encore de compte? Inscrire"
 
 #: nmkapp/templates/login.html:51
 msgid "(registration is allowed until 1h before start of the first match"
@@ -1308,11 +1312,11 @@ msgstr ""
 "Si Pierre est au-dessous d'eux avec 49 points, Peter obtient le prix pour la "
 "3. place, par ex. 16,6%%."
 
-#: nmkapp/templates/register.html:8
+#: nmkapp/templates/register.html:8 nmkapp/templates/register_success.html:8
 msgid "SHARKZ.BET - REGISTRATION"
 msgstr "SHARKZ.BET - INSCRIPTION"
 
-#: nmkapp/templates/register.html:10
+#: nmkapp/templates/register_success.html:10
 msgid ""
 "You successfully registered. You will now receive mail with link to activate "
 "your account (check spam folder too, just in case)"
@@ -1321,7 +1325,7 @@ msgstr ""
 "lien pour activer votre compte (vérifiez également le dossier spam, juste au "
 "cas où)"
 
-#: nmkapp/templates/register.html:13
+#: nmkapp/templates/register_success.html:13
 msgid ""
 "In the meantime, you can read propositions <a href=\"/proposition\">here</a>."
 msgstr ""
@@ -1460,33 +1464,33 @@ msgstr "Astuce: cliquez sur le tour pour ne voir que les résultats de ce tour!"
 msgid "[sharkz.bet] Registration successful"
 msgstr "[sharkz.bet] Inscription réussie"
 
-#: nmkapp/views.py:101
+#: nmkapp/views.py:105
 msgid "[sharkz.bet] Reset password request"
 msgstr "[sharkz.bet] Demande pour réinitialiser le mot de passe"
 
-#: nmkapp/views.py:174 nmkapp/views.py:182
+#: nmkapp/views.py:178 nmkapp/views.py:186
 msgid "There is no active round currently to place bets, try again later"
 msgstr ""
 "Il n'y a actuellement aucun tour actif pour placer des paris, réessayez plus "
 "tard"
 
-#: nmkapp/views.py:227
+#: nmkapp/views.py:231
 msgid "Bets successfully saved"
 msgstr "Les paris enregistrés avec succès"
 
-#: nmkapp/views.py:254
+#: nmkapp/views.py:258
 msgid "first match already started"
 msgstr "le premier match a déjà commencé"
 
-#: nmkapp/views.py:256
+#: nmkapp/views.py:260
 msgid "N/A"
 msgstr "N/A"
 
-#: nmkapp/views.py:273
+#: nmkapp/views.py:277
 msgid "Settings successfully saved"
 msgstr "Paramètres sauvegardés avec succès"
 
-#: nmkapp/views.py:294
+#: nmkapp/views.py:298
 #, python-format
 msgid ""
 "Crew created successfully. Now you can send invite code \"%s\" to your "
@@ -1496,20 +1500,20 @@ msgstr ""
 "d'invitation «%s» à vos amis en utilisant le chat/mail/SMS, afin qu'ils "
 "puissent rejoindre votre nouvelle équipe"
 
-#: nmkapp/views.py:308
+#: nmkapp/views.py:312
 msgid "Joined crew successfully"
 msgstr "Adhésion réussie"
 
-#: nmkapp/views.py:339
+#: nmkapp/views.py:343
 msgid "[sharkz.bet] Player payed paypal"
 msgstr "[sharkz.bet] Joueur a payé par paypal"
 
-#: nmkapp/views.py:339
+#: nmkapp/views.py:343
 #, python-format
 msgid "Player %s"
 msgstr "Joueur %s"
 
-#: nmkapp/views.py:453
+#: nmkapp/views.py:459
 msgid ""
 "You cannot leave a crew that you created, you can only completely delete "
 "that crew."
@@ -1517,52 +1521,52 @@ msgstr ""
 "Vous ne pouvez pas quitter l'équipe que vous avez créée, vous pouvez "
 "uniquement supprimer cette équipe."
 
-#: nmkapp/views.py:461
+#: nmkapp/views.py:467
 #, python-format
 msgid "Successfully left a crew \"%s\""
 msgstr "A quitté le groupe «%s» avec succès"
 
-#: nmkapp/views.py:476
+#: nmkapp/views.py:482
 msgid ""
 "You cannot delete crew that you are not owner of, you can only leave it."
 msgstr ""
 "Vous ne pouvez pas supprimer une équipe que vous n'avez pas créé vous-même, "
 "vous pouvez uniquement le quitter."
 
-#: nmkapp/views.py:486
+#: nmkapp/views.py:492
 #, python-format
 msgid "Crew \"%s\" deleted"
 msgstr "Équipe «%s» supprimée"
 
-#: nmkapp/views.py:576
+#: nmkapp/views.py:582
 #, python-format
 msgid "Round \"%s\" set as active"
 msgstr "Tour «%s» défini comme actif"
 
-#: nmkapp/views.py:588
+#: nmkapp/views.py:594
 #, python-format
 msgid "[sharkz.bet] New round \"%s\" available"
 msgstr "[sharkz.bet] Nouveau tour «%s» disponible"
 
-#: nmkapp/views.py:599
+#: nmkapp/views.py:605
 #, python-format
 msgid "Round \"%s\" set as inactive"
 msgstr "Tour «%s» défini comme inactif"
 
-#: nmkapp/views.py:626
+#: nmkapp/views.py:632
 #, python-format
 msgid "New round \"%s\" created successfully"
 msgstr "Nouveau tour «%s» créé avec succès"
 
-#: nmkapp/views.py:647
+#: nmkapp/views.py:653
 msgid "Match successfully added"
 msgstr "Match ajouté avec succès"
 
-#: nmkapp/views.py:682
+#: nmkapp/views.py:688
 msgid "Result added successfully"
 msgstr "Résultat ajouté avec succès"
 
-#: nmkapp/views.py:706
+#: nmkapp/views.py:712
 #, python-format
 msgid "[sharkz.bet] All results from round \"%s\" received"
 msgstr "[sharkz.bet] Tous les résultats du tour «%s» reçus"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-28 21:53+0000\n"
-"PO-Revision-Date: 2018-05-28 23:54+0200\n"
+"POT-Creation-Date: 2018-05-29 19:55+0000\n"
+"PO-Revision-Date: 2018-05-29 21:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sr\n"
@@ -351,8 +351,9 @@ msgid "Invalid activation"
 msgstr "Неисправна активација"
 
 #: nmkapp/templates/activation.html:42 nmkapp/templates/forgotpassword.html:14
-#: nmkapp/templates/forgotpassword.html:30 nmkapp/templates/register.html:18
-#: nmkapp/templates/register.html:36 nmkapp/templates/request_password.html:17
+#: nmkapp/templates/forgotpassword.html:30 nmkapp/templates/register.html:25
+#: nmkapp/templates/register_success.html:18
+#: nmkapp/templates/request_password.html:17
 #: nmkapp/templates/request_password.html:35
 #: nmkapp/templates/resetpassword.html:17
 #: nmkapp/templates/resetpassword.html:35
@@ -659,8 +660,7 @@ msgstr "Шта су други играли"
 msgid "Welcome"
 msgstr "Добродошли"
 
-#: nmkapp/templates/landing.html:55 nmkapp/templates/login.html:50
-#: nmkapp/templates/register.html:32
+#: nmkapp/templates/landing.html:55 nmkapp/templates/register.html:21
 msgid "Register"
 msgstr "Региструј се"
 
@@ -879,6 +879,10 @@ msgstr "Погрешна адреса е-поште или лозинка. По�
 #: nmkapp/templates/login.html:43
 msgid "I forgot my password"
 msgstr "Заборавио сам лозинку"
+
+#: nmkapp/templates/login.html:50
+msgid "Don't have an account yet? Register"
+msgstr "Још немаш налог? Региструј се"
 
 #: nmkapp/templates/login.html:51
 msgid "(registration is allowed until 1h before start of the first match"
@@ -1260,11 +1264,11 @@ msgstr ""
 "Ако је Жика био испод њих са 49 поена, он не добија паре за друго место, већ "
 "за треће, тј. 16.6%%."
 
-#: nmkapp/templates/register.html:8
+#: nmkapp/templates/register.html:8 nmkapp/templates/register_success.html:8
 msgid "SHARKZ.BET - REGISTRATION"
 msgstr "SHARKZ.BET - РЕГИСТРАЦИЈА"
 
-#: nmkapp/templates/register.html:10
+#: nmkapp/templates/register_success.html:10
 msgid ""
 "You successfully registered. You will now receive mail with link to activate "
 "your account (check spam folder too, just in case)"
@@ -1272,7 +1276,7 @@ msgstr ""
 "Успешно сте се регистровали. Добићете е-пошту са линком за активирање Вашег "
 "налога (проверите и спам фасциклу, за сваки случај)"
 
-#: nmkapp/templates/register.html:13
+#: nmkapp/templates/register_success.html:13
 msgid ""
 "In the meantime, you can read propositions <a href=\"/proposition\">here</a>."
 msgstr ""
@@ -1403,31 +1407,31 @@ msgstr "Савет: кликни на коло да погледаш резул�
 msgid "[sharkz.bet] Registration successful"
 msgstr "[sharkz.bet] Регистрација успешна"
 
-#: nmkapp/views.py:101
+#: nmkapp/views.py:105
 msgid "[sharkz.bet] Reset password request"
 msgstr "[sharkz.bet] Захтев за ресетовањем лозинке"
 
-#: nmkapp/views.py:174 nmkapp/views.py:182
+#: nmkapp/views.py:178 nmkapp/views.py:186
 msgid "There is no active round currently to place bets, try again later"
 msgstr "Тренутно нема активних кола за клађење, покушајте касније"
 
-#: nmkapp/views.py:227
+#: nmkapp/views.py:231
 msgid "Bets successfully saved"
 msgstr "Типовања успешно сачувана"
 
-#: nmkapp/views.py:254
+#: nmkapp/views.py:258
 msgid "first match already started"
 msgstr "први меч већ почео"
 
-#: nmkapp/views.py:256
+#: nmkapp/views.py:260
 msgid "N/A"
 msgstr "N/A"
 
-#: nmkapp/views.py:273
+#: nmkapp/views.py:277
 msgid "Settings successfully saved"
 msgstr "Подешавања успешно сачувана"
 
-#: nmkapp/views.py:294
+#: nmkapp/views.py:298
 #, python-format
 msgid ""
 "Crew created successfully. Now you can send invite code \"%s\" to your "
@@ -1436,20 +1440,20 @@ msgstr ""
 "Екипа успешно направљена. Сада пошаљи шифру-позивницу \"%s\" ортацима преко "
 "е-поште/СМС-ом/Viber-ом, да и они могу да се придруже екипи"
 
-#: nmkapp/views.py:308
+#: nmkapp/views.py:312
 msgid "Joined crew successfully"
 msgstr "Успешно додат у екипу"
 
-#: nmkapp/views.py:339
+#: nmkapp/views.py:343
 msgid "[sharkz.bet] Player payed paypal"
 msgstr "[sharkz.bet] Играч платио пејпал"
 
-#: nmkapp/views.py:339
+#: nmkapp/views.py:343
 #, python-format
 msgid "Player %s"
 msgstr "Играч %s"
 
-#: nmkapp/views.py:453
+#: nmkapp/views.py:459
 msgid ""
 "You cannot leave a crew that you created, you can only completely delete "
 "that crew."
@@ -1457,51 +1461,51 @@ msgstr ""
 "Не можеш да напустиш екипу коју си ти направио, можеш само да је комплетно "
 "избришеш."
 
-#: nmkapp/views.py:461
+#: nmkapp/views.py:467
 #, python-format
 msgid "Successfully left a crew \"%s\""
 msgstr "Успешно изашао из екипе „%s“"
 
-#: nmkapp/views.py:476
+#: nmkapp/views.py:482
 msgid ""
 "You cannot delete crew that you are not owner of, you can only leave it."
 msgstr ""
 "Не можеш да обришеш екипу коју ниси ти направио, можеш само да изађеш из ње."
 
-#: nmkapp/views.py:486
+#: nmkapp/views.py:492
 #, python-format
 msgid "Crew \"%s\" deleted"
 msgstr "Екипа „%s“ избрисана"
 
-#: nmkapp/views.py:576
+#: nmkapp/views.py:582
 #, python-format
 msgid "Round \"%s\" set as active"
 msgstr "Коло „%s“ постављено као активно"
 
-#: nmkapp/views.py:588
+#: nmkapp/views.py:594
 #, python-format
 msgid "[sharkz.bet] New round \"%s\" available"
 msgstr "[sharkz.bet] Доступно је ново коло „%s“"
 
-#: nmkapp/views.py:599
+#: nmkapp/views.py:605
 #, python-format
 msgid "Round \"%s\" set as inactive"
 msgstr "Коло „%s“ постављено као неактивно"
 
-#: nmkapp/views.py:626
+#: nmkapp/views.py:632
 #, python-format
 msgid "New round \"%s\" created successfully"
 msgstr "Ново коло „%s“ успешно направљено"
 
-#: nmkapp/views.py:647
+#: nmkapp/views.py:653
 msgid "Match successfully added"
 msgstr "Меч успешно додат"
 
-#: nmkapp/views.py:682
+#: nmkapp/views.py:688
 msgid "Result added successfully"
 msgstr "Резултат успешно унесен"
 
-#: nmkapp/views.py:706
+#: nmkapp/views.py:712
 #, python-format
 msgid "[sharkz.bet] All results from round \"%s\" received"
 msgstr "[sharkz.bet] Унесени сви резултати из кола „%s“"
