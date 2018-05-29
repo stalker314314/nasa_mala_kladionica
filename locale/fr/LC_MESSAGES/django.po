@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 19:55+0000\n"
-"PO-Revision-Date: 2018-05-29 21:53+0200\n"
+"PO-Revision-Date: 2018-05-29 22:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #: nmk/settings.py:87
 msgid "English"
@@ -902,7 +902,7 @@ msgstr "Mot de passe oublié"
 
 #: nmkapp/templates/login.html:50
 msgid "Don't have an account yet? Register"
-msgstr "Vous n'avez pas encore de compte? Inscrire"
+msgstr "Vous n'avez pas encore de compte? Inscrivez-vous"
 
 #: nmkapp/templates/login.html:51
 msgid "(registration is allowed until 1h before start of the first match"
