@@ -6,7 +6,7 @@ from django.forms.widgets import PasswordInput
 from django.utils.translation import gettext as _
 from django.utils.safestring import mark_safe
 
-from nmkapp.models import Group, Player
+from nmkapp.models import Group
 from nmkapp.logic import convert_odd_format
 
 
@@ -89,7 +89,6 @@ class RequestDisplayNameForm(forms.Form):
         if 'display_name' in cleaned_data:
             if len(cleaned_data['display_name']) < 3:
                 raise forms.ValidationError({'display_name': [_('Display name must be at least 3 characters long'), ]})
-            # users = Player.objects.all()
             users = User.objects.filter(first_name__iexact=cleaned_data['display_name'])
             if len(users) > 0:
                 raise forms.ValidationError({'display_name': [_('Sorry, but ' + cleaned_data['display_name'] + ' is already taken')]})
