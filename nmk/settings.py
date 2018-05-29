@@ -157,6 +157,11 @@ LOGGING_DEBUG = {
         },
     },
     'loggers': {
+        'nmkapp': {
+            'handlers': ['file'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
         '': {
             'handlers': ['file', 'console'],
             'propagate': True,
