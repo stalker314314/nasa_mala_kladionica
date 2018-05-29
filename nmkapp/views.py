@@ -24,7 +24,7 @@ from django.utils.translation import gettext as _
 
 from nmkapp.cache import StandingsCache, RoundStandingsCache
 from nmkapp.forms import AddToGroupForm, BettingForm, ForgotPasswordForm, NewGroupForm, PointsForm, \
-    RegisterForm, ResetPasswordForm, RequestPasswordForm
+    RegisterForm, ResetPasswordForm, RequestDisplayNameForm
 from nmkapp.logic import recalculate_round_points, recalculate_total_points
 from nmkapp.model_forms import RoundForm, MatchForm, ResultsForm, PlayerForm
 from nmkapp.models import Round, UserRound, Shot, Match, Team, Player, Group
@@ -138,29 +138,22 @@ def activation(request):
 
 
 @transaction.atomic
-def request_password(request):
+def request_display_name(request):
+    logger.info('User is on request display name page')
     if request.method == 'POST':
-        form = RequestPasswordForm(request.POST)
+        form = RequestDisplayNameForm(request.POST)
         if form.is_valid():
             cleaned_data = form.cleaned_data
             strategy = load_strategy()
             token = request.session.get('partial_pipeline_token')
             partial_data = strategy.partial_load(token)
             user = partial_data.data['kwargs']['user']
-            from pprint import pprint
-            partial_data.data['kwargs']['is_new'] = False
-            pprint(vars(partial_data))
-            partial_data.next_step = partial_data.next_step + 1
-            partial_data.save()
-            print ("partial saved")
-            user.set_password(cleaned_data['password'])
-            print ("user pwd set")
+            user.first_name = cleaned_data['display_name']
             user.save()
-            print ("user saved")
             return redirect('/complete/' + partial_data.backend)
     else:
-        form = RequestPasswordForm()
-        return render(request, 'request_password.html', {'form': form} )
+        form = RequestDisplayNameForm()
+    return render(request, 'request_display_name.html', {'form': form} )
 
 
 

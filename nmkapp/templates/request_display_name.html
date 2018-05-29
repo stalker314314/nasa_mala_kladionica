@@ -7,21 +7,21 @@
 
 <h1 style="text-align: center;">{% trans "SHARKZ.BET - ADD PASSWORD" %}</h1>
 {% if nonvalid %}
-{% trans "Invalid request to add password" %}
+{% trans "Invalid request to select display name" %}
 {% else %}
     {% if reset %}
-    {% trans "Password added successfully" %}
+    {% trans "Display name set successfully" %}
     <br/>
     <br/>
     <div>
         <a href="/login">{% trans "Back to login" %}</a>
     </div>
     {% else %}
-    <form method="post" action="/requestpassword">
+    <form method="post" action="/requestdisplayname">
         {% csrf_token %}
 
         <fieldset>
-            <div>{% blocktrans %}Adding password for user <b>{{ email }}</b>{% endblocktrans %}</div>
+            <div>{% blocktrans %}Setting display name for user <b>{{ email }}</b>{% endblocktrans %}</div>
             <br/>
             <table align="center">
             {{ form.as_table }}
@@ -29,7 +29,7 @@
             <br/>
 
             <div class="buttonBox">
-                <input type="submit" value="{% trans "Reset password" %}" />
+                <input type="submit" value="{% trans "Set display name" %}" />
             </div>
             <div>
                 <a href="/login">{% trans "Back to login" %}</a>
