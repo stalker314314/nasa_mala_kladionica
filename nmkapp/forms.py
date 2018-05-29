@@ -6,7 +6,7 @@ from django.forms.widgets import PasswordInput
 from django.utils.translation import gettext as _
 from django.utils.safestring import mark_safe
 
-from nmkapp.models import Group
+from nmkapp.models import Group, Player
 from nmkapp.logic import convert_odd_format
 
 
@@ -81,12 +81,18 @@ class ResetPasswordForm(forms.Form):
         return cleaned_data
 
 
-class RequestPasswordForm(forms.Form):
-    # ovo je cisto tokom testiranja, bice normalnije :D
-    password = forms.CharField(label='Password', max_length=28)
-    confirmed_password = forms.CharField(label='Confirm Password', max_length=28)
+class RequestDisplayNameForm(forms.Form):
+    display_name = forms.CharField(label=_('Choose Display Name'), required=True, max_length=28, min_length=3)
 
-
+    def clean(self):
+        cleaned_data = super(RequestDisplayNameForm, self).clean()
+        if 'display_name' in cleaned_data:
+            if len(cleaned_data['display_name']) < 3:
+                raise forms.ValidationError({'display_name': [_('Display name must be at least 3 characters long'), ]})
+            # users = Player.objects.all()
+            users = User.objects.filter(first_name__iexact=cleaned_data['display_name'])
+            if len(users) > 0:
+                raise forms.ValidationError({'display_name': [_('Sorry, but ' + cleaned_data['display_name'] + ' is already taken')]})
 
 class NewGroupForm(forms.Form):
     def __init__(self, *args, **kwargs):

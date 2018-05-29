@@ -113,9 +113,6 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
-
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',
     'social_core.pipeline.social_auth.social_uid',
@@ -124,11 +121,10 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.user.get_username',
     'social_core.pipeline.social_auth.associate_by_email',
     'social_core.pipeline.user.create_user',
-    'nmkapp.pipeline.request_password',
+    'nmkapp.pipeline.request_display_name',
     'social_core.pipeline.social_auth.associate_user',
     'social_core.pipeline.social_auth.load_extra_data',
     'social_core.pipeline.user.user_details',
-    'nmkapp.pipeline.test',
 )
 
 LOGIN_URL = '/login/'
@@ -279,6 +275,9 @@ if not DEBUG:
     ANYMAIL['MAILJET_SECRET_KEY'] = os.environ['NMK_MAILJET_SECRET_KEY']
     ALLOWED_HOSTS = ['localhost', '.sharkz.bet', '.sharkz.bet.']
     LOGGING = LOGGING_PROD
+
+    SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ['NMK_GOOGLE_OAUTH2_KEY']
+    SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ['NMK_GOOGLE_OAUTH2_SECRET']
 
     #enable loaders(caching) for prod
     del TEMPLATES[0]['APP_DIRS']
