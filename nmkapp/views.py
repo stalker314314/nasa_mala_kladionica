@@ -41,7 +41,7 @@ def id_generator(size=16, chars=string.ascii_uppercase + string.digits):
 def register(request):
     registration_type = request.GET.get('type', '')
     logger.info('User is on register page, going with %s type', registration_type)
-    last_registration_time = datetime(2018, 6, 14, 16, 0, tzinfo=timezone.utc)
+    last_registration_time = datetime(2018, 6, 14, 14, 0, tzinfo=timezone.utc)
     if timezone.now() >= last_registration_time:
         raise Http404()
 
