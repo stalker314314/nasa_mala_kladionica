@@ -217,18 +217,6 @@ i.awesome {
 	dodao melja
 ***********************************/
 
-#register-pep-talk {
-  border-bottom: none;
-  padding-bottom: none;
-  margin-top: none;
-  font-size: 1.3em;
-  line-height: 1.5;
-}
-
-fieldset {
-  text-align: center;
-}
-
 input[type="submit"], input[type="button"] {
 	font-weight: bold;
 	color: #67cccc;
@@ -402,6 +390,14 @@ ul.proposition {
 /***********************************
 	temporary extras
 ***********************************/
+
+#register-pep-talk {
+  border-bottom: none;
+  padding-bottom: none;
+  margin-top: none;
+  font-size: 1.3em;
+  line-height: 1.5;
+}
 
 .container {
   /* makes the grass look fancily aligned on bottom when empty */
