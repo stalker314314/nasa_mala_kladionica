@@ -191,7 +191,7 @@ hr {
   margin-bottom: 15px;
   text-align: right;
   font-weight: normal;
-  padding: 2px 50px 0 0;
+  padding: 0;
   border-top:1px solid var( --color-bg-dark );
 
 }
@@ -230,6 +230,18 @@ i.awesome {
 /***********************************
 	dodao melja
 ***********************************/
+
+#register-pep-talk {
+  border-bottom: none;
+  padding-bottom: none;
+  margin-top: none;
+  font-size: 1.3em;
+  line-height: 1.5;
+}
+
+fieldset {
+  text-align: center;
+}
 
 input[type="submit"], input[type="button"] {
 	font-weight: bold;

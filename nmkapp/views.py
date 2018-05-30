@@ -19,6 +19,7 @@ from django.db.models.aggregates import Min
 from django.http.response import HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render, redirect
 from django.template import loader
+from django.urls import reverse
 from django.utils import timezone, translation
 from django.utils.translation import gettext as _
 
@@ -30,7 +31,6 @@ from nmkapp.model_forms import RoundForm, MatchForm, ResultsForm, PlayerForm
 from nmkapp.models import Round, UserRound, Shot, Match, Team, Player, Group
 
 from social_django.utils import load_strategy
-
 
 
 logger = logging.getLogger(__name__)
@@ -140,21 +140,24 @@ def activation(request):
 @transaction.atomic
 def request_display_name(request):
     logger.info('User is on request display name page')
+
+    strategy = load_strategy()
+    token = request.session.get('partial_pipeline_token')
+    partial_data = strategy.partial_load(token)
+
     if request.method == 'POST':
         form = RequestDisplayNameForm(request.POST)
         if form.is_valid():
             cleaned_data = form.cleaned_data
-            strategy = load_strategy()
-            token = request.session.get('partial_pipeline_token')
-            partial_data = strategy.partial_load(token)
             user = partial_data.data['kwargs']['user']
             user.first_name = cleaned_data['display_name']
             user.save()
-            return redirect('/complete/' + partial_data.backend)
+            return redirect(reverse('social:complete', kwargs={ 'backend': partial_data.backend }))
     else:
-        form = RequestDisplayNameForm()
-    return render(request, 'request_display_name.html', {'form': form} )
+        default_display_name = partial_data.data['kwargs']['details']['fullname']
+        form = RequestDisplayNameForm( {'display_name': default_display_name} )
 
+    return render(request, 'request_display_name.html', {'form': form} )
 
 
 @transaction.atomic

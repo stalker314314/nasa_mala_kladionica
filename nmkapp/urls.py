@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^login/$', views.CustomLoginView.as_view(template_name='login.html', extra_context={'no_menu': True}),
         name='login'),
     url('', include('social_django.urls', namespace='social')),
-    url(r'^requestdisplayname', views.request_display_name, name='request_display_name'),
+    url(r'^requestdisplayname$', views.request_display_name, name='request_display_name'),
     url(r'^logout$', logout_then_login),
     url(r'^profile/reset$', views.reset_password),
     url(r'^profile/password$', password_change, {"template_name": "password.html", "post_change_redirect": "/"}),

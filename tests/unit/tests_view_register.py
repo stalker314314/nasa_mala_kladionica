@@ -116,7 +116,7 @@ class RegisterTests(NmkUnitTestCase):
     def test_register_display_name_already_exists(self):
         self.client = Client()
         response = self.client.post(reverse(views.register), {
-            'display_name': '@Ilija Jankovic',
+            'display_name': '@ILIJA JANKOVIC',
             'email': 'foo@bar.com',
             'password': 'foo123',
             'accept_terms': True,
