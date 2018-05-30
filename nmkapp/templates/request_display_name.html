@@ -16,9 +16,11 @@
             <div>{% blocktrans %}Setting display name for user <b>{{ email }}</b>{% endblocktrans %}</div>
             <br/>
             <p id="register-pep-talk">
-              Great, your account is created!<br>
-              One more step and you can start playing.<br>
-              Choose a display name so your friends can recognize you.
+              {% blocktrans %}
+                Great, your account is created!<br>
+                One more step and you can start playing.<br>
+                Choose a display name so your friends can recognize you.
+              {% endblocktrans %}
             </p>
             <table align="center">
             {{ form.as_table }}
