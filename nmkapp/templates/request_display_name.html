@@ -5,24 +5,21 @@
 
 {% block content %}
 
-<h1 style="text-align: center;">{% trans "SHARKZ.BET - ADD PASSWORD" %}</h1>
+<h1 class="content-header" style="text-align: center;">{% trans "SHARKZ.BET - PICK A DISPLAY NAME" %}</h1>
 {% if nonvalid %}
 {% trans "Invalid request to select display name" %}
 {% else %}
-    {% if reset %}
-    {% trans "Display name set successfully" %}
-    <br/>
-    <br/>
-    <div>
-        <a href="/login">{% trans "Back to login" %}</a>
-    </div>
-    {% else %}
     <form method="post" action="/requestdisplayname">
         {% csrf_token %}
 
         <fieldset>
             <div>{% blocktrans %}Setting display name for user <b>{{ email }}</b>{% endblocktrans %}</div>
             <br/>
+            <p id="register-pep-talk">
+              Great, your account is created!<br>
+              One more step and you can start playing.<br>
+              Choose a display name so your friends can recognize you.
+            </p>
             <table align="center">
             {{ form.as_table }}
             </table>
@@ -36,6 +33,5 @@
             </div>
         </fieldset>
     </form>
-    {% endif %}
 {% endif %}
 {% endblock %}

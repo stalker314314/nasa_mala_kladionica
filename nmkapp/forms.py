@@ -49,7 +49,7 @@ class RegisterForm(forms.Form):
                     {'email': [_('This e-mail address already exists. '
                                  'If this is your e-mail, please reset password.'), ]})
         if 'display_name' in cleaned_data:
-            existing_first_name = User.objects.filter(first_name=cleaned_data['display_name'])
+            existing_first_name = User.objects.filter(first_name__iexact=cleaned_data['display_name'])
             if len(existing_first_name) > 0:
                 raise forms.ValidationError(
                     {'display_name': [_('This display name is already taken. '
@@ -87,11 +87,9 @@ class RequestDisplayNameForm(forms.Form):
     def clean(self):
         cleaned_data = super(RequestDisplayNameForm, self).clean()
         if 'display_name' in cleaned_data:
-            if len(cleaned_data['display_name']) < 3:
-                raise forms.ValidationError({'display_name': [_('Display name must be at least 3 characters long'), ]})
             users = User.objects.filter(first_name__iexact=cleaned_data['display_name'])
             if len(users) > 0:
-                raise forms.ValidationError({'display_name': [_('Sorry, but ' + cleaned_data['display_name'] + ' is already taken')]})
+                raise forms.ValidationError({'display_name': [_('Sorry, but {0} is already taken'.format(cleaned_data['display_name']))]})
 
 class NewGroupForm(forms.Form):
     def __init__(self, *args, **kwargs):
