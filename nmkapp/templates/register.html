@@ -31,6 +31,7 @@
         <div class="buttonBox">
             <input type="submit" value="{% trans "Register" %}" />
         </div>
+        <a id="social-login" href="{% url 'social:begin' 'google-oauth2' %}">{% trans "Register using Google account" %}</a>
         <br/>
         <div>
             <a href="/login">{% trans "Back to login" %}</a>
