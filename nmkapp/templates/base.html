@@ -55,11 +55,11 @@
 		<script src="{% static "js/jquery.tipsy.js" %}"></script>
 		<script type="text/javascript">
 		    $(document).ready(function() {
-		        $('.navbar-collapse a').click(function(){
-		            $(".navbar-collapse").collapse('hide');
-                });
                 $('html').click(function(e) {
-                    $(".navbar-collapse").collapse('hide');
+                    // If we click on menu to expand other submenus, do nothing
+                    if (e.target.id != "dropdown01") {
+                        $(".navbar-collapse").collapse('hide');
+                    }
                 });
 		    });
 			function notify(message, type, timeout) {
@@ -143,7 +143,7 @@
                     <li class="nav-item dropdown">
                         <a class="navigation nav-link dropdown-toggle" href="#" id="dropdown01"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans "Admin menu" %}</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <div class="dropdown-menu navbar-light bg-light" aria-labelledby="dropdown01">
                             <a class="navigation dropdown-item" href="/admin/rounds">{% trans "Rounds" %}</a>
                             <a class="navigation dropdown-item" href="/admin/matches">{% trans "Matches" %}</a>
                             <a class="navigation dropdown-item" href="/admin/results">{% trans "Results" %}</a>
