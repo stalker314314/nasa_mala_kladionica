@@ -413,6 +413,12 @@ ul.proposition {
   line-height: 1.5;
 }
 
+#social-login {
+  margin-bottom: 30px;
+  margin-top: 10px;
+  text-decoration: underline;
+}
+
 .container {
   /* makes the grass look fancily aligned on bottom when empty */
   min-height: calc( 100vh - 110px - 90px );
