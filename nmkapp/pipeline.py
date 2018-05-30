@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from social_core.pipeline.partial import partial
+
 from django.urls import reverse
 from django.shortcuts import redirect
+
+from nmkapp.views import request_display_name
 
 
 """ Pauses PSA's pipeline to require display_name for users registering
@@ -15,4 +18,4 @@ def request_display_name(strategy, details, user=None, is_new=False, *args, **kw
     if user and user.first_name:
         return
     else:
-        return redirect(reverse('request_display_name'))
+        return redirect(reverse(request_display_name))
