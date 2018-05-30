@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-29 19:55+0000\n"
-"PO-Revision-Date: 2018-05-29 21:36+0200\n"
+"POT-Creation-Date: 2018-05-30 19:56+0000\n"
+"PO-Revision-Date: 2018-05-30 22:01+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sr\n"
@@ -19,23 +19,23 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 2.0.7\n"
 
-#: nmk/settings.py:87
+#: nmk/settings.py:90
 msgid "English"
 msgstr "Енглески"
 
-#: nmk/settings.py:88
+#: nmk/settings.py:91
 msgid "German"
 msgstr "Немачки"
 
-#: nmk/settings.py:89
+#: nmk/settings.py:92
 msgid "French"
 msgstr "Француски"
 
-#: nmk/settings.py:90
+#: nmk/settings.py:93
 msgid "Serbian"
 msgstr "Српски (ћирилица)"
 
-#: nmk/settings.py:91
+#: nmk/settings.py:94
 msgid "Serbian latin"
 msgstr "Српски (латиница)"
 
@@ -103,47 +103,56 @@ msgstr "Лозинка поново*"
 msgid "Passwords do not match"
 msgstr "Лозинке се не поклапају"
 
-#: nmkapp/forms.py:88
+#: nmkapp/forms.py:85
+msgid "Choose Display Name"
+msgstr "Одабери надимак"
+
+#: nmkapp/forms.py:94
+#, python-brace-format
+msgid "Sorry, but name \"{0}\" is already taken"
+msgstr "Нажалост, име „{0}“ је неко већ узео"
+
+#: nmkapp/forms.py:101
 msgid "Create a new crew"
 msgstr "Направи нову екипу"
 
-#: nmkapp/forms.py:95
+#: nmkapp/forms.py:108
 msgid "Crew name too long"
 msgstr "Име екипе предугачко"
 
-#: nmkapp/forms.py:98
+#: nmkapp/forms.py:111
 msgid "Sorry, but crew name is already taken"
 msgstr "Нажалост, име екипе је већ узето"
 
-#: nmkapp/forms.py:108
+#: nmkapp/forms.py:121
 msgid "Please enter invite code to join a crew, if you got one:"
 msgstr "Ако сте је добили. унесите шифру-позивницу да се придружите екипи:"
 
-#: nmkapp/forms.py:115
+#: nmkapp/forms.py:128
 msgid "Invite code should contain 8 numbers"
 msgstr "Шифра-позивница мора да садржи 8 бројева"
 
-#: nmkapp/forms.py:118
+#: nmkapp/forms.py:131
 msgid "Invite code invalid"
 msgstr "Неисправна шифра-позивница"
 
-#: nmkapp/forms.py:120
+#: nmkapp/forms.py:133
 msgid "You are already member of this crew"
 msgstr "Већ сте члан ове екипе"
 
-#: nmkapp/forms.py:143
+#: nmkapp/forms.py:156
 msgid "You must place all bets"
 msgstr "Морате типовати све утакмице"
 
-#: nmkapp/forms.py:151
+#: nmkapp/forms.py:164
 msgid "Recalculate points"
 msgstr "Прерачунај поене"
 
-#: nmkapp/forms.py:153
+#: nmkapp/forms.py:166
 msgid "Clear cache"
 msgstr "Очисти кеш"
 
-#: nmkapp/forms.py:155
+#: nmkapp/forms.py:168
 msgid "Repopulate cache"
 msgstr "Поново попуни кеш"
 
@@ -351,10 +360,9 @@ msgid "Invalid activation"
 msgstr "Неисправна активација"
 
 #: nmkapp/templates/activation.html:42 nmkapp/templates/forgotpassword.html:14
-#: nmkapp/templates/forgotpassword.html:30 nmkapp/templates/register.html:25
+#: nmkapp/templates/forgotpassword.html:30 nmkapp/templates/register.html:30
 #: nmkapp/templates/register_success.html:18
-#: nmkapp/templates/request_password.html:17
-#: nmkapp/templates/request_password.html:35
+#: nmkapp/templates/request_display_name.html:34
 #: nmkapp/templates/resetpassword.html:17
 #: nmkapp/templates/resetpassword.html:35
 msgid "Back to login"
@@ -549,7 +557,6 @@ msgstr ""
 "лозинке (проверите и спам фасциклу, за сваки случај)"
 
 #: nmkapp/templates/forgotpassword.html:27
-#: nmkapp/templates/request_password.html:32
 #: nmkapp/templates/resetpassword.html:32
 msgid "Reset password"
 msgstr "Лозинка поново"
@@ -880,11 +887,19 @@ msgstr "Погрешна адреса е-поште или лозинка. По�
 msgid "I forgot my password"
 msgstr "Заборавио сам лозинку"
 
-#: nmkapp/templates/login.html:50
+#: nmkapp/templates/login.html:46 nmkapp/templates/register.html:23
+msgid "or"
+msgstr "или"
+
+#: nmkapp/templates/login.html:48
+msgid "Log In using Google account"
+msgstr "Пријави се користећи Google налог"
+
+#: nmkapp/templates/login.html:54
 msgid "Don't have an account yet? Register"
 msgstr "Још немаш налог? Региструј се"
 
-#: nmkapp/templates/login.html:51
+#: nmkapp/templates/login.html:55
 msgid "(registration is allowed until 1h before start of the first match"
 msgstr "(регистрација је дозвољена до 1h пред прву утакмицу"
 
@@ -1268,6 +1283,10 @@ msgstr ""
 msgid "SHARKZ.BET - REGISTRATION"
 msgstr "SHARKZ.BET - РЕГИСТРАЦИЈА"
 
+#: nmkapp/templates/register.html:25
+msgid "Register using Google account"
+msgstr "Региструј се користећи Google налог"
+
 #: nmkapp/templates/register_success.html:10
 msgid ""
 "You successfully registered. You will now receive mail with link to activate "
@@ -1282,22 +1301,36 @@ msgid ""
 msgstr ""
 "У међувремену, можеш да прочиташ правила <a href=\"/proposition\">овде</a>."
 
-#: nmkapp/templates/request_password.html:8
-msgid "SHARKZ.BET - ADD PASSWORD"
-msgstr "SHARKZ.BET - КРЕИРАЈ ЛОЗИНКУ"
+#: nmkapp/templates/request_display_name.html:8
+msgid "SHARKZ.BET - PICK A DISPLAY NAME"
+msgstr "SHARKZ.BET - ОДАБЕРИ НАДИМАК"
 
-#: nmkapp/templates/request_password.html:10
-msgid "Invalid request to add password"
-msgstr "Неисправан захтев за креирање лозинке"
+#: nmkapp/templates/request_display_name.html:10
+msgid "Invalid request to select display name"
+msgstr "Неисправан захтев за одабир надимка"
 
-#: nmkapp/templates/request_password.html:13
-msgid "Password added successfully"
-msgstr "Лозинка успешно креирана"
-
-#: nmkapp/templates/request_password.html:24
+#: nmkapp/templates/request_display_name.html:16
 #, python-format
-msgid "Adding password for user <b>%(email)s</b>"
-msgstr "Додавање лозинке за корисника <b>%(email)s</b>"
+msgid "Setting display name for user <b>%(email)s</b>"
+msgstr "Одабери надимак за корисника <b>%(email)s</b>"
+
+#: nmkapp/templates/request_display_name.html:19
+msgid ""
+"\n"
+"                Great, your account is created!<br>\n"
+"                One more step and you can start playing.<br>\n"
+"                Choose a display name so your friends can recognize you.\n"
+"              "
+msgstr ""
+"\n"
+"                Супер, налог ти је креиран!<br>\n"
+"                Још један корак пре него што почне игра.<br>\n"
+"                Одабери надимак да би ортаци могли да те нађу.\n"
+"                "
+
+#: nmkapp/templates/request_display_name.html:31
+msgid "Set display name"
+msgstr "Постави надимак"
 
 #: nmkapp/templates/resetpassword.html:10
 msgid "Invalid request to reset password"
@@ -1403,35 +1436,35 @@ msgstr ""
 msgid "Tip: click on the round to look only at that round's results!"
 msgstr "Савет: кликни на коло да погледаш резултате само из тог кола!"
 
-#: nmkapp/views.py:72
+#: nmkapp/views.py:75
 msgid "[sharkz.bet] Registration successful"
 msgstr "[sharkz.bet] Регистрација успешна"
 
-#: nmkapp/views.py:105
+#: nmkapp/views.py:108
 msgid "[sharkz.bet] Reset password request"
 msgstr "[sharkz.bet] Захтев за ресетовањем лозинке"
 
-#: nmkapp/views.py:178 nmkapp/views.py:186
+#: nmkapp/views.py:204 nmkapp/views.py:212
 msgid "There is no active round currently to place bets, try again later"
 msgstr "Тренутно нема активних кола за клађење, покушајте касније"
 
-#: nmkapp/views.py:231
+#: nmkapp/views.py:257
 msgid "Bets successfully saved"
 msgstr "Типовања успешно сачувана"
 
-#: nmkapp/views.py:258
+#: nmkapp/views.py:284
 msgid "first match already started"
 msgstr "први меч већ почео"
 
-#: nmkapp/views.py:260
+#: nmkapp/views.py:286
 msgid "N/A"
 msgstr "N/A"
 
-#: nmkapp/views.py:277
+#: nmkapp/views.py:303
 msgid "Settings successfully saved"
 msgstr "Подешавања успешно сачувана"
 
-#: nmkapp/views.py:298
+#: nmkapp/views.py:324
 #, python-format
 msgid ""
 "Crew created successfully. Now you can send invite code \"%s\" to your "
@@ -1440,20 +1473,20 @@ msgstr ""
 "Екипа успешно направљена. Сада пошаљи шифру-позивницу \"%s\" ортацима преко "
 "е-поште/СМС-ом/Viber-ом, да и они могу да се придруже екипи"
 
-#: nmkapp/views.py:312
+#: nmkapp/views.py:338
 msgid "Joined crew successfully"
 msgstr "Успешно додат у екипу"
 
-#: nmkapp/views.py:343
+#: nmkapp/views.py:369
 msgid "[sharkz.bet] Player payed paypal"
 msgstr "[sharkz.bet] Играч платио пејпал"
 
-#: nmkapp/views.py:343
+#: nmkapp/views.py:369
 #, python-format
 msgid "Player %s"
 msgstr "Играч %s"
 
-#: nmkapp/views.py:459
+#: nmkapp/views.py:485
 msgid ""
 "You cannot leave a crew that you created, you can only completely delete "
 "that crew."
@@ -1461,54 +1494,63 @@ msgstr ""
 "Не можеш да напустиш екипу коју си ти направио, можеш само да је комплетно "
 "избришеш."
 
-#: nmkapp/views.py:467
+#: nmkapp/views.py:493
 #, python-format
 msgid "Successfully left a crew \"%s\""
 msgstr "Успешно изашао из екипе „%s“"
 
-#: nmkapp/views.py:482
+#: nmkapp/views.py:508
 msgid ""
 "You cannot delete crew that you are not owner of, you can only leave it."
 msgstr ""
 "Не можеш да обришеш екипу коју ниси ти направио, можеш само да изађеш из ње."
 
-#: nmkapp/views.py:492
+#: nmkapp/views.py:518
 #, python-format
 msgid "Crew \"%s\" deleted"
 msgstr "Екипа „%s“ избрисана"
 
-#: nmkapp/views.py:582
+#: nmkapp/views.py:608
 #, python-format
 msgid "Round \"%s\" set as active"
 msgstr "Коло „%s“ постављено као активно"
 
-#: nmkapp/views.py:594
+#: nmkapp/views.py:620
 #, python-format
 msgid "[sharkz.bet] New round \"%s\" available"
 msgstr "[sharkz.bet] Доступно је ново коло „%s“"
 
-#: nmkapp/views.py:605
+#: nmkapp/views.py:631
 #, python-format
 msgid "Round \"%s\" set as inactive"
 msgstr "Коло „%s“ постављено као неактивно"
 
-#: nmkapp/views.py:632
+#: nmkapp/views.py:658
 #, python-format
 msgid "New round \"%s\" created successfully"
 msgstr "Ново коло „%s“ успешно направљено"
 
-#: nmkapp/views.py:653
+#: nmkapp/views.py:679
 msgid "Match successfully added"
 msgstr "Меч успешно додат"
 
-#: nmkapp/views.py:688
+#: nmkapp/views.py:714
 msgid "Result added successfully"
 msgstr "Резултат успешно унесен"
 
-#: nmkapp/views.py:712
+#: nmkapp/views.py:738
 #, python-format
 msgid "[sharkz.bet] All results from round \"%s\" received"
 msgstr "[sharkz.bet] Унесени сви резултати из кола „%s“"
+
+#~ msgid "SHARKZ.BET - ADD PASSWORD"
+#~ msgstr "SHARKZ.BET - КРЕИРАЈ ЛОЗИНКУ"
+
+#~ msgid "Invalid request to add password"
+#~ msgstr "Неисправан захтев за креирање лозинке"
+
+#~ msgid "Password added successfully"
+#~ msgstr "Лозинка успешно креирана"
 
 #~ msgid "Website"
 #~ msgstr "Веб сајт"

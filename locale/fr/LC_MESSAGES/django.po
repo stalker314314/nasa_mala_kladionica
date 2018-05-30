@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-29 19:55+0000\n"
+"POT-Creation-Date: 2018-05-30 19:56+0000\n"
 "PO-Revision-Date: 2018-05-29 22:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,23 +18,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: nmk/settings.py:87
+#: nmk/settings.py:90
 msgid "English"
 msgstr "Anglais"
 
-#: nmk/settings.py:88
+#: nmk/settings.py:91
 msgid "German"
 msgstr "Allemand"
 
-#: nmk/settings.py:89
+#: nmk/settings.py:92
 msgid "French"
 msgstr "Français"
 
-#: nmk/settings.py:90
+#: nmk/settings.py:93
 msgid "Serbian"
 msgstr "Serbe (cyrillique)"
 
-#: nmk/settings.py:91
+#: nmk/settings.py:94
 msgid "Serbian latin"
 msgstr "Serbe (latin)"
 
@@ -104,49 +104,61 @@ msgstr "Répéter le mot de passe*"
 msgid "Passwords do not match"
 msgstr "Les mots de passe ne correspondent pas"
 
-#: nmkapp/forms.py:88
+#: nmkapp/forms.py:85
+#, fuzzy
+#| msgid "Display name"
+msgid "Choose Display Name"
+msgstr "Nom d'affichage"
+
+#: nmkapp/forms.py:94
+#, fuzzy, python-brace-format
+#| msgid "Sorry, but crew name is already taken"
+msgid "Sorry, but name \"{0}\" is already taken"
+msgstr "Désolé, mais le nom de l'équipe est déjà pris"
+
+#: nmkapp/forms.py:101
 msgid "Create a new crew"
 msgstr "Créer une nouvelle équipe"
 
-#: nmkapp/forms.py:95
+#: nmkapp/forms.py:108
 msgid "Crew name too long"
 msgstr "Nom de l'équipe trop long"
 
-#: nmkapp/forms.py:98
+#: nmkapp/forms.py:111
 msgid "Sorry, but crew name is already taken"
 msgstr "Désolé, mais le nom de l'équipe est déjà pris"
 
-#: nmkapp/forms.py:108
+#: nmkapp/forms.py:121
 msgid "Please enter invite code to join a crew, if you got one:"
 msgstr ""
 "Veuillez entrer le code d'invitation, si vous en avez un, pour rejoindre une "
 "équipe:"
 
-#: nmkapp/forms.py:115
+#: nmkapp/forms.py:128
 msgid "Invite code should contain 8 numbers"
 msgstr "Le code d'invitation doit contenir 8 chiffres"
 
-#: nmkapp/forms.py:118
+#: nmkapp/forms.py:131
 msgid "Invite code invalid"
 msgstr "Le code d'invitation invalide"
 
-#: nmkapp/forms.py:120
+#: nmkapp/forms.py:133
 msgid "You are already member of this crew"
 msgstr "Vous êtes déjà membre de cette équipe"
 
-#: nmkapp/forms.py:143
+#: nmkapp/forms.py:156
 msgid "You must place all bets"
 msgstr "Vous devez placer tous les paris"
 
-#: nmkapp/forms.py:151
+#: nmkapp/forms.py:164
 msgid "Recalculate points"
 msgstr "Recalculer les points"
 
-#: nmkapp/forms.py:153
+#: nmkapp/forms.py:166
 msgid "Clear cache"
 msgstr "Vider le cache"
 
-#: nmkapp/forms.py:155
+#: nmkapp/forms.py:168
 msgid "Repopulate cache"
 msgstr "Remplir le cache"
 
@@ -360,10 +372,9 @@ msgid "Invalid activation"
 msgstr "Échec de l'activation"
 
 #: nmkapp/templates/activation.html:42 nmkapp/templates/forgotpassword.html:14
-#: nmkapp/templates/forgotpassword.html:30 nmkapp/templates/register.html:25
+#: nmkapp/templates/forgotpassword.html:30 nmkapp/templates/register.html:30
 #: nmkapp/templates/register_success.html:18
-#: nmkapp/templates/request_password.html:17
-#: nmkapp/templates/request_password.html:35
+#: nmkapp/templates/request_display_name.html:34
 #: nmkapp/templates/resetpassword.html:17
 #: nmkapp/templates/resetpassword.html:35
 msgid "Back to login"
@@ -560,7 +571,6 @@ msgstr ""
 "au cas où)"
 
 #: nmkapp/templates/forgotpassword.html:27
-#: nmkapp/templates/request_password.html:32
 #: nmkapp/templates/resetpassword.html:32
 msgid "Reset password"
 msgstr "Réinitialiser le mot de passe"
@@ -900,11 +910,19 @@ msgstr "E-mail ou mot de passe erroné. Veuillez réessayer."
 msgid "I forgot my password"
 msgstr "Mot de passe oublié"
 
-#: nmkapp/templates/login.html:50
+#: nmkapp/templates/login.html:46 nmkapp/templates/register.html:23
+msgid "or"
+msgstr ""
+
+#: nmkapp/templates/login.html:48
+msgid "Log In using Google account"
+msgstr ""
+
+#: nmkapp/templates/login.html:54
 msgid "Don't have an account yet? Register"
 msgstr "Vous n'avez pas encore de compte? Inscrivez-vous"
 
-#: nmkapp/templates/login.html:51
+#: nmkapp/templates/login.html:55
 msgid "(registration is allowed until 1h before start of the first match"
 msgstr ""
 "(l'inscription est autorisée jusqu'à 1h avant le début du premier match"
@@ -1316,6 +1334,10 @@ msgstr ""
 msgid "SHARKZ.BET - REGISTRATION"
 msgstr "SHARKZ.BET - INSCRIPTION"
 
+#: nmkapp/templates/register.html:25
+msgid "Register using Google account"
+msgstr ""
+
 #: nmkapp/templates/register_success.html:10
 msgid ""
 "You successfully registered. You will now receive mail with link to activate "
@@ -1332,29 +1354,38 @@ msgstr ""
 "En attendant, vous pouvez lire les propositions <a href=\"/proposition"
 "\">ici</a>."
 
-#: nmkapp/templates/request_password.html:8
+#: nmkapp/templates/request_display_name.html:8
 #, fuzzy
-#| msgid "SHARKZ.BET - PASSWORD RESET"
-msgid "SHARKZ.BET - ADD PASSWORD"
-msgstr "SHARKZ.BET - RÉINITIALISATION DU MOT DE PASSE"
+#| msgid "SHARKZ.BET - ACTIVATION"
+msgid "SHARKZ.BET - PICK A DISPLAY NAME"
+msgstr "SHARKZ.BET - ACTIVATION"
 
-#: nmkapp/templates/request_password.html:10
+#: nmkapp/templates/request_display_name.html:10
 #, fuzzy
 #| msgid "Invalid request to reset password"
-msgid "Invalid request to add password"
+msgid "Invalid request to select display name"
 msgstr "Demande invalide pour réinitialiser le mot de passe"
 
-#: nmkapp/templates/request_password.html:13
-#, fuzzy
-#| msgid "Password reset successfully"
-msgid "Password added successfully"
-msgstr "Mot de passe réinitialisé avec succès"
-
-#: nmkapp/templates/request_password.html:24
+#: nmkapp/templates/request_display_name.html:16
 #, fuzzy, python-format
 #| msgid "Changing password for user <b>%(email)s</b>"
-msgid "Adding password for user <b>%(email)s</b>"
+msgid "Setting display name for user <b>%(email)s</b>"
 msgstr "Changer le mot de passe pour l'utilisateur <b>%(email)s</b>"
+
+#: nmkapp/templates/request_display_name.html:19
+msgid ""
+"\n"
+"                Great, your account is created!<br>\n"
+"                One more step and you can start playing.<br>\n"
+"                Choose a display name so your friends can recognize you.\n"
+"              "
+msgstr ""
+
+#: nmkapp/templates/request_display_name.html:31
+#, fuzzy
+#| msgid "Display name"
+msgid "Set display name"
+msgstr "Nom d'affichage"
 
 #: nmkapp/templates/resetpassword.html:10
 msgid "Invalid request to reset password"
@@ -1460,37 +1491,37 @@ msgstr ""
 msgid "Tip: click on the round to look only at that round's results!"
 msgstr "Astuce: cliquez sur le tour pour ne voir que les résultats de ce tour!"
 
-#: nmkapp/views.py:72
+#: nmkapp/views.py:75
 msgid "[sharkz.bet] Registration successful"
 msgstr "[sharkz.bet] Inscription réussie"
 
-#: nmkapp/views.py:105
+#: nmkapp/views.py:108
 msgid "[sharkz.bet] Reset password request"
 msgstr "[sharkz.bet] Demande pour réinitialiser le mot de passe"
 
-#: nmkapp/views.py:178 nmkapp/views.py:186
+#: nmkapp/views.py:204 nmkapp/views.py:212
 msgid "There is no active round currently to place bets, try again later"
 msgstr ""
 "Il n'y a actuellement aucun tour actif pour placer des paris, réessayez plus "
 "tard"
 
-#: nmkapp/views.py:231
+#: nmkapp/views.py:257
 msgid "Bets successfully saved"
 msgstr "Les paris enregistrés avec succès"
 
-#: nmkapp/views.py:258
+#: nmkapp/views.py:284
 msgid "first match already started"
 msgstr "le premier match a déjà commencé"
 
-#: nmkapp/views.py:260
+#: nmkapp/views.py:286
 msgid "N/A"
 msgstr "N/A"
 
-#: nmkapp/views.py:277
+#: nmkapp/views.py:303
 msgid "Settings successfully saved"
 msgstr "Paramètres sauvegardés avec succès"
 
-#: nmkapp/views.py:298
+#: nmkapp/views.py:324
 #, python-format
 msgid ""
 "Crew created successfully. Now you can send invite code \"%s\" to your "
@@ -1500,20 +1531,20 @@ msgstr ""
 "d'invitation «%s» à vos amis en utilisant le chat/mail/SMS, afin qu'ils "
 "puissent rejoindre votre nouvelle équipe"
 
-#: nmkapp/views.py:312
+#: nmkapp/views.py:338
 msgid "Joined crew successfully"
 msgstr "Adhésion réussie"
 
-#: nmkapp/views.py:343
+#: nmkapp/views.py:369
 msgid "[sharkz.bet] Player payed paypal"
 msgstr "[sharkz.bet] Joueur a payé par paypal"
 
-#: nmkapp/views.py:343
+#: nmkapp/views.py:369
 #, python-format
 msgid "Player %s"
 msgstr "Joueur %s"
 
-#: nmkapp/views.py:459
+#: nmkapp/views.py:485
 msgid ""
 "You cannot leave a crew that you created, you can only completely delete "
 "that crew."
@@ -1521,55 +1552,70 @@ msgstr ""
 "Vous ne pouvez pas quitter l'équipe que vous avez créée, vous pouvez "
 "uniquement supprimer cette équipe."
 
-#: nmkapp/views.py:467
+#: nmkapp/views.py:493
 #, python-format
 msgid "Successfully left a crew \"%s\""
 msgstr "A quitté le groupe «%s» avec succès"
 
-#: nmkapp/views.py:482
+#: nmkapp/views.py:508
 msgid ""
 "You cannot delete crew that you are not owner of, you can only leave it."
 msgstr ""
 "Vous ne pouvez pas supprimer une équipe que vous n'avez pas créé vous-même, "
 "vous pouvez uniquement le quitter."
 
-#: nmkapp/views.py:492
+#: nmkapp/views.py:518
 #, python-format
 msgid "Crew \"%s\" deleted"
 msgstr "Équipe «%s» supprimée"
 
-#: nmkapp/views.py:582
+#: nmkapp/views.py:608
 #, python-format
 msgid "Round \"%s\" set as active"
 msgstr "Tour «%s» défini comme actif"
 
-#: nmkapp/views.py:594
+#: nmkapp/views.py:620
 #, python-format
 msgid "[sharkz.bet] New round \"%s\" available"
 msgstr "[sharkz.bet] Nouveau tour «%s» disponible"
 
-#: nmkapp/views.py:605
+#: nmkapp/views.py:631
 #, python-format
 msgid "Round \"%s\" set as inactive"
 msgstr "Tour «%s» défini comme inactif"
 
-#: nmkapp/views.py:632
+#: nmkapp/views.py:658
 #, python-format
 msgid "New round \"%s\" created successfully"
 msgstr "Nouveau tour «%s» créé avec succès"
 
-#: nmkapp/views.py:653
+#: nmkapp/views.py:679
 msgid "Match successfully added"
 msgstr "Match ajouté avec succès"
 
-#: nmkapp/views.py:688
+#: nmkapp/views.py:714
 msgid "Result added successfully"
 msgstr "Résultat ajouté avec succès"
 
-#: nmkapp/views.py:712
+#: nmkapp/views.py:738
 #, python-format
 msgid "[sharkz.bet] All results from round \"%s\" received"
 msgstr "[sharkz.bet] Tous les résultats du tour «%s» reçus"
+
+#, fuzzy
+#~| msgid "SHARKZ.BET - PASSWORD RESET"
+#~ msgid "SHARKZ.BET - ADD PASSWORD"
+#~ msgstr "SHARKZ.BET - RÉINITIALISATION DU MOT DE PASSE"
+
+#, fuzzy
+#~| msgid "Invalid request to reset password"
+#~ msgid "Invalid request to add password"
+#~ msgstr "Demande invalide pour réinitialiser le mot de passe"
+
+#, fuzzy
+#~| msgid "Password reset successfully"
+#~ msgid "Password added successfully"
+#~ msgstr "Mot de passe réinitialisé avec succès"
 
 #~ msgid "Website"
 #~ msgstr "Site Internet"

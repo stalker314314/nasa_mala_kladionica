@@ -20,7 +20,11 @@
         <div class="buttonBox">
             <input type="submit" value="{% trans "Register" %}" />
         </div>
+		{% trans "or" %}
+        <br/>
         <a id="social-login" href="{% url 'social:begin' 'google-oauth2' %}">{% trans "Register using Google account" %}</a>
+        <br/>
+        <br/>
         <br/>
         <div>
             <a href="/login">{% trans "Back to login" %}</a>
