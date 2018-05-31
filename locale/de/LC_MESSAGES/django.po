@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-31 08:32+0000\n"
-"PO-Revision-Date: 2018-05-31 08:40+0000\n"
+"PO-Revision-Date: 2018-05-31 13:24+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -105,16 +105,13 @@ msgid "Passwords do not match"
 msgstr "Die Passwörter stimmen nicht überein"
 
 #: nmkapp/forms.py:85
-#, fuzzy
-#| msgid "Display name"
 msgid "Choose Display Name"
-msgstr "Benutzername"
+msgstr "Benutzername wählen"
 
 #: nmkapp/forms.py:94
-#, fuzzy, python-brace-format
-#| msgid "Sorry, but crew name is already taken"
+#, python-brace-format
 msgid "Sorry, but name \"{0}\" is already taken"
-msgstr "Entschuldigung, der Mannschaftsname ist bereits besetzt"
+msgstr "Entschuldigung, der Benutzername \"{0}\" ist bereits besetzt"
 
 #: nmkapp/forms.py:101
 msgid "Create a new crew"
@@ -902,11 +899,11 @@ msgstr "oder"
 
 #: nmkapp/templates/login.html:48
 msgid "Log In using Google account"
-msgstr ""
+msgstr "Melden Sie sich mit einem Google-Konto an"
 
 #: nmkapp/templates/login.html:54
 msgid "Don't have an account yet? Register"
-msgstr ""
+msgstr "Noch kein Konto? Jetzt registrieren"
 
 #: nmkapp/templates/login.html:55
 msgid "(registration is allowed until 1h before start of the first match"
@@ -1307,7 +1304,7 @@ msgstr "SHARKZ.BET- Registration"
 
 #: nmkapp/templates/register.html:25
 msgid "Register using Google account"
-msgstr ""
+msgstr "Mit Google konto registrieren"
 
 #: nmkapp/templates/register_success.html:10
 msgid ""
@@ -1325,22 +1322,17 @@ msgstr ""
 "a>."
 
 #: nmkapp/templates/request_display_name.html:8
-#, fuzzy
-#| msgid "SHARKZ.BET - ACTIVATION"
 msgid "SHARKZ.BET - PICK A DISPLAY NAME"
-msgstr "SHARKZ.BET - AKTIVIERUNG"
+msgstr "SHARKZ.BET - WÄHLEN SIE IHREN BENUTZERNAME"
 
 #: nmkapp/templates/request_display_name.html:10
-#, fuzzy
-#| msgid "Invalid request to reset password"
 msgid "Invalid request to select display name"
-msgstr "Ungültiger Versuch das Passwort zu verändern"
+msgstr "Ungültiger Benutzername"
 
 #: nmkapp/templates/request_display_name.html:16
-#, fuzzy, python-format
-#| msgid "Changing password for user <b>%(email)s</b>"
+#, python-format
 msgid "Setting display name for user <b>%(email)s</b>"
-msgstr "Passwort wird für den Benutzer <b>%(email)s</b> geändert"
+msgstr "Benutzername feststellen für den Benutzer <b>%(email)s</b>"
 
 #: nmkapp/templates/request_display_name.html:19
 msgid ""
@@ -1350,12 +1342,15 @@ msgid ""
 "                Choose a display name so your friends can recognize you.\n"
 "              "
 msgstr ""
+"\n"
+"            Super, Ihr Konto ist fertig!<br>\n"
+"            Noch ein Schritt und Sie können spielen.<br>\n"
+"            Wählen Sie Ihren Kontonamen, damit Sie Ihre Freunde erkennen.\n"
+"           "
 
 #: nmkapp/templates/request_display_name.html:31
-#, fuzzy
-#| msgid "Display name"
 msgid "Set display name"
-msgstr "Benutzername"
+msgstr "Benutzername feststellen"
 
 #: nmkapp/templates/resetpassword.html:10
 msgid "Invalid request to reset password"
@@ -1454,6 +1449,8 @@ msgid ""
 "You have no permission to peek at other players' bets until you also place "
 "bets for this round."
 msgstr ""
+"Sie haben keine Erlaubnis die Wetten anderer Spieler zu sehen, bevor Sie auf "
+"diese Runde auch wetten."
 
 #: nmkapp/templates/standings.html:40
 msgid "Tip: click on the round to look only at that round's results!"
