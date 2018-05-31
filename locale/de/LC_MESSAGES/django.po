@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-30 19:56+0000\n"
-"PO-Revision-Date: 2018-05-23 23:11+0200\n"
+"POT-Creation-Date: 2018-05-31 08:32+0000\n"
+"PO-Revision-Date: 2018-05-31 08:40+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -679,7 +679,7 @@ msgstr "Registrieren"
 
 #: nmkapp/templates/landing.html:60
 msgid "Bet against your friends and win money!"
-msgstr ""
+msgstr "Wetten Sie gegen Ihre Freunde und gewinnen Sie Geld!"
 
 #: nmkapp/templates/landing.html:63
 msgid ""
@@ -694,14 +694,25 @@ msgid ""
 "to take the money, right?\n"
 "Well, it just might be, but watch out for other sharks in this pool!"
 msgstr ""
+"<strong>Sharkz.bet</strong> ist eine unikale Wettplatform, kreiert "
+"späzifisch für <em>World Cup 2018</em>.\n"
+"Alle Spieler können dieselbe Wettart plazieren bevor die Weltmeisterschaft "
+"beginnt.\n"
+"Sie wetten für die Punktzahl jedes Spiels, und Punkte sind basiert auf odds "
+"&ndash;je höher die Chance, desto mehr Punkte bekommen Sie!\n"
+"Wir begrenzen die Zahl der Spieler auf nur 100, also beeilen Sie sich und "
+"machen Sie Ihre Registration unter!\n"
+"Mit nur 100 Spieler und nur mit drei Gewinnern sollte es leicht sein das "
+"Preisgeld zu bekommen, stimmt's?\n"
+"Tja, es könnte sein, aber achten Sie auf die Heie in dem Pool!"
 
 #: nmkapp/templates/landing.html:74
 msgid "Find Out More!"
-msgstr ""
+msgstr "Mehr dazu"
 
 #: nmkapp/templates/landing.html:84
 msgid "Free To Play"
-msgstr ""
+msgstr "Kostenlos spielen"
 
 #: nmkapp/templates/landing.html:87
 msgid ""
@@ -712,10 +723,16 @@ msgid ""
 "Decide later to play for real money if you want to (but before World Cup "
 "2018 starts!)."
 msgstr ""
+"Da die Eintrittsgebühr relativ niedig ist (10€), glauben wir, dass es auch "
+"nicht nötig ist um Spaß zu haben.\n"
+"Wenn Sie sich jetzt anmelden auf sharkz.bet, fragen wir Sie nicht nach Ihrer "
+"Kreditkarte und es gibt keine Bedingungen.\n"
+"Entscheiden Sie später, ob Sie mit echtem Geld spielen wollen (aber vor der "
+"Weltmeisterschaft 2018!)."
 
 #: nmkapp/templates/landing.html:95
 msgid "Real Chances To Win"
-msgstr ""
+msgstr "Reale Gewinnchancen"
 
 #: nmkapp/templates/landing.html:98
 msgid ""
@@ -724,10 +741,14 @@ msgid ""
 "this is the place where your odds of winning the prize are very, very real.\n"
 "There is only 100 players and first 3 places are winning the money."
 msgstr ""
+"Im Vergleich zu anderen Wettseiten mit tausend Menschen und milionen "
+"Preisen,\n"
+"ist das ein Ort, wo Ihre Gewinnchancen sehr, sehr realistisch sind.\n"
+"Hier gibt es nur 100 Spieler und die ersten 3 Plätze bekommen das Geld."
 
 #: nmkapp/templates/landing.html:106
 msgid "Compete Against Friends"
-msgstr ""
+msgstr "Trete gegen deine Freunde an"
 
 #: nmkapp/templates/landing.html:109
 msgid ""
@@ -736,10 +757,14 @@ msgid ""
 "Just invite your crew and compete in your own private pool.\n"
 "With sharkz.bet, you are reaching new levels of friendly ball busting."
 msgstr ""
+"Wetten macht mehr Spaß wenn Freunde dabei sind.\n"
+"Sie müssen nicht gegen Spieler wetten, die nicht in Ihrer Gruppe sind.\n"
+"Laden Sie nur Ihre Mannschaft ein und wetten sie in ihren privaten Pool.\n"
+"Mit sharkz.bet, erreichen Sie neue Niveaus des freundlichen Ballwerfens."
 
 #: nmkapp/templates/landing.html:118
 msgid "Enjoy Every Match"
-msgstr ""
+msgstr "Genießen Sie jedes Spiel"
 
 #: nmkapp/templates/landing.html:121
 msgid ""
@@ -747,38 +772,42 @@ msgid ""
 "players,\n"
 "every match could be nerve wrecking one if a little bit of stake is involved!"
 msgstr ""
+"Machen Sie Ihre Spiele interessanter. Mit sharkz.bet's freundlicher "
+"Atmosphäre und Spielern,\n"
+"könnte jedes Match ein Nervenkitzler sein, wenn ein bisschen auf dem Spiel "
+"ist!"
 
 #: nmkapp/templates/landing.html:129
 msgid "Pick the fun level"
-msgstr ""
+msgstr "Wählen Sie den Unterhaltungsniveau"
 
 #: nmkapp/templates/landing.html:131
 msgid "You can always change your preference later"
-msgstr ""
+msgstr "Du kannst das jederzeit die Einstellungen wieder ändern"
 
 #: nmkapp/templates/landing.html:138
 msgid "Free"
-msgstr ""
+msgstr "Kostenlos"
 
 #: nmkapp/templates/landing.html:139
 msgid "Only Pride at Stake"
-msgstr ""
+msgstr "Nur Würde ist im Spiel"
 
 #: nmkapp/templates/landing.html:143
 msgid "Unlimited Number of People"
-msgstr ""
+msgstr "Grenzenlose Personenanzahl"
 
 #: nmkapp/templates/landing.html:144 nmkapp/templates/landing.html:166
 msgid "Invite Friends"
-msgstr ""
+msgstr "Freunde einladen"
 
 #: nmkapp/templates/landing.html:145
 msgid "Enjoy World Cup for Free"
-msgstr ""
+msgstr "Genießen Sie die Weltmeisterschaft kostenlos"
 
 #: nmkapp/templates/landing.html:146
 msgid "Compare Betting Skills"
-msgstr ""
+msgstr "Die Wettfähigkeiten vergleichen"
 
 #: nmkapp/templates/landing.html:151 nmkapp/templates/landing.html:172
 #: nmkapp/templates/landing.html:193
@@ -787,51 +816,51 @@ msgstr "REGISTRIEREN"
 
 #: nmkapp/templates/landing.html:159
 msgid "Regular"
-msgstr ""
+msgstr "Regulär"
 
 #: nmkapp/templates/landing.html:160
 msgid "Just For Fun"
-msgstr ""
+msgstr "Nur für Unterhaltung"
 
 #: nmkapp/templates/landing.html:164
 msgid "100 Players Max"
-msgstr ""
+msgstr "Maximum 100 Spieler"
 
 #: nmkapp/templates/landing.html:165
 msgid "Up to 900€ Prize Money"
-msgstr ""
+msgstr "Bis zu 900€ Preisgeld"
 
 #: nmkapp/templates/landing.html:167
 msgid "Real Thrill Football"
-msgstr ""
+msgstr "Echtes Nervenkitzelfußball"
 
 #: nmkapp/templates/landing.html:180
 msgid "Extra"
-msgstr ""
+msgstr "Extra"
 
 #: nmkapp/templates/landing.html:181
 msgid "Coming Soon"
-msgstr ""
+msgstr "Kommt in der kurzen Zeit"
 
 #: nmkapp/templates/landing.html:185
 msgid "200 Players Max"
-msgstr ""
+msgstr "Maximal 200 Spieler"
 
 #: nmkapp/templates/landing.html:186
 msgid "3800€ Prize Pool"
-msgstr ""
+msgstr "3800€ Preispool"
 
 #: nmkapp/templates/landing.html:187
 msgid "Private Pools"
-msgstr ""
+msgstr "Privatpools"
 
 #: nmkapp/templates/landing.html:188
 msgid "Custom Betting Games"
-msgstr ""
+msgstr "Benutzerdefinierte Wettspiele"
 
 #: nmkapp/templates/landing.html:241
 msgid "Send feedback to: <br>support@sharkz.bet"
-msgstr ""
+msgstr "Feedback schicken an: <br>support@sharkz.bet"
 
 #: nmkapp/templates/login.html:8
 msgid "SHARKZ.BET - LOGIN"
@@ -869,7 +898,7 @@ msgstr "I habe mein Passwort vergessen"
 
 #: nmkapp/templates/login.html:46 nmkapp/templates/register.html:23
 msgid "or"
-msgstr ""
+msgstr "oder"
 
 #: nmkapp/templates/login.html:48
 msgid "Log In using Google account"
