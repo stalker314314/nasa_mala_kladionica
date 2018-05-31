@@ -159,9 +159,9 @@ def request_display_name(request):
             return redirect(reverse('social:complete', kwargs={ 'backend': partial_data.backend }))
     else:
         default_display_name = partial_data.data['kwargs']['details']['fullname']
-        form = RequestDisplayNameForm( {'display_name': default_display_name} )
+        form = RequestDisplayNameForm( {'display_name': default_display_name})
 
-    return render(request, 'request_display_name.html', {'form': form} )
+    return render(request, 'request_display_name.html', {'form': form, 'no_menu': True})
 
 
 @transaction.atomic
