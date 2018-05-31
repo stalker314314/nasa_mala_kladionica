@@ -18,4 +18,4 @@ def request_display_name(strategy, details, user=None, is_new=False, *args, **kw
     if user and user.first_name:
         return
     else:
-        return redirect(reverse(request_display_name))
+        return redirect('request_display_name')
