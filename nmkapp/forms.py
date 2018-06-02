@@ -89,7 +89,10 @@ class RequestDisplayNameForm(forms.Form):
         if 'display_name' in cleaned_data:
             users = User.objects.filter(first_name__iexact=cleaned_data['display_name'])
             if len(users) > 0:
-                raise forms.ValidationError({'display_name': [_('Sorry, but {0} is already taken'.format(cleaned_data['display_name']))]})
+                raise forms.ValidationError(
+                    {'display_name':
+                         [_('Sorry, but name "{0}" is already taken'.format(cleaned_data['display_name']))]})
+
 
 class NewGroupForm(forms.Form):
     def __init__(self, *args, **kwargs):

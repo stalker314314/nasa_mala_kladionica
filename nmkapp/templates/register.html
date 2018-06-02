@@ -6,18 +6,7 @@
 {% block content %}
 
 <h1 class="content-header">{% trans "SHARKZ.BET - REGISTRATION" %}</h1>
-{% if registered %}
-{% trans "You successfully registered. You will now receive mail with link to activate your account (check spam folder too, just in case)" %}
-<br/>
-<br/>
-{% blocktrans %}In the meantime, you can read propositions <a href="/proposition">here</a>.{% endblocktrans %}
-<br/>
-<br/>
-<br/>
-<div>
-    <a href="/login">{% trans "Back to login" %}</a>
-</div>
-{% else %}
+
 <form method="post" action="/register">
     {% csrf_token %}
     <input type="hidden" value="login" name="login">
@@ -31,12 +20,15 @@
         <div class="buttonBox">
             <input type="submit" value="{% trans "Register" %}" />
         </div>
+		{% trans "or" %}
+        <br/>
         <a id="social-login" href="{% url 'social:begin' 'google-oauth2' %}">{% trans "Register using Google account" %}</a>
+        <br/>
+        <br/>
         <br/>
         <div>
             <a href="/login">{% trans "Back to login" %}</a>
         </div>
     </fieldset>
 </form>
-{% endif %}
 {% endblock %}

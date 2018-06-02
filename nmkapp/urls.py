@@ -5,6 +5,7 @@ from django.contrib.auth.views import logout_then_login, login, password_change
 urlpatterns = [
     url(r'^$', views.home),
     url(r'^register$', views.register),
+    url(r'^register/success$', views.register_success),
     url(r'^activate$', views.activation),
     url(r'^forgotpassword', views.forgotpassword),
     url(r'^login/$', views.CustomLoginView.as_view(template_name='login.html', extra_context={'no_menu': True}),

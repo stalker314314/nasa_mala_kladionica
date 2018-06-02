@@ -35,7 +35,8 @@ class ActivationTests(NmkUnitTestCase):
             'accept_terms': True,
             'over_18': True
         })
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(reverse(views.register_success), response['location'])
         activation_code = models.Player.objects.filter(user__email='foo@bar.com')[0].activation_code
 
         client = Client()

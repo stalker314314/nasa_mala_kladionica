@@ -42,12 +42,12 @@ def id_generator(size=16, chars=string.ascii_uppercase + string.digits):
 
 @transaction.atomic
 def register(request):
-    logger.info('User is on register page')
-    last_registration_time = datetime(2018, 6, 14, 16, 0, tzinfo=timezone.utc)
+    registration_type = request.GET.get('type', '')
+    logger.info('User is on register page, going with %s type', registration_type)
+    last_registration_time = datetime(2018, 6, 14, 14, 0, tzinfo=timezone.utc)
     if timezone.now() >= last_registration_time:
         raise Http404()
 
-    registered = False
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
@@ -80,10 +80,14 @@ def register(request):
             msg = EmailMessage(subject, message_text, 'support@sharkz.bet', to=[user.email, ])
             msg.content_subtype = 'html'
             msg.send(fail_silently=False)
-            registered = True
+            return HttpResponseRedirect(reverse(register_success))
     else:
         form = RegisterForm()
-    return render(request, 'register.html', {'form': form, 'registered': registered, 'no_menu': True})
+    return render(request, 'register.html', {'form': form, 'no_menu': True})
+
+
+def register_success(request):
+    return render(request, 'register_success.html', {'no_menu': True})
 
 
 @transaction.atomic
@@ -155,9 +159,9 @@ def request_display_name(request):
             return redirect(reverse('social:complete', kwargs={ 'backend': partial_data.backend }))
     else:
         default_display_name = partial_data.data['kwargs']['details']['fullname']
-        form = RequestDisplayNameForm( {'display_name': default_display_name} )
+        form = RequestDisplayNameForm( {'display_name': default_display_name})
 
-    return render(request, 'request_display_name.html', {'form': form} )
+    return render(request, 'request_display_name.html', {'form': form, 'no_menu': True})
 
 
 @transaction.atomic
@@ -370,6 +374,20 @@ def paypal(request):
 
 
 def landing(request):
+    if request.user.is_authenticated:
+        logger.info('User %s is on landing page, redirecting to home', request.user.username)
+        # Do not show landing page for logged users
+        return HttpResponseRedirect(reverse(home))
+
+    language = request.GET.get('lang', '')
+    logger.info('User is on landing page, with language %s', language)
+    if language != '':
+        # If there is some language explicitly set, switch to it
+        available_languages = [lang_code for (lang_code, lang_name) in settings.LANGUAGES]
+        if language in available_languages:
+            translation.activate(language)
+            if hasattr(request, 'session'):
+                request.session[translation.LANGUAGE_SESSION_KEY] = language
     return render(request, 'landing.html')
 
 

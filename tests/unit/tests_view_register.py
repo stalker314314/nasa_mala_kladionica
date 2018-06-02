@@ -18,7 +18,6 @@ class RegisterTests(NmkUnitTestCase):
 
         context = response.context
         self.assertIsNotNone(context['form'])
-        self.assertFalse(context['registered'])
         self.assertTrue(context['no_menu'])
 
     def test_register_empty_form(self):
@@ -38,11 +37,8 @@ class RegisterTests(NmkUnitTestCase):
             'accept_terms': True,
             'over_18': True
         })
-        self.assertEqual(response.status_code, 200)
-        context = response.context
-        self.assertIsNotNone(context['form'])
-        self.assertTrue(context['registered'])
-        self.assertTrue(context['no_menu'])
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(reverse(views.register_success), response['location'])
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].subject, '[sharkz.bet] Registration successful')
@@ -73,7 +69,6 @@ class RegisterTests(NmkUnitTestCase):
         self.assertEqual(response.status_code, 200)
         context = response.context
         self.assertIsNotNone(context['form'])
-        self.assertFalse(context['registered'])
         self.assertTrue(context['no_menu'])
         self.assertEqual('You have to accept terms and conditions to register',
                          context['form'].errors['accept_terms'][0])
@@ -90,7 +85,6 @@ class RegisterTests(NmkUnitTestCase):
         self.assertEqual(response.status_code, 200)
         context = response.context
         self.assertIsNotNone(context['form'])
-        self.assertFalse(context['registered'])
         self.assertTrue(context['no_menu'])
         self.assertEqual('You must be over 18 to play on sharkz.bet', context['form'].errors['over_18'][0])
         self.assertEqual(len(models.User.objects.filter(email='newmail@mail.com')), 0)
@@ -107,7 +101,6 @@ class RegisterTests(NmkUnitTestCase):
         self.assertEqual(response.status_code, 200)
         context = response.context
         self.assertIsNotNone(context['form'])
-        self.assertFalse(context['registered'])
         self.assertTrue(context['no_menu'])
         self.assertEqual('This e-mail address already exists. If this is your e-mail, please reset password.',
                          context['form'].errors['email'][0])
@@ -125,7 +118,6 @@ class RegisterTests(NmkUnitTestCase):
         self.assertEqual(response.status_code, 200)
         context = response.context
         self.assertIsNotNone(context['form'])
-        self.assertFalse(context['registered'])
         self.assertTrue(context['no_menu'])
         self.assertEqual(
             'This display name is already taken. If this is your display name by any chance, please log in.',

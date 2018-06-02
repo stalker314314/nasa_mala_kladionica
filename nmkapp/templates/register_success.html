@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+{% load nmk_tags %}
+
+{% block content %}
+
+<h1 class="content-header">{% trans "SHARKZ.BET - REGISTRATION" %}</h1>
+
+{% trans "You successfully registered. You will now receive mail with link to activate your account (check spam folder too, just in case)" %}
+<br/>
+<br/>
+{% blocktrans %}In the meantime, you can read propositions <a href="/proposition">here</a>.{% endblocktrans %}
+<br/>
+<br/>
+<br/>
+<div>
+    <a href="/login">{% trans "Back to login" %}</a>
+</div>
+
+{% endblock %}
