@@ -139,9 +139,20 @@ You can sign up for this 1h before first match starts latest!
 </form>
 <br/>
 
-<h1 class="content-header">{% trans "CHANGE PASSWORD" %}</h1>
+{% if current_user.has_usable_password %}
+  <h1 class="content-header">{% trans "CHANGE PASSWORD" %}</h1>
+{% else %}
+  <h1 class="content-header">{% trans "CREATE PASSWORD" %}</h1>
+{% endif %}
 
+{% if current_user.has_usable_password %}
 <form method="get" action="/profile/password">
-	<input value="{% trans "Change password" %}" type="submit"/>
+  <input value="{% trans "Change password" %}" type="submit"/>
 </form>
+{% else %}
+<form method="get" action="/profile/create_password">
+    <input value="{% trans "Create password" %}" type="submit"/>
+</form>
+{% endif %}
+
 {% endblock %}

@@ -11,6 +11,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import SetPasswordForm
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from django.core.mail.message import EmailMessage
@@ -162,6 +163,22 @@ def request_display_name(request):
         form = RequestDisplayNameForm( {'display_name': default_display_name})
 
     return render(request, 'request_display_name.html', {'form': form, 'no_menu': True})
+
+
+@transaction.atomic
+def create_password(request):
+    logger.info('User is on change password page')
+
+    user = request.user
+    if request.method == 'POST':
+        form = SetPasswordForm(user, request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse(home))
+    else:
+        form = SetPasswordForm(user)
+
+    return render(request, 'create_password.html', {'form': form})
 
 
 @transaction.atomic
