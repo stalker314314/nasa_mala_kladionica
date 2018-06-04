@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from django.db import transaction
 from django.shortcuts import redirect
 from django.urls import reverse
 from social_core.pipeline.partial import partial
@@ -19,3 +20,11 @@ def request_display_name(strategy, details, user=None, is_new=False, *args, **kw
         return
     else:
         return redirect('request_display_name')
+
+
+@transaction.atomic
+def fill_username_with_email(strategy, details, user=None, is_new=False, *args, **kwargs):
+    if strategy.request.backend == 'google-oauth2':
+        user.username = user.email
+        user.save()
+    return
