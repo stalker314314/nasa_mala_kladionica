@@ -44,7 +44,7 @@ def update_player_upon_registration(user):
     """
     After user registration is done, updates other properties for Player.
     (for example, takes languages from current session, so experience is smooth after first login)
-    :param user: User fgor which to update player for
+    :param user: User for which to update player for
     :return: Refreshed player
     """
     language = translation.get_language()
