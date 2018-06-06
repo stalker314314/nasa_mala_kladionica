@@ -391,6 +391,19 @@ ul.proposition {
 	temporary extras
 ***********************************/
 
+.prize-stat {
+  font-weight: bold;
+}
+
+.no-hover-style:hover {
+  color: #666;
+}
+
+.custom-hover-style,
+.custom-hover-style:hover {
+  color: var(--color-font-light);
+}
+
 #register-pep-talk {
   border-bottom: none;
   padding-bottom: none;

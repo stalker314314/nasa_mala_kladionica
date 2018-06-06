@@ -47,13 +47,13 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
-		<link href="{% static "css/css.css" %}" rel="stylesheet" type="text/css" />
-		<link href="{% static "css/tipsy.css" %}" rel="stylesheet" type="text/css" />
+        <link href="{% static "css/css.css" %}" rel="stylesheet" type="text/css" />
+        <link href="{% static "css/tipsy.css" %}" rel="stylesheet" type="text/css" />
         <link href="{% static "css/footer.css" %}" rel="stylesheet" type="text/css" />
-		<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
-		<script src="{% static "js/sorttable.js" %}"></script>
-		<script src="{% static "js/jquery.tipsy.js" %}"></script>
-		<script type="text/javascript">
+        <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+        <script src="{% static "js/sorttable.js" %}"></script>
+        <script src="{% static "js/jquery.tipsy.js" %}"></script>
+        <script type="text/javascript">
 		    $(document).ready(function() {
                 $('html').click(function(e) {
                     // If we click on menu to expand other submenus, do nothing
@@ -109,7 +109,7 @@
     {% endif %}
         {% if not no_menu %}
         <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top d-lg-none">
-            <a class="navbar-brand float-left" href="/">
+            <a class="navbar-brand float-left no-hover-style" href="/">
                 <img src="{% static "img/logo32.png" %}" class="img-fluid img-responsive mx-auto d-block" alt="logo">
             </a>
             <span class="navbar-text float-left d-md-none">sharkz.bet</span>
@@ -168,7 +168,7 @@
         {% endif %}
 
         <div id="header" class="d-none d-lg-block">
-            <a href="/">
+            <a class="no-hover-style" href="/">
               <img src="{% static "landing/img/logo80w.png" %}" class="img-fluid img-responsive d-block" alt="logo">
               <div id="logo-title">sharkz.bet</div>
             </a>
@@ -232,7 +232,9 @@
                   {% trans "Number of registered players" %}: {{ ctx_stats.player_count }} <br>
                   {% trans "real money players" %}: {{ ctx_stats.player_money_count }} <br>
                   {% trans "Prize money" %}:
-                  1. {{ ctx_stats.reward_money.1 }}€, 2. {{ ctx_stats.reward_money.2 }}€, 3. {{ ctx_stats.reward_money.3 }}€
+                  1. <span class="prize-stat">{{ ctx_stats.reward_money.1 }}€</span>,
+                  2. <span class="prize-stat">{{ ctx_stats.reward_money.2 }}€</span>,
+                  3. <span class="prize-stat">{{ ctx_stats.reward_money.3 }}€</span>
               </div>
               <div id="copyrights-desk">
                 <img id="cpr-logo" src="{% static "landing/img/logo80w.png" %}" alt="sharkz.bet logo">
@@ -243,25 +245,25 @@
               <span class="title-small">sharkz.bet</span>
               <ul id="footer-nav">
                 {% if user.is_authenticated %}
-                <li><a href="/">{% trans "Betting" %}</a></li>
-                <li><a href="/logout">{% trans "Logout" %}</a></li>
+                <li><a class="custom-hover-style" href="/">{% trans "Betting" %}</a></li>
+                <li><a class="custom-hover-style" href="/logout">{% trans "Logout" %}</a></li>
                 {% else %}
-                <li><a href="/login">{% trans "Login" %}</a></li>
+                <li><a class="custom-hover-style" href="/login">{% trans "Login" %}</a></li>
                 {% endif %}
-                <li><a href="/about">{% trans "About us" %}</a></li>
-                <li><a href="mailto:support@sharkz.bet">{% trans "Contact" %}</a></li>
-                <li><a href="/proposition">{% trans "Propositions" %}</a></li>
-                <li><a href="/terms">{% trans "Terms & Condition" %}</a></li>
-                <li><a href="/privacy">{% trans "Privacy Policy" %}</a></li>
+                <li><a class="custom-hover-style" href="/about">{% trans "About us" %}</a></li>
+                <li><a class="custom-hover-style" href="mailto:support@sharkz.bet">{% trans "Contact" %}</a></li>
+                <li><a class="custom-hover-style" href="/proposition">{% trans "Propositions" %}</a></li>
+                <li><a class="custom-hover-style" href="/terms">{% trans "Terms & Condition" %}</a></li>
+                <li><a class="custom-hover-style" href="/privacy">{% trans "Privacy Policy" %}</a></li>
               </ul>
             </section>
             <section>
               <div class="title-small">{% trans "Follow Us" %}</div>
               <div id="footer-social">
-                <a href="https://www.facebook.com/Sharkzbet-1394383320707658/">
+                <a class="custom-hover-style" href="https://www.facebook.com/Sharkzbet-1394383320707658/">
                     <span class="footer-soc-item fab fa-facebook-f" />
                 </a>
-                <a href="https://twitter.com/sharkzbet">
+                <a class="custom-hover-style" href="https://twitter.com/sharkzbet">
                     <span class="footer-soc-item fab fa-twitter" />
                 </a>
               </div>
