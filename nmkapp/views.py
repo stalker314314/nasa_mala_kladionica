@@ -25,7 +25,7 @@ from django.utils.translation import gettext as _
 
 from nmkapp.cache import StandingsCache, RoundStandingsCache
 from nmkapp.forms import AddToGroupForm, BettingForm, ForgotPasswordForm, NewGroupForm, PointsForm, \
-    RegisterForm, ResetPasswordForm, RequestDisplayNameForm, SetPasswordForm
+    RegisterForm, ResetPasswordForm, RequestDisplayNameForm, CreatePasswordForm
 from nmkapp.logic import recalculate_round_points, recalculate_total_points
 from nmkapp.model_forms import RoundForm, MatchForm, ResultsForm, PlayerForm
 from nmkapp.models import Round, UserRound, Shot, Match, Team, Player, Group
@@ -166,7 +166,7 @@ def request_display_name(request):
 @login_required
 @transaction.atomic
 def create_password(request):
-    logger.info('User is on change password page')
+    logger.info('User is on create password page')
 
     user = request.user
 
@@ -174,12 +174,12 @@ def create_password(request):
         return redirect(reverse(password_change))
 
     if request.method == 'POST':
-        form = SetPasswordForm(user, request.POST)
+        form = CreatePasswordForm(user, request.POST)
         if form.is_valid():
             form.save()
             return redirect(reverse(home))
     else:
-        form = SetPasswordForm(user)
+        form = CreatePasswordForm(user)
 
     return render(request, 'create_password.html', {'form': form})
 
