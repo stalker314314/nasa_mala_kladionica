@@ -40,6 +40,27 @@ def id_generator(size=16, chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
 
 
+def update_player_upon_registration(user):
+    """
+    After user registration is done, updates other properties for Player.
+    (for example, takes languages from current session, so experience is smooth after first login)
+    :param user: User for which to update player for
+    :return: Refreshed player
+    """
+    language = translation.get_language()
+    available_languages = [lang_code for (lang_code, lang_name) in settings.LANGUAGES]
+    if language not in available_languages:
+        language = settings.LANGUAGE_CODE
+
+    player = Player.objects.filter(user__id=user.id).get()
+    player.language = language
+    player.timezone = 'Europe/London'
+    player.odd_format = Player.DECIMAL
+    player.save()
+
+    return player
+
+
 @transaction.atomic
 def register(request):
     registration_type = request.GET.get('type', '')
@@ -51,10 +72,6 @@ def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
-            language = translation.get_language()
-            available_languages = [lang_code for (lang_code, lang_name) in settings.LANGUAGES]
-            if language not in available_languages:
-                language = settings.LANGUAGE_CODE
             cleaned_data = form.cleaned_data
             user = User.objects.create_user(username=cleaned_data['email'],
                                             email=cleaned_data['email'],
@@ -65,13 +82,9 @@ def register(request):
                                             last_login=timezone.now())
             user.player.activation_code = id_generator()
             user.player.save()
-            player = Player.objects.filter(user__id=user.id).get()
-            player.language = language
-            player.timezone = 'Europe/London'
-            player.odd_format = Player.DECIMAL
-            player.save()
+            player = update_player_upon_registration(user)
 
-            with translation.override(language):
+            with translation.override(player.language):
                 subject = _('[sharkz.bet] Registration successful')
                 template = loader.get_template('mail/registered.html')
                 message_text = template.render(
@@ -156,10 +169,11 @@ def request_display_name(request):
             user = partial_data.data['kwargs']['user']
             user.first_name = cleaned_data['display_name']
             user.save()
-            return redirect(reverse('social:complete', kwargs={ 'backend': partial_data.backend }))
+            update_player_upon_registration(user)
+            return redirect(reverse('social:complete', kwargs={'backend': partial_data.backend}))
     else:
         default_display_name = partial_data.data['kwargs']['details']['fullname']
-        form = RequestDisplayNameForm( {'display_name': default_display_name})
+        form = RequestDisplayNameForm({'display_name': default_display_name})
 
     return render(request, 'request_display_name.html', {'form': form, 'no_menu': True})
 
