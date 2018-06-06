@@ -29,7 +29,7 @@ class AdminRoundsEditTests(NmkUnitTestCase):
     def test_add_rounds(self):
         response = self.client.post(reverse(views.admin_rounds_edit), {'name': 'Final2', 'group_type': 'Cup'})
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(reverse(views.admin_rounds), response['location'])
+        self.assertEqual(reverse(views.admin_rounds), response['location'] + '/')
 
         # Check that there is 4 rounds now
         response = self.client.get(reverse(views.admin_rounds))

@@ -32,7 +32,7 @@ class AdminResultsChangeTests(NmkUnitTestCase):
         with self.settings(SEND_MAIL=True):
             response = self.client.post(reverse(views.admin_results_change, args=(5,)), {'score': '5:2'})
             self.assertEqual(response.status_code, 302)
-            self.assertEqual(reverse(views.admin_results), response['location'])
+            self.assertEqual(reverse(views.admin_results), response['location']  + '/')
             self.assertEqual(len(mail.outbox), 3)
             self.assertEqual(mail.outbox[0].subject, '[sharkz.bet] All results from round "Final" received')
 

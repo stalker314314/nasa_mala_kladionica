@@ -43,7 +43,7 @@ class AdminMatchesEditTests(NmkUnitTestCase):
             'odd2': 6.0
             })
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(reverse(views.admin_matches), response['location'])
+        self.assertEqual(reverse(views.admin_matches), response['location'] + '/')
 
         self.assertEqual(len(models.Match.objects.filter(round=new_round_id)), 1)
 

@@ -36,12 +36,12 @@ class DeleteGroupTests(NmkUnitTestCase):
     def test_post_delete_group_denied_deletion(self):
         response = self.client.post(reverse(views.group_delete, args=(1,)), {'0': None})
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(reverse(views.crew), response['location'])
+        self.assertEqual(reverse(views.crew), response['location']  + '/')
 
     def test_post_delete_group_accepted_deletion(self):
         response = self.client.post(reverse(views.group_delete, args=(1,)), {'1': None})
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(reverse(views.crew), response['location'])
+        self.assertEqual(reverse(views.crew), response['location']  + '/')
 
     def test_visit_delete_group_which_does_not_exist(self):
         response = self.client.get(reverse(views.group_delete, args=(10,)))
