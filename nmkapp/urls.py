@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^logout$', logout_then_login),
     url(r'^profile/reset$', views.reset_password),
     url(r'^profile/password$', password_change, {"template_name": "password.html", "post_change_redirect": "/"}),
+    url(r'^profile/create_password$', views.create_password, name='create_password'),
     url(r'^profile$', views.profile),
     url(r'^crew', views.crew),
     url(r'^results$', views.results),

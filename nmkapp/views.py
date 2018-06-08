@@ -12,7 +12,7 @@ from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, password_change
 from django.core.mail.message import EmailMessage
 from django.db import transaction
 from django.db.models.aggregates import Min
@@ -25,7 +25,7 @@ from django.utils.translation import gettext as _
 
 from nmkapp.cache import StandingsCache, RoundStandingsCache
 from nmkapp.forms import AddToGroupForm, BettingForm, ForgotPasswordForm, NewGroupForm, PointsForm, \
-    RegisterForm, ResetPasswordForm, RequestDisplayNameForm
+    RegisterForm, ResetPasswordForm, RequestDisplayNameForm, CreatePasswordForm
 from nmkapp.logic import recalculate_round_points, recalculate_total_points
 from nmkapp.model_forms import RoundForm, MatchForm, ResultsForm, PlayerForm
 from nmkapp.models import Round, UserRound, Shot, Match, Team, Player, Group
@@ -176,6 +176,27 @@ def request_display_name(request):
         form = RequestDisplayNameForm({'display_name': default_display_name})
 
     return render(request, 'request_display_name.html', {'form': form, 'no_menu': True})
+
+
+@login_required
+@transaction.atomic
+def create_password(request):
+    logger.info('User is on create password page')
+
+    user = request.user
+
+    if user and user.has_usable_password():
+        return redirect(reverse(password_change))
+
+    if request.method == 'POST':
+        form = CreatePasswordForm(user, request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse(home))
+    else:
+        form = CreatePasswordForm(user)
+
+    return render(request, 'create_password.html', {'form': form})
 
 
 @transaction.atomic

@@ -2,6 +2,7 @@
 
 from django import forms
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import SetPasswordForm
 from django.forms.widgets import PasswordInput
 from django.utils.translation import gettext as _
 from django.utils.safestring import mark_safe
@@ -79,6 +80,15 @@ class ResetPasswordForm(forms.Form):
             if cleaned_data['password'] != cleaned_data['password2']:
                 raise forms.ValidationError({'password2': [_('Passwords do not match'), ]})
         return cleaned_data
+
+
+class CreatePasswordForm(SetPasswordForm):
+    new_password1 = forms.CharField(label=_("New password"),
+                                    min_length=5,
+                                    widget=forms.PasswordInput)
+    new_password2 = forms.CharField(label=_("New password confirmation"),
+                                    min_length=5,
+                                    widget=forms.PasswordInput)
 
 
 class RequestDisplayNameForm(forms.Form):
