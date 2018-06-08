@@ -153,7 +153,7 @@ def activation(request):
                 RoundStandingsCache.clear_round(nmk_round)
     return render(request, 'activation.html', {'success': success, 'player': player})
 
-# @login_required
+
 @transaction.atomic
 def request_display_name(request):
     logger.info('User is on request display name page')
@@ -176,6 +176,7 @@ def request_display_name(request):
         form = RequestDisplayNameForm({'display_name': default_display_name})
 
     return render(request, 'request_display_name.html', {'form': form, 'no_menu': True})
+
 
 @login_required
 @transaction.atomic
