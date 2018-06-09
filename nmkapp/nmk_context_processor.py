@@ -1,4 +1,4 @@
-from nmkapp.models import Round, UserRound, Shot, Match, Team, Player, Group
+from nmkapp.models import Player
 
 
 def player_stats(request):

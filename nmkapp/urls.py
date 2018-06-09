@@ -1,6 +1,6 @@
 from django.conf.urls import url, include
 from nmkapp import views
-from django.contrib.auth.views import logout_then_login, login, password_change
+from django.contrib.auth.views import logout_then_login, password_change
 
 urlpatterns = [
     url(r'^$', views.home),

@@ -21,7 +21,7 @@ from nmkapp.models import Round, Match, Shot, Player
 
 from django.conf import settings
 from django.core.mail import EmailMessage
-from django.db.models import Min, Q
+from django.db.models import Min
 from django.template import loader
 from django.utils import timezone, translation
 from django.utils.translation import gettext as _

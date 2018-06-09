@@ -1,13 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from django.db import transaction
 from django.shortcuts import redirect
-from django.urls import reverse
-
-from social_core.pipeline.partial import partial
 from social_core.backends.google import GoogleOAuth2
-
-from nmkapp.views import request_display_name
+from social_core.pipeline.partial import partial
 
 
 @partial

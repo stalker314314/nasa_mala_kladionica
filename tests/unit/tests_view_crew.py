@@ -2,11 +2,9 @@
 
 from django.test import Client
 from django.urls import reverse
-from django.conf import settings
 
-from nmkapp import views
 from nmkapp import models
-
+from nmkapp import views
 from .nmk_unit_test_case import NmkUnitTestCase
 
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from django.db import connection, connections, DEFAULT_DB_ALIAS
+from django.db import connections, DEFAULT_DB_ALIAS
 from django.test import TestCase, Client
 from django.test.utils import CaptureQueriesContext
 from django.urls import reverse
