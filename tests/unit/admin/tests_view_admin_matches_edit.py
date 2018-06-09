@@ -100,8 +100,9 @@ class AdminMatchesEditTests(NmkUnitTestCase):
         self.assertEqual(len(models.Match.objects.filter(round=new_round_id)), 1)
 
         # try all combinations of home/away team and who that team is
-        expected_messages = ['Team Team Best already plays in this round', 'Team Team Worst already plays in this round']
-        for team1, team2, message_index in [(1,3,0), (3,1,0), (2,3,1), (3,2,1)]:
+        expected_messages = ['Team Team Best already plays in this round',
+                             'Team Team Worst already plays in this round']
+        for team1, team2, message_index in [(1, 3, 0), (3, 1, 0), (2, 3, 1), (3, 2, 1)]:
             response = self.client.post(reverse(views.admin_matches_edit), {
                 'home_team': team1,
                 'away_team': team2,

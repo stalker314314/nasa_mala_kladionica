@@ -22,7 +22,7 @@ class RegisterForm(forms.Form):
         self.fields['accept_terms'] = forms.BooleanField(
             initial=True, required=True, label=mark_safe(_('I accept <a href="/terms">Terms and Conditions</a>')),
             error_messages={'required': accept_terms_validity_message},
-            widget = forms.CheckboxInput(attrs={
+            widget=forms.CheckboxInput(attrs={
                 'oninvalid': 'this.setCustomValidity(\'{0}\')'.format(accept_terms_validity_message),
                 'onchange': "setCustomValidity('')"
             }))
@@ -54,7 +54,7 @@ class RegisterForm(forms.Form):
             if len(existing_first_name) > 0:
                 raise forms.ValidationError(
                     {'display_name': [_('This display name is already taken. '
-                                 'If this is your display name by any chance, please log in.'), ]})
+                                        'If this is your display name by any chance, please log in.'), ]})
         return cleaned_data
 
 
@@ -100,8 +100,8 @@ class RequestDisplayNameForm(forms.Form):
             users = User.objects.filter(first_name__iexact=cleaned_data['display_name'])
             if len(users) > 0:
                 raise forms.ValidationError(
-                    {'display_name':
-                         [_('Sorry, but name "{0}" is already taken'.format(cleaned_data['display_name']))]})
+                    {'display_name': [_('Sorry, but name "{0}" is already taken'.format(cleaned_data['display_name']))]}
+                )
 
 
 class NewGroupForm(forms.Form):
@@ -150,14 +150,14 @@ class BettingForm(forms.Form):
         player = kwargs.pop('player')
         super(BettingForm, self).__init__(*args, **kwargs)
         for shot in shots:
-            odd1 = convert_odd_format(shot.match.odd1, player.odd_format)
-            oddX = convert_odd_format(shot.match.oddX, player.odd_format)
-            odd2 = convert_odd_format(shot.match.odd2, player.odd_format)
+            odd_1 = convert_odd_format(shot.match.odd1, player.odd_format)
+            odd_x = convert_odd_format(shot.match.oddX, player.odd_format)
+            odd_2 = convert_odd_format(shot.match.odd2, player.odd_format)
             self.fields['%d_%d' % (shot.user_round.id, shot.match.id)] = forms.IntegerField(
                 initial=shot.shot,
                 required=False,
                 label='%s - %s' % (shot.match.home_team.name, shot.match.away_team.name),
-                widget=forms.RadioSelect(choices=[[1, odd1], [0, oddX], [2, odd2]]))
+                widget=forms.RadioSelect(choices=[[1, odd_1], [0, odd_x], [2, odd_2]]))
 
     def clean(self):
         cleaned_data = super(BettingForm, self).clean()

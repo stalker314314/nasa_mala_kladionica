@@ -21,7 +21,7 @@ class OddFormatTests(TestCase):
         self.assertEqual(None, convert_odd_format(None, Player.FRACTIONAL))
         self.assertRaises(TypeError, convert_odd_format, '')
         self.assertRaises(TypeError, convert_odd_format, 'text')
-        self.assertRaises(TypeError, convert_odd_format, [1,2,3])
+        self.assertRaises(TypeError, convert_odd_format, [1, 2, 3])
         self.assertEqual('N/A', convert_odd_format(0, Player.FRACTIONAL))
         self.assertEqual('N/A', convert_odd_format(-1, Player.FRACTIONAL))
         self.assertEqual('N/A', convert_odd_format(-2.5, Player.FRACTIONAL))

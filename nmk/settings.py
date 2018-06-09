@@ -282,7 +282,7 @@ if not DEBUG:
     SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ['NMK_GOOGLE_OAUTH2_KEY']
     SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ['NMK_GOOGLE_OAUTH2_SECRET']
 
-    #enable loaders(caching) for prod
+    # Enable loaders(caching) for prod
     del TEMPLATES[0]['APP_DIRS']
     TEMPLATES[0]['OPTIONS']['loaders'] = [
         ('django.template.loaders.cached.Loader', [
