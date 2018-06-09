@@ -10,6 +10,7 @@ import pytz
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, password_change
@@ -22,6 +23,7 @@ from django.template import loader
 from django.urls import reverse
 from django.utils import timezone, translation
 from django.utils.translation import gettext as _
+from social_django.utils import load_strategy
 
 from nmkapp.cache import StandingsCache, RoundStandingsCache
 from nmkapp.forms import AddToGroupForm, BettingForm, ForgotPasswordForm, NewGroupForm, PointsForm, \
@@ -29,9 +31,6 @@ from nmkapp.forms import AddToGroupForm, BettingForm, ForgotPasswordForm, NewGro
 from nmkapp.logic import recalculate_round_points, recalculate_total_points
 from nmkapp.model_forms import RoundForm, MatchForm, ResultsForm, PlayerForm
 from nmkapp.models import Round, UserRound, Shot, Match, Team, Player, Group
-
-from social_django.utils import load_strategy
-
 
 logger = logging.getLogger(__name__)
 
@@ -192,6 +191,7 @@ def create_password(request):
         form = CreatePasswordForm(user, request.POST)
         if form.is_valid():
             form.save()
+            update_session_auth_hash(request, form.user)
             return redirect(reverse(home))
     else:
         form = CreatePasswordForm(user)
