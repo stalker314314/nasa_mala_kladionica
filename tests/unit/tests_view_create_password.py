@@ -60,7 +60,9 @@ class CreatePasswordTests(NmkUnitTestCase):
         self.assertEqual(reverse(password_change), response['location'])
 
     def test_create_password_anon_user(self):
-        pass
+        client = Client()
+        response = client.get(reverse(views.create_password))
+        self.assertEqual(response.status_code, 302)
 
     def test_create_password(self):
         client = Client()
