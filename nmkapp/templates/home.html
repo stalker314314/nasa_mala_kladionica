@@ -8,6 +8,34 @@
 <h1 class="content-header">{% trans "Active rounds" %}</h1>
 <br/>
 
+{% is_registration_allowed as is_registration_allowed %}
+{% if is_registration_allowed %}
+{% if user.player.in_money %}
+{% else %}
+
+{% blocktrans %}
+If you want to play in real money, that will cost you 10€.
+You can sign up for this 1h before first match starts latest!
+{% endblocktrans %}
+
+<br/>
+{% blocktrans %}You can see more detail at the page with <a href="/proposition">propositions</a>.{% endblocktrans %}
+<br/>
+<br/>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+	<input type="hidden" name="cmd" value="_s-xclick">
+	<input type="hidden" name="hosted_button_id" value="LTSLB5DY9345W">
+	<input type="hidden" name="custom" value="{{ current_user.user.email }}">
+	<input type="image" src="https://www.paypalobjects.com/{% trans "en_US" %}/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+	<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+<br/>
+<br/>
+<br/>
+{% endif %}
+{% endif %}
+
 {% for bet in bets %}
 {% if bet.form %}
 <div class="modal fade" id="modal_{{ bet.round.id }}" tabindex="-1" role="dialog" aria-labelledby="modalLabel_{{ bet.round.id }}" aria-hidden="true">
