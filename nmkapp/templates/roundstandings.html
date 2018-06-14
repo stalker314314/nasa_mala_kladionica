@@ -140,7 +140,13 @@ Create your crew at <a href="/crew">crew</a> page and invite your buddies){% end
         <tfoot style="height: 40px">
             <tr>
                 <td></td>
-                <td>{% trans "Odd" %}</td>
+                <td>
+                    <table width="100%">
+                        <tr><td></td><td style="text-align: center;">1</td></tr>
+                        <tr><td>{% trans "Odd" %}</td><td style="text-align: center;">X</td></tr>
+                        <tr><td></td><td style="text-align: center;">2</td></tr>
+                    </table>
+                </td>
                 {% for match in matches %}
                 {% if match.result == 1 %}
                 <td class="sorttable_nosort numbercenter">{{ match.odd1|odd_format:user.player.odd_format }}</td>
