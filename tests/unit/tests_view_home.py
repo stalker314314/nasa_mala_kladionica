@@ -16,7 +16,7 @@ class HomeTests(NmkUnitTestCase):
         response = client.get(reverse(views.home))
         self.assertEqual(response.status_code, 302)
 
-    @NmkUnitTestCase.assertNumQueriesLessThan(15)
+    @NmkUnitTestCase.assertNumQueriesLessThan(16)
     def test_no_active_round(self):
         """
         Test home view when there is no active rounds
