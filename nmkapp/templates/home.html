@@ -8,6 +8,14 @@
 <h1 class="content-header">{% trans "Active rounds" %}</h1>
 <br/>
 
+{% if messages %}
+    {% for message in messages %}
+    <div role="alert" class="alert alert-warning text-center">
+        {{ message }}
+    </div>
+    {% endfor %}
+{% endif %}
+
 {% if user.player.in_money %}
 {% else %}
 
@@ -83,14 +91,6 @@ You can sign up for this 1h before first match starts latest!
 		{% endfor %}
 	});
 </script>
-
-{% if messages %}
-    {% for message in messages %}
-    <div role="alert" class="alert alert-warning text-center">
-        {{ message }}
-    </div>
-    {% endfor %}
-{% endif %}
 
 {% for bet in bets %}
 	<table class="mediumtable">

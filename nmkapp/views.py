@@ -3,8 +3,6 @@
 import logging
 import random
 import string
-from datetime import datetime
-from operator import itemgetter
 
 import pytz
 from django.conf import settings
@@ -13,14 +11,14 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.contrib.auth.views import LoginView, password_change
+from django.contrib.auth.views import LoginView, PasswordChangeView, password_change
 from django.core.mail.message import EmailMessage
 from django.db import transaction
 from django.db.models.aggregates import Min
 from django.http.response import HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render, redirect
 from django.template import loader
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.utils import timezone, translation
 from django.utils.translation import gettext as _
 from social_django.utils import load_strategy
@@ -30,7 +28,7 @@ from nmkapp.forms import AddToGroupForm, BettingForm, ForgotPasswordForm, NewGro
     RegisterForm, ResetPasswordForm, RequestDisplayNameForm, CreatePasswordForm
 from nmkapp.logic import recalculate_round_points, recalculate_total_points
 from nmkapp.model_forms import RoundForm, MatchForm, ResultsForm, PlayerForm
-from nmkapp.models import Round, UserRound, Shot, Match, Team, Player, Group
+from nmkapp.models import Round, UserRound, Shot, Match, Player, Group
 
 logger = logging.getLogger(__name__)
 
@@ -182,7 +180,7 @@ def create_password(request):
     user = request.user
 
     if user and user.has_usable_password():
-        return redirect(reverse(password_change))
+        return redirect(reverse('password_change'))
 
     if request.method == 'POST':
         form = CreatePasswordForm(user, request.POST)
@@ -769,3 +767,9 @@ class CustomLoginView(LoginView):
             if timezone.zone in pytz.all_timezones:
                 self.request.session[settings.TIMEZONE_SESSION_KEY] = timezone.zone
         return url
+
+
+class CustomPasswordChangeView(PasswordChangeView):
+    def form_valid(self, form):
+        messages.add_message(self.request, messages.INFO, _('Password changed successfully'))
+        return super().form_valid(form)

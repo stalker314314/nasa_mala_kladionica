@@ -57,7 +57,7 @@ class CreatePasswordTests(NmkUnitTestCase):
         client.login(username='seki@mail.com', password='12345')
         response = client.get(reverse(views.create_password))
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(reverse(password_change), response['location'])
+        self.assertEqual(reverse('password_change'), response['location'])
 
     def test_create_password_anon_user(self):
         client = Client()
@@ -77,4 +77,4 @@ class CreatePasswordTests(NmkUnitTestCase):
         client.login(username='maiev', password='Super Secure Password')
         response = client.get(reverse(views.create_password))
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(reverse(password_change), response['location'])
+        self.assertEqual(reverse('password_change'), response['location'])
