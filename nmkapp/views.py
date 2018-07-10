@@ -64,9 +64,6 @@ def update_player_upon_registration(user):
 def register(request):
     registration_type = request.GET.get('type', '')
     logger.info('User is on register page, going with %s type', registration_type)
-    last_registration_time = datetime(2018, 6, 14, 14, 0, tzinfo=timezone.utc)
-    if timezone.now() >= last_registration_time:
-        raise Http404()
 
     if request.method == 'POST':
         form = RegisterForm(request.POST)

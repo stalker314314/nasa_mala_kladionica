@@ -8,8 +8,6 @@
 <h1 class="content-header">{% trans "Active rounds" %}</h1>
 <br/>
 
-{% is_registration_allowed as is_registration_allowed %}
-{% if is_registration_allowed %}
 {% if user.player.in_money %}
 {% else %}
 
@@ -33,7 +31,6 @@ You can sign up for this 1h before first match starts latest!
 <br/>
 <br/>
 <br/>
-{% endif %}
 {% endif %}
 
 {% for bet in bets %}

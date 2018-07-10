@@ -36,8 +36,6 @@
 {% endif %}
 
 <br/>
-{% is_registration_allowed as is_registration_allowed %}
-{% if is_registration_allowed %}
 {% if current_user.player.in_money %}
 {% else %}
 <h1 class="content-header">{% trans "REAL MONEY BETTING" %}</h1>
@@ -61,7 +59,6 @@ You can sign up for this 1h before first match starts latest!
 </form>
 <br/>
 
-{% endif %}
 {% endif %}
 
 <h1 class="content-header">{% trans "SETTINGS" %}</h1>

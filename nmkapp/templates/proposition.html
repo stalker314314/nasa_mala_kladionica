@@ -24,8 +24,6 @@
 	</li>
 </ul>
 
-{% is_registration_allowed as is_registration_allowed %}
-{% if is_registration_allowed %}
 {% if player %}
 {% if player.in_money %}
 {% else %}
@@ -41,7 +39,6 @@
         <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
     </form>
 </div>
-{% endif %}
 {% endif %}
 {% endif %}
 

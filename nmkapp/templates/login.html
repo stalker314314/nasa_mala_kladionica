@@ -48,12 +48,8 @@
 		<a id="social-login" href="{% url 'social:begin' 'google-oauth2' %}">{% trans "Log In using Google account" %}</a>
 		<br/>
         <br/>
-		{% is_registration_allowed as is_registration_allowed %}
-		{% if is_registration_allowed %}
 		<div>
 			<a id="register-link" href="/register">{% trans "Don't have an account yet? Register" %}</a><br/>
-			<small>{% trans "(registration is allowed until 1h before start of the first match" %} - 14.06.2018 14:00 UTC!)</small>
 		</div>
-		{% endif %}
 </form>
 {% endblock %}
