@@ -381,11 +381,6 @@ def crew(request):
                   )
 
 
-@login_required
-def results(request):
-    return render(request, 'results.html')
-
-
 def paypal(request):
     email = 'not logged'
     success = False
@@ -424,65 +419,6 @@ def landing(request):
             if hasattr(request, 'session'):
                 request.session[translation.LANGUAGE_SESSION_KEY] = language
     return render(request, 'landing.html')
-
-
-@login_required
-def results_league(request):
-    groups = []
-    group_labels = Team.objects.values('group_label').order_by('group_label').distinct()
-    for group_label in group_labels:
-        matches = Match.objects.filter(round__group_type=Round.LEAGUE).\
-            filter(home_team__group_label=group_label['group_label']).order_by('round')
-        teams = Team.objects.filter(group_label=group_label['group_label'])
-        league = []
-        for team in teams:
-            league.append([team.name, 0, 0, 0, 0, 0])
-        for match in matches:
-            if match.result is None:
-                continue
-            team_in_league = None
-            for l in league:
-                if l[0] == match.home_team.name:
-                    team_in_league = l
-            if team_in_league is not None:
-                team_in_league[1] += 1
-                if match.result == 1:
-                    team_in_league[2] += 1
-                    team_in_league[5] += 3
-                elif match.result == 0:
-                    team_in_league[3] += 1
-                    team_in_league[5] += 1
-                else:
-                    team_in_league[4] += 1
-
-            team_in_league = None
-            for l in league:
-                if l[0] == match.away_team.name:
-                    team_in_league = l
-            if team_in_league is not None:
-                team_in_league[1] += 1
-                if match.result == 1:
-                    team_in_league[4] += 1
-                elif match.result == 0:
-                    team_in_league[3] += 1
-                    team_in_league[5] += 1
-                else:
-                    team_in_league[5] += 3
-                    team_in_league[2] += 1
-        league = sorted(league, key=itemgetter(5), reverse=True)
-        groups.append({'league': league, 'matches': matches, 'label': chr(group_label['group_label'] + ord('A'))})
-    return render(request, 'results_league.html', {'groups': groups})
-
-
-@login_required
-def results_cup(request):
-    rounds = []
-    all_rounds = Round.objects.filter(group_type=Round.CUP).order_by('id')
-    for my_round in all_rounds:
-        matches = Match.objects.filter(round=my_round).order_by('start_time')
-        one_round = [my_round, matches]
-        rounds.append(one_round)
-    return render(request, 'results_cup.html', {'rounds': rounds})
 
 
 @login_required
