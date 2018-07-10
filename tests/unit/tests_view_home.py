@@ -105,6 +105,24 @@ class HomeTests(NmkUnitTestCase):
         self.assertEqual(bet['shots'][0].match.id, 5)
         self.assertIsNone(bet['shots'][0].shot)
 
+    def test_play_round_save_incomplete_save(self):
+        """
+        Tests when user do not submit all bets
+        """
+        self.client = Client()
+        self.assertTrue(self.client.login(username='gumi@mail.com', password='12345'))
+
+        round = models.Round.objects.filter(name='Final')[0]
+        round.active = True
+        round.save()
+        match = models.Match.objects.filter(id=5)[0]
+        match.start_time = datetime.datetime.now() + datetime.timedelta(days=2, hours=12)
+        match.save()
+
+        response = self.client.post(reverse(views.home), {'save_3': None})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual('You must place all bets', response.context['bets'][0]['form'].errors['__all__'][0])
+
     def test_play_round_save(self):
         """
         Tests that player who is eligible to play to save

@@ -37,11 +37,6 @@ class RegisterForm(forms.Form):
 
     def clean(self):
         cleaned_data = super(RegisterForm, self).clean()
-        if 'display_name' in cleaned_data and len(cleaned_data['display_name']) > 28:
-            raise forms.ValidationError(
-                {'display_name': [_('Display name must be shorter than 28 characters in length'), ]})
-        if 'email' in cleaned_data and len(cleaned_data['email']) > 74:
-            raise forms.ValidationError({'email': [_('E-mail address must be shorter than 74 characters'), ]})
 
         if 'email' in cleaned_data:
             existing_mails = User.objects.filter(email=cleaned_data['email'])

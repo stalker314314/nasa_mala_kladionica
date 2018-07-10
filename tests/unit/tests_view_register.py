@@ -106,6 +106,39 @@ class RegisterTests(NmkUnitTestCase):
                          context['form'].errors['email'][0])
         self.assertEqual(len(models.User.objects.filter(email='gumi@mail.com')), 1)
 
+    def test_register_email_too_long(self):
+        self.client = Client()
+        response = self.client.post(reverse(views.register), {
+            'display_name': 'Foo2',
+            'email': '1234567890'*10 + '@mail.com',
+            'password': 'foo123',
+            'accept_terms': True,
+            'over_18': True
+        })
+        self.assertEqual(response.status_code, 200)
+        context = response.context
+        self.assertIsNotNone(context['form'])
+        self.assertTrue(context['no_menu'])
+        self.assertEqual('Ensure this value has at most 74 characters (it has 109).',
+                         context['form'].errors['email'][0])
+
+    def test_register_display_name_too_long(self):
+        self.client = Client()
+        response = self.client.post(reverse(views.register), {
+            'display_name': '1234567890' * 10,
+            'email': 'newmail@mail.com',
+            'password': 'foo123',
+            'accept_terms': True,
+            'over_18': True
+        })
+        self.assertEqual(response.status_code, 200)
+        context = response.context
+        self.assertIsNotNone(context['form'])
+        self.assertTrue(context['no_menu'])
+        self.assertEqual('Ensure this value has at most 28 characters (it has 100).',
+                         context['form'].errors['display_name'][0])
+        self.assertEqual(len(models.User.objects.filter(email='newmail@mail.com')), 0)
+
     def test_register_display_name_already_exists(self):
         self.client = Client()
         response = self.client.post(reverse(views.register), {
