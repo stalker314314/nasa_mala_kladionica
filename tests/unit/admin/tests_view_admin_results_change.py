@@ -34,7 +34,7 @@ class AdminResultsChangeTests(NmkUnitTestCase):
             self.assertEqual(response.status_code, 302)
             self.assertEqual(reverse(views.admin_results), response['location'])
             self.assertEqual(len(mail.outbox), 3)
-            self.assertEqual(mail.outbox[0].subject, '[sharkz.bet] All results from round "Final" received')
+            self.assertEqual(mail.outbox[0].subject, '[nmk.bet] All results from round "Final" received')
 
         match = models.Match.objects.filter(id=5).get()
         self.assertEqual(match.result, 1)

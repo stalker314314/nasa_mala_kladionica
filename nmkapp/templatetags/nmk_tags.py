@@ -12,7 +12,7 @@ register = template.Library()
 
 @register.simple_tag(takes_context=False)
 def is_registration_allowed():
-    last_registration_time = datetime.datetime(2018, 6, 14, 14, 0, tzinfo=timezone.utc)
+    last_registration_time = datetime.datetime(2021, 6, 11, 19, 0, tzinfo=timezone.utc)
     return timezone.now() < last_registration_time
 
 

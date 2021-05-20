@@ -71,9 +71,9 @@ WSGI_APPLICATION = 'nmk.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'nmk',
+        'NAME': 'nmkbet',
         'HOST': 'localhost',
-        'USER': 'postgres',
+        'USER': 'nmkbet',
         'PASSWORD': ''
     }
 }
@@ -83,7 +83,7 @@ DATABASES = {
 #     DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
 
 # Internationalization
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'sr-Latn'
 
 LANGUAGES = [
     ('en', _('English')),
@@ -145,9 +145,9 @@ ANYMAIL = {
 }
 EMAIL_BACKEND = 'anymail.backends.mailjet.EmailBackend'
 
-DEFAULT_FROM_EMAIL = "admin@sharkz.bet"
-SERVER_EMAIL = 'admin@sharkz.bet'
-ADMINS = [('Sharkz.bet', 'admin@sharkz.bet')]
+DEFAULT_FROM_EMAIL = "admin@nmk.bet"
+SERVER_EMAIL = 'admin@nmk.bet'
+ADMINS = [('nmk.bet', 'admin@nmk.bet')]
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
@@ -213,7 +213,7 @@ LOGGING_PROD = {
         'file': {
             'level': 'INFO',
             'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': '/var/log/sharkz.bet/sb.log',
+            'filename': '/var/log/nmk.bet/nmkbet.log',
             'formatter': 'verbose',
             'when': 'midnight',
             'interval': 1
@@ -275,7 +275,7 @@ if not DEBUG:
     DATABASES['default']['PASSWORD'] = os.environ['NMK_DB_PASSWORD']
     ANYMAIL['MAILJET_API_KEY'] = os.environ['NMK_MAILJET_API_KEY']
     ANYMAIL['MAILJET_SECRET_KEY'] = os.environ['NMK_MAILJET_SECRET_KEY']
-    ALLOWED_HOSTS = ['localhost', '.sharkz.bet', '.sharkz.bet.']
+    ALLOWED_HOSTS = ['localhost', '.nmk.bet', 'nmk.bet.']
     LOGGING = LOGGING_PROD
 
     SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ['NMK_GOOGLE_OAUTH2_KEY']

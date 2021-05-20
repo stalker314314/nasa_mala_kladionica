@@ -24,8 +24,8 @@ class Player(models.Model):
     send_mail_results_available = models.BooleanField(default=True)
     activation_code = models.CharField(max_length=255, blank=True)
     reset_code = models.CharField(max_length=255, blank=True)
-    language = models.CharField(max_length=255, blank=True, null=True, default='en')
-    timezone = TimeZoneField(default='Europe/London')
+    language = models.CharField(max_length=255, blank=True, null=True, default='sr-Latn')
+    timezone = TimeZoneField(default='Europe/Belgrade')
     odd_format = models.IntegerField(choices=ODD_FORMAT, default=DECIMAL)
 
     def __str__(self):

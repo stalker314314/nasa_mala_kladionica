@@ -41,7 +41,7 @@ class RegisterTests(NmkUnitTestCase):
         self.assertEqual(reverse(views.register_success), response['location'])
 
         self.assertEqual(len(mail.outbox), 1)
-        self.assertEqual(mail.outbox[0].subject, '[sharkz.bet] Registration successful')
+        self.assertEqual(mail.outbox[0].subject, '[nmk.bet] Registration successful')
 
         users = models.User.objects.filter(email='foo@bar.com')
         self.assertEqual(len(users), 1)
@@ -86,7 +86,7 @@ class RegisterTests(NmkUnitTestCase):
         context = response.context
         self.assertIsNotNone(context['form'])
         self.assertTrue(context['no_menu'])
-        self.assertEqual('You must be over 18 to play on sharkz.bet', context['form'].errors['over_18'][0])
+        self.assertEqual('You must be over 18 to play on nmk.bet', context['form'].errors['over_18'][0])
         self.assertEqual(len(models.User.objects.filter(email='newmail@mail.com')), 0)
 
     def test_register_email_already_exists(self):

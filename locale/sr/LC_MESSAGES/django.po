@@ -1,14 +1,14 @@
-# Serbian sharkz.bet translation.
-# Copyright (C) 2018
-# This file is distributed under the same license as the sharkz.bet package.
-# Branko Kokanovic <branko at kokanovic.org>, 2018.
+# Serbian nmk.bet translation.
+# Copyright (C) 2021
+# This file is distributed under the same license as the nmk.bet package.
+# Branko Kokanovic <branko at kokanovic.org>, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-10 20:53+0000\n"
-"PO-Revision-Date: 2018-06-10 22:54+0200\n"
+"POT-Creation-Date: 2021-05-22 14:02+0000\n"
+"PO-Revision-Date: 2021-05-22 16:04+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: nmk/settings.py:89
 msgid "English"
@@ -61,8 +61,8 @@ msgid "I accept <a href=\"/terms\">Terms and Conditions</a>"
 msgstr "Прихватам <a href=\"/terms\">Услове коришћења</a>"
 
 #: nmkapp/forms.py:29
-msgid "You must be over 18 to play on sharkz.bet"
-msgstr "Морате имати преко 18 година да учествујете на sharkz.bet сајту"
+msgid "You must be over 18 to play on nmk.bet"
+msgstr "Морате имати преко 18 година да учествујете на nmk.bet сајту"
 
 #: nmkapp/forms.py:31
 msgid "I am over 18 years old"
@@ -235,23 +235,23 @@ msgstr "Разломци (Енглеска)"
 
 #: nmkapp/send_reminder_cron.py:58
 #, python-format
-msgid "[sharkz.bet] Round \"%s\" reminder"
-msgstr "[sharkz.bet] Подсетник клађења на коло „%s“"
+msgid "[nmk.bet] Round \"%s\" reminder"
+msgstr "[nmk.bet] Подсетник клађења на коло „%s“"
 
 #: nmkapp/send_shots_cron.py:60
 #, python-format
-msgid "[sharkz.bet] Round \"%s\" started"
-msgstr "[sharkz.bet] Почело коло „%s“"
+msgid "[nmk.bet] Round \"%s\" started"
+msgstr "[nmk.bet] Почело коло „%s“"
 
-#: nmkapp/templates/about.html:7 nmkapp/templates/base.html:253
-#: nmkapp/templates/landing.html:223
+#: nmkapp/templates/about.html:7 nmkapp/templates/base.html:226
+#: nmkapp/templates/landing.html:197
 msgid "About us"
 msgstr "О нама"
 
 #: nmkapp/templates/about.html:10
 msgid ""
-"Sharkz.bet started more than 15 years ago, when bunch of friends decided to "
-"have a pool bet on matches in\n"
+"Naša Mala Kladionica started more than 15 years ago, when bunch of friends "
+"decided to have a pool bet on matches in\n"
 "UEFA Champions League. At that time, we used state of the art in pool "
 "betting &mdash; Excel:). Soon enough,\n"
 "we learned that it is not very convenient to have Excel spreadsheet being "
@@ -259,8 +259,8 @@ msgid ""
 "when there was blanket finish. At these point, leaders were simply "
 "deadlocked because no one wanted to bet first!"
 msgstr ""
-"Sharkz.bet је започет пре више од 15 година, када је група ортака одлучила "
-"да направи интерну кладионицу на утакмице\n"
+"Наша Мала Кладионица је започела пре више од 15 година, када је група ортака "
+"одлучила да направи интерну кладионицу на утакмице\n"
 "Лиге Шампиона. У то време, користили смо најбољи софтвер за интерно клађење "
 "&mdash; Excel:) Ускоро смо укапирали\n"
 "да није баш најзгодније да користимо Excel који шаљемо мејлом, нарочите у "
@@ -270,19 +270,17 @@ msgstr ""
 
 #: nmkapp/templates/about.html:17
 msgid ""
-"So, we developed sharkz.bet and used it internally for last 10 years! Over "
-"time, we started to invite friends and\n"
+"So, we developed NMK and used it internally for last 14 years! Over time, we "
+"started to invite friends and\n"
 "colleagues to join us for larger events, like World Cups or European "
-"Championships. However, this year,\n"
-"for World Cup 2018, for the first time, we decided to open it up with whole "
-"world!"
+"Championships. However, for Euro Cup 2020,\n"
+"    we are opening it with whole world!"
 msgstr ""
-"И тако смо направили sharkz.bet и интерно га користили последњих 10 година! "
-"Током времена, почели смо да зовемо\n"
+"И тако смо направили Нашу Малу Кладионицу и интерно је користили последњих "
+"10 година! Током времена, почели смо да зовемо\n"
 "друге ортаке и колеге да нам се придруже за веће догађаје, као што су "
 "Светско првенство и Европско првенство.\n"
-"Ове године, за Светско првенство у Русији, по први пут, одлучили смо да "
-"отворимо сајт са целим светом!"
+"Ове године, за Европско првенство 2020., отворамо сајт са целим светом!"
 
 #: nmkapp/templates/about.html:23
 msgid ""
@@ -308,23 +306,23 @@ msgstr ""
 msgid ""
 "As a self-proclaimed startup that we are, we do have a lot of ideas on our "
 "mind. Of course, all of them only if\n"
-"this experiment called \"World Cup 2018\" turns out to be successful. We "
-"want to extend to national leagues,\n"
+"this experiment called \"Euro Cup 2020\" turns out to be successful. We want "
+"to extend to national leagues,\n"
 "private pools, prizes that goes to charities… If you like these ideas, or "
 "have some others, please &ndash; do\n"
-"<strong>not</strong> hesitate to contact us at <a href=\"mailto:"
-"support@sharkz.bet\">support@sharkz.bet</a>.\n"
+"<strong>not</strong> hesitate to contact us at <a href=\"mailto:support@nmk."
+"bet\">support@nmk.bet</a>.\n"
 "We would like to hear what you do or do not like and what other ideas you "
 "might have!"
 msgstr ""
 "Као самопрокламовани стартап, имамо још гомилу идеја у глави. Наравно, само "
 "под условом да овај експеримент\n"
-"звани \"Светско првенство 2018\" буде успешан. Желимо интерну кладионице на "
+"звани \"Европско првенство 2020\" буде успешан. Желимо интерну кладионице на "
 "велике лиге, приватна интерна клађења,\n"
 "награде које иду у хуманитарне сврхе… Ако Вам се ове идеје свиђају или имате "
 "још неке молимо Вас &ndash;\n"
-"<strong>не</strong> оклевајте да нас цимате на <a href=\"mailto:"
-"support@sharkz.bet\">support@sharkz.bet</a>.\n"
+"<strong>не</strong> оклевајте да нас цимате на <a href=\"mailto:support@nmk."
+"bet\">support@nmk.bet</a>.\n"
 "Стварно бисмо желели да чујемо шта Вам се свиђа на сајту, шта не, као и које "
 "друге идеје још имате!"
 
@@ -335,12 +333,12 @@ msgid ""
 msgstr "Уз искрене жеље да ћете се добро забавити за ово првенство у Русији,"
 
 #: nmkapp/templates/about.html:40
-msgid "sharkz.bet team"
-msgstr "sharkz.bet тим"
+msgid "NMK team"
+msgstr "НМК екипа"
 
 #: nmkapp/templates/activation.html:8
-msgid "SHARKZ.BET - ACTIVATION"
-msgstr "SHARKZ.BET - АКТИВАЦИЈА"
+msgid "NMK - ACTIVATION"
+msgstr "НМК - АКТИВАЦИЈА"
 
 #: nmkapp/templates/activation.html:10
 msgid "You successfully activated account. Fun can start... now!"
@@ -385,7 +383,7 @@ msgstr "Назад на пријаву"
 #: nmkapp/templates/create_password.html:12 nmkapp/templates/crew.html:11
 #: nmkapp/templates/home.html:46 nmkapp/templates/home.html:114
 #: nmkapp/templates/password.html:12 nmkapp/templates/profile.html:31
-#: nmkapp/templates/roundstandings.html:207
+#: nmkapp/templates/roundstandings.html:192
 msgid "Close"
 msgstr "Затвори"
 
@@ -393,103 +391,103 @@ msgstr "Затвори"
 msgid "Update"
 msgstr "Ажурирај"
 
-#: nmkapp/templates/base.html:117
+#: nmkapp/templates/base.html:90
 msgid "Navigation"
 msgstr "Навигација"
 
-#: nmkapp/templates/base.html:125 nmkapp/templates/base.html:189
-#: nmkapp/templates/base.html:248
+#: nmkapp/templates/base.html:98 nmkapp/templates/base.html:162
+#: nmkapp/templates/base.html:221
 msgid "Betting"
 msgstr "Клађење"
 
-#: nmkapp/templates/base.html:128 nmkapp/templates/base.html:190
+#: nmkapp/templates/base.html:101 nmkapp/templates/base.html:163
 msgid "Standings"
 msgstr "Табеле"
 
-#: nmkapp/templates/base.html:131 nmkapp/templates/base.html:191
+#: nmkapp/templates/base.html:104 nmkapp/templates/base.html:164
 msgid "Fixtures"
 msgstr "Резултати"
 
-#: nmkapp/templates/base.html:134 nmkapp/templates/base.html:192
+#: nmkapp/templates/base.html:107 nmkapp/templates/base.html:165
 msgid "Profile"
 msgstr "Профил"
 
-#: nmkapp/templates/base.html:137 nmkapp/templates/base.html:193
+#: nmkapp/templates/base.html:110 nmkapp/templates/base.html:166
 msgid "Crews"
 msgstr "Моје екипе"
 
-#: nmkapp/templates/base.html:140 nmkapp/templates/base.html:162
-#: nmkapp/templates/base.html:194 nmkapp/templates/base.html:198
-#: nmkapp/templates/base.html:255 nmkapp/templates/landing.html:225
+#: nmkapp/templates/base.html:113 nmkapp/templates/base.html:135
+#: nmkapp/templates/base.html:167 nmkapp/templates/base.html:171
+#: nmkapp/templates/base.html:228 nmkapp/templates/landing.html:199
 msgid "Propositions"
 msgstr "Правила"
 
-#: nmkapp/templates/base.html:145 nmkapp/templates/base.html:206
+#: nmkapp/templates/base.html:118 nmkapp/templates/base.html:179
 msgid "Admin menu"
 msgstr "Админ мени"
 
-#: nmkapp/templates/base.html:147 nmkapp/templates/base.html:208
+#: nmkapp/templates/base.html:120 nmkapp/templates/base.html:181
 msgid "Rounds"
 msgstr "Кола"
 
-#: nmkapp/templates/base.html:148 nmkapp/templates/base.html:209
+#: nmkapp/templates/base.html:121 nmkapp/templates/base.html:182
 msgid "Matches"
 msgstr "Мечеви"
 
-#: nmkapp/templates/base.html:149 nmkapp/templates/base.html:210
+#: nmkapp/templates/base.html:122 nmkapp/templates/base.html:183
 msgid "Results"
 msgstr "Резултати"
 
-#: nmkapp/templates/base.html:150 nmkapp/templates/base.html:211
+#: nmkapp/templates/base.html:123 nmkapp/templates/base.html:184
 #: nmkapp/templates/results_league.html:20
 msgid "Points"
 msgstr "Бодова"
 
-#: nmkapp/templates/base.html:155 nmkapp/templates/base.html:195
-#: nmkapp/templates/base.html:249
+#: nmkapp/templates/base.html:128 nmkapp/templates/base.html:168
+#: nmkapp/templates/base.html:222
 msgid "Logout"
 msgstr "Одјава"
 
-#: nmkapp/templates/base.html:159 nmkapp/templates/base.html:197
-#: nmkapp/templates/base.html:251 nmkapp/templates/landing.html:222
+#: nmkapp/templates/base.html:132 nmkapp/templates/base.html:170
+#: nmkapp/templates/base.html:224 nmkapp/templates/landing.html:196
 #: nmkapp/templates/login.html:40
 msgid "Login"
 msgstr "Пријава"
 
-#: nmkapp/templates/base.html:185
+#: nmkapp/templates/base.html:158
 msgid "Menu"
 msgstr "Мени"
 
-#: nmkapp/templates/base.html:232 nmkapp/templates/landing.html:209
+#: nmkapp/templates/base.html:205 nmkapp/templates/landing.html:183
 msgid "Number of registered players"
 msgstr "Укупно пријављених играча"
 
-#: nmkapp/templates/base.html:233 nmkapp/templates/landing.html:210
+#: nmkapp/templates/base.html:206 nmkapp/templates/landing.html:184
 msgid "real money players"
 msgstr "играча пријављених у паре"
 
-#: nmkapp/templates/base.html:234 nmkapp/templates/landing.html:211
+#: nmkapp/templates/base.html:207 nmkapp/templates/landing.html:185
 msgid "Prize money"
 msgstr "Наградни фонд"
 
-#: nmkapp/templates/base.html:241 nmkapp/templates/landing.html:216
-#: nmkapp/templates/landing.html:245
-msgid "©2018 sharkz.bet, All rights reserved"
-msgstr "©2018 sharkz.bet, сва права резервисана"
+#: nmkapp/templates/base.html:214 nmkapp/templates/landing.html:190
+#: nmkapp/templates/landing.html:219
+msgid "©2021 nmk.bet, All rights reserved"
+msgstr "©2021 nmk.bet, сва права резервисана"
 
-#: nmkapp/templates/base.html:254 nmkapp/templates/landing.html:224
+#: nmkapp/templates/base.html:227 nmkapp/templates/landing.html:198
 msgid "Contact"
 msgstr "Контакт"
 
-#: nmkapp/templates/base.html:256 nmkapp/templates/landing.html:226
+#: nmkapp/templates/base.html:229 nmkapp/templates/landing.html:200
 msgid "Terms & Condition"
 msgstr "Услови коришћења"
 
-#: nmkapp/templates/base.html:257 nmkapp/templates/landing.html:227
+#: nmkapp/templates/base.html:230 nmkapp/templates/landing.html:201
 msgid "Privacy Policy"
 msgstr "Политика приватности"
 
-#: nmkapp/templates/base.html:261 nmkapp/templates/landing.html:231
+#: nmkapp/templates/base.html:234 nmkapp/templates/landing.html:205
 msgid "Follow Us"
 msgstr "Пратите нас"
 
@@ -562,8 +560,8 @@ msgid "Join"
 msgstr "Придружи се"
 
 #: nmkapp/templates/forgotpassword.html:8 nmkapp/templates/resetpassword.html:8
-msgid "SHARKZ.BET - PASSWORD RESET"
-msgstr "SHARKZ.BET - ЗАБОРАВЉЕНА ЛОЗИНКА"
+msgid "NMK - PASSWORD RESET"
+msgstr "НМК - ЗАБОРАВЉЕНА ЛОЗИНКА"
 
 #: nmkapp/templates/forgotpassword.html:10
 msgid ""
@@ -690,7 +688,7 @@ msgstr ""
 msgid "Bet"
 msgstr "Тип"
 
-#: nmkapp/templates/home.html:169 nmkapp/templates/roundstandings.html:143
+#: nmkapp/templates/home.html:169 nmkapp/templates/roundstandings.html:146
 msgid "Odd"
 msgstr "Квота"
 
@@ -698,71 +696,76 @@ msgstr "Квота"
 msgid "Other players' bets"
 msgstr "Шта су други играли"
 
-#: nmkapp/templates/landing.html:42
+#: nmkapp/templates/landing.html:15
 msgid "Welcome"
 msgstr "Добродошли"
 
-#: nmkapp/templates/landing.html:55 nmkapp/templates/register.html:21
+#: nmkapp/templates/landing.html:28 nmkapp/templates/register.html:21
 msgid "Register"
 msgstr "Региструј се"
 
-#: nmkapp/templates/landing.html:60
+#: nmkapp/templates/landing.html:32
+msgid "nmk.bet"
+msgstr "Наша Мала Кладионица"
+
+#: nmkapp/templates/landing.html:33
 msgid "Bet against your friends and win money!"
 msgstr "Клади се против ортака и покупи награде!"
 
-#: nmkapp/templates/landing.html:63
+#: nmkapp/templates/landing.html:36
 msgid ""
-"<strong>Sharkz.bet</strong> is a unique pool-betting platform, designed "
-"specifically for <em>World Cup 2018</em>.\n"
-"All players can place the same stake before World Cup 2018 starts.\n"
+"<strong>nmk.bet</strong> is a unique pool-betting platform, designed "
+"specifically for <em>Euro Cup 2020</em>.\n"
+"All players can place the same stake before Euro Cup 2020 starts.\n"
 "You bet on final score of each match, and points are based on odds &ndash; "
 "the higher the odd, more points you get!\n"
 "We are capping number of players to just 100, so hurry up to register "
 "below!\n"
 "With only 100 players and first 3 places to take prizes, it should be easy "
 "to take the money, right?\n"
-"Well, it just might be, but watch out for other sharks in this pool!"
+"Well, it just might be, but watch out for other sharks in this pool!\n"
+"Winner is strongly encouraged to donate money to charity of their choice."
 msgstr ""
-"<strong>Sharkz.bet</strong> је јединствена платформа за интерно клађење, "
-"специјално дизајнирана за <em>Светско Првенство у Русији 2018</em>.\n"
-"Сви играчи се учипе са истом количином пара пре почетка првенства.\n"
+"<strong>Наша Мала Кладионица</strong> је јединствена платформа за интерно "
+"клађење, специјално дизајнирана за <em>Европско Првенство 2020</em>.\n"
+"Игра се у понос или у паре. Сви који играју у паре, учипе са са истом "
+"количином пара пре почетка првенства.\n"
 "Свако се клади на коначни исход сваке утакмице, а поени су базирани на "
 "квотама &ndash; што већа квота, више поена!\n"
-"Број играча је ограничен на 100, па пожури да се региструјеш испод!\n"
+"Број играча је за сада ограничен на 100, па пожури да се региструјеш испод!\n"
 "Са само 100 играча и 3 места за награде, не би требало да буде тешко да се "
-"узме новац, зар не?\n"
-"Па можда и није, али бара је мала, пази само на друге ајкуле и крокодиле у "
-"бари!"
+"узме новац, зар не?:)\n"
+"Победници се позивају да паре дају у хуманитарне сврхе, по њиховој жељи."
 
-#: nmkapp/templates/landing.html:74
+#: nmkapp/templates/landing.html:48
 msgid "Find Out More!"
 msgstr "Сазнај још!"
 
-#: nmkapp/templates/landing.html:84
+#: nmkapp/templates/landing.html:58
 msgid "Free To Play"
 msgstr "Бесплатно"
 
-#: nmkapp/templates/landing.html:87
+#: nmkapp/templates/landing.html:61
 msgid ""
 "While the entry fee is relatively low (10€), we think it should never be a "
 "requirement to have fun.\n"
-"When you register on sharkz.bet, we don't ask for credit card and there is "
+"When you register on nmk.bet, we don't ask for credit card and there is "
 "absolutely no strings attached.\n"
-"Decide later to play for real money if you want to (but before World Cup "
-"2018 starts!)."
+"Decide later to play for real money if you want to (but before Euro Cup 2020 "
+"starts!)."
 msgstr ""
 "Иако је цена да се учипите релативно мала (10€), не мислимо да то икада "
 "треба да буде услов за забаву.\n"
-"Када се региструјете на sharkz.bet, не тражимо Вам број кредитне и апсолутно "
+"Када се региструјете на nmk.bet, не тражимо Вам број кредитне и апсолутно "
 "нема никаква скривена фора.\n"
 "Тек касније одлучите да ли желите да играте у праве паре (али наравно пре "
-"него што почне светско првенство!)."
+"него што почне европско првенство!)."
 
-#: nmkapp/templates/landing.html:95
+#: nmkapp/templates/landing.html:69
 msgid "Real Chances To Win"
 msgstr "Реалне шансе"
 
-#: nmkapp/templates/landing.html:98
+#: nmkapp/templates/landing.html:72
 msgid ""
 "Compared to other pool bet web sites with thousands of people and with "
 "millions in prizes,\n"
@@ -774,132 +777,132 @@ msgstr ""
 "ово је место где су шансе да се освоји нека награда веома реалне.\n"
 "Има само 100 играча, а прва 3 места узимају новац."
 
-#: nmkapp/templates/landing.html:106
+#: nmkapp/templates/landing.html:80
 msgid "Compete Against Friends"
 msgstr "Такмичење против ортака"
 
-#: nmkapp/templates/landing.html:109
+#: nmkapp/templates/landing.html:83
 msgid ""
 "Betting is always more fun with friends.\n"
 "You don't have to compete against players who are not in your group.\n"
 "Just invite your crew and compete in your own private pool.\n"
-"With sharkz.bet, you are reaching new levels of friendly ball busting."
+"With nmk.bet, you are reaching new levels of friendly ball busting."
 msgstr ""
 "Клађење је увек занимљивије са ортацима.\n"
 "Не мораш се кладити са непознатим такмичарима.\n"
 "Просто позови своју екипу и такмичите се у вашем приватном кругу.\n"
-"Само sharkz.bet ти нуди тотално нови ниво прозивања."
+"Само nmk.bet ти нуди тотално нови ниво прозивања."
 
-#: nmkapp/templates/landing.html:118
+#: nmkapp/templates/landing.html:92
 msgid "Enjoy Every Match"
 msgstr "Уживај у свакој текми"
 
-#: nmkapp/templates/landing.html:121
+#: nmkapp/templates/landing.html:95
 msgid ""
-"Make all games more interesting. With sharkz.bet's friendly environment and "
+"Make all games more interesting. With nmk.bet's friendly environment and "
 "players,\n"
 "every match could be nerve wrecking one if a little bit of stake is involved!"
 msgstr ""
-"Нека ти све утакмице на светском буду занимљиве. Уз пријатну атмосферу и "
+"Нека ти све утакмице на европском буду занимљиве. Уз пријатну атмосферу и "
 "играче,\n"
 "свака утакмица ће бити за инфаркт, нарочито ако се дода мали новчани улог!"
 
-#: nmkapp/templates/landing.html:129
+#: nmkapp/templates/landing.html:103
 msgid "Pick the fun level"
 msgstr "Одабери количину забаве"
 
-#: nmkapp/templates/landing.html:131
+#: nmkapp/templates/landing.html:105
 msgid "You can always change your preference later"
 msgstr "Ово можете променити касније"
 
-#: nmkapp/templates/landing.html:138
+#: nmkapp/templates/landing.html:112
 msgid "Free"
 msgstr "Бесплатно"
 
-#: nmkapp/templates/landing.html:139
+#: nmkapp/templates/landing.html:113
 msgid "Only Pride at Stake"
 msgstr "Клађење у понос"
 
-#: nmkapp/templates/landing.html:143
+#: nmkapp/templates/landing.html:117
 msgid "Unlimited Number of People"
 msgstr "Неограничен број људи"
 
-#: nmkapp/templates/landing.html:144 nmkapp/templates/landing.html:166
+#: nmkapp/templates/landing.html:118 nmkapp/templates/landing.html:140
 msgid "Invite Friends"
 msgstr "Позови ортаке"
 
-#: nmkapp/templates/landing.html:145
-msgid "Enjoy World Cup for Free"
-msgstr "Уживај бесплатно у светском "
+#: nmkapp/templates/landing.html:119
+msgid "Enjoy Euro Cup for Free"
+msgstr "Уживај бесплатно у европском првенству"
 
-#: nmkapp/templates/landing.html:146
+#: nmkapp/templates/landing.html:120
 msgid "Compare Betting Skills"
 msgstr "Упоређуј са другима ко има већи… број поена"
 
-#: nmkapp/templates/landing.html:151 nmkapp/templates/landing.html:172
-#: nmkapp/templates/landing.html:193
+#: nmkapp/templates/landing.html:125 nmkapp/templates/landing.html:146
+#: nmkapp/templates/landing.html:167
 msgid "REGISTER"
 msgstr "РЕГИСТРАЦИЈА"
 
-#: nmkapp/templates/landing.html:159
+#: nmkapp/templates/landing.html:133
 msgid "Regular"
 msgstr "Стандардно"
 
-#: nmkapp/templates/landing.html:160
+#: nmkapp/templates/landing.html:134
 msgid "Just For Fun"
 msgstr "Само забава"
 
-#: nmkapp/templates/landing.html:164
+#: nmkapp/templates/landing.html:138
 msgid "100 Players Max"
 msgstr "Max 100 играча"
 
-#: nmkapp/templates/landing.html:165
-msgid "Up to 900€ Prize Money"
-msgstr "Награде до 900€"
+#: nmkapp/templates/landing.html:139
+msgid "Up to 1000€ Prize Money"
+msgstr "Награде до 1000€"
 
-#: nmkapp/templates/landing.html:167
+#: nmkapp/templates/landing.html:141
 msgid "Real Thrill Football"
 msgstr "Нови жар гледања фудбала"
 
-#: nmkapp/templates/landing.html:180
+#: nmkapp/templates/landing.html:154
 msgid "Extra"
 msgstr "Екстра"
 
-#: nmkapp/templates/landing.html:181
+#: nmkapp/templates/landing.html:155
 msgid "Coming Soon"
 msgstr "Ускоро"
 
-#: nmkapp/templates/landing.html:185
+#: nmkapp/templates/landing.html:159
 msgid "200 Players Max"
 msgstr "Max 200 играча"
 
-#: nmkapp/templates/landing.html:186
-msgid "3800€ Prize Pool"
-msgstr "3800€ наградни фонд"
+#: nmkapp/templates/landing.html:160
+msgid "4000€ Prize Pool"
+msgstr "4000€ наградни фонд"
 
-#: nmkapp/templates/landing.html:187
+#: nmkapp/templates/landing.html:161
 msgid "Private Pools"
 msgstr "Приватна клађења"
 
-#: nmkapp/templates/landing.html:188
+#: nmkapp/templates/landing.html:162
 msgid "Custom Betting Games"
 msgstr "Ваше игре"
 
-#: nmkapp/templates/landing.html:241
-msgid "Send feedback to: <br>support@sharkz.bet"
-msgstr "Реците нам шта мислите на: <br>support@sharkz.bet"
+#: nmkapp/templates/landing.html:215
+msgid "Send feedback to: <br>support@nmk.bet"
+msgstr "Реците нам шта мислите на: <br>support@nmk.bet"
 
 #: nmkapp/templates/login.html:8
-msgid "SHARKZ.BET - LOGIN"
-msgstr "SHARKZ.BET - ПРИЈАВА"
+msgid "NMK - LOGIN"
+msgstr "НМК - ПРИЈАВА"
 
 #: nmkapp/templates/login.html:10
 msgid ""
-"sharkz.bet is a website for recreational or real money betting for World Cup "
-"2018. (or \"Чемпионат мира по футболу 2018\")"
+"Naša Mala Kladionica is a website for recreational or real money betting for "
+"Euro Cup 2020."
 msgstr ""
-"sharkz.bet је сајт за право или рекреативно клађење на светском првенству у "
-"фудбалу 2018 (или \"Чемпионат мира по футболу 2018\")"
+"Наша Мала Кладионица је сајт за рекреативно клађење за Европско првенство "
+"2020."
 
 #: nmkapp/templates/login.html:12
 msgid "Sign up, invite your crew, bet and show 'em all who's the best!"
@@ -944,12 +947,11 @@ msgstr "Аутоматски генерисана порука."
 
 #: nmkapp/templates/mail/footer.html:6
 msgid ""
-"If you do not want to receive any more mail from sharkz.bet, please log in "
-"and change settings at <a href=\"https://sharkz.bet/profile\">profile</a> "
-"page."
+"If you do not want to receive any more mail from nmk.bet, please log in and "
+"change settings at <a href=\"https://nmk.bet/profile\">profile</a> page."
 msgstr ""
-"Ако не желиш да примаш више мејлове са sharkz.bet-а, улогуј се и промени "
-"подешавања на <a href=\"https://sharkz.bet/profile\">профил</a> страни."
+"Ако не желиш да примаш више мејлове са nmk.bet-а, улогуј се и промени "
+"подешавања на <a href=\"https://nmk.bet/profile\">профил</a> страни."
 
 #: nmkapp/templates/mail/footer.html:9
 msgid "FB group"
@@ -957,18 +959,17 @@ msgstr "FB група"
 
 #: nmkapp/templates/mail/registered.html:4
 msgid ""
-"Thanks for sharkz.bet registration. To activate your account, click on the "
-"following link:"
+"Thanks for registration to Naša Mala Kladionica. To activate your account, "
+"click on the following link:"
 msgstr ""
-"Хвала на регистрацији за sharkz.bet сајт. Да би могао да се пријавиш, мораш "
-"прво да активираш налог кликом на следећи линк:"
+"Хвала на регистрацији на Нашу Малу Кладионицу. Да би могао да се пријавиш, "
+"мораш прво да активираш налог кликом на следећи линк:"
 
 #: nmkapp/templates/mail/registered.html:10
 msgid ""
-"You might also read <a href=\"https://sharkz.bet/proposition\">propositions "
+"You might also read <a href=\"https://nmk.bet/proposition\">propositions "
 "here</a>."
-msgstr ""
-"Прочитај и правила <a href=\"https://sharkz.bet/proposition\">овде</a>."
+msgstr "Прочитај и правила <a href=\"https://nmk.bet/proposition\">овде</a>."
 
 #: nmkapp/templates/mail/resetpassword.html:4
 #, python-format
@@ -979,7 +980,7 @@ msgid ""
 msgstr ""
 "Добили смо захтев за ресетовање лозинке. Уколико ниси ти био тај који је "
 "поднео захтев, не мораш да радиш ништа. На следећем линку можеш да унесеш "
-"лозинку за налог <b>%(email)s</b>:"
+"лозинку за налог <b>%(email)s</b>: "
 
 #: nmkapp/templates/mail/result_added.html:4
 #, python-format
@@ -989,11 +990,11 @@ msgstr "Унети су сви резултати мечева из кола <b>
 #: nmkapp/templates/mail/result_added.html:6
 #, python-format
 msgid ""
-"Check out how you and other player did this round at <a href=\"https://"
-"sharkz.bet/roundstandings/%(round.id)s\">round standings</a>."
+"Check out how you and other player did this round at <a href=\"https://nmk."
+"bet/roundstandings/%(round.id)s\">round standings</a>."
 msgstr ""
-"Погледај како сте ти и остали играчи типовали на <a href=\"https://sharkz."
-"bet/roundstandings/%(round.id)s\">табели кола</a>."
+"Погледај како сте ти и остали играчи типовали на <a href=\"https://nmk.bet/"
+"roundstandings/%(round.id)s\">табели кола</a>."
 
 #: nmkapp/templates/mail/round_active.html:4
 #, python-format
@@ -1019,9 +1020,8 @@ msgstr ""
 "је могуће до %(min_time.date)s у %(min_time.time)s када почиње прва утакмица!"
 
 #: nmkapp/templates/mail/round_reminder.html:8
-msgid "You can bet at the <a href=\"https://sharkz.bet\">betting page</a>."
-msgstr ""
-"Можеш се кладити на <a href=\"https://sharkz.bet\">страни за клађење</a>."
+msgid "You can bet at the <a href=\"https://nmk.bet\">betting page</a>."
+msgstr "Можеш се кладити на <a href=\"https://nmk.bet\">страни за клађење</a>."
 
 #: nmkapp/templates/mail/round_shots.html:4
 #, python-format
@@ -1077,13 +1077,13 @@ msgid ""
 "You will see your name bolded in all <a href=\"/standings\">standings</a> "
 "and tables in the next 24h\n"
 "(as a sign that you play in real money). If this doesn't happen, feel free "
-"to contact admin@sharkz.bet.\n"
+"to contact admin@nmk.bet.\n"
 msgstr ""
 "\n"
 "Видећеш своје име подебљано на <a href=\"/standings\">табелама</a> у "
 "наредних 24h\n"
 "(као знак да играш у праве паре). Уколико се ово не деси до тад, контактирај "
-"нас на admin@sharkz.bet.\n"
+"нас на admin@nmk.bet.\n"
 
 #: nmkapp/templates/profile.html:43
 msgid "REAL MONEY BETTING"
@@ -1145,10 +1145,10 @@ msgstr "Играње у паре"
 #: nmkapp/templates/proposition.html:11
 msgid ""
 "It is optional to play for real money. If you want to play for real money, "
-"you must apply 1h before first match starts (14.06.2018 20:00)."
+"you must apply 1h before first match starts (11.06.2021 21:00)."
 msgstr ""
 "Не мора се играти у новац, тј. новац је опциона ствар. Ако се игра у новац, "
-"мораш се пријавити 1h пре почетка прве утакмице (14.06.2018 20:00)."
+"мораш се пријавити 1h пре почетка прве утакмице (11.06.2021 21:00)."
 
 #: nmkapp/templates/proposition.html:14
 #, python-format
@@ -1161,23 +1161,24 @@ msgstr ""
 
 #: nmkapp/templates/proposition.html:17
 msgid ""
-"Sharkz.bet will take all provision costs during both receiving and sending "
-"money over Paypal. So, if the prize is 100€, sharkz.bet will pay you 103.8€ "
+"Naša Mala Kladionica will take all provision costs during both receiving and "
+"sending money over Paypal. So, if the prize is 100€, NMK will pay you 103.8€ "
 "to cover Paypal provision costs."
 msgstr ""
-"sharkz.bet сноси трошкове провизије и приликом уплате и приликом исплате "
-"преко PayPal-а. Значи, уколико је награда 100€, sharkz.bet ти уплаћује "
+"Наша Мала Кладионица сноси трошкове провизије и приликом уплате и приликом "
+"исплате преко PayPal-а. Значи, уколико је награда 100€, nmk.bet ти уплаћује "
 "103.8€ (да покријемо провизију PayPal-а)."
 
 #: nmkapp/templates/proposition.html:20
 #, python-format
 msgid ""
-"Total prize money is 10%% less than total amount of people playing for real "
-"money * 10€. This is to cover our provision costs and to pay off for costs "
-"of running a web site."
+"Naša Mala Kladionica is taking 0%% provision from total pool. Yes, that "
+"means that, overall, we are net negative, but our costs are small and fixed "
+"and we do this for fun, not for profit."
 msgstr ""
-"Укупан фонд за награде је за 10%% мањи од укупног броја људи који су дали "
-"паре * 10€. Ово је чисто да покријемо провизије и да платимо сајт."
+"Наша Мала Кладионица не узима никакву провизију! Да, то значи да смо ми "
+"малкице у губитку, али су трошкови сервера и одржавања мали, а и ми ово "
+"радимо из љубавни, не зарад профита."
 
 #: nmkapp/templates/proposition.html:23
 msgid ""
@@ -1214,12 +1215,12 @@ msgstr ""
 msgid ""
 "There is no discrimination, we are taking odds from the first booking site "
 "that publishes them (this is because we want to enable you to bet as soon as "
-"possible). Odds on sharkz.bet are <strong>not changing</strong> after "
-"initial publishing."
+"possible). Odds on nmk.bet are <strong>not changing</strong> after initial "
+"publishing."
 msgstr ""
 "Нема дискриминације, квоте се узимају са првог сајта који их објави (да "
-"бисмо омогућили гласање што пре). Квоте на sharkz.bet-у се <strong>не "
-"мењају</strong> после тога."
+"бисмо омогућили гласање што пре). Квоте на nmk.bet-у се <strong>не мењају</"
+"strong> после тога."
 
 #: nmkapp/templates/proposition.html:59
 msgid "You are betting only on final result (1X2) in regular game time."
@@ -1297,8 +1298,8 @@ msgstr ""
 "за треће, тј. 16.6%%."
 
 #: nmkapp/templates/register.html:8 nmkapp/templates/register_success.html:8
-msgid "SHARKZ.BET - REGISTRATION"
-msgstr "SHARKZ.BET - РЕГИСТРАЦИЈА"
+msgid "NMK - REGISTRATION"
+msgstr "НМК - РЕГИСТРАЦИЈА"
 
 #: nmkapp/templates/register.html:25
 msgid "Register using Google account"
@@ -1319,8 +1320,8 @@ msgstr ""
 "У међувремену, можеш да прочиташ правила <a href=\"/proposition\">овде</a>."
 
 #: nmkapp/templates/request_display_name.html:8
-msgid "SHARKZ.BET - PICK A DISPLAY NAME"
-msgstr "SHARKZ.BET - ОДАБЕРИ НАДИМАК"
+msgid "NMK - PICK A DISPLAY NAME"
+msgstr "НМК - ОДАБЕРИ НАДИМАК"
 
 #: nmkapp/templates/request_display_name.html:10
 msgid "Invalid request to select display name"
@@ -1433,15 +1434,15 @@ msgstr ""
 "напрaви нову екипу на страни „<a href=\"/profile\">Моје екипе</a>“ и позови "
 "ортаке)"
 
-#: nmkapp/templates/roundstandings.html:164
+#: nmkapp/templates/roundstandings.html:170
 msgid "Actual score"
 msgstr "Тачан резултат"
 
-#: nmkapp/templates/roundstandings.html:181 nmkapp/templates/standings.html:87
+#: nmkapp/templates/roundstandings.html:187 nmkapp/templates/standings.html:87
 msgid "Players playing in real money are shown bolded"
 msgstr "Такмичари који играју у праве паре су приказани подебљано"
 
-#: nmkapp/templates/roundstandings.html:206
+#: nmkapp/templates/roundstandings.html:191
 msgid ""
 "You have no permission to peek at other players' bets until you also place "
 "bets for this round."
@@ -1453,35 +1454,35 @@ msgstr ""
 msgid "Tip: click on the round to look only at that round's results!"
 msgstr "Савет: кликни на коло да погледаш резултате само из тог кола!"
 
-#: nmkapp/views.py:87
-msgid "[sharkz.bet] Registration successful"
-msgstr "[sharkz.bet] Регистрација успешна"
+#: nmkapp/views.py:88
+msgid "[nmk.bet] Registration successful"
+msgstr "[nmk.bet] Регистрација успешна"
 
-#: nmkapp/views.py:120
-msgid "[sharkz.bet] Reset password request"
-msgstr "[sharkz.bet] Захтев за ресетовањем лозинке"
+#: nmkapp/views.py:121
+msgid "[nmk.bet] Reset password request"
+msgstr "[nmk.bet] Захтев за ресетовањем лозинке"
 
-#: nmkapp/views.py:239 nmkapp/views.py:247
+#: nmkapp/views.py:240 nmkapp/views.py:248
 msgid "There is no active round currently to place bets, try again later"
 msgstr "Тренутно нема активних кола за клађење, покушајте касније"
 
-#: nmkapp/views.py:292
+#: nmkapp/views.py:293
 msgid "Bets successfully saved"
 msgstr "Типовања успешно сачувана"
 
-#: nmkapp/views.py:319
+#: nmkapp/views.py:320
 msgid "first match already started"
 msgstr "први меч већ почео"
 
-#: nmkapp/views.py:321
+#: nmkapp/views.py:322
 msgid "N/A"
 msgstr "N/A"
 
-#: nmkapp/views.py:338
+#: nmkapp/views.py:341
 msgid "Settings successfully saved"
 msgstr "Подешавања успешно сачувана"
 
-#: nmkapp/views.py:359
+#: nmkapp/views.py:365
 #, python-format
 msgid ""
 "Crew created successfully. Now you can send invite code \"%s\" to your "
@@ -1490,20 +1491,20 @@ msgstr ""
 "Екипа успешно направљена. Сада пошаљи шифру-позивницу \"%s\" ортацима преко "
 "е-поште/СМС-ом/Viber-ом, да и они могу да се придруже екипи"
 
-#: nmkapp/views.py:373
+#: nmkapp/views.py:379
 msgid "Joined crew successfully"
 msgstr "Успешно додат у екипу"
 
-#: nmkapp/views.py:404
-msgid "[sharkz.bet] Player payed paypal"
-msgstr "[sharkz.bet] Играч платио пејпал"
+#: nmkapp/views.py:410
+msgid "[nmk.bet] Player payed paypal"
+msgstr "[nmk.bet] Играч платио пејпал"
 
-#: nmkapp/views.py:404
+#: nmkapp/views.py:410
 #, python-format
 msgid "Player %s"
 msgstr "Играч %s"
 
-#: nmkapp/views.py:520
+#: nmkapp/views.py:526
 msgid ""
 "You cannot leave a crew that you created, you can only completely delete "
 "that crew."
@@ -1511,75 +1512,60 @@ msgstr ""
 "Не можеш да напустиш екипу коју си ти направио, можеш само да је комплетно "
 "избришеш."
 
-#: nmkapp/views.py:528
+#: nmkapp/views.py:534
 #, python-format
 msgid "Successfully left a crew \"%s\""
 msgstr "Успешно изашао из екипе „%s“"
 
-#: nmkapp/views.py:543
+#: nmkapp/views.py:549
 msgid ""
 "You cannot delete crew that you are not owner of, you can only leave it."
 msgstr ""
 "Не можеш да обришеш екипу коју ниси ти направио, можеш само да изађеш из ње."
 
-#: nmkapp/views.py:553
+#: nmkapp/views.py:559
 #, python-format
 msgid "Crew \"%s\" deleted"
 msgstr "Екипа „%s“ избрисана"
 
-#: nmkapp/views.py:643
+#: nmkapp/views.py:649
 #, python-format
 msgid "Round \"%s\" set as active"
 msgstr "Коло „%s“ постављено као активно"
 
-#: nmkapp/views.py:655
+#: nmkapp/views.py:661
 #, python-format
-msgid "[sharkz.bet] New round \"%s\" available"
-msgstr "[sharkz.bet] Доступно је ново коло „%s“"
+msgid "[nmk.bet] New round \"%s\" available"
+msgstr "[nmk.bet] Доступно је ново коло „%s“"
 
-#: nmkapp/views.py:666
+#: nmkapp/views.py:672
 #, python-format
 msgid "Round \"%s\" set as inactive"
 msgstr "Коло „%s“ постављено као неактивно"
 
-#: nmkapp/views.py:693
+#: nmkapp/views.py:699
 #, python-format
 msgid "New round \"%s\" created successfully"
 msgstr "Ново коло „%s“ успешно направљено"
 
-#: nmkapp/views.py:714
+#: nmkapp/views.py:720
 msgid "Match successfully added"
 msgstr "Меч успешно додат"
 
-#: nmkapp/views.py:749
+#: nmkapp/views.py:755
 msgid "Result added successfully"
 msgstr "Резултат успешно унесен"
 
-#: nmkapp/views.py:773
+#: nmkapp/views.py:779
 #, python-format
-msgid "[sharkz.bet] All results from round \"%s\" received"
-msgstr "[sharkz.bet] Унесени сви резултати из кола „%s“"
+msgid "[nmk.bet] All results from round \"%s\" received"
+msgstr "[nmk.bet] Унесени сви резултати из кола „%s“"
 
-#~ msgid "SHARKZ.BET - ADD PASSWORD"
-#~ msgstr "SHARKZ.BET - КРЕИРАЈ ЛОЗИНКУ"
-
-#~ msgid "Invalid request to add password"
-#~ msgstr "Неисправан захтев за креирање лозинке"
-
-#~ msgid "Password added successfully"
-#~ msgstr "Лозинка успешно креирана"
-
-#~ msgid "Website"
-#~ msgstr "Веб сајт"
-
-#~ msgid "Facebook"
-#~ msgstr "Фејсбук"
-
-#~ msgid "Twitter"
-#~ msgstr "Твитер"
-
-#~ msgid "Invite friends"
-#~ msgstr "Позови ортаке"
-
-#~ msgid "Group %(group.label)s"
-#~ msgstr "Група %(group.label)s"
+#, python-format
+#~ msgid ""
+#~ "Total prize money is 10%% less than total amount of people playing for "
+#~ "real money * 10€. This is to cover our provision costs and to pay off for "
+#~ "costs of running a web site."
+#~ msgstr ""
+#~ "Укупан фонд за награде је за 10%% мањи од укупног броја људи који су дали "
+#~ "паре * 10€. Ово је чисто да покријемо провизије и да платимо сајт."

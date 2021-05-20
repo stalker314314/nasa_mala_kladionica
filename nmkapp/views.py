@@ -53,7 +53,7 @@ def update_player_upon_registration(user):
 
     player = Player.objects.filter(user__id=user.id).get()
     player.language = language
-    player.timezone = 'Europe/London'
+    player.timezone = 'Europe/Belgrade'
     player.odd_format = Player.DECIMAL
     player.save()
 
@@ -64,7 +64,7 @@ def update_player_upon_registration(user):
 def register(request):
     registration_type = request.GET.get('type', '')
     logger.info('User is on register page, going with %s type', registration_type)
-    last_registration_time = datetime(2018, 6, 14, 14, 0, tzinfo=timezone.utc)
+    last_registration_time = datetime(2021, 6, 11, 19, 0, tzinfo=timezone.utc)
     if timezone.now() >= last_registration_time:
         raise Http404()
 
@@ -83,15 +83,16 @@ def register(request):
             user.player.save()
             player = update_player_upon_registration(user)
 
-            with translation.override(player.language):
-                subject = _('[sharkz.bet] Registration successful')
-                template = loader.get_template('mail/registered.html')
-                message_text = template.render(
-                    {'link': 'https://sharkz.bet/activate?id=%s' % user.player.activation_code})
-            logger.info('Sending mail that user is registered to %s', user.email)
-            msg = EmailMessage(subject, message_text, 'support@sharkz.bet', to=[user.email, ])
-            msg.content_subtype = 'html'
-            msg.send(fail_silently=False)
+            if settings.SEND_MAIL:
+                with translation.override(player.language):
+                    subject = _('[nmk.bet] Registration successful')
+                    template = loader.get_template('mail/registered.html')
+                    message_text = template.render(
+                        {'link': 'https://nmk.bet/activate?id=%s' % user.player.activation_code})
+                logger.info('Sending mail that user is registered to %s', user.email)
+                msg = EmailMessage(subject, message_text, 'support@nmk.bet', to=[user.email, ])
+                msg.content_subtype = 'html'
+                msg.send(fail_silently=False)
             return HttpResponseRedirect(reverse(register_success))
     else:
         form = RegisterForm()
@@ -117,13 +118,13 @@ def forgotpassword(request):
                 user.player.save()
 
                 with translation.override(user.player.language):
-                    subject = _('[sharkz.bet] Reset password request')
+                    subject = _('[nmk.bet] Reset password request')
                     template = loader.get_template('mail/resetpassword.html')
                     message_text = template.render(
-                        {'link': 'https://sharkz.bet/profile/reset?id=%s' % user.player.reset_code,
+                        {'link': 'https://nmk.bet/profile/reset?id=%s' % user.player.reset_code,
                          'email': user.email})
                 logger.info('Sending mail to reset user\'s password to %s', user.email)
-                msg = EmailMessage(subject, message_text, 'support@sharkz.bet', to=[user.email, ])
+                msg = EmailMessage(subject, message_text, 'support@nmk.bet', to=[user.email, ])
                 msg.content_subtype = 'html'
                 msg.send(fail_silently=False)
                 reset = True
@@ -401,8 +402,8 @@ def paypal(request):
         RoundStandingsCache.clear_group(group)
         success = True
 
-    msg = EmailMessage(_('[sharkz.bet] Player payed paypal'), _('Player %s') % email, 'admin@sharkz.bet',
-                       to=['admin@sharkz.bet', ])
+    msg = EmailMessage(_('[nmk.bet] Player payed paypal'), _('Player %s') % email, 'admin@nmk.bet',
+                       to=['admin@nmk.bet', ])
     msg.content_subtype = 'html'
     msg.send(fail_silently=True)
     return render(request, 'paypal.html', {'success': success})
@@ -652,10 +653,10 @@ def admin_rounds(request):
                         should_be_active_round.name, len(all_players))
             for player in all_players:
                 with translation.override(player.language):
-                    subject = _('[sharkz.bet] New round "%s" available') % should_be_active_round.name
+                    subject = _('[nmk.bet] New round "%s" available') % should_be_active_round.name
                     template = loader.get_template('mail/round_active.html')
                     message_text = template.render({'round': should_be_active_round, 'start_time': start_time})
-                msg = EmailMessage(subject, message_text, 'admin@sharkz.bet', to=[player.user.email, ])
+                msg = EmailMessage(subject, message_text, 'admin@nmk.bet', to=[player.user.email, ])
                 msg.content_subtype = 'html'
                 msg.send(fail_silently=False)
 
@@ -770,10 +771,10 @@ def admin_results_change(request, match_id):
                     logger.info('Sending mail that round %s have all results to %d', match.round, len(all_players))
                     for player in all_players:
                         with translation.override(player.language):
-                            subject = _('[sharkz.bet] All results from round "%s" received') % match.round.name
+                            subject = _('[nmk.bet] All results from round "%s" received') % match.round.name
                             template = loader.get_template('mail/result_added.html')
                             message_text = template.render({'round': match.round})
-                        msg = EmailMessage(subject, message_text, 'admin@sharkz.bet', to=[player.user.email, ])
+                        msg = EmailMessage(subject, message_text, 'admin@nmk.bet', to=[player.user.email, ])
                         msg.content_subtype = 'html'
                         msg.send(fail_silently=False)
 

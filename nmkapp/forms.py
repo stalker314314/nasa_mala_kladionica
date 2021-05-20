@@ -26,7 +26,7 @@ class RegisterForm(forms.Form):
                 'oninvalid': 'this.setCustomValidity(\'{0}\')'.format(accept_terms_validity_message),
                 'onchange': "setCustomValidity('')"
             }))
-        over_18_validity_message = _('You must be over 18 to play on sharkz.bet')
+        over_18_validity_message = _('You must be over 18 to play on nmk.bet')
         self.fields['over_18'] = forms.BooleanField(
             initial=True, required=True, label=_('I am over 18 years old'),
             error_messages={'required': over_18_validity_message},

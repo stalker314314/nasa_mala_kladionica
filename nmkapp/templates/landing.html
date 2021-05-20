@@ -5,33 +5,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119671992-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-119671992-1');
-  </script>
-
-  <!-- Facebook Pixel Code -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window,document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-     fbq('init', '321797991516723');
-    fbq('track', 'PageView');
-  </script>
-  <noscript>
-    <img height="1" width="1" src="https://www.facebook.com/tr?id=321797991516723&ev=PageView &noscript=1"/>
-  </noscript>
-  <!-- End Facebook Pixel Code -->
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -39,33 +12,34 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
   rel="stylesheet"  type='text/css'>
   <link rel="stylesheet" href="{% static "landing/css/master.css" %}">
-  <title>{% trans "Welcome" %} | Sharkz.bet</title>
+  <title>{% trans "Welcome" %} | Naša Mala Kladionica</title>
 </head>
 <body>
   <main>
     <section id="welcome">
       <div id="social">
-        <a href="https://www.facebook.com/sharkzbetpool">
+        <a href="https://www.facebook.com/nmkbetpool">
           <span class="soc-item fa fa-facebook">
           </span></a>
-        <a href="https://twitter.com/sharkzbet">
+        <!-- <a href="https://twitter.com/nmkbet">
           <span class="soc-item fa fa-twitter">
-          </span></a>
+          </span></a> -->
       </div>
       <a href="/register?type=any"><div id="register">{% trans "Register" %}</div></a>
       <div id="content-wrapper">
         <div id="welcome-logo">
           <img src="{% static "landing/img/logo80w.png" %}" alt="logo">
-          <h1 id="logo-title">sharkz.bet</h1>
+          <h1 id="logo-title">{% trans "nmk.bet" %}</h1>
           <h3 id="logo-subtitle">{% trans "Bet against your friends and win money!" %}</h3>
         </div>
         <div id="welcome-text">
-{% blocktrans %}<strong>Sharkz.bet</strong> is a unique pool-betting platform, designed specifically for <em>World Cup 2018</em>.
-All players can place the same stake before World Cup 2018 starts.
+{% blocktrans %}<strong>nmk.bet</strong> is a unique pool-betting platform, designed specifically for <em>Euro Cup 2020</em>.
+All players can place the same stake before Euro Cup 2020 starts.
 You bet on final score of each match, and points are based on odds &ndash; the higher the odd, more points you get!
 We are capping number of players to just 100, so hurry up to register below!
 With only 100 players and first 3 places to take prizes, it should be easy to take the money, right?
-Well, it just might be, but watch out for other sharks in this pool!{% endblocktrans %}
+Well, it just might be, but watch out for other sharks in this pool!
+Winner is strongly encouraged to donate money to charity of their choice.{% endblocktrans %}
         </div>
       </div>
       <div id="welcome-bg"></div>
@@ -85,8 +59,8 @@ Well, it just might be, but watch out for other sharks in this pool!{% endblockt
           </div>
           <div class="item-body">
 {% blocktrans %}While the entry fee is relatively low (10€), we think it should never be a requirement to have fun.
-When you register on sharkz.bet, we don't ask for credit card and there is absolutely no strings attached.
-Decide later to play for real money if you want to (but before World Cup 2018 starts!).{% endblocktrans %}
+When you register on nmk.bet, we don't ask for credit card and there is absolutely no strings attached.
+Decide later to play for real money if you want to (but before Euro Cup 2020 starts!).{% endblocktrans %}
           </div>
         </div>
         <div class="info-item">
@@ -109,7 +83,7 @@ There is only 100 players and first 3 places are winning the money.{% endblocktr
 {% blocktrans %}Betting is always more fun with friends.
 You don't have to compete against players who are not in your group.
 Just invite your crew and compete in your own private pool.
-With sharkz.bet, you are reaching new levels of friendly ball busting.{% endblocktrans %}
+With nmk.bet, you are reaching new levels of friendly ball busting.{% endblocktrans %}
           </div>
         </div>
         <div class="info-item">
@@ -118,7 +92,7 @@ With sharkz.bet, you are reaching new levels of friendly ball busting.{% endbloc
             <h2 class="info-heading">{% trans "Enjoy Every Match" %}</h2>
           </div>
           <div class="item-body">
-{% blocktrans %}Make all games more interesting. With sharkz.bet's friendly environment and players,
+{% blocktrans %}Make all games more interesting. With nmk.bet's friendly environment and players,
 every match could be nerve wrecking one if a little bit of stake is involved!{% endblocktrans %}
           </div>
         </div>
@@ -142,7 +116,7 @@ every match could be nerve wrecking one if a little bit of stake is involved!{% 
           <div id="free-body" class="plans-body">
             <p>{% trans "Unlimited Number of People" %}</p>
             <p>{% trans "Invite Friends" %}</p>
-            <p>{% trans "Enjoy World Cup for Free" %}</p>
+            <p>{% trans "Enjoy Euro Cup for Free" %}</p>
             <p>{% trans "Compare Betting Skills" %}</p>
             <h2 class="price-desk">0€</h2>
           </div>
@@ -162,7 +136,7 @@ every match could be nerve wrecking one if a little bit of stake is involved!{% 
           </div>
           <div id="regular-body" class="plans-body">
             <p>{% trans "100 Players Max" %}</p>
-            <p>{% trans "Up to 900€ Prize Money" %}</p>
+            <p>{% trans "Up to 1000€ Prize Money" %}</p>
             <p>{% trans "Invite Friends" %}</p>
             <p>{% trans "Real Thrill Football" %}</p>
             <h2 class="price-desk">10€</h2>
@@ -183,7 +157,7 @@ every match could be nerve wrecking one if a little bit of stake is involved!{% 
           </div>
           <div id="jumbo-body" class="plans-body">
             <p>{% trans "200 Players Max" %}</p>
-            <p>{% trans "3800€ Prize Pool" %}</p>
+            <p>{% trans "4000€ Prize Pool" %}</p>
             <p>{% trans "Private Pools" %}</p>
             <p>{% trans "Custom Betting Games" %}</p>
             <h2 class="price-desk">20€</h2>
@@ -199,7 +173,7 @@ every match could be nerve wrecking one if a little bit of stake is involved!{% 
     </section>
   </main>
   <div id="grass-wrapper">
-    <img src="{% static "landing/img/telstar-ball.png" %}" alt="ball">
+    <img src="{% static "landing/img/ec2020-ball.png" %}" alt="ball">
     <div id="grass"></div>
   </div>
   <footer>
@@ -212,16 +186,16 @@ every match could be nerve wrecking one if a little bit of stake is involved!{% 
             1. {{ ctx_stats.reward_money.1 }}€, 2. {{ ctx_stats.reward_money.2 }}€, 3. {{ ctx_stats.reward_money.3 }}€
         </div>
         <div id="copyrights-desk">
-          <img id="cpr-logo" src="{% static "landing/img/logo80w.png" %}" alt="sharkz.bet logo">
-          <span id="cpr-text">{% blocktrans %}©2018 sharkz.bet, All rights reserved{% endblocktrans %}</span>
+          <img id="cpr-logo" src="{% static "landing/img/logo80w.png" %}" alt="nmk.bet logo">
+          <span id="cpr-text">{% blocktrans %}©2021 nmk.bet, All rights reserved{% endblocktrans %}</span>
         </div>
       </section>
       <section>
-        <span class="title-small">sharkz.bet</span>
+        <span class="title-small">nmk.bet</span>
         <ul id="footer-nav">
           <li><a href="/login">{% trans "Login" %}</a></li>
           <li><a href="/about">{% trans "About us" %}</a></li>
-          <li><a href="mailto:support@sharkz.bet">{% trans "Contact" %}</a></li>
+          <li><a href="mailto:support@nmk.bet">{% trans "Contact" %}</a></li>
           <li><a href="/proposition">{% trans "Propositions" %}</a></li>
           <li><a href="/terms">{% trans "Terms & Condition" %}</a></li>
           <li><a href="/privacy">{% trans "Privacy Policy" %}</a></li>
@@ -230,19 +204,19 @@ every match could be nerve wrecking one if a little bit of stake is involved!{% 
       <section>
         <div class="title-small">{% trans "Follow Us" %}</div>
         <div id="footer-social">
-          <a href="https://www.facebook.com/sharkzbetpool">
+          <a href="https://www.facebook.com/nmkbetpool">
             <span class="footer-soc-item fa fa-facebook" />
           </a>
-          <a href="https://twitter.com/sharkzbet">
+          <!-- <a href="https://twitter.com/nmkbet">
             <span class="footer-soc-item fa fa-twitter" />
-          </a>
+          </a> -->
         </div>
         <div id="footer-contact">
-          {% blocktrans %}Send feedback to: <br>support@sharkz.bet{% endblocktrans %}
+          {% blocktrans %}Send feedback to: <br>support@nmk.bet{% endblocktrans %}
         </div>
         <div id="copyrights-mob">
-          <img id="cpr-logo" src="{% static "landing/img/logo80w.png" %}" alt="sharkz.bet logo">
-          <span id="cpr-text">{% blocktrans %}©2018 sharkz.bet, All rights reserved{% endblocktrans %}</span>
+          <img id="cpr-logo" src="{% static "landing/img/logo80w.png" %}" alt="nmk.bet logo">
+          <span id="cpr-text">{% blocktrans %}©2021 nmk.bet, All rights reserved{% endblocktrans %}</span>
         </div>
       </section>
     </div>

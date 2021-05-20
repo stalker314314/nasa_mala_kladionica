@@ -421,11 +421,11 @@ ul.proposition {
 
 .container {
   /* makes the grass look fancily aligned on bottom when empty */
-  min-height: calc( 100vh - 110px - 90px );
+  min-height: calc( 100vh - 110px - 130px );
 }
 @media (max-width: 991px) {
     .container {
-        min-height: calc( 100vh - 20px - 90px );
+        min-height: calc( 100vh - 20px - 130px );
     }
 }
 

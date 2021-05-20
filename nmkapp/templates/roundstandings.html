@@ -186,27 +186,6 @@ Create your crew at <a href="/crew">crew</a> page and invite your buddies){% end
 <br/>
 * {% trans "Players playing in real money are shown bolded" %}
 
-<div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = "sharkz.bet";  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = "wc2018beta-{{ round.id }}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://sharkz-bet.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
 {% else %}
     <div class="alert alert-warning alert-dismissible fade show text-left" role="alert">
         {% trans "You have no permission to peek at other players' bets until you also place bets for this round." %}

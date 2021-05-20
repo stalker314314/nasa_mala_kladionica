@@ -3,7 +3,7 @@ nmkapp/static/admin
 nmkapp/static/debug_toolbar
 
 # logs during testing
-sb.log.*
+nmkbet.log.*
 
 # pycharm
 .idea/
