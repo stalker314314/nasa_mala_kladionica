@@ -13,7 +13,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.contrib.auth.views import LoginView, password_change
+from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.core.mail.message import EmailMessage
 from django.db import transaction
 from django.db.models.aggregates import Min
@@ -185,7 +185,7 @@ def create_password(request):
     user = request.user
 
     if user and user.has_usable_password():
-        return redirect(reverse(password_change))
+        return redirect(reverse(PasswordChangeView.as_view))
 
     if request.method == 'POST':
         form = CreatePasswordForm(user, request.POST)
