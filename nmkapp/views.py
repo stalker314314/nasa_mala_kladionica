@@ -325,6 +325,7 @@ def format_time_left(shots):
 @login_required
 @transaction.atomic
 def profile(request):
+    set_language_in_cookie = False
     if request.method == 'POST' and 'profile_change' in request.POST:
         old_language = request.user.player.language  # Save old language before we save form
         form = PlayerForm(request.POST, instance=request.user.player)
@@ -334,6 +335,7 @@ def profile(request):
             new_language = form.cleaned_data['language']
             if new_language != old_language:
                 translation.activate(new_language)
+                set_language_in_cookie = True
                 if hasattr(request, 'session'):
                     request.session[translation.LANGUAGE_SESSION_KEY] = new_language
             messages.add_message(request, messages.INFO, _('Settings successfully saved'))
@@ -341,7 +343,10 @@ def profile(request):
         form = PlayerForm(instance=request.user.player)
 
     groups = Group.objects.filter(players__in=[request.user])
-    return render(request, 'profile.html', {'form': form, 'current_user': request.user})
+    response = render(request, 'profile.html', {'form': form, 'current_user': request.user})
+    if set_language_in_cookie:
+        response.set_cookie(settings.LANGUAGE_COOKIE_NAME, new_language)
+    return response
 
 
 @login_required
