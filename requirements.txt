@@ -1,4 +1,4 @@
-Django==3.2.4
+Django==3.2.14
 django-anymail==8.3
 psycopg2-binary==2.8.6
 django-timezone-field==4.1.2
