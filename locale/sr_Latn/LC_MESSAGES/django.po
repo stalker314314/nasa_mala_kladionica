@@ -1119,7 +1119,7 @@ msgstr ""
 #: nmkapp/templates/profile.html:117
 msgid "Send announcement that new round started and betting in it is available"
 msgstr ""
-"Šalje obaveštenje da je počelo novo kolo i da je moguće kladiti se na njena"
+"Šalje obaveštenje da je počelo novo kolo i da je moguće kladiti se na njega"
 
 #: nmkapp/templates/profile.html:127
 msgid ""
