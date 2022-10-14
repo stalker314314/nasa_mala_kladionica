@@ -64,7 +64,7 @@ def update_player_upon_registration(user):
 def register(request):
     registration_type = request.GET.get('type', '')
     logger.info('User is on register page, going with %s type', registration_type)
-    last_registration_time = datetime(2021, 6, 11, 19, 0, tzinfo=timezone.utc)
+    last_registration_time = datetime(2022, 11, 20, 15, 0, tzinfo=timezone.utc)
     if timezone.now() >= last_registration_time:
         raise Http404()
 
