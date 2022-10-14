@@ -1,9 +1,10 @@
-Django==3.2.4
-django-anymail==8.3
+Django==4.1
+django-anymail==8.6
 psycopg2-binary==2.8.6
-django-timezone-field==4.1.2
+django-timezone-field==5.0
 python-memcached==1.59
-django-debug-toolbar==3.2.1
+django-debug-toolbar==3.5.0
 python-coveralls==2.9.3
 transliterate==1.10.2
-social-auth-app-django==4.0.0
+social-auth-app-django==5.0.0
+pymemcache==3.5.2

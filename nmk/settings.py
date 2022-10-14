@@ -103,8 +103,9 @@ USE_L10N = False
 USE_TZ = True
 TIME_ZONE = 'UTC'
 TIMEZONE_SESSION_KEY = '_timezone'
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
-SOCIAL_AUTH_POSTGRES_JSONFIELD = True
+SOCIAL_AUTH_JSONFIELD_ENABLED = True
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
@@ -251,7 +252,7 @@ LOGGING = LOGGING_DEBUG
 
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
         'LOCATION': '127.0.0.1:11211',
     }
 }
