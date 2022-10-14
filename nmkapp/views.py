@@ -331,13 +331,13 @@ def profile(request):
         form = PlayerForm(request.POST, instance=request.user.player)
         if form.is_valid():
             form.save()
-            request.session[settings.TIMEZONE_SESSION_KEY] = form.cleaned_data['timezone'].zone
+            request.session[settings.TIMEZONE_SESSION_KEY] = form.cleaned_data['timezone'].key
             new_language = form.cleaned_data['language']
             if new_language != old_language:
                 translation.activate(new_language)
                 set_language_in_cookie = True
                 if hasattr(request, 'session'):
-                    request.session[translation.LANGUAGE_SESSION_KEY] = new_language
+                    request.session['_language'] = new_language
             messages.add_message(request, messages.INFO, _('Settings successfully saved'))
     else:
         form = PlayerForm(instance=request.user.player)
@@ -428,7 +428,7 @@ def landing(request):
         if language in available_languages:
             translation.activate(language)
             if hasattr(request, 'session'):
-                request.session[translation.LANGUAGE_SESSION_KEY] = language
+                request.session['_language'] = language
     return render(request, 'landing.html')
 
 
@@ -837,8 +837,8 @@ class CustomLoginView(LoginView):
             if language in available_languages:
                 translation.activate(language)
                 if hasattr(self.request, 'session'):
-                    self.request.session[translation.LANGUAGE_SESSION_KEY] = language
-            timezone = user.player.timezone
-            if timezone.zone in pytz.all_timezones:
-                self.request.session[settings.TIMEZONE_SESSION_KEY] = timezone.zone
+                    self.request.session['_language'] = language
+            player_timezone = user.player.timezone
+            if player_timezone.key in pytz.all_timezones:
+                self.request.session[settings.TIMEZONE_SESSION_KEY] = player_timezone.key
         return url

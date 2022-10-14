@@ -8,3 +8,4 @@ python-coveralls==2.9.3
 transliterate==1.10.2
 social-auth-app-django==5.0.0
 pymemcache==3.5.2
+tzdata==2022.5

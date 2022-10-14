@@ -276,7 +276,7 @@ if not DEBUG:
     DATABASES['default']['PASSWORD'] = os.environ['NMK_DB_PASSWORD']
     ANYMAIL['MAILJET_API_KEY'] = os.environ['NMK_MAILJET_API_KEY']
     ANYMAIL['MAILJET_SECRET_KEY'] = os.environ['NMK_MAILJET_SECRET_KEY']
-    ALLOWED_HOSTS = ['localhost', '.nmk.bet', 'nmk.bet.']
+    ALLOWED_HOSTS = ['localhost', '.nmk.bet', 'nmk.bet.', '54.37.74.215']
     LOGGING = LOGGING_PROD
 
     SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ['NMK_GOOGLE_OAUTH2_KEY']
