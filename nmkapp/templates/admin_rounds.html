@@ -35,11 +35,11 @@
 			{% endif %}
 			</td>
 			<td>
-			{% ifequal round.get_group_type_display "League" %}
+			{% if round.get_group_type_display == "League" %}
 			Ligaško
 			{% else %}
 			Kup
-			{% endifequal %}
+			{% endif %}
 			</td>
 			<td>
 				{% if not round.active %}

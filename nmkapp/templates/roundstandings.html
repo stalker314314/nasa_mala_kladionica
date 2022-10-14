@@ -72,11 +72,11 @@ Create your crew at <a href="/crew">crew</a> page and invite your buddies){% end
                 <th class="firstcol" rowspan="2">{% trans "Player" %}</th>
                 {% for match in matches %}
                 <th class="sorttable_nosort">
-                    {% ifequal match.round.get_group_type_display "League" %}
+                    {% if match.round.get_group_type_display == "League" %}
                     <a href="/results/league">
                     {% else %}
                     <a href="/results/cup">
-                    {% endifequal %}
+                    {% endif %}
                     {{ match.home_team.name }} - {{ match.away_team.name }}</a>
                 </th>
                 {% endfor %}
@@ -106,11 +106,11 @@ Create your crew at <a href="/crew">crew</a> page and invite your buddies){% end
                 </td>
                 {% for shot in round_standing.shots %}
                 {% if shot.match_result != None %}
-                    {% ifequal shot.shot shot.match_result %}
+                    {% if shot.shot == shot.match_result %}
                     <td class="numbergreen">
                     {% else %}
                     <td class="numberred">
-                    {% endifequal %}
+                    {% endif %}
                 {% else %}
                 <td class="number">
                 {% endif %}
