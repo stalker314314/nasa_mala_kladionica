@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-15 14:27+0000\n"
-"PO-Revision-Date: 2022-10-15 16:27+0200\n"
+"POT-Creation-Date: 2022-10-15 16:29+0000\n"
+"PO-Revision-Date: 2022-10-15 18:47+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -1069,7 +1069,7 @@ msgstr ""
 "tous les paris étaient caches:"
 
 #: nmkapp/templates/mail/round_shots.html:12
-#: nmkapp/templates/roundstandings.html:72 nmkapp/templates/standings.html:48
+#: nmkapp/templates/roundstandings.html:72 nmkapp/templates/standings.html:64
 msgid "Player"
 msgstr "Joueur"
 
@@ -1470,17 +1470,17 @@ msgstr "Match nul"
 msgid "Lost"
 msgstr "Perdu"
 
-#: nmkapp/templates/roundstandings.html:44 nmkapp/templates/standings.html:17
+#: nmkapp/templates/roundstandings.html:44 nmkapp/templates/standings.html:33
 msgid "Choose a crew"
 msgstr "Choisissez une équipe"
 
 #: nmkapp/templates/roundstandings.html:47
-#: nmkapp/templates/roundstandings.html:49 nmkapp/templates/standings.html:20
-#: nmkapp/templates/standings.html:22
+#: nmkapp/templates/roundstandings.html:49 nmkapp/templates/standings.html:36
+#: nmkapp/templates/standings.html:38
 msgid "All"
 msgstr "Tous"
 
-#: nmkapp/templates/roundstandings.html:61 nmkapp/templates/standings.html:34
+#: nmkapp/templates/roundstandings.html:61
 msgid ""
 "(hey, seems you are not member of any crew.\n"
 "Create your crew at <a href=\"/crew\">crew</a> page and invite your buddies)"
@@ -1493,7 +1493,7 @@ msgstr ""
 msgid "Actual score"
 msgstr "Score actuel"
 
-#: nmkapp/templates/roundstandings.html:187 nmkapp/templates/standings.html:87
+#: nmkapp/templates/roundstandings.html:187 nmkapp/templates/standings.html:103
 msgid "Players playing in real money are shown bolded"
 msgstr "Les joueurs jouant en argent réel sont affichés en gras"
 
@@ -1505,41 +1505,50 @@ msgstr ""
 "Vous n'avez pas la permission de jeter un coup d'œil sur les paris des "
 "autres joueurs jusqu'à ce que vous placiez également vos paris pour ce tour."
 
-#: nmkapp/templates/standings.html:40
+#: nmkapp/templates/standings.html:51
+msgid ""
+"(hey, seems you are not member of any crew. Create your crew at <a "
+"href=&quot;/crew&quot;>crew</a> page and invite your buddies)"
+msgstr ""
+"(hé, il semble que tu ne sois membre d'aucune équipe.\n"
+"Créez votre équipe sur la page <a href=&quot;/crew&quot;>équipe</a> et "
+"invitez vos amis)"
+
+#: nmkapp/templates/standings.html:56
 msgid "Tip: click on the round to look only at that round's results!"
 msgstr "Astuce: cliquez sur le tour pour ne voir que les résultats de ce tour!"
 
-#: nmkapp/views.py:90
+#: nmkapp/views.py:88
 msgid "[nmk.bet] Registration successful"
 msgstr "[nmk.bet] Inscription réussie"
 
-#: nmkapp/views.py:123
+#: nmkapp/views.py:121
 msgid "[nmk.bet] Reset password request"
 msgstr "[nmk.bet] Demande pour réinitialiser le mot de passe"
 
-#: nmkapp/views.py:242 nmkapp/views.py:250
+#: nmkapp/views.py:240 nmkapp/views.py:248
 msgid "There is no active round currently to place bets, try again later"
 msgstr ""
 "Il n'y a actuellement aucun tour actif pour placer des paris, réessayez plus "
 "tard"
 
-#: nmkapp/views.py:295
+#: nmkapp/views.py:293
 msgid "Bets successfully saved"
 msgstr "Les paris enregistrés avec succès"
 
-#: nmkapp/views.py:322
+#: nmkapp/views.py:320
 msgid "first match already started"
 msgstr "le premier match a déjà commencé"
 
-#: nmkapp/views.py:324
+#: nmkapp/views.py:322
 msgid "N/A"
 msgstr "N/A"
 
-#: nmkapp/views.py:343
+#: nmkapp/views.py:341
 msgid "Settings successfully saved"
 msgstr "Paramètres sauvegardés avec succès"
 
-#: nmkapp/views.py:367
+#: nmkapp/views.py:365
 #, python-format
 msgid ""
 "Crew created successfully. Now you can send invite code \"%s\" to your "
@@ -1549,20 +1558,20 @@ msgstr ""
 "d'invitation «%s» à vos amis en utilisant le chat/mail/SMS, afin qu'ils "
 "puissent rejoindre votre nouvelle équipe"
 
-#: nmkapp/views.py:381
+#: nmkapp/views.py:379
 msgid "Joined crew successfully"
 msgstr "Adhésion réussie"
 
-#: nmkapp/views.py:412
+#: nmkapp/views.py:410
 msgid "[nmk.bet] Player payed paypal"
 msgstr "[nmk.bet] Joueur a payé par paypal"
 
-#: nmkapp/views.py:412
+#: nmkapp/views.py:410
 #, python-format
 msgid "Player %s"
 msgstr "Joueur %s"
 
-#: nmkapp/views.py:531
+#: nmkapp/views.py:529
 msgid ""
 "You cannot leave a crew that you created, you can only completely delete "
 "that crew."
@@ -1570,52 +1579,52 @@ msgstr ""
 "Vous ne pouvez pas quitter l'équipe que vous avez créée, vous pouvez "
 "uniquement supprimer cette équipe."
 
-#: nmkapp/views.py:539
+#: nmkapp/views.py:537
 #, python-format
 msgid "Successfully left a crew \"%s\""
 msgstr "A quitté le groupe «%s» avec succès"
 
-#: nmkapp/views.py:554
+#: nmkapp/views.py:552
 msgid ""
 "You cannot delete crew that you are not owner of, you can only leave it."
 msgstr ""
 "Vous ne pouvez pas supprimer une équipe que vous n'avez pas créé vous-même, "
 "vous pouvez uniquement le quitter."
 
-#: nmkapp/views.py:564
+#: nmkapp/views.py:562
 #, python-format
 msgid "Crew \"%s\" deleted"
 msgstr "Équipe «%s» supprimée"
 
-#: nmkapp/views.py:654
+#: nmkapp/views.py:652
 #, python-format
 msgid "Round \"%s\" set as active"
 msgstr "Tour «%s» défini comme actif"
 
-#: nmkapp/views.py:666
+#: nmkapp/views.py:664
 #, python-format
 msgid "[nmk.bet] New round \"%s\" available"
 msgstr "[nmk.bet] Nouveau tour «%s» disponible"
 
-#: nmkapp/views.py:677
+#: nmkapp/views.py:675
 #, python-format
 msgid "Round \"%s\" set as inactive"
 msgstr "Tour «%s» défini comme inactif"
 
-#: nmkapp/views.py:704
+#: nmkapp/views.py:702
 #, python-format
 msgid "New round \"%s\" created successfully"
 msgstr "Nouveau tour «%s» créé avec succès"
 
-#: nmkapp/views.py:725
+#: nmkapp/views.py:723
 msgid "Match successfully added"
 msgstr "Match ajouté avec succès"
 
-#: nmkapp/views.py:760
+#: nmkapp/views.py:758
 msgid "Result added successfully"
 msgstr "Résultat ajouté avec succès"
 
-#: nmkapp/views.py:784
+#: nmkapp/views.py:782
 #, python-format
 msgid "[nmk.bet] All results from round \"%s\" received"
 msgstr "[nmk.bet] Tous les résultats du tour «%s» reçus"

@@ -37,6 +37,22 @@ function refreshPage(sel) {
 		    apply_floatThead();
 		});
 	});
+
+    $(document).ready(function() {
+        // $('[data-toggle="popover"]').popover()
+        $('html').click(function(e) {
+            $('[data-toggle="popover"]').popover('hide');
+            $('[data-toggle="popover"]').popover('hide');
+        });
+
+        $('[data-toggle="popover"]').popover({
+            html: true,
+            trigger: 'manual'
+        }).click(function(e) {
+            $(this).popover('toggle');
+            e.stopPropagation();
+        });
+    });
 </script>
 
 {% if can_see_standings %}
@@ -58,8 +74,8 @@ function refreshPage(sel) {
 </select>
 {% if groups %}
 {% else %}
-{% blocktrans %}(hey, seems you are not member of any crew.
-Create your crew at <a href="/crew">crew</a> page and invite your buddies){% endblocktrans %}
+<i class="fas fa-question-circle fa-lg awesome" data-toggle="popover"
+   data-content="{% blocktrans %}(hey, seems you are not member of any crew. Create your crew at <a href=&quot;/crew&quot;>crew</a> page and invite your buddies){% endblocktrans %}"></i>
 {% endif %}
 <br/>
 <br/>

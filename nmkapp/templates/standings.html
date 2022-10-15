@@ -12,6 +12,22 @@ function refreshPage(sel) {
     	window.location.href = '/standings?group=' + encodeURIComponent(value);
     }
 }
+
+$(document).ready(function() {
+    // $('[data-toggle="popover"]').popover()
+    $('html').click(function(e) {
+        $('[data-toggle="popover"]').popover('hide');
+        $('[data-toggle="popover"]').popover('hide');
+    });
+
+    $('[data-toggle="popover"]').popover({
+        html: true,
+        trigger: 'manual'
+    }).click(function(e) {
+        $(this).popover('toggle');
+        e.stopPropagation();
+    });
+});
 </script>
 
 {% trans "Choose a crew" %}:
@@ -31,8 +47,8 @@ function refreshPage(sel) {
 </select>
 {% if groups %}
 {% else %}
-{% blocktrans %}(hey, seems you are not member of any crew.
-Create your crew at <a href="/crew">crew</a> page and invite your buddies){% endblocktrans %}
+<i class="fas fa-question-circle fa-lg awesome" data-toggle="popover"
+   data-content="{% blocktrans %}(hey, seems you are not member of any crew. Create your crew at <a href=&quot;/crew&quot;>crew</a> page and invite your buddies){% endblocktrans %}"></i>
 {% endif %}
 <br/>
 <br/>
@@ -43,7 +59,7 @@ Create your crew at <a href="/crew">crew</a> page and invite your buddies){% end
 <div class="table-responsive">
     <table class="sortable largetable">
         <thead>
-            <tr>
+            <tr style="height: 40px;">
                 <th>#</th>
                 <th class="firstcol1">{% trans "Player" %}</th>
                 {% for round in rounds %}
@@ -61,7 +77,7 @@ Create your crew at <a href="/crew">crew</a> page and invite your buddies){% end
             {% if standing.0.user.email == user.email %}
             <tr style="background: rgb(204, 204, 204);">
             {% else %}
-            <tr>
+            <tr style="height: 40px">
             {% endif %}
                 <td>{{ standing.3 }}.</td>
                 <td>

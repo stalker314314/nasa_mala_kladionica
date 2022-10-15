@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-15 14:27+0000\n"
-"PO-Revision-Date: 2022-10-15 16:27+0200\n"
+"POT-Creation-Date: 2022-10-15 16:29+0000\n"
+"PO-Revision-Date: 2022-10-15 18:47+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sr\n"
@@ -1039,7 +1039,7 @@ msgstr ""
 "slede tipovi svih igrača iz ovog kola u trenutku kada je klađenje završeno:"
 
 #: nmkapp/templates/mail/round_shots.html:12
-#: nmkapp/templates/roundstandings.html:72 nmkapp/templates/standings.html:48
+#: nmkapp/templates/roundstandings.html:72 nmkapp/templates/standings.html:64
 msgid "Player"
 msgstr "Takmičar"
 
@@ -1420,17 +1420,17 @@ msgstr "Nerešenih"
 msgid "Lost"
 msgstr "Izgubljenih"
 
-#: nmkapp/templates/roundstandings.html:44 nmkapp/templates/standings.html:17
+#: nmkapp/templates/roundstandings.html:44 nmkapp/templates/standings.html:33
 msgid "Choose a crew"
 msgstr "Odaberi ekipu"
 
 #: nmkapp/templates/roundstandings.html:47
-#: nmkapp/templates/roundstandings.html:49 nmkapp/templates/standings.html:20
-#: nmkapp/templates/standings.html:22
+#: nmkapp/templates/roundstandings.html:49 nmkapp/templates/standings.html:36
+#: nmkapp/templates/standings.html:38
 msgid "All"
 msgstr "Svi"
 
-#: nmkapp/templates/roundstandings.html:61 nmkapp/templates/standings.html:34
+#: nmkapp/templates/roundstandings.html:61
 msgid ""
 "(hey, seems you are not member of any crew.\n"
 "Create your crew at <a href=\"/crew\">crew</a> page and invite your buddies)"
@@ -1443,7 +1443,7 @@ msgstr ""
 msgid "Actual score"
 msgstr "Tačan rezultat"
 
-#: nmkapp/templates/roundstandings.html:187 nmkapp/templates/standings.html:87
+#: nmkapp/templates/roundstandings.html:187 nmkapp/templates/standings.html:103
 msgid "Players playing in real money are shown bolded"
 msgstr "Takmičari koji igraju u prave pare su prikazani podebljano"
 
@@ -1455,39 +1455,48 @@ msgstr ""
 "Nemate prava da pogledate tipovanja drugih ljudi dok i Vi ne istipujete "
 "rezultate ovog kola."
 
-#: nmkapp/templates/standings.html:40
+#: nmkapp/templates/standings.html:51
+msgid ""
+"(hey, seems you are not member of any crew. Create your crew at <a "
+"href=&quot;/crew&quot;>crew</a> page and invite your buddies)"
+msgstr ""
+"(hej, izgleda da nisi ni u jednoj ekipi,\n"
+"napravi novu ekipu na strani „<a href=&quot;/profile&quot;>Moje ekipe</a>“ i "
+"pozovi ortake)"
+
+#: nmkapp/templates/standings.html:56
 msgid "Tip: click on the round to look only at that round's results!"
 msgstr "Savet: klikni na kolo da pogledaš rezultate samo iz tog kola!"
 
-#: nmkapp/views.py:90
+#: nmkapp/views.py:88
 msgid "[nmk.bet] Registration successful"
 msgstr "[nmk.bet] Registracija uspešna"
 
-#: nmkapp/views.py:123
+#: nmkapp/views.py:121
 msgid "[nmk.bet] Reset password request"
 msgstr "[nmk.bet] Zahtev za resetovanjem lozinke"
 
-#: nmkapp/views.py:242 nmkapp/views.py:250
+#: nmkapp/views.py:240 nmkapp/views.py:248
 msgid "There is no active round currently to place bets, try again later"
 msgstr "Trenutno nema aktivnih kola za klađenje, pokušajte kasnije"
 
-#: nmkapp/views.py:295
+#: nmkapp/views.py:293
 msgid "Bets successfully saved"
 msgstr "Tipovanja uspešno sačuvana"
 
-#: nmkapp/views.py:322
+#: nmkapp/views.py:320
 msgid "first match already started"
 msgstr "prvi meč već počeo"
 
-#: nmkapp/views.py:324
+#: nmkapp/views.py:322
 msgid "N/A"
 msgstr "N/A"
 
-#: nmkapp/views.py:343
+#: nmkapp/views.py:341
 msgid "Settings successfully saved"
 msgstr "Podešavanja uspešno sačuvana"
 
-#: nmkapp/views.py:367
+#: nmkapp/views.py:365
 #, python-format
 msgid ""
 "Crew created successfully. Now you can send invite code \"%s\" to your "
@@ -1496,20 +1505,20 @@ msgstr ""
 "Ekipa uspešno napravljena. Sada pošalji šifru-pozivnicu \"%s\" ortacima "
 "preko e-pošte/SMS-om/Viber-om, da i oni mogu da se pridruže ekipi"
 
-#: nmkapp/views.py:381
+#: nmkapp/views.py:379
 msgid "Joined crew successfully"
 msgstr "Uspešno dodat u ekipu"
 
-#: nmkapp/views.py:412
+#: nmkapp/views.py:410
 msgid "[nmk.bet] Player payed paypal"
 msgstr "[nmk.bet] Igrač platio pejpal"
 
-#: nmkapp/views.py:412
+#: nmkapp/views.py:410
 #, python-format
 msgid "Player %s"
 msgstr "Igrač %s"
 
-#: nmkapp/views.py:531
+#: nmkapp/views.py:529
 msgid ""
 "You cannot leave a crew that you created, you can only completely delete "
 "that crew."
@@ -1517,51 +1526,51 @@ msgstr ""
 "Ne možeš da napustiš ekipu koju si ti napravio, možeš samo da je kompletno "
 "izbrišeš."
 
-#: nmkapp/views.py:539
+#: nmkapp/views.py:537
 #, python-format
 msgid "Successfully left a crew \"%s\""
 msgstr "Uspešno izašao iz ekipe „%s“"
 
-#: nmkapp/views.py:554
+#: nmkapp/views.py:552
 msgid ""
 "You cannot delete crew that you are not owner of, you can only leave it."
 msgstr ""
 "Ne možeš da obrišeš ekipu koju nisi ti napravio, možeš samo da izađeš iz nje."
 
-#: nmkapp/views.py:564
+#: nmkapp/views.py:562
 #, python-format
 msgid "Crew \"%s\" deleted"
 msgstr "Ekipa „%s“ izbrisana"
 
-#: nmkapp/views.py:654
+#: nmkapp/views.py:652
 #, python-format
 msgid "Round \"%s\" set as active"
 msgstr "Kolo „%s“ postavljeno kao aktivno"
 
-#: nmkapp/views.py:666
+#: nmkapp/views.py:664
 #, python-format
 msgid "[nmk.bet] New round \"%s\" available"
 msgstr "[nmk.bet] Dostupno je novo kolo „%s“"
 
-#: nmkapp/views.py:677
+#: nmkapp/views.py:675
 #, python-format
 msgid "Round \"%s\" set as inactive"
 msgstr "Kolo „%s“ postavljeno kao neaktivno"
 
-#: nmkapp/views.py:704
+#: nmkapp/views.py:702
 #, python-format
 msgid "New round \"%s\" created successfully"
 msgstr "Novo kolo „%s“ uspešno napravljeno"
 
-#: nmkapp/views.py:725
+#: nmkapp/views.py:723
 msgid "Match successfully added"
 msgstr "Meč uspešno dodat"
 
-#: nmkapp/views.py:760
+#: nmkapp/views.py:758
 msgid "Result added successfully"
 msgstr "Rezultat uspešno unesen"
 
-#: nmkapp/views.py:784
+#: nmkapp/views.py:782
 #, python-format
 msgid "[nmk.bet] All results from round \"%s\" received"
 msgstr "[nmk.bet] Uneseni svi rezultati iz kola „%s“"
