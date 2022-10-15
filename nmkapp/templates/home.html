@@ -143,8 +143,8 @@ You can sign up for this 1h before first match starts latest!
 				</tbody>
 			</table>
             <div class="offset">
-                <input name="save_{{ bet.round.id }}" value="{% trans "Save" %}" type="button">
-                <input name="final_save_{{ bet.round.id }}" value="{% trans "Final Decision" %}" type="button">
+                <input class="btn btn-secondary" name="save_{{ bet.round.id }}" value="{% trans "Save" %}" type="button">
+                <input class="btn btn-danger" name="final_save_{{ bet.round.id }}" value="{% trans "Final Decision" %}" type="button">
                 <i class="fas fa-question-circle fa-lg awesome" data-toggle="collapse" data-target="#explain-betting"></i>
                 <div id="explain-betting" class="collapse">
                     <div class="card card-body">

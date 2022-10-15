@@ -3,6 +3,7 @@
 body {
     padding-top: 0;
 }
+
 @media (max-width: 991px) {
     body {
         padding-top: 70px;
@@ -61,7 +62,7 @@ body {
 
 #navigation {
 	float: left;
-	font: bold .7em Verdana, Arial, Helvetica, sans-serif;
+	font: bold 0.9em Verdana, Arial, Helvetica, sans-serif;
 	color: var( --color-bg-dark );
 	/* background-color: #FAFAFA; */
 	text-decoration: none;
@@ -73,13 +74,14 @@ body {
 }
 
 #content {
-	font: .7em Verdana, Arial, Helvetica, sans-serif;
+	font: 0.9em Verdana, Arial, Helvetica, sans-serif;
 	color: #666;
 	text-decoration: none;
 	width: 87%;
 	text-align: justify;
 	padding: 5px 15px 15px 5px;
 	background-color: #fff;
+	line-height: 1.5em;
 }
 @media (max-width: 991px) {
     #content {
@@ -115,6 +117,7 @@ a.small-navigation:hover {
 	text-align: left;
 	font-weight: normal;
 }
+
 @media (max-width: 991px) {
     .navigation {
         border-style: none;
@@ -122,7 +125,17 @@ a.small-navigation:hover {
     .navbar-nav .nav-link {
         padding: 0px 0px 0px 0px;
     }
+
+	.nav-item {
+	    font-size: 1.2em;
+	}
+
+    #content {
+	    font: 1.1em Verdana, Arial, Helvetica, sans-serif;
+	    line-height: 1.5em;
+	}
 }
+
 @media (max-width: 767px) {
     .navigation {
         padding: 3px 0px 3px 5px;
@@ -131,6 +144,15 @@ a.small-navigation:hover {
     .navbar-nav .nav-link {
         padding: 3px 0px 3px 5px;
     }
+
+	.nav-item {
+	    font-size: 1.2em;
+	}
+
+    #content {
+	    font: 1.1em Verdana, Arial, Helvetica, sans-serif;
+	    line-height: 1.5em;
+	}
 }
 
 .navigation:hover {
@@ -217,21 +239,9 @@ i.awesome {
 /***********************************
 	dodao melja
 ***********************************/
-
-input[type="submit"], input[type="button"] {
-	font-weight: bold;
-	color: #67cccc;
-	height: 26px;
-	background: #555;
-	border-style: none;
-}
-
-input[type="submit"]:hover, input[type="button"]:hover {
-	font-weight: bold;
-	color: #ff9900;
-	height: 26px;
-	background: #888;
-	border-style: none;
+.fat-button {
+    line-height: normal;
+    padding: 5px 20px 25px 20px;
 }
 
 .buttonBox {
@@ -292,6 +302,7 @@ th.firstcol1 {
 th.number{
 	width: 100px;
 	text-align: right;
+	padding-left: 50px;
 }
 
 td.number{
@@ -427,6 +438,11 @@ ul.proposition {
     .container {
         min-height: calc( 100vh - 20px - 130px );
     }
+
+    #content {
+	    font: 1.1em Verdana, Arial, Helvetica, sans-serif;
+	    line-height: 1.5em;
+	}
 }
 
 #logo-title {
@@ -573,6 +589,15 @@ footer section:last-child {
   :root {
     --font-size: 18px;
   }
+
+  .nav-item {
+    font-size: 1.2em;
+  }
+
+  #content {
+    font: 0.9em Verdana, Arial, Helvetica, sans-serif;
+	line-height: 1.5em;
+  }
 }
 
 @media only screen
@@ -581,9 +606,7 @@ footer section:last-child {
 
 			--footer-height: 750px;
 			--footer-padding-vertical: 0;
-
 	}
-
 
 	#footer-wrapper {
 		grid-template-columns: 1fr 90% 1fr;
@@ -640,12 +663,29 @@ footer section:last-child {
 		padding: 0 50px;
 	}
 
+	.nav-item {
+	    font-size: 1.2em;
+	}
+
+    #content {
+	    font: 1.1em Verdana, Arial, Helvetica, sans-serif;
+	    line-height: 1.5em;
+	}
 }
 
 
 @media only screen
 	and ( max-width: 450px ) {
 	:root {
-		--font-size: 14px;
+		--font-size: 1.0em;
+	}
+
+	.nav-item {
+	    font-size: 1.2em;
+	}
+
+    #content {
+	    font: 1.1em Verdana, Arial, Helvetica, sans-serif;
+	    line-height: 1.5em;
 	}
 }

@@ -129,11 +129,10 @@ You can sign up for this 1h before first match starts latest!
                 <td>{{ form.send_mail_results_available.errors }}{{ form.send_mail_results_available }}</td>
             </tr>
         </table>
-        <br/>
 
         <div id="buttonBox">
             <br/>
-            <input value="{% trans "Change" %}" type="submit"/>
+            <input class="btn btn-secondary btn-sm" value="{% trans "Change" %}" type="submit"/>
         </div>
     </fieldset>
 </form>
@@ -147,11 +146,11 @@ You can sign up for this 1h before first match starts latest!
 
 {% if current_user.has_usable_password %}
 <form method="get" action="/profile/password">
-  <input value="{% trans "Change password" %}" type="submit"/>
+  <input class="btn btn-secondary btn-sm" value="{% trans "Change password" %}" type="submit"/>
 </form>
 {% else %}
 <form method="get" action="/profile/create_password">
-    <input value="{% trans "Create password" %}" type="submit"/>
+    <input class="btn btn-secondary btn-sm" value="{% trans "Create password" %}" type="submit"/>
 </form>
 {% endif %}
 
