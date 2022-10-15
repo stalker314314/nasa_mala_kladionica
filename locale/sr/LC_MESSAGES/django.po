@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-14 18:48+0000\n"
-"PO-Revision-Date: 2022-10-14 20:49+0200\n"
+"POT-Creation-Date: 2022-10-15 14:27+0000\n"
+"PO-Revision-Date: 2022-10-15 16:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sr\n"
@@ -115,52 +115,52 @@ msgstr "Потврди нову лозинку"
 msgid "Choose Display Name"
 msgstr "Одабери надимак"
 
-#: nmkapp/forms.py:103
+#: nmkapp/forms.py:104
 #, python-brace-format
 msgid "Sorry, but name \"{0}\" is already taken"
 msgstr "Нажалост, име „{0}“ је неко већ узео"
 
-#: nmkapp/forms.py:111
+#: nmkapp/forms.py:112
 msgid "Create a new crew"
 msgstr "Направи нову екипу"
 
-#: nmkapp/forms.py:118
+#: nmkapp/forms.py:119
 msgid "Crew name too long"
 msgstr "Име екипе предугачко"
 
-#: nmkapp/forms.py:121
+#: nmkapp/forms.py:122
 msgid "Sorry, but crew name is already taken"
 msgstr "Нажалост, име екипе је већ узето"
 
-#: nmkapp/forms.py:131
+#: nmkapp/forms.py:132
 msgid "Please enter invite code to join a crew, if you got one:"
 msgstr "Ако сте је добили. унесите шифру-позивницу да се придружите екипи:"
 
-#: nmkapp/forms.py:138
+#: nmkapp/forms.py:139
 msgid "Invite code should contain 8 numbers"
 msgstr "Шифра-позивница мора да садржи 8 бројева"
 
-#: nmkapp/forms.py:141
+#: nmkapp/forms.py:142
 msgid "Invite code invalid"
 msgstr "Неисправна шифра-позивница"
 
-#: nmkapp/forms.py:143
+#: nmkapp/forms.py:144
 msgid "You are already member of this crew"
 msgstr "Већ сте члан ове екипе"
 
-#: nmkapp/forms.py:166
+#: nmkapp/forms.py:167
 msgid "You must place all bets"
 msgstr "Морате типовати све утакмице"
 
-#: nmkapp/forms.py:174
+#: nmkapp/forms.py:175
 msgid "Recalculate points"
 msgstr "Прерачунај поене"
 
-#: nmkapp/forms.py:176
+#: nmkapp/forms.py:177
 msgid "Clear cache"
 msgstr "Очисти кеш"
 
-#: nmkapp/forms.py:178
+#: nmkapp/forms.py:179
 msgid "Repopulate cache"
 msgstr "Поново попуни кеш"
 
@@ -1457,35 +1457,35 @@ msgstr ""
 msgid "Tip: click on the round to look only at that round's results!"
 msgstr "Савет: кликни на коло да погледаш резултате само из тог кола!"
 
-#: nmkapp/views.py:88
+#: nmkapp/views.py:90
 msgid "[nmk.bet] Registration successful"
 msgstr "[nmk.bet] Регистрација успешна"
 
-#: nmkapp/views.py:121
+#: nmkapp/views.py:123
 msgid "[nmk.bet] Reset password request"
 msgstr "[nmk.bet] Захтев за ресетовањем лозинке"
 
-#: nmkapp/views.py:240 nmkapp/views.py:248
+#: nmkapp/views.py:242 nmkapp/views.py:250
 msgid "There is no active round currently to place bets, try again later"
 msgstr "Тренутно нема активних кола за клађење, покушајте касније"
 
-#: nmkapp/views.py:293
+#: nmkapp/views.py:295
 msgid "Bets successfully saved"
 msgstr "Типовања успешно сачувана"
 
-#: nmkapp/views.py:320
+#: nmkapp/views.py:322
 msgid "first match already started"
 msgstr "први меч већ почео"
 
-#: nmkapp/views.py:322
+#: nmkapp/views.py:324
 msgid "N/A"
 msgstr "N/A"
 
-#: nmkapp/views.py:341
+#: nmkapp/views.py:343
 msgid "Settings successfully saved"
 msgstr "Подешавања успешно сачувана"
 
-#: nmkapp/views.py:365
+#: nmkapp/views.py:367
 #, python-format
 msgid ""
 "Crew created successfully. Now you can send invite code \"%s\" to your "
@@ -1494,20 +1494,20 @@ msgstr ""
 "Екипа успешно направљена. Сада пошаљи шифру-позивницу \"%s\" ортацима преко "
 "е-поште/СМС-ом/Viber-ом, да и они могу да се придруже екипи"
 
-#: nmkapp/views.py:379
+#: nmkapp/views.py:381
 msgid "Joined crew successfully"
 msgstr "Успешно додат у екипу"
 
-#: nmkapp/views.py:410
+#: nmkapp/views.py:412
 msgid "[nmk.bet] Player payed paypal"
 msgstr "[nmk.bet] Играч платио пејпал"
 
-#: nmkapp/views.py:410
+#: nmkapp/views.py:412
 #, python-format
 msgid "Player %s"
 msgstr "Играч %s"
 
-#: nmkapp/views.py:526
+#: nmkapp/views.py:531
 msgid ""
 "You cannot leave a crew that you created, you can only completely delete "
 "that crew."
@@ -1515,51 +1515,51 @@ msgstr ""
 "Не можеш да напустиш екипу коју си ти направио, можеш само да је комплетно "
 "избришеш."
 
-#: nmkapp/views.py:534
+#: nmkapp/views.py:539
 #, python-format
 msgid "Successfully left a crew \"%s\""
 msgstr "Успешно изашао из екипе „%s“"
 
-#: nmkapp/views.py:549
+#: nmkapp/views.py:554
 msgid ""
 "You cannot delete crew that you are not owner of, you can only leave it."
 msgstr ""
 "Не можеш да обришеш екипу коју ниси ти направио, можеш само да изађеш из ње."
 
-#: nmkapp/views.py:559
+#: nmkapp/views.py:564
 #, python-format
 msgid "Crew \"%s\" deleted"
 msgstr "Екипа „%s“ избрисана"
 
-#: nmkapp/views.py:649
+#: nmkapp/views.py:654
 #, python-format
 msgid "Round \"%s\" set as active"
 msgstr "Коло „%s“ постављено као активно"
 
-#: nmkapp/views.py:661
+#: nmkapp/views.py:666
 #, python-format
 msgid "[nmk.bet] New round \"%s\" available"
 msgstr "[nmk.bet] Доступно је ново коло „%s“"
 
-#: nmkapp/views.py:672
+#: nmkapp/views.py:677
 #, python-format
 msgid "Round \"%s\" set as inactive"
 msgstr "Коло „%s“ постављено као неактивно"
 
-#: nmkapp/views.py:699
+#: nmkapp/views.py:704
 #, python-format
 msgid "New round \"%s\" created successfully"
 msgstr "Ново коло „%s“ успешно направљено"
 
-#: nmkapp/views.py:720
+#: nmkapp/views.py:725
 msgid "Match successfully added"
 msgstr "Меч успешно додат"
 
-#: nmkapp/views.py:755
+#: nmkapp/views.py:760
 msgid "Result added successfully"
 msgstr "Резултат успешно унесен"
 
-#: nmkapp/views.py:779
+#: nmkapp/views.py:784
 #, python-format
 msgid "[nmk.bet] All results from round \"%s\" received"
 msgstr "[nmk.bet] Унесени сви резултати из кола „%s“"

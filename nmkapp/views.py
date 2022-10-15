@@ -429,6 +429,9 @@ def landing(request):
             translation.activate(language)
             if hasattr(request, 'session'):
                 request.session['_language'] = language
+            response = render(request, 'landing.html')
+            response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language)
+            return response
     return render(request, 'landing.html')
 
 

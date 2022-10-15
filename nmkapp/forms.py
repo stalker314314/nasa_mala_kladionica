@@ -4,7 +4,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import SetPasswordForm
 from django.forms.widgets import PasswordInput
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext as _, gettext_lazy
 from django.utils.safestring import mark_safe
 
 from nmkapp.models import Group
@@ -83,16 +83,17 @@ class ResetPasswordForm(forms.Form):
 
 
 class CreatePasswordForm(SetPasswordForm):
-    new_password1 = forms.CharField(label=_("New password"),
+    new_password1 = forms.CharField(label=gettext_lazy("New password"),
                                     min_length=5,
                                     widget=forms.PasswordInput)
-    new_password2 = forms.CharField(label=_("New password confirmation"),
+    new_password2 = forms.CharField(label=gettext_lazy("New password confirmation"),
                                     min_length=5,
                                     widget=forms.PasswordInput)
 
 
 class RequestDisplayNameForm(forms.Form):
-    display_name = forms.CharField(label=_('Choose Display Name'), required=True, max_length=28, min_length=3)
+    display_name = forms.CharField(label=gettext_lazy("Choose Display Name"),
+                                   required=True, max_length=28, min_length=3)
 
     def clean(self):
         cleaned_data = super(RequestDisplayNameForm, self).clean()

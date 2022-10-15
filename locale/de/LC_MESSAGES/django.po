@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-14 18:48+0000\n"
-"PO-Revision-Date: 2022-10-14 20:50+0200\n"
+"POT-Creation-Date: 2022-10-15 14:27+0000\n"
+"PO-Revision-Date: 2022-10-15 16:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -116,52 +116,52 @@ msgstr "Neues Passwort bestätigen"
 msgid "Choose Display Name"
 msgstr "Benutzername wählen"
 
-#: nmkapp/forms.py:103
+#: nmkapp/forms.py:104
 #, python-brace-format
 msgid "Sorry, but name \"{0}\" is already taken"
 msgstr "Entschuldigung, der Benutzername \"{0}\" ist bereits besetzt"
 
-#: nmkapp/forms.py:111
+#: nmkapp/forms.py:112
 msgid "Create a new crew"
 msgstr "Kreieren Sie Ihre Mannschaft"
 
-#: nmkapp/forms.py:118
+#: nmkapp/forms.py:119
 msgid "Crew name too long"
 msgstr "Mannschaftsname ist zu lang"
 
-#: nmkapp/forms.py:121
+#: nmkapp/forms.py:122
 msgid "Sorry, but crew name is already taken"
 msgstr "Entschuldigung, der Mannschaftsname ist bereits besetzt"
 
-#: nmkapp/forms.py:131
+#: nmkapp/forms.py:132
 msgid "Please enter invite code to join a crew, if you got one:"
 msgstr "Bitte setzen Sie ein Einladungscode ein, wenn Sie bereits einen haben:"
 
-#: nmkapp/forms.py:138
+#: nmkapp/forms.py:139
 msgid "Invite code should contain 8 numbers"
 msgstr "Einladungscode muss aus 8 Zahlen bestehen"
 
-#: nmkapp/forms.py:141
+#: nmkapp/forms.py:142
 msgid "Invite code invalid"
 msgstr "Falscher Einladungscode"
 
-#: nmkapp/forms.py:143
+#: nmkapp/forms.py:144
 msgid "You are already member of this crew"
 msgstr "Sie sind bereits Mitglied dieser Mannschaft"
 
-#: nmkapp/forms.py:166
+#: nmkapp/forms.py:167
 msgid "You must place all bets"
 msgstr "Sie müssen alle Wetten abschlißen"
 
-#: nmkapp/forms.py:174
+#: nmkapp/forms.py:175
 msgid "Recalculate points"
 msgstr "Punkte nachrechnen"
 
-#: nmkapp/forms.py:176
+#: nmkapp/forms.py:177
 msgid "Clear cache"
 msgstr "Zwischenspeicher leeren"
 
-#: nmkapp/forms.py:178
+#: nmkapp/forms.py:179
 msgid "Repopulate cache"
 msgstr "Zwischenspeicher zurücksetzen"
 
@@ -1478,36 +1478,36 @@ msgstr ""
 msgid "Tip: click on the round to look only at that round's results!"
 msgstr "Tipp: klicken sie auf die Runde um die Resultate zu sehen!"
 
-#: nmkapp/views.py:88
+#: nmkapp/views.py:90
 msgid "[nmk.bet] Registration successful"
 msgstr "[nmk.bet] Registration erfolgreich"
 
-#: nmkapp/views.py:121
+#: nmkapp/views.py:123
 msgid "[nmk.bet] Reset password request"
 msgstr "[nmk.bet] Anfrage zu Passwortrücksetzung"
 
-#: nmkapp/views.py:240 nmkapp/views.py:248
+#: nmkapp/views.py:242 nmkapp/views.py:250
 msgid "There is no active round currently to place bets, try again later"
 msgstr ""
 "Es gibt keine aktuellen Spielrunde fürs Wetten, bitte versuchen Sie es später"
 
-#: nmkapp/views.py:293
+#: nmkapp/views.py:295
 msgid "Bets successfully saved"
 msgstr "Wetten erfolgreich gespeichert"
 
-#: nmkapp/views.py:320
+#: nmkapp/views.py:322
 msgid "first match already started"
 msgstr "Das erste Match hat bereits angefangen"
 
-#: nmkapp/views.py:322
+#: nmkapp/views.py:324
 msgid "N/A"
 msgstr "N/A"
 
-#: nmkapp/views.py:341
+#: nmkapp/views.py:343
 msgid "Settings successfully saved"
 msgstr "Einstellungen erfolgreich gespeichert"
 
-#: nmkapp/views.py:365
+#: nmkapp/views.py:367
 #, python-format
 msgid ""
 "Crew created successfully. Now you can send invite code \"%s\" to your "
@@ -1517,71 +1517,71 @@ msgstr ""
 "\"%s\" ihren Freunde schicken per chat/E-Mail/SMS, sodass sie Ihrer "
 "Mannschaftbeitreten können"
 
-#: nmkapp/views.py:379
+#: nmkapp/views.py:381
 msgid "Joined crew successfully"
 msgstr "Erfolgreich die Mannschaft betreten"
 
-#: nmkapp/views.py:410
+#: nmkapp/views.py:412
 msgid "[nmk.bet] Player payed paypal"
 msgstr "[nmk.bet] Spieler bezahlt per Paypal"
 
-#: nmkapp/views.py:410
+#: nmkapp/views.py:412
 #, python-format
 msgid "Player %s"
 msgstr "Spieler %s"
 
-#: nmkapp/views.py:526
+#: nmkapp/views.py:531
 msgid ""
 "You cannot leave a crew that you created, you can only completely delete "
 "that crew."
 msgstr "Sie können die Mannschaft nicht verlassen, ohne sie zu löschen."
 
-#: nmkapp/views.py:534
+#: nmkapp/views.py:539
 #, python-format
 msgid "Successfully left a crew \"%s\""
 msgstr "Die Mannschaft \"%s\" wurde erfolgreich verlassen"
 
-#: nmkapp/views.py:549
+#: nmkapp/views.py:554
 msgid ""
 "You cannot delete crew that you are not owner of, you can only leave it."
 msgstr ""
 "Sie können die Manschaft nicht löschen, da Sie nicht der Grüder sind. Sie "
 "können sie nur verlassen."
 
-#: nmkapp/views.py:559
+#: nmkapp/views.py:564
 #, python-format
 msgid "Crew \"%s\" deleted"
 msgstr "Mannschaft \"%s\" ist gelöscht"
 
-#: nmkapp/views.py:649
+#: nmkapp/views.py:654
 #, python-format
 msgid "Round \"%s\" set as active"
 msgstr "Spielrunde \"%s\" ist aktiv"
 
-#: nmkapp/views.py:661
+#: nmkapp/views.py:666
 #, python-format
 msgid "[nmk.bet] New round \"%s\" available"
 msgstr "[nmk.bet] Neue Spielrunde \"%s\" ist verfügbar"
 
-#: nmkapp/views.py:672
+#: nmkapp/views.py:677
 #, python-format
 msgid "Round \"%s\" set as inactive"
 msgstr "Spielrunde \"%s ist nicht aktiv"
 
-#: nmkapp/views.py:699
+#: nmkapp/views.py:704
 #, python-format
 msgid "New round \"%s\" created successfully"
 msgstr "Neue Spielrunde \"%s wurde erfolgreich kreiert"
 
-#: nmkapp/views.py:720
+#: nmkapp/views.py:725
 msgid "Match successfully added"
 msgstr "Match wurde erfolgreich hinzugefügt"
 
-#: nmkapp/views.py:755
+#: nmkapp/views.py:760
 msgid "Result added successfully"
 msgstr "Ergebniss wurde efolgreich hinzugefügt"
 
-#: nmkapp/views.py:779
+#: nmkapp/views.py:784
 #, python-format
 msgid "[nmk.bet] All results from round \"%s\" received"
 msgstr "[nmk.bet] Alle Ergebnisse der Spielrunde \"%s\" erhalten"
