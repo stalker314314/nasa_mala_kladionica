@@ -70,7 +70,7 @@ $(document).ready(function() {
 <div class="table-responsive">
     <table class="standings sortable largetable">
         <thead>
-            <tr style="height: 40px;">
+            <tr style="height: 30px;">
                 <th>#</th>
                 <th class="firstcol1">{% trans "Player" %}</th>
                 {% for round in rounds %}
@@ -88,7 +88,7 @@ $(document).ready(function() {
             {% if standing.0.user.email == user.email %}
             <tr style="background: rgb(204, 204, 204);">
             {% else %}
-            <tr style="height: 40px">
+            <tr style="height: 30px">
             {% endif %}
                 <td>{{ standing.3 }}.</td>
                 <td>

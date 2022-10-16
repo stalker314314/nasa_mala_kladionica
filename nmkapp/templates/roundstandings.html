@@ -79,13 +79,13 @@ function refreshPage(sel) {
                 <th>#</th>
                 <th class="firstcol" rowspan="2">{% trans "Player" %}</th>
                 {% for match in matches %}
-                <th class="sorttable_nosort">
+                <th class="sorttable_nosort text-center">
                     {% if match.round.get_group_type_display == "League" %}
                     <a href="/results/league">
                     {% else %}
                     <a href="/results/cup">
                     {% endif %}
-                    {{ match.home_team.name }} - {{ match.away_team.name }}</a>
+                    {{ match.home_team.name }}<br/>–<br/>{{ match.away_team.name }}</a>
                 </th>
                 {% endfor %}
                 <th class="sortable number">∑</th>
