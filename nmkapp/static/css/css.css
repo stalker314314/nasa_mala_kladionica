@@ -74,7 +74,7 @@ body {
 }
 
 #content {
-	font: 0.9em Verdana, Arial, Helvetica, sans-serif;
+	font: 0.8em Verdana, Arial, Helvetica, sans-serif;
 	color: #666;
 	text-decoration: none;
 	width: 87%;
@@ -129,11 +129,6 @@ a.small-navigation:hover {
 	.nav-item {
 	    font-size: 1.2em;
 	}
-
-    #content {
-	    font: 1.1em Verdana, Arial, Helvetica, sans-serif;
-	    line-height: 1.5em;
-	}
 }
 
 @media (max-width: 767px) {
@@ -147,11 +142,6 @@ a.small-navigation:hover {
 
 	.nav-item {
 	    font-size: 1.2em;
-	}
-
-    #content {
-	    font: 1.1em Verdana, Arial, Helvetica, sans-serif;
-	    line-height: 1.5em;
 	}
 }
 
@@ -437,11 +427,6 @@ ul.proposition {
     .container {
         min-height: calc( 100vh - 20px - 130px );
     }
-
-    #content {
-	    font: 1.1em Verdana, Arial, Helvetica, sans-serif;
-	    line-height: 1.5em;
-	}
 }
 
 #logo-title {
@@ -585,17 +570,8 @@ footer section:last-child {
 
 @media only screen
   and ( min-width: 1400px ) {
-  :root {
-    --font-size: 18px;
-  }
-
   .nav-item {
     font-size: 1.2em;
-  }
-
-  #content {
-    font: 0.9em Verdana, Arial, Helvetica, sans-serif;
-	line-height: 1.5em;
   }
 }
 
@@ -665,11 +641,6 @@ footer section:last-child {
 	.nav-item {
 	    font-size: 1.2em;
 	}
-
-    #content {
-	    font: 1.1em Verdana, Arial, Helvetica, sans-serif;
-	    line-height: 1.5em;
-	}
 }
 
 
@@ -681,10 +652,5 @@ footer section:last-child {
 
 	.nav-item {
 	    font-size: 1.2em;
-	}
-
-    #content {
-	    font: 1.1em Verdana, Arial, Helvetica, sans-serif;
-	    line-height: 1.5em;
 	}
 }

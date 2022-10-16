@@ -28,16 +28,13 @@ $(document).ready(function() {
         e.stopPropagation();
     });
 
-    //var $table = $('table.demo');
-    //$table.floatThead();
-
     var $table = $('table.standings');
     $table.floatThead({
         responsiveContainer: function($table){
             return $table.closest('.table-responsive');
         },
         top: function() {
-		    $top = parseInt($('.navbar').height())+15;
+		    $top = parseInt($('.navbar').height())+16;
 		    return $top;
     	}
     });

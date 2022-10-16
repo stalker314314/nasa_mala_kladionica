@@ -18,28 +18,9 @@ function refreshPage(sel) {
 </script>
 
 <script type="text/javascript">
-    apply_floatThead = function() {
-        $tbl = $('#roundstandings')
-        $top = parseInt($('.navbar').height())+10;
-        if ($top < 0) $top = 0;
-        $tbl.floatThead('destroy');
-        $tbl.floatThead({
-            position: 'absolute',
-            top: $top,
-        });
-        $tbl.trigger('reflow');
-    };
-
-	$(document).ready(function() {
-		$('.tooltip').tipsy({fade: true, delayIn: 500});
-		apply_floatThead();
-		$(window).resize(function () {
-		    apply_floatThead();
-		});
-	});
-
     $(document).ready(function() {
-        // $('[data-toggle="popover"]').popover()
+		$('.tooltip').tipsy({fade: true, delayIn: 500});
+
         $('html').click(function(e) {
             $('[data-toggle="popover"]').popover('hide');
             $('[data-toggle="popover"]').popover('hide');
@@ -51,6 +32,17 @@ function refreshPage(sel) {
         }).click(function(e) {
             $(this).popover('toggle');
             e.stopPropagation();
+        });
+
+        var $table = $('table.standings');
+        $table.floatThead({
+            responsiveContainer: function($table){
+                return $table.closest('.table-responsive');
+            },
+            top: function() {
+                $top = parseInt($('.navbar').height())+16;
+                return $top;
+            }
         });
     });
 </script>
@@ -80,8 +72,8 @@ function refreshPage(sel) {
 <br/>
 <br/>
 
-<div class="table-responsive" style="overflow-x: visible;">
-    <table id="roundstandings" class="sortable">
+<div class="table-responsive">
+    <table id="roundstandings" class="standings sortable">
         <thead style="height: 40px">
             <tr>
                 <th>#</th>
