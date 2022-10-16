@@ -12,6 +12,16 @@
     {% if is_registration_allowed %}
         {% if player %}
             {% if player.in_money %}
+                {% if player.pledged_donation or not is_registration_allowed %}
+                {% else %}
+                    <div role="alert" class="alert alert-info">
+                    {% blocktrans %}
+                        If you want, you can 'pledge' to give your earnings to humanitarian cause of your choosing. This
+                        is preferred way to play NMK. Your name will be shown in different color in standing tables. If you
+                        are up to it, send mail to admin@nmk.bet to notify us and - thanks!
+                    {% endblocktrans %}
+                    </div>
+                {% endif %}
             {% else %}
                 <br/>
                 <br/>

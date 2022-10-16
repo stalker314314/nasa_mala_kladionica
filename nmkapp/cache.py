@@ -137,6 +137,7 @@ class RoundStandingsCache:
                     ur_simple = {
                                  'email': last_user_round.user.email,
                                  'in_money': last_user_round.user.player.in_money,
+                                 'pledged_donation': last_user_round.user.player.pledged_donation,
                                  'display_name': last_user_round.user.first_name,
                                  'points': last_user_round.points
                                  }
@@ -181,6 +182,7 @@ class RoundStandingsCache:
                     ur_simple = {
                                  'email': user_round_not_player.user.email,
                                  'in_money': user_round_not_player.user.player.in_money,
+                                 'pledged_donation': user_round_not_player.user.player.pledged_donation,
                                  'display_name': user_round_not_player.user.first_name,
                                  'points': user_round_not_player.points
                                  }

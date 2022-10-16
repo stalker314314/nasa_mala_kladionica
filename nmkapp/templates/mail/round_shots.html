@@ -20,7 +20,11 @@
 		<tr style="height: 40px">
 			<td>
 			{% if round_standing.user_round.user.player.in_money %}
-				<b>{{ round_standing.user_round.user.first_name }}</b>
+				{% if round_standing.user_round.user.player.pledged_donation %}
+					<b style="color: #600;">{{ round_standing.user_round.user.first_name }}</b>
+				{% else %}
+					<b>{{ round_standing.user_round.user.first_name }}</b>
+				{% endif %}
 			{% else %}
 				{{ round_standing.user_round.user.first_name }}
 			{% endif %}

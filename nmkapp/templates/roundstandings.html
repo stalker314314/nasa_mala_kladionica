@@ -107,7 +107,11 @@ function refreshPage(sel) {
                 <td>
                 {% endif %}
                 {% if round_standing.user_round.in_money %}
-                    <b>{{ round_standing.user_round.display_name }}</b>
+                    {% if round_standing.user_round.pledged_donation %}
+                        <b style="color: #600;">{{ round_standing.user_round.display_name }}</b>
+                    {% else %}
+                        <b>{{ round_standing.user_round.display_name }}</b>
+                    {% endif %}
                 {% else %}
                     {{ round_standing.user_round.display_name }}
                 {% endif %}
@@ -192,7 +196,11 @@ function refreshPage(sel) {
 
 <br/>
 <br/>
+<div>
 * {% trans "Players playing in real money are shown bolded" %}
+<br/>
+* {% trans "Players that pledged donations are shown in" %} <b style="color: #600;">{% trans "red" %}</b> {% trans "color." %}
+</div>
 
 {% else %}
     <div class="alert alert-warning alert-dismissible fade show text-left" role="alert">

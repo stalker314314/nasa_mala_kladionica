@@ -38,30 +38,39 @@
 <br/>
 {% is_registration_allowed as is_registration_allowed %}
 {% if is_registration_allowed %}
-{% if current_user.player.in_money %}
-{% else %}
-<h1 class="content-header">{% trans "REAL MONEY BETTING" %}</h1>
+    {% if current_user.player.in_money %}
+        {% if current_user.player.pledged_donation or not is_registration_allowed %}
+        {% else %}
+            <div role="alert" class="alert alert-info">
+            {% blocktrans %}
+            If you want, you can 'pledge' to give your earnings to humanitarian cause of your choosing. This
+            is preferred way to play NMK. Your name will be shown in different color in standing tables. If you
+            are up to it, send mail to admin@nmk.bet to notify us and - thanks!
+            {% endblocktrans %}
+            </div>
+        {% endif %}
+    {% else %}
+        <h1 class="content-header">{% trans "REAL MONEY BETTING" %}</h1>
 
-{% blocktrans %}
-If you want to play in real money, that will cost you 20€.
-You can sign up for this 1h before first match starts latest!
-{% endblocktrans %}
+        {% blocktrans %}
+        If you want to play in real money, that will cost you 20€.
+        You can sign up for this 1h before first match starts latest!
+        {% endblocktrans %}
 
-<br/>
-{% blocktrans %}You can see more detail at the page with <a href="/proposition">propositions</a>.{% endblocktrans %}
-<br/>
-<br/>
+        <br/>
+        {% blocktrans %}You can see more detail at the page with <a href="/proposition">propositions</a>.{% endblocktrans %}
+        <br/>
+        <br/>
 
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-	<input type="hidden" name="cmd" value="_s-xclick">
-	<input type="hidden" name="hosted_button_id" value="LTSLB5DY9345W">
-	<input type="hidden" name="custom" value="{{ current_user.user.email }}">
-	<input type="image" src="https://www.paypalobjects.com/{% trans "en_US" %}/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-	<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
-<br/>
-
-{% endif %}
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="LTSLB5DY9345W">
+            <input type="hidden" name="custom" value="{{ current_user.user.email }}">
+            <input type="image" src="https://www.paypalobjects.com/{% trans "en_US" %}/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+        <br/>
+    {% endif %}
 {% endif %}
 
 <h1 class="content-header">{% trans "SETTINGS" %}</h1>

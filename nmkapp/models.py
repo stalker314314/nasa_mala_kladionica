@@ -17,6 +17,7 @@ class Player(models.Model):
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     in_money = models.BooleanField(default=False)
+    pledged_donation = models.BooleanField(default=False)
     points = models.FloatField(default=0)
     send_mail_round_started = models.BooleanField(default=True)
     send_mail_reminder = models.BooleanField(default=True)

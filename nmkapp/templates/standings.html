@@ -93,7 +93,11 @@ $(document).ready(function() {
                 <td>{{ standing.3 }}.</td>
                 <td>
                 {% if standing.0.user.player.in_money %}
-                    <b>{{ standing.0.user.first_name }}</b>
+                    {% if standing.0.user.player.pledged_donation %}
+                        <b style="color: #600;">{{ standing.0.user.first_name }}</b>
+                    {% else %}
+                        <b>{{ standing.0.user.first_name }}</b>
+                    {% endif %}
                 {% else %}
                     {{ standing.0.user.first_name }}
                 {% endif %}
@@ -111,6 +115,10 @@ $(document).ready(function() {
 
 <br/>
 <br/>
-* {% trans "Players playing in real money are shown bolded" %}
+<div>
+    * {% trans "Players playing in real money are shown bolded" %}
+    <br/>
+    * {% trans "Players that pledged donations are shown in" %} <b style="color: #600;">{% trans "red" %}</b> {% trans "color." %}
+</div>
 
 {% endblock %}
