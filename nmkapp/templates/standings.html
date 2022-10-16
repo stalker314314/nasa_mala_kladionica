@@ -27,6 +27,20 @@ $(document).ready(function() {
         $(this).popover('toggle');
         e.stopPropagation();
     });
+
+    //var $table = $('table.demo');
+    //$table.floatThead();
+
+    var $table = $('table.standings');
+    $table.floatThead({
+        responsiveContainer: function($table){
+            return $table.closest('.table-responsive');
+        },
+        top: function() {
+		    $top = parseInt($('.navbar').height())+15;
+		    return $top;
+    	}
+    });
 });
 </script>
 
@@ -57,7 +71,7 @@ $(document).ready(function() {
 <br/>
 
 <div class="table-responsive">
-    <table class="sortable largetable">
+    <table class="standings sortable largetable">
         <thead>
             <tr style="height: 40px;">
                 <th>#</th>
