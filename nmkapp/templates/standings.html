@@ -86,9 +86,9 @@ $(document).ready(function() {
         <tbody>
             {% for standing in standings %}
             {% if standing.0.user.email == user.email %}
-            <tr style="background: rgb(204, 204, 204);">
+            <tr style="height: 30px; background: rgb(204, 204, 204);">
             {% else %}
-            <tr style="height: 30px">
+            <tr style="height: 30px;background: white;">
             {% endif %}
                 <td>{{ standing.3 }}.</td>
                 <td>
