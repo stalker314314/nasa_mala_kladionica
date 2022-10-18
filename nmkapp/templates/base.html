@@ -83,14 +83,14 @@
     {% endif %}
         {% if not no_menu %}
         <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top d-lg-none">
-            <a class="navbar-brand float-left no-hover-style" href="/">
-                <img src="{% static "img/wc2022-logo32.png" %}" class="img-fluid img-responsive mx-auto d-block" alt="logo">
-            </a>
-            <span class="navbar-text float-left d-md-none">nmk.bet</span>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault"
                     aria-controls="navbarsDefault" aria-expanded="false" aria-label="{% trans "Navigation" %}">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <span class="navbar-text float-left d-md-none">nmk.bet</span>
+            <a class="navbar-brand float-left no-hover-style" href="/">
+                <img src="{% static "img/wc2022-logo32.png" %}" class="img-fluid img-responsive mx-auto d-block" alt="logo">
+            </a>
 
             <div class="collapse navbar-collapse" id="navbarsDefault">
                 <ul class="navbar-nav mr-auto">
@@ -185,7 +185,11 @@
                     <a href="/admin/points" class="navigation">{% trans "Points" %}</a>
                     {% endif %}
                 </div>
-                <div id="content" class="col-12 col-lg-10">
+                {% if expand_content %}
+                <div id="content" class="col-lg-10">
+                {% else %}
+                <div id="content" class="col-lg-8">
+                {% endif %}
                 {% else %}
                 <div id="content" class="col-12 col-lg-6 text-center">
                 {% endif %}

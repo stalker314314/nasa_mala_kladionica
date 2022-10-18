@@ -7,8 +7,30 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 
 <script type="text/javascript">
+	function getCookie(cname) {
+		let name = cname + "=";
+		let decodedCookie = decodeURIComponent(document.cookie);
+		let ca = decodedCookie.split(';');
+		for(let i = 0; i <ca.length; i++) {
+			let c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+		}
+  		return "";
+	}
+
+	function setCookie(cname, cvalue, exdays) {
+		const d = new Date();
+		d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+		let expires = "expires="+d.toUTCString();
+		document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	}
+
     $(document).ready(function() {
-        // $('[data-toggle="popover"]').popover()
         $('html').click(function(e) {
             $('[data-toggle="popover"]').popover('hide');
             $('[data-toggle="popover"]').popover('hide');
@@ -21,6 +43,12 @@
             $(this).popover('toggle');
             e.stopPropagation();
         });
+
+        let pledge_notification = getCookie("pledge_notification");
+		if (pledge_notification == "") {
+			$("div#pledge_notification_placeholder").show();
+			setCookie("pledge_notification", "seen", 365);
+		}
 	});
 </script>
 
@@ -41,13 +69,18 @@
     {% if current_user.player.in_money %}
         {% if current_user.player.pledged_donation or not is_registration_allowed %}
         {% else %}
-            <div role="alert" class="alert alert-info">
-            {% blocktrans %}
-            If you want, you can 'pledge' to give your earnings to humanitarian cause of your choosing. This
-            is preferred way to play NMK. Your name will be shown in different color in standing tables. If you
-            are up to it, send mail to admin@nmk.bet to notify us and - thanks!
-            {% endblocktrans %}
-            </div>
+			<div id="pledge_notification_placeholder" style="display: none;">
+				<div role="alert" class="alert alert-info alert-dismissible">
+			{% blocktrans %}
+				If you want, you can 'pledge' to give your earnings to humanitarian cause of your choosing. This
+				is preferred way to play NMK. Your name will be shown in different color in standing tables. If you
+				are up to it, send mail to admin@nmk.bet to notify us and - thanks!
+			{% endblocktrans %}
+					<button type="button" class="close" data-dismiss="alert" aria-label="{% trans "Close" %}">
+            			<span aria-hidden="true">×</span>
+        			</button>
+				</div>
+			</div>
         {% endif %}
     {% else %}
         <h1 class="content-header">{% trans "REAL MONEY BETTING" %}</h1>
@@ -141,7 +174,7 @@
 
         <div id="buttonBox">
             <br/>
-            <input class="btn btn-secondary btn-sm" value="{% trans "Change" %}" type="submit"/>
+            <input class="btn btn-secondary btn-sm" value="{% trans "Apply" %}" type="submit"/>
         </div>
     </fieldset>
 </form>

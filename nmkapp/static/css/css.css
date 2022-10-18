@@ -8,6 +8,21 @@ body {
     body {
         padding-top: 70px;
     }
+
+    .container {
+        min-height: calc( 100vh - 20px - 130px );
+    }
+
+    #content {
+        padding: 60px 15px 15px 5px;
+    }
+
+    .navigation {
+        border-style: none;
+    }
+    .navbar-nav .nav-link {
+        padding: 0px 0px 0px 0px;
+    }
 }
 
 :root {
@@ -83,11 +98,6 @@ body {
 	background-color: #fff;
 	line-height: 1.5em;
 }
-@media (max-width: 991px) {
-    #content {
-        padding: 60px 15px 15px 5px;
-    }
-}
 
 /***********************************
 	LINKS
@@ -116,19 +126,6 @@ a.small-navigation:hover {
 	padding: 3px 0px 3px 5px;
 	text-align: left;
 	font-weight: normal;
-}
-
-@media (max-width: 991px) {
-    .navigation {
-        border-style: none;
-    }
-    .navbar-nav .nav-link {
-        padding: 0px 0px 0px 0px;
-    }
-
-	.nav-item {
-	    font-size: 1.2em;
-	}
 }
 
 @media (max-width: 767px) {
@@ -423,11 +420,6 @@ ul.proposition {
   /* makes the grass look fancily aligned on bottom when empty */
   min-height: calc( 100vh - 110px - 130px );
 }
-@media (max-width: 991px) {
-    .container {
-        min-height: calc( 100vh - 20px - 130px );
-    }
-}
 
 #logo-title {
   font-size: 2.5em;
@@ -638,9 +630,6 @@ footer section:last-child {
 		padding: 0 50px;
 	}
 
-	.nav-item {
-	    font-size: 1.2em;
-	}
 }
 
 

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-16 17:53+0000\n"
-"PO-Revision-Date: 2022-10-16 20:51+0200\n"
+"POT-Creation-Date: 2022-10-18 20:12+0000\n"
+"PO-Revision-Date: 2022-10-18 19:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -244,7 +244,7 @@ msgstr "[nmk.bet] Runde \"%s\" Erinnerung"
 msgid "[nmk.bet] Round \"%s\" started"
 msgstr "[nmk.bet] Runde \"%s\" hat begonnen"
 
-#: nmkapp/templates/about.html:7 nmkapp/templates/base.html:227
+#: nmkapp/templates/about.html:7 nmkapp/templates/base.html:231
 #: nmkapp/templates/landing.html:197
 msgid "About us"
 msgstr "Über uns"
@@ -346,7 +346,7 @@ msgstr "NMK.BET - AKTIVIERUNG"
 msgid "You successfully activated account. Fun can start... now!"
 msgstr "Sie haben Ihr Konto erfolgreich akiviert. Der Spaß beginnt...jetzt!"
 
-#: nmkapp/templates/activation.html:17
+#: nmkapp/templates/activation.html:18
 msgid ""
 "\n"
 "                        If you want, you can 'pledge' to give your earnings "
@@ -366,12 +366,12 @@ msgstr ""
 "admin@nmk.bet, um uns zu benachrichtigen, und - danke!\n"
 "                    "
 
-#: nmkapp/templates/activation.html:27
+#: nmkapp/templates/activation.html:29
 msgid "If you want to play in real money, that will cost you"
 msgstr ""
 "Wenn Sie mit echtem Geld spielen möchten, wird das Sie auch etwas kosten"
 
-#: nmkapp/templates/activation.html:29
+#: nmkapp/templates/activation.html:31
 msgid ""
 "You can find all other details at the <a href=\"/proposition\">proposition</"
 "a> page."
@@ -379,16 +379,16 @@ msgstr ""
 "Sie können die Details auf der Seite mit den <a href=\"/"
 "proposition\">Angeboten</a> finden."
 
-#: nmkapp/templates/activation.html:38 nmkapp/templates/home.html:37
-#: nmkapp/templates/profile.html:67 nmkapp/templates/proposition.html:43
+#: nmkapp/templates/activation.html:40 nmkapp/templates/home.html:78
+#: nmkapp/templates/profile.html:102 nmkapp/templates/proposition.html:43
 msgid "en_US"
 msgstr "de_DE"
 
-#: nmkapp/templates/activation.html:45
+#: nmkapp/templates/activation.html:47
 msgid "Invalid activation"
 msgstr "Ungültige Aktivierung"
 
-#: nmkapp/templates/activation.html:50 nmkapp/templates/forgotpassword.html:14
+#: nmkapp/templates/activation.html:52 nmkapp/templates/forgotpassword.html:14
 #: nmkapp/templates/forgotpassword.html:30 nmkapp/templates/register.html:30
 #: nmkapp/templates/register_success.html:18
 #: nmkapp/templates/request_display_name.html:34
@@ -404,8 +404,9 @@ msgstr "Zurück zur Anmeldung"
 #: nmkapp/templates/admin_rounds.html:12
 #: nmkapp/templates/admin_rounds_edit.html:10
 #: nmkapp/templates/create_password.html:12 nmkapp/templates/crew.html:11
-#: nmkapp/templates/home.html:53 nmkapp/templates/home.html:121
-#: nmkapp/templates/password.html:12 nmkapp/templates/profile.html:31
+#: nmkapp/templates/home.html:56 nmkapp/templates/home.html:94
+#: nmkapp/templates/home.html:162 nmkapp/templates/password.html:12
+#: nmkapp/templates/profile.html:59 nmkapp/templates/profile.html:79
 #: nmkapp/templates/roundstandings.html:208
 msgid "Close"
 msgstr "Schließen"
@@ -414,12 +415,12 @@ msgstr "Schließen"
 msgid "Update"
 msgstr "Aktualisieren"
 
-#: nmkapp/templates/base.html:91
+#: nmkapp/templates/base.html:87
 msgid "Navigation"
 msgstr "Navigation"
 
 #: nmkapp/templates/base.html:99 nmkapp/templates/base.html:163
-#: nmkapp/templates/base.html:222
+#: nmkapp/templates/base.html:226
 msgid "Betting"
 msgstr "Wetten"
 
@@ -441,7 +442,7 @@ msgstr "Mannschaften"
 
 #: nmkapp/templates/base.html:114 nmkapp/templates/base.html:136
 #: nmkapp/templates/base.html:168 nmkapp/templates/base.html:172
-#: nmkapp/templates/base.html:229 nmkapp/templates/landing.html:199
+#: nmkapp/templates/base.html:233 nmkapp/templates/landing.html:199
 msgid "Propositions"
 msgstr "Angebote"
 
@@ -462,17 +463,17 @@ msgid "Results"
 msgstr "Ergebnisse"
 
 #: nmkapp/templates/base.html:124 nmkapp/templates/base.html:185
-#: nmkapp/templates/results_league.html:20
+#: nmkapp/templates/results_league.html:21
 msgid "Points"
 msgstr "Punkte"
 
 #: nmkapp/templates/base.html:129 nmkapp/templates/base.html:169
-#: nmkapp/templates/base.html:223
+#: nmkapp/templates/base.html:227
 msgid "Logout"
 msgstr "Abmelden"
 
 #: nmkapp/templates/base.html:133 nmkapp/templates/base.html:171
-#: nmkapp/templates/base.html:225 nmkapp/templates/landing.html:196
+#: nmkapp/templates/base.html:229 nmkapp/templates/landing.html:196
 #: nmkapp/templates/login.html:40
 msgid "Login"
 msgstr "Anmelden"
@@ -481,40 +482,40 @@ msgstr "Anmelden"
 msgid "Menu"
 msgstr "Menü"
 
-#: nmkapp/templates/base.html:206 nmkapp/templates/landing.html:183
+#: nmkapp/templates/base.html:210 nmkapp/templates/landing.html:183
 msgid "Number of registered players"
 msgstr "Zahl der registrierten Spielern"
 
-#: nmkapp/templates/base.html:207 nmkapp/templates/landing.html:184
+#: nmkapp/templates/base.html:211 nmkapp/templates/landing.html:184
 msgid "real money players"
 msgstr "Echte Spieler"
 
-#: nmkapp/templates/base.html:208 nmkapp/templates/landing.html:185
+#: nmkapp/templates/base.html:212 nmkapp/templates/landing.html:185
 msgid "Prize money"
 msgstr "Preisgeld"
 
-#: nmkapp/templates/base.html:215 nmkapp/templates/landing.html:190
+#: nmkapp/templates/base.html:219 nmkapp/templates/landing.html:190
 #: nmkapp/templates/landing.html:219
 msgid "©2022 nmk.bet, All rights reserved"
 msgstr "©2022 nmk.bet, Alle Rechte vorbehalten"
 
-#: nmkapp/templates/base.html:228 nmkapp/templates/landing.html:198
+#: nmkapp/templates/base.html:232 nmkapp/templates/landing.html:198
 msgid "Contact"
 msgstr "Kontakt"
 
-#: nmkapp/templates/base.html:230 nmkapp/templates/landing.html:200
+#: nmkapp/templates/base.html:234 nmkapp/templates/landing.html:200
 msgid "Terms & Condition"
 msgstr "Allgemeine Bedingungen"
 
-#: nmkapp/templates/base.html:231 nmkapp/templates/landing.html:201
+#: nmkapp/templates/base.html:235 nmkapp/templates/landing.html:201
 msgid "Privacy Policy"
 msgstr "Datenschutzklärung"
 
-#: nmkapp/templates/base.html:235 nmkapp/templates/landing.html:205
+#: nmkapp/templates/base.html:239 nmkapp/templates/landing.html:205
 msgid "Follow Us"
 msgstr "Folge uns"
 
-#: nmkapp/templates/create_password.html:6 nmkapp/templates/profile.html:151
+#: nmkapp/templates/create_password.html:6 nmkapp/templates/profile.html:186
 msgid "CREATE PASSWORD"
 msgstr "PASSWORT ERTSTELLEN"
 
@@ -615,12 +616,12 @@ msgstr ""
 "ihre Mitglieder löschen möchten?"
 
 #: nmkapp/templates/group_delete.html:15 nmkapp/templates/group_leave.html:15
-#: nmkapp/templates/home.html:61
+#: nmkapp/templates/home.html:102
 msgid "Yes"
 msgstr "Ja"
 
 #: nmkapp/templates/group_delete.html:16 nmkapp/templates/group_leave.html:16
-#: nmkapp/templates/home.html:62
+#: nmkapp/templates/home.html:103
 msgid "No"
 msgstr "Nein"
 
@@ -636,7 +637,7 @@ msgstr ""
 msgid "Active rounds"
 msgstr "Aktive Spielrunden"
 
-#: nmkapp/templates/home.html:16
+#: nmkapp/templates/home.html:51 nmkapp/templates/profile.html:74
 msgid ""
 "\n"
 "\t\t\t\tIf you want, you can 'pledge' to give your earnings to humanitarian "
@@ -655,7 +656,7 @@ msgstr ""
 "benachrichtigen, und - danke!\n"
 "\t\t\t"
 
-#: nmkapp/templates/home.html:23
+#: nmkapp/templates/home.html:64
 msgid ""
 "\n"
 "\t\tIf you want to play in real money, that will cost you 20€.\n"
@@ -668,17 +669,17 @@ msgstr ""
 "Spiel!\n"
 "\t\t"
 
-#: nmkapp/templates/home.html:29 nmkapp/templates/profile.html:59
+#: nmkapp/templates/home.html:70 nmkapp/templates/profile.html:94
 msgid ""
 "You can see more detail at the page with <a href=\"/"
 "proposition\">propositions</a>."
 msgstr "Für mehr Details, sehen Sie <a href=\"/proposition\">Angeboten</a>."
 
-#: nmkapp/templates/home.html:52
+#: nmkapp/templates/home.html:93
 msgid "Confirmation"
 msgstr "Bestätigung"
 
-#: nmkapp/templates/home.html:58
+#: nmkapp/templates/home.html:99
 msgid ""
 "Once you click Final Decision, you will not be able to change bets! Are you "
 "really sure?"
@@ -686,28 +687,28 @@ msgstr ""
 "Wenn Sie auf die Finale Entscheidung klicken, sind Sie nicht mehr in "
 "Möglichkeit, die Wetten zu ändern! Sind Sie sicher?"
 
-#: nmkapp/templates/home.html:76 nmkapp/templates/home.html:153
+#: nmkapp/templates/home.html:117 nmkapp/templates/home.html:195
 msgid "Save"
 msgstr "Speichern"
 
-#: nmkapp/templates/home.html:109 nmkapp/templates/results_league.html:43
+#: nmkapp/templates/home.html:150 nmkapp/templates/results_league.html:44
 msgid "Round"
 msgstr "Spielrunde"
 
-#: nmkapp/templates/home.html:110
+#: nmkapp/templates/home.html:151
 msgid "remaining bet time:"
 msgstr "verbleibende Wettenzeit:"
 
-#: nmkapp/templates/home.html:132 nmkapp/templates/home.html:174
-#: nmkapp/templates/results_cup.html:16 nmkapp/templates/results_league.html:45
+#: nmkapp/templates/home.html:173 nmkapp/templates/home.html:216
+#: nmkapp/templates/results_cup.html:16 nmkapp/templates/results_league.html:46
 msgid "Match"
 msgstr "Match"
 
-#: nmkapp/templates/home.html:154
+#: nmkapp/templates/home.html:196
 msgid "Final Decision"
 msgstr "Finale Entscheidung"
 
-#: nmkapp/templates/home.html:158
+#: nmkapp/templates/home.html:200
 msgid ""
 "<strong>Save</strong> &nbsp;&nbsp; remembers your bets. Saved bets will be "
 "used even if you\n"
@@ -717,7 +718,7 @@ msgstr ""
 "Wetten werden benutzt, obwohl\n"
 "Sie auf die \"Finale Entscheidung\" nicht geklickt haben vor der Spielrunde"
 
-#: nmkapp/templates/home.html:161
+#: nmkapp/templates/home.html:203
 msgid ""
 "<strong>Final Decision</strong> &nbsp;&nbsp; will persist your bets, so you "
 "will not be\n"
@@ -728,15 +729,15 @@ msgstr ""
 "so dass Sie sie nicht mehr ändern können, aber Sie können die Wetten anderer "
 "Spieler sehen"
 
-#: nmkapp/templates/home.html:175
+#: nmkapp/templates/home.html:217
 msgid "Bet"
 msgstr "Wette"
 
-#: nmkapp/templates/home.html:176 nmkapp/templates/roundstandings.html:158
+#: nmkapp/templates/home.html:218 nmkapp/templates/roundstandings.html:158
 msgid "Odd"
 msgstr "Gewinnchancen"
 
-#: nmkapp/templates/home.html:214
+#: nmkapp/templates/home.html:256
 msgid "Other players' bets"
 msgstr "Wetten anderer Spieler"
 
@@ -1102,7 +1103,7 @@ msgstr "PASSWORT ÄNDERN"
 msgid "Old password"
 msgstr "Altes Passwort"
 
-#: nmkapp/templates/password.html:50 nmkapp/templates/profile.html:142
+#: nmkapp/templates/password.html:50
 msgid "Change"
 msgstr "Ändern"
 
@@ -1140,31 +1141,11 @@ msgstr ""
 "(als ein Zeichen, dass Sie echtes Geld eingesetzt haben). Falls das nicht "
 "passiert, kontaktieren Sie den Admin der Seite admin@nmk.bet.\n"
 
-#: nmkapp/templates/profile.html:44
-msgid ""
-"\n"
-"            If you want, you can 'pledge' to give your earnings to "
-"humanitarian cause of your choosing. This\n"
-"            is preferred way to play NMK. Your name will be shown in "
-"different color in standing tables. If you\n"
-"            are up to it, send mail to admin@nmk.bet to notify us and - "
-"thanks!\n"
-"            "
-msgstr ""
-"\n"
-"            Wenn Sie möchten, können Sie sich dazu verpflichten, Ihre "
-"Einnahmen für humanitäre Zwecke Ihrer Wahl zu spenden. Dies ist\n"
-"            die bevorzugte Art, NMK zu spielen. In Stehtischen wird Ihr Name "
-"in unterschiedlichen Farben dargestellt. Wenn Sie\n"
-"            dazu bereit sind, senden Sie eine E-Mail an admin@nmk.bet, um "
-"uns zu benachrichtigen, und - danke!\n"
-"            "
-
-#: nmkapp/templates/profile.html:51
+#: nmkapp/templates/profile.html:86
 msgid "REAL MONEY BETTING"
 msgstr "WETTEN MIT ECHTEM GELD"
 
-#: nmkapp/templates/profile.html:53
+#: nmkapp/templates/profile.html:88
 msgid ""
 "\n"
 "        If you want to play in real money, that will cost you 20€.\n"
@@ -1177,15 +1158,15 @@ msgstr ""
 "Spiel!\n"
 "        "
 
-#: nmkapp/templates/profile.html:74
+#: nmkapp/templates/profile.html:109
 msgid "SETTINGS"
 msgstr "EINSTELLUNGEN"
 
-#: nmkapp/templates/profile.html:96
+#: nmkapp/templates/profile.html:131
 msgid "E-mail notifications"
 msgstr "E-Mail Nachrichten"
 
-#: nmkapp/templates/profile.html:104
+#: nmkapp/templates/profile.html:139
 msgid ""
 "Send reminder 24h before start of the first match in the round (only if you "
 "still didn't bet)"
@@ -1193,7 +1174,7 @@ msgstr ""
 "Erinnerungen 24 Stunden vor dem ersten Spiel schicken (nur falls Sie noch "
 "nicht gewettet haben)"
 
-#: nmkapp/templates/profile.html:114
+#: nmkapp/templates/profile.html:149
 msgid ""
 "Send verbatim copy of all bets once first match in round starts (to verify "
 "there is no tempering with bets afterwards!)"
@@ -1201,13 +1182,13 @@ msgstr ""
 "Eine Verbatim Kopie schicken, wenn das erste Spiel der Runde beginnt (zu "
 "versichern, dass es keine Änderungen mehr gibt!)"
 
-#: nmkapp/templates/profile.html:124
+#: nmkapp/templates/profile.html:159
 msgid "Send announcement that new round started and betting in it is available"
 msgstr ""
 "Eine Notifikation schicken, um zu wissen, dass eine neue Spielrunde verfügba "
 "ist und,dass Sie wetten können"
 
-#: nmkapp/templates/profile.html:134
+#: nmkapp/templates/profile.html:169
 msgid ""
 "Send announcement that all results from a single round are final and new "
 "points are calculated"
@@ -1215,15 +1196,19 @@ msgstr ""
 "Eine Notifikation schicken, dass alle Resultate aus einer Runde final sind "
 "und das die Punkte gerechnet werden"
 
-#: nmkapp/templates/profile.html:149
+#: nmkapp/templates/profile.html:177
+msgid "Apply"
+msgstr "Ändern"
+
+#: nmkapp/templates/profile.html:184
 msgid "CHANGE PASSWORD"
 msgstr "PASSWORT ÄNDERN"
 
-#: nmkapp/templates/profile.html:156
+#: nmkapp/templates/profile.html:191
 msgid "Change password"
 msgstr "Passwort ändern"
 
-#: nmkapp/templates/profile.html:160
+#: nmkapp/templates/profile.html:195
 msgid "Create password"
 msgstr "Passwort erstellen"
 
@@ -1490,11 +1475,11 @@ msgstr "Teil der Meisterschaft"
 msgid "Cup results"
 msgstr "Resultate der Meisterschaft"
 
-#: nmkapp/templates/results_cup.html:15 nmkapp/templates/results_league.html:44
+#: nmkapp/templates/results_cup.html:15 nmkapp/templates/results_league.html:45
 msgid "Date/time"
 msgstr "Datum/Zeit"
 
-#: nmkapp/templates/results_cup.html:17 nmkapp/templates/results_league.html:46
+#: nmkapp/templates/results_cup.html:17 nmkapp/templates/results_league.html:47
 msgid "Score"
 msgstr "Resultat"
 
@@ -1502,27 +1487,27 @@ msgstr "Resultat"
 msgid "League results"
 msgstr "Ergebnisse der Liga"
 
-#: nmkapp/templates/results_league.html:8
+#: nmkapp/templates/results_league.html:9
 msgid "Group"
 msgstr "Gruppe"
 
-#: nmkapp/templates/results_league.html:15
+#: nmkapp/templates/results_league.html:16
 msgid "Team"
 msgstr "Team"
 
-#: nmkapp/templates/results_league.html:16
+#: nmkapp/templates/results_league.html:17
 msgid "Played"
 msgstr "Gespielt"
 
-#: nmkapp/templates/results_league.html:17
+#: nmkapp/templates/results_league.html:18
 msgid "Won"
 msgstr "Gewonnen"
 
-#: nmkapp/templates/results_league.html:18
+#: nmkapp/templates/results_league.html:19
 msgid "Draw"
 msgstr "Unentschieden"
 
-#: nmkapp/templates/results_league.html:19
+#: nmkapp/templates/results_league.html:20
 msgid "Lost"
 msgstr "Verloren"
 
@@ -1585,28 +1570,28 @@ msgstr "[nmk.bet] Registration erfolgreich"
 msgid "[nmk.bet] Reset password request"
 msgstr "[nmk.bet] Anfrage zu Passwortrücksetzung"
 
-#: nmkapp/views.py:240 nmkapp/views.py:248
+#: nmkapp/views.py:246 nmkapp/views.py:254
 msgid "There is no active round currently to place bets, try again later"
 msgstr ""
 "Es gibt keine aktuellen Spielrunde fürs Wetten, bitte versuchen Sie es später"
 
-#: nmkapp/views.py:293
+#: nmkapp/views.py:301
 msgid "Bets successfully saved"
 msgstr "Wetten erfolgreich gespeichert"
 
-#: nmkapp/views.py:320
+#: nmkapp/views.py:330
 msgid "first match already started"
 msgstr "Das erste Match hat bereits angefangen"
 
-#: nmkapp/views.py:322
+#: nmkapp/views.py:332
 msgid "N/A"
 msgstr "N/A"
 
-#: nmkapp/views.py:341
+#: nmkapp/views.py:351
 msgid "Settings successfully saved"
 msgstr "Einstellungen erfolgreich gespeichert"
 
-#: nmkapp/views.py:365
+#: nmkapp/views.py:375
 #, python-format
 msgid ""
 "Crew created successfully. Now you can send invite code \"%s\" to your "
@@ -1616,74 +1601,93 @@ msgstr ""
 "\"%s\" ihren Freunde schicken per chat/E-Mail/SMS, sodass sie Ihrer "
 "Mannschaftbeitreten können"
 
-#: nmkapp/views.py:379
+#: nmkapp/views.py:389
 msgid "Joined crew successfully"
 msgstr "Erfolgreich die Mannschaft betreten"
 
-#: nmkapp/views.py:410
+#: nmkapp/views.py:420
 msgid "[nmk.bet] Player payed paypal"
 msgstr "[nmk.bet] Spieler bezahlt per Paypal"
 
-#: nmkapp/views.py:410
+#: nmkapp/views.py:420
 #, python-format
 msgid "Player %s"
 msgstr "Spieler %s"
 
-#: nmkapp/views.py:529
+#: nmkapp/views.py:539
 msgid ""
 "You cannot leave a crew that you created, you can only completely delete "
 "that crew."
 msgstr "Sie können die Mannschaft nicht verlassen, ohne sie zu löschen."
 
-#: nmkapp/views.py:537
+#: nmkapp/views.py:547
 #, python-format
 msgid "Successfully left a crew \"%s\""
 msgstr "Die Mannschaft \"%s\" wurde erfolgreich verlassen"
 
-#: nmkapp/views.py:552
+#: nmkapp/views.py:562
 msgid ""
 "You cannot delete crew that you are not owner of, you can only leave it."
 msgstr ""
 "Sie können die Manschaft nicht löschen, da Sie nicht der Grüder sind. Sie "
 "können sie nur verlassen."
 
-#: nmkapp/views.py:562
+#: nmkapp/views.py:572
 #, python-format
 msgid "Crew \"%s\" deleted"
 msgstr "Mannschaft \"%s\" ist gelöscht"
 
-#: nmkapp/views.py:652
+#: nmkapp/views.py:663
 #, python-format
 msgid "Round \"%s\" set as active"
 msgstr "Spielrunde \"%s\" ist aktiv"
 
-#: nmkapp/views.py:664
+#: nmkapp/views.py:675
 #, python-format
 msgid "[nmk.bet] New round \"%s\" available"
 msgstr "[nmk.bet] Neue Spielrunde \"%s\" ist verfügbar"
 
-#: nmkapp/views.py:675
+#: nmkapp/views.py:686
 #, python-format
 msgid "Round \"%s\" set as inactive"
 msgstr "Spielrunde \"%s ist nicht aktiv"
 
-#: nmkapp/views.py:702
+#: nmkapp/views.py:713
 #, python-format
 msgid "New round \"%s\" created successfully"
 msgstr "Neue Spielrunde \"%s wurde erfolgreich kreiert"
 
-#: nmkapp/views.py:723
+#: nmkapp/views.py:734
 msgid "Match successfully added"
 msgstr "Match wurde erfolgreich hinzugefügt"
 
-#: nmkapp/views.py:758
+#: nmkapp/views.py:769
 msgid "Result added successfully"
 msgstr "Ergebniss wurde efolgreich hinzugefügt"
 
-#: nmkapp/views.py:782
+#: nmkapp/views.py:793
 #, python-format
 msgid "[nmk.bet] All results from round \"%s\" received"
 msgstr "[nmk.bet] Alle Ergebnisse der Spielrunde \"%s\" erhalten"
+
+#~ msgid ""
+#~ "\n"
+#~ "            If you want, you can 'pledge' to give your earnings to "
+#~ "humanitarian cause of your choosing. This\n"
+#~ "            is preferred way to play NMK. Your name will be shown in "
+#~ "different color in standing tables. If you\n"
+#~ "            are up to it, send mail to admin@nmk.bet to notify us and - "
+#~ "thanks!\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "            Wenn Sie möchten, können Sie sich dazu verpflichten, Ihre "
+#~ "Einnahmen für humanitäre Zwecke Ihrer Wahl zu spenden. Dies ist\n"
+#~ "            die bevorzugte Art, NMK zu spielen. In Stehtischen wird Ihr "
+#~ "Name in unterschiedlichen Farben dargestellt. Wenn Sie\n"
+#~ "            dazu bereit sind, senden Sie eine E-Mail an admin@nmk.bet, um "
+#~ "uns zu benachrichtigen, und - danke!\n"
+#~ "            "
 
 #~ msgid ""
 #~ "(hey, seems you are not member of any crew.\n"

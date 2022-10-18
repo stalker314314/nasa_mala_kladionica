@@ -8,20 +8,57 @@
 <h1 class="content-header">{% trans "Active rounds" %}</h1>
 <br/>
 
+<script type="text/javascript">
+	function getCookie(cname) {
+		let name = cname + "=";
+		let decodedCookie = decodeURIComponent(document.cookie);
+		let ca = decodedCookie.split(';');
+		for(let i = 0; i <ca.length; i++) {
+			let c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+		}
+  		return "";
+	}
+
+	function setCookie(cname, cvalue, exdays) {
+		const d = new Date();
+		d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+		let expires = "expires="+d.toUTCString();
+		document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	}
+
+	$(document).ready(function() {
+		let pledge_notification = getCookie("pledge_notification");
+		if (pledge_notification == "") {
+			$("div#pledge_notification_placeholder").show();
+			setCookie("pledge_notification", "seen", 365);
+		}
+	});
+</script>
+
 {% is_registration_allowed as is_registration_allowed %}
 {% if is_registration_allowed %}
 	{% if user.player.in_money %}
 		{% if user.player.pledged_donation or not is_registration_allowed %}
 		{% else %}
-			<div role="alert" class="alert alert-info">
+			<div id="pledge_notification_placeholder" style="display: none;">
+				<div role="alert" class="alert alert-info alert-dismissible">
 			{% blocktrans %}
 				If you want, you can 'pledge' to give your earnings to humanitarian cause of your choosing. This
 				is preferred way to play NMK. Your name will be shown in different color in standing tables. If you
 				are up to it, send mail to admin@nmk.bet to notify us and - thanks!
 			{% endblocktrans %}
+					<button type="button" class="close" data-dismiss="alert" aria-label="{% trans "Close" %}">
+            			<span aria-hidden="true">×</span>
+        			</button>
+				</div>
 			</div>
-			<br/>
-			<br/>
+
 		{% endif %}
 	{% else %}
 		{% blocktrans %}
@@ -154,6 +191,7 @@
 				</tbody>
 			</table>
             <div class="offset">
+
                 <input class="btn btn-secondary" name="save_{{ bet.round.id }}" value="{% trans "Save" %}" type="button">
                 <input class="btn btn-danger" name="final_save_{{ bet.round.id }}" value="{% trans "Final Decision" %}" type="button">
                 <i class="fas fa-question-circle fa-lg awesome" data-toggle="collapse" data-target="#explain-betting"></i>

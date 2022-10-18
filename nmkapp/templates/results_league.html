@@ -3,13 +3,14 @@
 
 {% block content %}
 <h1 class="content-header">{% trans "League results" %}</h1>
+<br/><br/>
 {% for group in groups %}
 <h2 class="content-header">
 <a name="A">{% blocktrans %}Group{% endblocktrans %} {{ group.label }}</a>
 </h2>
 
 
-<table class="sortable">
+<table class="sortable col-lg-12">
 	<thead>
 		<tr>
 			<th scope="col" class="firstcol">{% trans "Team" %}</th>
@@ -37,13 +38,13 @@
 
 <br/>
 <br/>
-<table>
+<table class="table-striped col-lg-12">
 	<thead>
 		<tr>
 			<th scope="col">{% trans "Round" %}</th>
 			<th scope="col">{% trans "Date/time" %}</th>
 			<th scope="col">{% trans "Match" %}</th>
-			<th scope="col">{% trans "Score" %}</th>
+			<th class="number" scope="col">{% trans "Score" %}</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -52,7 +53,7 @@
 			<td><a href="/roundstandings/{{ match.round.id }}">{{ match.round.name }}</a></td>
 			<td>{{ match.start_time }}</td>
 			<td>{{ match.home_team.name}} - {{ match.away_team.name }}</td>
-			<td>{% if match.result != None %}
+			<td class="number">{% if match.result != None %}
 				{{ match.result }} ({{ match.score }})
 				{% else %}
 				- (-:-)
@@ -61,5 +62,6 @@
 		{% endfor %}
 	</tbody>
 </table>
+<br/><br/><br/><br/>
 {% endfor %}
 {% endblock %}

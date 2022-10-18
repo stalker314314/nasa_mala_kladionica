@@ -9,12 +9,12 @@
 	<a href="/roundstandings/{{ round.0.id }}">{{ round.0.name }}</a>
 </h2>
 
-<table class="sortable">
+<table class="sortable col-lg-12">
 	<thead>
 		<tr>
 			<th scope="col">{% trans "Date/time" %}</th>
 			<th scope="col">{% trans "Match" %}</th>
-			<th scope="col">{% trans "Score" %}</th>
+			<th class="number" scope="col">{% trans "Score" %}</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -22,7 +22,7 @@
 		<tr>
 			<td>{{ match.start_time }}</td>
 			<td>{{ match.home_team.name}} - {{ match.away_team.name }}</td>
-			<td>
+			<td class="number">
 			{% if match.result != None %}
 				{{ match.result }} ({{ match.score }})
 			{% else %}

@@ -235,6 +235,12 @@ def reset_password(request):
 def home(request):
     logger.info('User %s is on betting page', request.user)
     active_rounds = Round.objects.filter(active=True).order_by('id')
+
+    user_language = request.user.player.language
+    translation.activate(user_language)
+    if hasattr(request, 'session'):
+        request.session['_language'] = user_language
+
     if len(active_rounds) == 0:
         messages.add_message(request, messages.INFO,
                              _('There is no active round currently to place bets, try again later'))
@@ -246,7 +252,9 @@ def home(request):
         if len(user_rounds) != 1:
             messages.add_message(request, messages.INFO,
                                  _('There is no active round currently to place bets, try again later'))
-            return render(request, 'home.html', {'shots': []})
+            response = render(request, 'home.html', {'shots': []})
+            response.set_cookie(settings.LANGUAGE_COOKIE_NAME, user_language)
+            return response
 
         user_round = user_rounds[0]
         shots = Shot.objects.select_related('match', 'match__home_team', 'match__away_team', 'user_round').\
@@ -298,7 +306,9 @@ def home(request):
         time_left = format_time_left(shots)
         one_round_to_bet = {'form': form, 'shots': shots, 'round': active_round, 'time_left': time_left}
         bets.append(one_round_to_bet)
-    return render(request, 'home.html', {'bets': bets})
+    response = render(request, 'home.html', {'bets': bets})
+    response.set_cookie(settings.LANGUAGE_COOKIE_NAME, user_language)
+    return response
 
 
 def format_time_left(shots):
@@ -607,7 +617,8 @@ def round_standings(request, round_id):
                 'round_standings': round_standings_list,
                 'round': this_round,
                 'groups': all_groups,
-                'selected_group': selected_group})
+                'selected_group': selected_group,
+                'expand_content': True})
 
 
 def proposition(request):
