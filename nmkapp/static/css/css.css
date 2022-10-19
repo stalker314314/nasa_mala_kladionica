@@ -556,6 +556,7 @@ footer section:last-child {
 
     #content {
         padding: 10px 15px 15px 5px;
+        width: 100%;
     }
 
     .navigation {
