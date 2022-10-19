@@ -4,27 +4,6 @@ body {
     padding-top: 0;
 }
 
-@media (max-width: 991px) {
-    body {
-        padding-top: 70px;
-    }
-
-    .container {
-        min-height: calc( 100vh - 20px - 130px );
-    }
-
-    #content {
-        padding: 60px 15px 15px 5px;
-    }
-
-    .navigation {
-        border-style: none;
-    }
-    .navbar-nav .nav-link {
-        padding: 0px 0px 0px 0px;
-    }
-}
-
 :root {
 
   --color-accent: #7fa8b2;
@@ -214,7 +193,6 @@ p {
 }
 
 div.offset {
-	margin-left: 100px;
 	margin-top: 20px;
 }
 
@@ -567,6 +545,27 @@ footer section:last-child {
   }
 }
 
+@media (max-width: 991px) {
+    body {
+        padding-top: 70px;
+    }
+
+    .container {
+        min-height: calc( 100vh - 20px - 130px );
+    }
+
+    #content {
+        padding: 10px 15px 15px 5px;
+    }
+
+    .navigation {
+        border-style: none;
+    }
+    .navbar-nav .nav-link {
+        padding: 0px 0px 0px 0px;
+    }
+}
+
 @media only screen
 	and ( max-width: 870px ) {
 	:root {
@@ -631,7 +630,6 @@ footer section:last-child {
 	}
 
 }
-
 
 @media only screen
 	and ( max-width: 450px ) {

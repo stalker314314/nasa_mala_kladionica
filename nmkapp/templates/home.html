@@ -190,8 +190,7 @@
 					{% endfor %}
 				</tbody>
 			</table>
-            <div class="offset">
-
+            <div class="offset float-right">
                 <input class="btn btn-secondary" name="save_{{ bet.round.id }}" value="{% trans "Save" %}" type="button">
                 <input class="btn btn-danger" name="final_save_{{ bet.round.id }}" value="{% trans "Final Decision" %}" type="button">
                 <i class="fas fa-question-circle fa-lg awesome" data-toggle="collapse" data-target="#explain-betting"></i>
@@ -206,7 +205,8 @@
                 </div>
             </div>
         </form>
-        <p></p>
+		<br/>
+        <p/>
 
 	{% else %}
 
@@ -252,9 +252,11 @@
 	</table>
 
 	{% if bet.round %}
-	<div class="offset">
+	<div class="offset float-right">
 		<a href="/roundstandings/{{ bet.round.id }}" class="btn btn-info btn-sm">{% trans "Other players' bets" %}</a>
 	</div>
+	<br/>
+    <p/>
 	{% endif %}
 
 	{% endif %}
