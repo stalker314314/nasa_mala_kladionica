@@ -157,7 +157,7 @@
 
 	{% if bet.form %}
 		{% for error in bet.form.non_field_errors %}
-        <div class="alert alert-error alert-dismissible fade show text-left" role="alert">
+        <div class="alert alert-danger alert-dismissible fade show text-left" role="alert">
             {{ error }}
             <button type="button" class="close" data-dismiss="alert" aria-label="{% trans "Close" %}>
                 <span aria-hidden="true">&times;</span>
