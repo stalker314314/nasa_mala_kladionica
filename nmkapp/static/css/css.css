@@ -629,6 +629,9 @@ footer section:last-child {
 		padding: 0 50px;
 	}
 
+	table.mediumtable{
+        width: 100%;
+    }
 }
 
 @media only screen
