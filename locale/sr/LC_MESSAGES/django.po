@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-18 20:12+0000\n"
-"PO-Revision-Date: 2022-10-18 22:12+0200\n"
+"POT-Creation-Date: 2022-10-20 16:09+0000\n"
+"PO-Revision-Date: 2022-10-20 18:10+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sr\n"
@@ -686,7 +686,7 @@ msgstr ""
 "Једном када кликнете коначну одлуку, нећете више моћи да промените типове! "
 "Да ли сте сигурни?"
 
-#: nmkapp/templates/home.html:117 nmkapp/templates/home.html:195
+#: nmkapp/templates/home.html:117 nmkapp/templates/home.html:194
 msgid "Save"
 msgstr "Сачувај"
 
@@ -703,11 +703,11 @@ msgstr "преостало време за клађење:"
 msgid "Match"
 msgstr "Меч"
 
-#: nmkapp/templates/home.html:196
+#: nmkapp/templates/home.html:195
 msgid "Final Decision"
 msgstr "Коначна одлука"
 
-#: nmkapp/templates/home.html:200
+#: nmkapp/templates/home.html:199
 msgid ""
 "<strong>Save</strong> &nbsp;&nbsp; remembers your bets. Saved bets will be "
 "used even if you\n"
@@ -717,7 +717,7 @@ msgstr ""
 "користити чак иако не кликнеш\n"
 "                        „Коначна одлука“ пре него што коло почне"
 
-#: nmkapp/templates/home.html:203
+#: nmkapp/templates/home.html:202
 msgid ""
 "<strong>Final Decision</strong> &nbsp;&nbsp; will persist your bets, so you "
 "will not be\n"
@@ -944,10 +944,10 @@ msgstr "НМК - ПРИЈАВА"
 #: nmkapp/templates/login.html:10
 msgid ""
 "Naša Mala Kladionica is a website for recreational or real money betting for "
-"Euro Cup 2020."
+"World Cup 2022."
 msgstr ""
-"Наша Мала Кладионица је сајт за рекреативно клађење за Европско првенство "
-"2020."
+"Наша Мала Кладионица је сајт за рекреативно клађење за Светско првенство "
+"2022."
 
 #: nmkapp/templates/login.html:12
 msgid "Sign up, invite your crew, bet and show 'em all who's the best!"

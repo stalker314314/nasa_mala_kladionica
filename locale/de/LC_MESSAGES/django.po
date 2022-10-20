@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-18 20:12+0000\n"
-"PO-Revision-Date: 2022-10-18 19:22+0200\n"
+"POT-Creation-Date: 2022-10-20 16:09+0000\n"
+"PO-Revision-Date: 2022-10-20 18:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -687,7 +687,7 @@ msgstr ""
 "Wenn Sie auf die Finale Entscheidung klicken, sind Sie nicht mehr in "
 "Möglichkeit, die Wetten zu ändern! Sind Sie sicher?"
 
-#: nmkapp/templates/home.html:117 nmkapp/templates/home.html:195
+#: nmkapp/templates/home.html:117 nmkapp/templates/home.html:194
 msgid "Save"
 msgstr "Speichern"
 
@@ -704,11 +704,11 @@ msgstr "verbleibende Wettenzeit:"
 msgid "Match"
 msgstr "Match"
 
-#: nmkapp/templates/home.html:196
+#: nmkapp/templates/home.html:195
 msgid "Final Decision"
 msgstr "Finale Entscheidung"
 
-#: nmkapp/templates/home.html:200
+#: nmkapp/templates/home.html:199
 msgid ""
 "<strong>Save</strong> &nbsp;&nbsp; remembers your bets. Saved bets will be "
 "used even if you\n"
@@ -718,7 +718,7 @@ msgstr ""
 "Wetten werden benutzt, obwohl\n"
 "Sie auf die \"Finale Entscheidung\" nicht geklickt haben vor der Spielrunde"
 
-#: nmkapp/templates/home.html:203
+#: nmkapp/templates/home.html:202
 msgid ""
 "<strong>Final Decision</strong> &nbsp;&nbsp; will persist your bets, so you "
 "will not be\n"
@@ -948,10 +948,10 @@ msgstr "NMK.BET - ANMELDUNG"
 #: nmkapp/templates/login.html:10
 msgid ""
 "Naša Mala Kladionica is a website for recreational or real money betting for "
-"Euro Cup 2020."
+"World Cup 2022."
 msgstr ""
 "nmk.bet ist eine Website für Freizeit- oder Echtgeldwetten für den "
-"Europameisterschaft 2020."
+"Weltmeisterschaft 2022."
 
 #: nmkapp/templates/login.html:12
 msgid "Sign up, invite your crew, bet and show 'em all who's the best!"
