@@ -25,7 +25,6 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -36,6 +35,9 @@ TEMPLATES = [
         },
     },
 ]
+
+if DEBUG:
+    TEMPLATES[0]['OPTIONS']['context_processors'].insert(0, 'django.template.context_processors.debug')
 
 # Application definition
 INSTALLED_APPS = (
@@ -74,7 +76,8 @@ DATABASES = {
         'NAME': 'nmkbet',
         'HOST': 'localhost',
         'USER': 'nmkbet',
-        'PASSWORD': ''
+        'PASSWORD': '',
+        'CONN_MAX_AGE': None,
     }
 }
 
