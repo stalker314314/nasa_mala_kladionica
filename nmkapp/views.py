@@ -172,7 +172,9 @@ def request_display_name(request):
             update_player_upon_registration(user)
             return redirect(reverse('social:complete', kwargs={'backend': partial_data.backend}))
     else:
-        default_display_name = partial_data.data['kwargs']['details']['fullname']
+        default_display_name = ""
+        if partial_data:
+            default_display_name = partial_data.data['kwargs']['details']['fullname']
         form = RequestDisplayNameForm({'display_name': default_display_name})
 
     return render(request, 'request_display_name.html', {'form': form, 'no_menu': True})
