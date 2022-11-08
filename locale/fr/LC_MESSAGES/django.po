@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-20 16:09+0000\n"
-"PO-Revision-Date: 2022-10-20 18:09+0200\n"
+"POT-Creation-Date: 2022-11-08 21:00+0000\n"
+"PO-Revision-Date: 2022-11-08 22:01+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -18,23 +18,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 3.1.1\n"
 
-#: nmk/settings.py:89
+#: nmk/settings.py:92
 msgid "English"
 msgstr "Anglais"
 
-#: nmk/settings.py:90
+#: nmk/settings.py:93
 msgid "German"
 msgstr "Allemand"
 
-#: nmk/settings.py:91
+#: nmk/settings.py:94
 msgid "French"
 msgstr "Français"
 
-#: nmk/settings.py:92
+#: nmk/settings.py:95
 msgid "Serbian"
 msgstr "Serbe (cyrillique)"
 
-#: nmk/settings.py:93
+#: nmk/settings.py:96
 msgid "Serbian latin"
 msgstr "Serbe (latin)"
 
@@ -333,12 +333,9 @@ msgstr ""
 "idées vous pourriez avoir!"
 
 #: nmkapp/templates/about.html:38
-msgid ""
-"With sincere wishes that you will have fun here for this tournament in "
-"Russia,"
+msgid "With sincere wishes that you will have fun here for this tournament,"
 msgstr ""
-"Avec nos sincères souhaits que vous allez vous amuser pendant ce tournoi en "
-"Russie,"
+"Avec nos sincères souhaits que vous allez vous amuser pendant ce tournoi,"
 
 #: nmkapp/templates/about.html:40
 msgid "NMK team"
@@ -1601,29 +1598,29 @@ msgstr "[nmk.bet] Inscription réussie"
 msgid "[nmk.bet] Reset password request"
 msgstr "[nmk.bet] Demande pour réinitialiser le mot de passe"
 
-#: nmkapp/views.py:246 nmkapp/views.py:254
+#: nmkapp/views.py:248 nmkapp/views.py:256
 msgid "There is no active round currently to place bets, try again later"
 msgstr ""
 "Il n'y a actuellement aucun tour actif pour placer des paris, réessayez plus "
 "tard"
 
-#: nmkapp/views.py:301
+#: nmkapp/views.py:303
 msgid "Bets successfully saved"
 msgstr "Les paris enregistrés avec succès"
 
-#: nmkapp/views.py:330
+#: nmkapp/views.py:332
 msgid "first match already started"
 msgstr "le premier match a déjà commencé"
 
-#: nmkapp/views.py:332
+#: nmkapp/views.py:334
 msgid "N/A"
 msgstr "N/A"
 
-#: nmkapp/views.py:351
+#: nmkapp/views.py:353
 msgid "Settings successfully saved"
 msgstr "Paramètres sauvegardés avec succès"
 
-#: nmkapp/views.py:375
+#: nmkapp/views.py:377
 #, python-format
 msgid ""
 "Crew created successfully. Now you can send invite code \"%s\" to your "
@@ -1633,20 +1630,20 @@ msgstr ""
 "d'invitation «%s» à vos amis en utilisant le chat/mail/SMS, afin qu'ils "
 "puissent rejoindre votre nouvelle équipe"
 
-#: nmkapp/views.py:389
+#: nmkapp/views.py:391
 msgid "Joined crew successfully"
 msgstr "Adhésion réussie"
 
-#: nmkapp/views.py:420
+#: nmkapp/views.py:422
 msgid "[nmk.bet] Player payed paypal"
 msgstr "[nmk.bet] Joueur a payé par paypal"
 
-#: nmkapp/views.py:420
+#: nmkapp/views.py:422
 #, python-format
 msgid "Player %s"
 msgstr "Joueur %s"
 
-#: nmkapp/views.py:539
+#: nmkapp/views.py:541
 msgid ""
 "You cannot leave a crew that you created, you can only completely delete "
 "that crew."
@@ -1654,52 +1651,52 @@ msgstr ""
 "Vous ne pouvez pas quitter l'équipe que vous avez créée, vous pouvez "
 "uniquement supprimer cette équipe."
 
-#: nmkapp/views.py:547
+#: nmkapp/views.py:549
 #, python-format
 msgid "Successfully left a crew \"%s\""
 msgstr "A quitté le groupe «%s» avec succès"
 
-#: nmkapp/views.py:562
+#: nmkapp/views.py:564
 msgid ""
 "You cannot delete crew that you are not owner of, you can only leave it."
 msgstr ""
 "Vous ne pouvez pas supprimer une équipe que vous n'avez pas créé vous-même, "
 "vous pouvez uniquement le quitter."
 
-#: nmkapp/views.py:572
+#: nmkapp/views.py:574
 #, python-format
 msgid "Crew \"%s\" deleted"
 msgstr "Équipe «%s» supprimée"
 
-#: nmkapp/views.py:663
+#: nmkapp/views.py:665
 #, python-format
 msgid "Round \"%s\" set as active"
 msgstr "Tour «%s» défini comme actif"
 
-#: nmkapp/views.py:675
+#: nmkapp/views.py:677
 #, python-format
 msgid "[nmk.bet] New round \"%s\" available"
 msgstr "[nmk.bet] Nouveau tour «%s» disponible"
 
-#: nmkapp/views.py:686
+#: nmkapp/views.py:688
 #, python-format
 msgid "Round \"%s\" set as inactive"
 msgstr "Tour «%s» défini comme inactif"
 
-#: nmkapp/views.py:713
+#: nmkapp/views.py:715
 #, python-format
 msgid "New round \"%s\" created successfully"
 msgstr "Nouveau tour «%s» créé avec succès"
 
-#: nmkapp/views.py:734
+#: nmkapp/views.py:736
 msgid "Match successfully added"
 msgstr "Match ajouté avec succès"
 
-#: nmkapp/views.py:769
+#: nmkapp/views.py:771
 msgid "Result added successfully"
 msgstr "Résultat ajouté avec succès"
 
-#: nmkapp/views.py:793
+#: nmkapp/views.py:795
 #, python-format
 msgid "[nmk.bet] All results from round \"%s\" received"
 msgstr "[nmk.bet] Tous les résultats du tour «%s» reçus"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-20 16:09+0000\n"
-"PO-Revision-Date: 2022-10-20 18:10+0200\n"
+"POT-Creation-Date: 2022-11-08 21:00+0000\n"
+"PO-Revision-Date: 2022-11-08 22:01+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sr\n"
@@ -19,23 +19,23 @@ msgstr ""
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 3.1.1\n"
 
-#: nmk/settings.py:89
+#: nmk/settings.py:92
 msgid "English"
 msgstr "Engleski"
 
-#: nmk/settings.py:90
+#: nmk/settings.py:93
 msgid "German"
 msgstr "Nemački"
 
-#: nmk/settings.py:91
+#: nmk/settings.py:94
 msgid "French"
 msgstr "Francuski"
 
-#: nmk/settings.py:92
+#: nmk/settings.py:95
 msgid "Serbian"
 msgstr "Srpski (ćirilica)"
 
-#: nmk/settings.py:93
+#: nmk/settings.py:96
 msgid "Serbian latin"
 msgstr "Srpski (latinica)"
 
@@ -261,8 +261,8 @@ msgid ""
 msgstr ""
 "Naša Mala Kladionica je započela pre više od 15 godina, kada je grupa ortaka "
 "odlučila da napravi internu kladionicu na utakmice\n"
-"Lige Šampiona. U to vreme, koristili smo najbolji softver za interno klađenje "
-"&mdash; Excel:) Uskoro smo ukapirali\n"
+"Lige Šampiona. U to vreme, koristili smo najbolji softver za interno "
+"klađenje &mdash; Excel:) Uskoro smo ukapirali\n"
 "da nije baš najzgodnije da koristimo Excel koji šaljemo mejlom, naročite u "
 "finalu Lige Šampiona, kada je foto finiš.\n"
 "U tom trenutku, niko ko se bori za prvo mesto neće da odigra prvi, da ostali "
@@ -299,8 +299,8 @@ msgstr ""
 "prosto zato što ne želimo hiljade ljudi\n"
 "i nerealne nagrade u milionima evra. Želimo poštenu igru, prijatnu atmosferu "
 "među igračima i da se usput i\n"
-"zabavimo. Da utakmice na svetskom budu zanimljivije i malo zezanja ko je među "
-"ortacima i kolegama bolji kladioničar može biti samo bonus;)"
+"zabavimo. Da utakmice na svetskom budu zanimljivije i malo zezanja ko je "
+"među ortacima i kolegama bolji kladioničar može biti samo bonus;)"
 
 #: nmkapp/templates/about.html:30
 msgid ""
@@ -327,10 +327,8 @@ msgstr ""
 "druge ideje još imate!"
 
 #: nmkapp/templates/about.html:38
-msgid ""
-"With sincere wishes that you will have fun here for this tournament in "
-"Russia,"
-msgstr "Uz iskrene želje da ćete se dobro zabaviti za ovo prvenstvo u Rusiji,"
+msgid "With sincere wishes that you will have fun here for this tournament,"
+msgstr "Uz iskrene želje da ćete se dobro zabaviti za ovo prvenstvo,"
 
 #: nmkapp/templates/about.html:40
 msgid "NMK team"
@@ -713,8 +711,8 @@ msgid ""
 "used even if you\n"
 "                        don't click \"Final Decision\" before round starts"
 msgstr ""
-"<strong>Sačuvaj</strong> &nbsp;&nbsp; pamti tvoja tipovanja. Ovi tipovi će se "
-"koristiti čak iako ne klikneš\n"
+"<strong>Sačuvaj</strong> &nbsp;&nbsp; pamti tvoja tipovanja. Ovi tipovi će "
+"se koristiti čak iako ne klikneš\n"
 "                        „Konačna odluka“ pre nego što kolo počne"
 
 #: nmkapp/templates/home.html:202
@@ -817,8 +815,8 @@ msgid ""
 "this is the place where your odds of winning the prize are very, very real.\n"
 "There is only 100 players and first 3 places are winning the money."
 msgstr ""
-"U odnosu na druge sajtove za interno klađenje sa hiljadama ljudi i sa milionima "
-"evra u nagradama,\n"
+"U odnosu na druge sajtove za interno klađenje sa hiljadama ljudi i sa "
+"milionima evra u nagradama,\n"
 "ovo je mesto gde su šanse da se osvoji neka nagrada veoma realne.\n"
 "Ima samo 100 igrača, a prva 3 mesta uzimaju novac."
 
@@ -1062,11 +1060,13 @@ msgid ""
 "match in the round starts!"
 msgstr ""
 "Ovaj mejl je podsetnik da se kladiš na kolo <b>%(round.name)s</b>. Klađenje "
-"je moguće do %(min_time.date)s u %(min_time.time)s kada počinje prva utakmica!"
+"je moguće do %(min_time.date)s u %(min_time.time)s kada počinje prva "
+"utakmica!"
 
 #: nmkapp/templates/mail/round_reminder.html:8
 msgid "You can bet at the <a href=\"https://nmk.bet\">betting page</a>."
-msgstr "Možeš se kladiti na <a href=\"https://nmk.bet\">strani za klađenje</a>."
+msgstr ""
+"Možeš se kladiti na <a href=\"https://nmk.bet\">strani za klađenje</a>."
 
 #: nmkapp/templates/mail/round_shots.html:4
 #, python-format
@@ -1113,8 +1113,8 @@ msgstr ""
 "\n"
 "Tvoja uplata je uspešno proknjižena i dodat si u ekipu <strong>\"U pare\"</"
 "strong>.\n"
-"Takođe, ime će ti od sada na svim tabelama biti prikazano podebljano kao znak "
-"da igraš u pare.\n"
+"Takođe, ime će ti od sada na svim tabelama biti prikazano podebljano kao "
+"znak da igraš u pare.\n"
 
 #: nmkapp/templates/paypal.html:17
 msgid ""
@@ -1163,16 +1163,16 @@ msgid ""
 "Send reminder 24h before start of the first match in the round (only if you "
 "still didn't bet)"
 msgstr ""
-"Šalje podsetnik za klađenje 24h pre početka prve utakmice u kolu (samo ako se "
-"još nisi kladio)"
+"Šalje podsetnik za klađenje 24h pre početka prve utakmice u kolu (samo ako "
+"se još nisi kladio)"
 
 #: nmkapp/templates/profile.html:149
 msgid ""
 "Send verbatim copy of all bets once first match in round starts (to verify "
 "there is no tempering with bets afterwards!)"
 msgstr ""
-"Šalje kopiju svih tipovanja svih korisnika za jedno kolo, kada kolo počne (da "
-"svako može da se uveri da nije bilo naknadnog menjanja tipova!)"
+"Šalje kopiju svih tipovanja svih korisnika za jedno kolo, kada kolo počne "
+"(da svako može da se uveri da nije bilo naknadnog menjanja tipova!)"
 
 #: nmkapp/templates/profile.html:159
 msgid "Send announcement that new round started and betting in it is available"
@@ -1372,8 +1372,8 @@ msgstr ""
 "koje su osvojili, već od svih mesta koje su osvojili.\n"
 "Primer: ako su Pera i Mika prvi i imaju po 50 poena, oni dele pare namenjene "
 "i za prvo i za drugo mesto, tj. (50%% + 33.3%%) / 2 = 41.66%%.\n"
-"Ako je Žika bio ispod njih sa 49 poena, on ne dobija pare za drugo mesto, već "
-"za treće, tj. 16.6%%."
+"Ako je Žika bio ispod njih sa 49 poena, on ne dobija pare za drugo mesto, "
+"već za treće, tj. 16.6%%."
 
 #: nmkapp/templates/register.html:8 nmkapp/templates/register_success.html:8
 msgid "NMK - REGISTRATION"
@@ -1554,49 +1554,49 @@ msgstr "[nmk.bet] Registracija uspešna"
 msgid "[nmk.bet] Reset password request"
 msgstr "[nmk.bet] Zahtev za resetovanjem lozinke"
 
-#: nmkapp/views.py:246 nmkapp/views.py:254
+#: nmkapp/views.py:248 nmkapp/views.py:256
 msgid "There is no active round currently to place bets, try again later"
 msgstr "Trenutno nema aktivnih kola za klađenje, pokušajte kasnije"
 
-#: nmkapp/views.py:301
+#: nmkapp/views.py:303
 msgid "Bets successfully saved"
 msgstr "Tipovanja uspešno sačuvana"
 
-#: nmkapp/views.py:330
+#: nmkapp/views.py:332
 msgid "first match already started"
 msgstr "prvi meč već počeo"
 
-#: nmkapp/views.py:332
+#: nmkapp/views.py:334
 msgid "N/A"
 msgstr "N/A"
 
-#: nmkapp/views.py:351
+#: nmkapp/views.py:353
 msgid "Settings successfully saved"
 msgstr "Podešavanja uspešno sačuvana"
 
-#: nmkapp/views.py:375
+#: nmkapp/views.py:377
 #, python-format
 msgid ""
 "Crew created successfully. Now you can send invite code \"%s\" to your "
 "friends using chat/mail/SMS, so they too can join your new crew"
 msgstr ""
-"Ekipa uspešno napravljena. Sada pošalji šifru-pozivnicu \"%s\" ortacima preko "
-"e-pošte/SMS-om/Viber-om, da i oni mogu da se pridruže ekipi"
+"Ekipa uspešno napravljena. Sada pošalji šifru-pozivnicu \"%s\" ortacima "
+"preko e-pošte/SMS-om/Viber-om, da i oni mogu da se pridruže ekipi"
 
-#: nmkapp/views.py:389
+#: nmkapp/views.py:391
 msgid "Joined crew successfully"
 msgstr "Uspešno dodat u ekipu"
 
-#: nmkapp/views.py:420
+#: nmkapp/views.py:422
 msgid "[nmk.bet] Player payed paypal"
 msgstr "[nmk.bet] Igrač platio pejpal"
 
-#: nmkapp/views.py:420
+#: nmkapp/views.py:422
 #, python-format
 msgid "Player %s"
 msgstr "Igrač %s"
 
-#: nmkapp/views.py:539
+#: nmkapp/views.py:541
 msgid ""
 "You cannot leave a crew that you created, you can only completely delete "
 "that crew."
@@ -1604,51 +1604,51 @@ msgstr ""
 "Ne možeš da napustiš ekipu koju si ti napravio, možeš samo da je kompletno "
 "izbrišeš."
 
-#: nmkapp/views.py:547
+#: nmkapp/views.py:549
 #, python-format
 msgid "Successfully left a crew \"%s\""
 msgstr "Uspešno izašao iz ekipe „%s“"
 
-#: nmkapp/views.py:562
+#: nmkapp/views.py:564
 msgid ""
 "You cannot delete crew that you are not owner of, you can only leave it."
 msgstr ""
 "Ne možeš da obrišeš ekipu koju nisi ti napravio, možeš samo da izađeš iz nje."
 
-#: nmkapp/views.py:572
+#: nmkapp/views.py:574
 #, python-format
 msgid "Crew \"%s\" deleted"
 msgstr "Ekipa „%s“ izbrisana"
 
-#: nmkapp/views.py:663
+#: nmkapp/views.py:665
 #, python-format
 msgid "Round \"%s\" set as active"
 msgstr "Kolo „%s“ postavljeno kao aktivno"
 
-#: nmkapp/views.py:675
+#: nmkapp/views.py:677
 #, python-format
 msgid "[nmk.bet] New round \"%s\" available"
 msgstr "[nmk.bet] Dostupno je novo kolo „%s“"
 
-#: nmkapp/views.py:686
+#: nmkapp/views.py:688
 #, python-format
 msgid "Round \"%s\" set as inactive"
 msgstr "Kolo „%s“ postavljeno kao neaktivno"
 
-#: nmkapp/views.py:713
+#: nmkapp/views.py:715
 #, python-format
 msgid "New round \"%s\" created successfully"
 msgstr "Novo kolo „%s“ uspešno napravljeno"
 
-#: nmkapp/views.py:734
+#: nmkapp/views.py:736
 msgid "Match successfully added"
 msgstr "Meč uspešno dodat"
 
-#: nmkapp/views.py:769
+#: nmkapp/views.py:771
 msgid "Result added successfully"
 msgstr "Rezultat uspešno unesen"
 
-#: nmkapp/views.py:793
+#: nmkapp/views.py:795
 #, python-format
 msgid "[nmk.bet] All results from round \"%s\" received"
 msgstr "[nmk.bet] Uneseni svi rezultati iz kola „%s“"
@@ -1687,5 +1687,5 @@ msgstr "[nmk.bet] Uneseni svi rezultati iz kola „%s“"
 #~ "real money * 10€. This is to cover our provision costs and to pay off for "
 #~ "costs of running a web site."
 #~ msgstr ""
-#~ "Ukupan fond za nagrade je za 10%% manji od ukupnog broja ljudi koji su dali "
-#~ "pare * 10€. Ovo je čisto da pokrijemo provizije i da platimo sajt."
+#~ "Ukupan fond za nagrade je za 10%% manji od ukupnog broja ljudi koji su "
+#~ "dali pare * 10€. Ovo je čisto da pokrijemo provizije i da platimo sajt."
